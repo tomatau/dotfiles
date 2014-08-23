@@ -23,33 +23,11 @@ fi
 
 pwd="$(dirname "$0")"
 
-# REQUIREMENTS
+
 source "$pwd/dotfiles_functions"
-source "$pwd/system_requirements"
+source "$pwd/dotfiles_requirements"
+source "$pwd/dotfiles_sync"
 
-# INSTALLS
-
-# GIT - Ubuntu only
-if [[ ! "$(type -P git)" && "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
-  e_header "Installing Git"
-  sudo apt-get -qq install git-core
-fi
-if [[ ! "$(type -P git)" ]]; then
-  e_error "Git should be installed. It isn't. Aborting."
-  exit 1
-fi
-
-# INITIALISE
-e_header "Syncing dotfiles"
-rsync -a --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
-    --exclude "README.md" --exclude "LICENSE-MIT.txt" ../ ~/
-if [[ ! -d ~/.dotfiles ]]; then
-    new_dotfiles_install=1
-else
-    e_header "Removing old dotfiles"
-    rm -rf ~/.dotfiles
-fi
-mv ~/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 
 # Add binaries to path
@@ -59,7 +37,7 @@ export PATH
 
 # Tweak file globbing.
 shopt -s dotglob
-shopt -s nullglob
+shopt -s nullglob # make * eval to nothing if no files
 
 # Run the installtion scripts in the following
 e_header "Initializing!"

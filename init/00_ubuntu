@@ -9,7 +9,7 @@ e_header "Updating APT"
 packages=(
   tree
   telnet
-  git-core
+  git
 )
 
 list=()
@@ -24,7 +24,13 @@ done
 if (( ${#list[@]} > 0 )); then
   e_header "Installing APT packages: ${list[*]}"
   for package in "${list[@]}"; do
-    sudo apt-get -qq install "$package"
-    [[ ! "$(type -P $package)" ]] && e_success "Installed $package"
+    sudo apt-get install "$package"
+    if [[ ! "$(type -P $package)" ]];
+      e_error "$package failed..."
+    else
+      e_success "Installed $package"
+    fi
   done
 fi
+
+e_success "Ubuntu specific install complete"

@@ -30,3 +30,5 @@ if [[ "$(type -P brew)" ]]; then
     # This is where brew stores its binary symlinks 
     local binroot="$(brew --config | awk '/HOMEBREW_PREFIX/ {print $2}')"/bin
 fi
+
+e_success "OSX specific install complete"
