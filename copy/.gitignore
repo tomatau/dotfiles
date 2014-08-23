@@ -1,0 +1,38 @@
+[user]
+    name = tomatau
+    email = toma_toom@hotmail.com
+
+[core]
+    editor = subl
+
+[alias]
+    cam = commit -am
+    d = diff
+    s = status -s
+    r = rm --cached
+    co = checkout
+    # View abbreviated SHA, description, and history graph of the latest 20 commits
+    l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+[help]
+    autocorrect = 1
+
+[web]
+    browser = google-chrome
+
+[color]
+    ui = true
+[color "branch"]
+    current = yellow bold
+    local = green bold
+    remote = cyan bold
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold # line info
+    old = red bold # deletions
+    new = green bold # additions
+    whitespace = red reverse
+[color "status"]
+    added = green bold
+    changed = yellow bold
+    untracked = red bold

@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+echo "DOTFILES! - Let's Rock It!"
+
+# If this is used with -h or --help
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then cat <<HELP
+Usage: $(basename "$0")
+
+This file will install tomatao's .bashrc
+
+No options necessary.
+
+It will copy the dotfiles directory into ~/.dotfiles
+It will run the scripts in the following directories:
+- init
+
+It will then do nothing :D DOTFILES!!!
+HELP
+exit; 
+fi
+
+#  TODO gitpull here!
+
+pwd="$(dirname "$0")"
+
+# REQUIREMENTS
+source "$pwd/dotfiles_functions"
+source "$pwd/system_requirements"
+
+# INSTALLS
+
+# GIT - Ubuntu only
+if [[ ! "$(type -P git)" && "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
+  e_header "Installing Git"
+  sudo apt-get -qq install git-core
+fi
+if [[ ! "$(type -P git)" ]]; then
+  e_error "Git should be installed. It isn't. Aborting."
+  exit 1
+fi
+
+# INITIALISE
+e_header "Syncing dotfiles"
+rsync -a --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
+    --exclude "README.md" --exclude "LICENSE-MIT.txt" ../ ~/
+if [[ ! -d ~/.dotfiles ]]; then
+    new_dotfiles_install=1
+else
+    e_header "Removing old dotfiles"
+    rm -rf ~/.dotfiles
+fi
+mv ~/dotfiles ~/.dotfiles
+cd ~/.dotfiles
+
+# Add binaries to path
+PATH=~/.dotfiles/bin:$PATH
+export PATH
+
+
+# Tweak file globbing.
+shopt -s dotglob
+shopt -s nullglob
+
+# Run the installtion scripts in the following
+e_header "Initializing!"
+run_directory "init"
+
+
+# Unset file globbing tweaks
+shopt -u nullglob
+unset new_dotfiles_install
+unset pwd
+unset run_directory
+
+e_header "All done!"
