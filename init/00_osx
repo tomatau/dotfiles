@@ -22,6 +22,8 @@ if [[ "$(type -P brew)" ]]; then
     recipes=(
         git
         tree
+        npm
+        curl
     )
     list="$(to_install "${recipes[*]}" "$(brew list)")" if [[ "$list" ]]; then
         e_header "Installing Homebrew recipes: $list"

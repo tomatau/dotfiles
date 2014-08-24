@@ -8,9 +8,9 @@ e_header "Updating APT"
 # Install APT packages.
 packages=(
   tree
-  telnet
   git
   curl
+  # nodejs # also installs npm?, need to run npm install -g npm 
 )
 
 list=()

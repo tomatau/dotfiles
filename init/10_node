@@ -1,11 +1,37 @@
 # npm_globals=(grunt-cli grunt-init linken bower node-inspector yo)
 
-if [[ "$(type -P nvm)" ]]; then
-    e_header "NVM already installed"
-else
+# if [[ "nvm" ]]; then # must be a better way to check if NVM is installed
+#     e_header "NVM already installed"
+# else
     e_header "Installing NVM"
     curl https://raw.githubusercontent.com/creationix/nvm/v0.13.1/install.sh | bash
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+    nvm install 0.10.25
+    nvm use 0.10.25
+# fi
+
+# no way to select latest stable in NVM (but we use it because .nvmrc is nice :)
+
+# make sure npm is installed, then use the version resolver
+if [[ "$(type -P npm)" ]]; then
+    e_header "NPM already installed, updating..."
+    sudo npm install -g npm
+else
+    e_header "Installing NPM"
+    curl -L https://npmjs.org/install.sh | sh
+
+    # Why do I need to do this?!!?!?
+    source ~/.profile
+    nvm use 0.10.25
+    if [[ "$(type -P npm)" ]]; then
+        e_success "Npm installed and working"
+    else
+        e_error "NPM didn't install omg.. aborting"
+        return 1
+    fi
 fi
+
 
 # nave init.
 # if [[ "$(type -P nave)" ]]; then

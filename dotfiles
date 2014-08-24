@@ -50,4 +50,6 @@ unset new_dotfiles_install
 unset pwd
 unset run_directory
 
+. ~/.profile
+
 e_header "All done!"
