@@ -31,8 +31,6 @@ function run_directory() {
         base="$(basename $file)"
         dest="$HOME/$base"
         echo $file
-        # echo $base
-        # echo $dest
 
         [[ $(declare -f "$1_run") ]] && "$1_run" "$base" "$file"
     done

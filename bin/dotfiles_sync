@@ -7,13 +7,16 @@ if [[ ! -d ~/.dotfiles ]]; then
 else
     read -p "Overwrite existing dotfiles? (y/n) " -n 1;
     echo "";
-    [[ $REPLY =~ ^[Yy]$ ]] || e_error "Aborting" && exit;
+    if [[ $REPLY =~ ^[Nn]$ ]]; then
+        e_error "Aborting"
+        exit;
+    fi
 fi
 
 rsync -a --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
     --exclude "README.md" --exclude "LICENSE-MIT.txt" ../ ~/
 
-if [[ new_dotfiles_install != 1 ]]; then
+if [[ "$new_dotfiles_install" != 1 ]]; then
     e_header "Removing old dotfiles"
     rm -rf ~/.dotfiles
 fi

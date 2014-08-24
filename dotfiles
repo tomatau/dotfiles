@@ -24,9 +24,9 @@ fi
 pwd="$(dirname "$0")"
 
 
-source "$pwd/dotfiles_functions"
-source "$pwd/dotfiles_requirements"
-source "$pwd/dotfiles_sync"
+source "$pwd/bin/dotfiles_functions"
+source "$pwd/bin/dotfiles_requirements"
+source "$pwd/bin/dotfiles_sync"
 
 cd ~/.dotfiles
 
