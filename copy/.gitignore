@@ -1,38 +1,35 @@
-[user]
-    name = tomatau
-    email = toma_toom@hotmail.com
+# Linux
+*~
 
-[core]
-    editor = subl
+# Mac OS X
+._*
+.AppleDouble
+.DS_Store
+.localized
+.LSOverride
+.Spotlight-V100
+.Trashes
+Icon
 
-[alias]
-    cam = commit -am
-    d = diff
-    s = status -s
-    r = rm --cached
-    co = checkout
-    # View abbreviated SHA, description, and history graph of the latest 20 commits
-    l = log --pretty=oneline -n 20 --graph --abbrev-commit
+# Vim
+%*
+*.sw[a-z]
+*.un~
+.netrwhist
+Session.vim
 
-[help]
-    autocorrect = 1
+# Windows
+Desktop.ini
+ehthumbs.db
+Thumbs.db
 
-[web]
-    browser = google-chrome
+# General
+caches/
+backups/
+link/.ssh/authorized_keys
+link/.ssh/id_*
+link/.ssh/known_hosts
+*LOCAL*
 
-[color]
-    ui = true
-[color "branch"]
-    current = yellow bold
-    local = green bold
-    remote = cyan bold
-[color "diff"]
-    meta = yellow bold
-    frag = magenta bold # line info
-    old = red bold # deletions
-    new = green bold # additions
-    whitespace = red reverse
-[color "status"]
-    added = green bold
-    changed = yellow bold
-    untracked = red bold
+# Compiled Python files
+*.pyc

@@ -11,6 +11,7 @@ packages=(
   git
   curl
   parcellite
+  vlc
 )
 
 # Go through the package manager checking if the package already exists

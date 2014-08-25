@@ -1,0 +1,50 @@
+[user]
+    name = tomatau
+    email = toma_toom@hotmail.com
+
+[core]
+    editor = subl
+    attributesfile = ~/.gitattributes
+    excludesfile = ~/.gitignore
+
+[alias]
+    cam = commit -am
+    d = diff
+    s = status -s
+    r = rm --cached
+    co = checkout
+    # View abbreviated SHA, description, and history graph of the latest 20 commits
+    l = log --pretty=oneline -n 20 --graph --abbrev-commit
+    g  = log --graph --pretty=custom        # show custom graph
+
+[help]
+    autocorrect = 1
+
+[web]
+    browser = google-chrome
+
+[color]
+    ui = true
+[color "branch"]
+    current = yellow bold
+    local = green bold
+    remote = cyan bold
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold # line info
+    old = red bold # deletions
+    new = green bold # additions
+    whitespace = red reverse
+[color "status"]
+    added = green bold
+    changed = yellow bold
+    untracked = red bold
+
+[pretty]
+    # Custom log output
+    custom = "%C(magenta)%h%C(red)%d %C(yellow)%ar %C(green)%s %C(yellow)(%an)"
+    #                     │        │            │            │  author name ┘
+    #                     │        │            │            └─ message
+    #                     │        │            └─ date (relative)
+    #                     │        └─ decorations (branch, heads or tags)
+    #                     └─ hash (abbreviated)
