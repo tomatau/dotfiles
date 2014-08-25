@@ -17,9 +17,11 @@ function copy_do() {
 
 function run_directory() {
   local base dest
-  local files=(~/.dotfiles/$1/*)
+  local files=(./$1/*)
   
-  if (( ${#files[@]} == 0 )); then return; fi
+  if (( ${#files[@]} == 0 ));
+    then return;
+  fi
   
   # display any header
   # [[ $(declare -f "$1_header") ]] && "$1_header"
@@ -27,9 +29,7 @@ function run_directory() {
   for file in "${files[@]}"; do
     base="$(basename $file)"
     dest="$HOME/$base"
-    echo $file
-
-    [[ $(declare -f "$1_run") ]] && "$1_run" "$base" "$file"
+    [[ $(declare -f "${1}_run") ]] && "${1}_run" "$base" "$file"
   done
 }
 

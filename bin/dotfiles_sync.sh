@@ -13,15 +13,13 @@ else
   fi
 fi
 
-
 dotfiles_location=${PWATH%/*} | awk -F_ '{print $1}'
-echo "PWATH ${PWATH}"
 
 rsync -av --exclude ".git/" --exclude ".DS_Store" \
   --exclude "dotfiles.sh" --exclude "dotfiles_requirements.sh" \
   --exclude "dotfiles_functions.sh" --exclude "dotfiles_sync.sh" \
+  --exclude "init" --exclude "copy" --exclude "alias" --exclude "tmp" \
   --exclude "README.md" "$PWATH/.." ~
-  # --exclude "init" --exclude "copy" --exclude "alias" \
 
 if [[ "$new_dotfiles_install" != 1 ]]; then
   e_header "Removing old bin"

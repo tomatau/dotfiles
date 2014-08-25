@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 # when running scripts this is filename (nice)
-SCRIPT=$(basename "$0")
-# when running scripts this is dir (nice)
-PWATH=$(dirname "${BASH_SOURCE[0]}")
+SCRIPT=$( basename "$0" )
+# PWATH PATH
+PWATH="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PARENT=$( dirname $PWATH )
 
 echo "DOTFILES! - Let's Rock It!"
 
@@ -28,13 +29,14 @@ HELP
 exit; 
 fi
 
-#  TODO gitpull here!
+#  TODO gitpull here for remote repo so we're up to date!?!
+# but what if this file changes
 
 source "$PWATH/dotfiles_functions.sh"
 source "$PWATH/dotfiles_requirements.sh"
 source "$PWATH/dotfiles_sync.sh"
 
-cd ~/.bin
+cd $PARENT
 
 # Add binaries to path
 PATH=~/.bin:$PATH

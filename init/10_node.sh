@@ -35,14 +35,15 @@ else
 fi
 
 # Update Npm
-e_header "Updating Npm"
-if [[ "$(type -P npm)" ]]; then
-  npm install -g npm
-else
-  e_error "Node didn't work again :("
-  return 1
-fi
+# e_header "Updating Npm"
+# if [[ "$(type -P npm)" ]]; then
+#   npm install -g npm
+# else
+#   e_error "Node didn't work again :("
+#   return 1
+# fi
 
+e_header "Installing Npm Modules"
 # Install Npm thingies
 {
   pushd "$(npm config get prefix)/lib/node_modules";
@@ -53,7 +54,7 @@ fi
 list="$(to_install "${npm_globals[*]}" "${installed[*]}")"
 
 if [[ "$list" ]]; then
-  e_header "Installing Npm modules: $list, for $default_node"
+  e_header "modules: $list, for $default_node"
   npm install -g $list
 fi
 
