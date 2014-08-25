@@ -19,7 +19,7 @@ Usage: bash or sh $SCRIPT
 
 Please run in own shell, do not source
 
-It will copy the dotfiles directory into ~/.dotfiles
+It will copy the bin directory into ~/.bin
 It will run the scripts in the following directories:
 - init
 
@@ -34,10 +34,10 @@ source "$PWATH/dotfiles_functions.sh"
 source "$PWATH/dotfiles_requirements.sh"
 source "$PWATH/dotfiles_sync.sh"
 
-cd ~/.dotfiles
+cd ~/.bin
 
 # Add binaries to path
-PATH=~/.dotfiles/bin:$PATH
+PATH=~/.bin:$PATH
 export PATH
 
 
