@@ -8,6 +8,7 @@
     excludesfile = ~/.gitignore
 
 [alias]
+    a = add -A
     cam = commit -am
     d = diff
     s = status -s
@@ -47,3 +48,4 @@
     #                     │        │            └─ date (relative)
     #                     │        └─ decorations (branch, heads or tags)
     #                     └─ hash (abbreviated)
+

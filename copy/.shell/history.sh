@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
-
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -19,3 +13,6 @@ export HISTTIMEFORMAT="[%F %T] "
 
 # Easily re-execute the last history command.
 # alias r="fc -s"
+
+# Make some commands not show up in history
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help";

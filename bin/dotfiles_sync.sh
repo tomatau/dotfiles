@@ -13,12 +13,15 @@ else
   fi
 fi
 
-dotfiles_location=${PWATH%/*} | awk -F_ '{print $1}'
+# dotfiles_location=${PWATH%/*} | awk -F_ '{print $1}'
 
-rsync -av --exclude ".git/" --exclude ".DS_Store" \
+# -WavP --human-readable --progress
+
+rsync -av \
+  --exclude ".git/" --exclude ".DS_Store" \
   --exclude "dotfiles.sh" --exclude "dotfiles_requirements.sh" \
   --exclude "dotfiles_functions.sh" --exclude "dotfiles_sync.sh" \
-  --exclude "init" --exclude "copy" --exclude "alias" --exclude "tmp" \
+  --exclude "init" --exclude "copy" --exclude "tmp" \
   --exclude "README.md" "$PWATH/.." ~
 
 if [[ "$new_dotfiles_install" != 1 ]]; then
