@@ -39,7 +39,6 @@
     added = green bold
     changed = yellow bold
     untracked = red bold
-
 [pretty]
     # Custom log output
     custom = "%C(magenta)%h%C(red)%d %C(yellow)%ar %C(green)%s %C(yellow)(%an)"
