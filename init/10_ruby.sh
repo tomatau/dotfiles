@@ -9,10 +9,12 @@ e_header "Installing Rbenv"
 
 if [[ ! "$(type -P rbenv)" ]]; then
   git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+  # TODO: add check here
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
   e_success "Installed Rbenv"
 
+  # TODO: add check here
   git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
   e_success "Installed Ruby-Build"
 else

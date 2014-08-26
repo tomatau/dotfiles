@@ -3,6 +3,7 @@
 declare default_php="5.5.16"
 declare old_stable="5.3.29"
 
+# TODO: this is horrible
 function phpbrew_deps_install() {
   sudo apt-get build-dep php5
   sudo apt-get install -y php5 php5-dev php-pear \
@@ -30,10 +31,12 @@ e_header "Installing Phpbrew"
 if [[ ! "$(type -P phpbrew)" ]]; then
   phpbrew_deps_install
   curl -L -O https://github.com/phpbrew/phpbrew/raw/master/phpbrew
+  # TODO: add check here
   chmod +x phpbrew
   sudo mv phpbrew /usr/bin/phpbrew
+  # TODO: add check here
   phpbrew init
-  . ~/.phpbrew/bashrc
+  [ -s ~/.phpbrew/bashrc ] && . ~/.phpbrew/bashrc
   if [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
     phpbrew lookup-prefix ubuntu
   else

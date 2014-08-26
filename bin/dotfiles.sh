@@ -38,10 +38,6 @@ source "$PWATH/dotfiles_sync.sh"
 
 cd $PARENT
 
-# Add binaries to path
-PATH=~/.bin:$PATH
-export PATH
-
 # Tweak file globbing.
 shopt -s dotglob
 shopt -s nullglob # make * eval to nothing if no files
@@ -53,6 +49,9 @@ run_directory "init"
 e_header "Copying!"
 run_directory "copy"
 
+# Add binaries to path
+PATH=~/.bin:$PATH
+export PATH
 . ~/.bash_profile
 
 e_header "All done! - Rember to restart your shell! :)"

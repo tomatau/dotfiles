@@ -18,6 +18,7 @@ fi
 alias apti="sudo apt-get install"
 alias aptr="sudo apt-get remove"
 alias apts="sudo apt-cache search"
-alias aptu="sudo apt-get update && sudo apt-get upgrade"
+alias aptu="sudo apt-get update"
+alias aptuu="sudo apt-get update && sudo apt-get upgrade"
 
 

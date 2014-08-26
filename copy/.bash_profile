@@ -14,6 +14,7 @@ if [ -d "$HOME/.bin" ] ; then
 fi
 
 # Added by Nvm
+# I want to move this into .shell/inits but nvm keeps adding it in!
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 

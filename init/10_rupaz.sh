@@ -8,6 +8,7 @@ if [[ -d $target ]]; then
   {
     pushd "$target"
     git clone https://github.com/rupa/z.git
+  # TODO: add check here
     chmod +x ./z/z.sh
     # ln -s "$target"/z/z.sh z.sh # link to ./bin/z.sh in path
     popd
