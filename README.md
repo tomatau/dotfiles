@@ -27,7 +27,13 @@ I've aimed to keep it organised as I can but there's still slop in the php stuff
 
 Also, my github Username and Email are in the .gitconfig.
 
-
+TODO: 
+- .vimrc
+- convert all .vim/bundle's to submodules
+- ssh
+- java?
+- inputrc
+- ngrok?
 
 
 Created by Thomas "tomatao" Hudspith-Tatham
