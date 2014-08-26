@@ -14,6 +14,9 @@ if which pyenv > /dev/null; then
   eval "$(pyenv init -)"
 fi
 
+PHPBREW_SET_PROMPT=1
+. ~/.phpbrew/bashrc
+
 # Start an HTTP server from a directory, optionally specifying the port
 function server2() {
   local port="${1:-8000}";

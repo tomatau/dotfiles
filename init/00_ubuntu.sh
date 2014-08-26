@@ -5,13 +5,23 @@
 
 e_header "Updating APT"
 
-# Install APT packages.
+# Install APT packages. 
+# build-essential and below req for pyenv
 packages=(
   tree
   git
   curl
   parcellite
   vlc
+  build-essential 
+  libssl-dev
+  zlib1g-dev
+  libbz2-dev
+  libreadline-dev
+  libsqlite3-dev
+  wget
+  llvm
+  make
 )
 
 # Go through the package manager checking if the package already exists
