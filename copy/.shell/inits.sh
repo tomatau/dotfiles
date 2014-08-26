@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[[ . ~/.bin/z/z.sh ]] && . ~/.bin/z/z.sh
+[[ -s ~/.bin/z/z.sh ]] && . ~/.bin/z/z.sh
 
 if which rvenv > /dev/null; then
   eval "$(rbenv init -)"
