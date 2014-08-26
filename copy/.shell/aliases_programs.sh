@@ -6,6 +6,14 @@ alias reload="exec $SHELL -l"
 
 . ~/.bin/z/z.sh
 
+if which rvenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
+
+if which pyenv > /dev/null; then
+  eval "$(pyenv init -)"
+fi
+
 # Start an HTTP server from a directory, optionally specifying the port
 function server2() {
   local port="${1:-8000}";
