@@ -14,7 +14,7 @@ esac
 #   [ -r ${file} ] && . ${file}
 # done
 
-for file in ./.shell/*; do
+for file in ~/.shell/*; do
   . "$file"
 done
 
