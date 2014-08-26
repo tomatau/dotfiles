@@ -9,10 +9,9 @@ function init_run() {
   source "$2"
 }
 
-function copy_do() {
-  e_header "Copying ~/$1."
-  cp "$2" ~/
-  e_success "Copied $1"
+function copy_run() {
+  rsync -av "$PWATH/../copy/" ~
+  e_success "Copied Shell"
 }
 
 function run_directory() {

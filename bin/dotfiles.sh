@@ -51,7 +51,10 @@ shopt -s nullglob # make * eval to nothing if no files
 e_header "Initializing!"
 run_directory "init"
 
+e_header "Copying!"
+run_directory "copy"
 
-# . ~/.profile
+
+. ~/.bash_profile
 
 e_header "All done!"

@@ -4,9 +4,7 @@ alias plz="sudo "
 alias c="clear"
 alias reload="exec $SHELL -l"
 
-alias nyancat="telnet miku.acm.uiuc.edu"
-alias starwars="telnet towel.blinkenlights.nl"
-
+. ~/.bin/z/z.sh
 
 # Start an HTTP server from a directory, optionally specifying the port
 function server2() {
@@ -39,4 +37,9 @@ function tre() {
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+# Get week number
+alias week='date +%V'
+
+# Stopwatch
+alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 

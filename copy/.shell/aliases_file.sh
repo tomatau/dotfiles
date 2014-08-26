@@ -7,7 +7,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias cd..="cd .."
-alias -="cd -"
+alias -- -="cd -"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -40,9 +40,6 @@ function take() {
 
 # Aliasing eachdir like this allows you to use aliases/functions as commands.
 alias eachdir=". eachdir"
-
-# Recursively delete `.DS_Store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
 # find shorthand
 function f() {

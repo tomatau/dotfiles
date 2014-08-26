@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# most alias' configured via .gitconfig
+
 alias g="git"
 alias undopush="git push -f origin HEAD^:master"
 
@@ -12,7 +14,7 @@ function ged() {
   local n=${#files[@]}
   echo "Opening $n $([[ "$@" ]] || echo "modified ")file$([[ $n != 1 ]] && \
     echo s)${@:+ modified in }$@"
-  q "${files[@]}"
+  subl "${files[@]}"
 }
 
 # GitHub URL for current repo.
@@ -23,6 +25,8 @@ function gurl() {
   local user_repo="$(echo "$remote" | perl -pe 's/.*://;s/\.git$//')"
   echo "https://github.com/$user_repo"
 }
+# Current Branch or SHA if detatched
+alias gbs='git branch | perl -ne '"'"'/^\* (?:\(detached from (.*)\)|(.*))/ && print "$1$2"'"'"''
 # GitHub URL for current repo, including current branch + path.
 alias gurlp='echo $(gurl)/tree/$(gbs)/$(git rev-parse --show-prefix)'
 
