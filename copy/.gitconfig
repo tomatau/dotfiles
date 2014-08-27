@@ -8,17 +8,19 @@
     excludesfile = ~/.gitignore
 
 [alias]
-    a = add
-    aa = add -A
-    cm = commit -m
-    cam = commit -am
-    d = diff
-    s = status -s
-    r = rm --cached
     b = branch
     co = checkout
+    a = add
+    aa = add -A
+    s = status -s
+    cm = commit -m
+    cam = commit -am
+    amend = commit --amend
+    unstage = reset HEAD 
+    d = diff
     ps = push
     pl = pull
+    r = rm --cached
     # View abbreviated SHA, description, and history graph of the latest 20 commits
     l = log --pretty=oneline -n 20 --graph --abbrev-commit
     g  = log --graph --pretty=custom        # show custom graph
