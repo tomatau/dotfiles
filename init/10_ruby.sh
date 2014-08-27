@@ -24,6 +24,7 @@ fi
 e_header "Installing Ruby"
 
 if [[ ! "$(type -P ruby)" ]]; then
+  # should check this too
   rbenv install "${current_stable}"
   e_success "Installed Ruby ${current_stable}"
 

@@ -9,7 +9,8 @@ npm_globals=(
   protractor
   yo
 )
-
+# Can remove the .31 here to just install the latest
+# should uncomment the default_node="$(nvm current)" too
 declare default_node="v0.10.31"
 declare node_versions=(
   "$default_node"
