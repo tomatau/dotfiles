@@ -29,6 +29,9 @@
 [web]
     browser = google-chrome
 
+[merge]
+    tool = meld
+
 [color]
     ui = true
 [color "branch"]

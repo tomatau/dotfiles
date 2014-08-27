@@ -14,6 +14,7 @@ declare packages=(
   curl
   parcellite
   vlc
+  meld
   build-essential 
   libssl-dev
   zlib1g-dev
