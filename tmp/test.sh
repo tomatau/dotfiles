@@ -6,26 +6,24 @@ PARENT=$( dirname $PWATH )
 
 source "$PARENT/bin/dotfiles_functions.sh"
 
-function get_php_versions() {
+function get_ruby_versions() {
     local installed=()
     local v
-    for path in "$HOME/.phpbrew/php/"*; do
-        if [ `expr "${path##*/}" : "php-[0-9]*\.[0-9]*\.[0-9]*$"` != 0 ]; then
+    for path in "$HOME/.rbenv/versions/"*; do
+        if [ `expr "${path##*/}" : "[0-9]*\.[0-9]*\.[0-9]*$"` != 0 ]; then
           if [ -d "$path" ]; then
             v="${path##*/}"
-            installed=("${installed[@]}" "${v:4}")
+            installed=("${installed[@]}" "${v}")
           fi
         fi
     done
     echo "${installed[*]}"
 }
-declare default_php=5.5.16
-declare php_versions=(
-  "$default_php"
-  5.3.29
+declare default_ruby=2.1.2
+declare ruby_versions=(
+  "$default_ruby"
 )
-
-for v in $(to_install "${php_versions[*]}" "$(get_php_versions)"); do
+for v in $(to_install "${ruby_versions[*]}" "$(get_ruby_versions)"); do
     echo "DO"
     echo "$v"
 done

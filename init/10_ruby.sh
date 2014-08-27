@@ -3,10 +3,24 @@
 ruby_gems=(
   sass
 )
-current_stable=2.1.2
+declare default_ruby=2.1.2
+declare ruby_versions=(
+  "$default_ruby"
+)
+
+function get_ruby_versions() {
+    local installed=()
+    for path in "$HOME/.rbenv/versions/"*; do
+        if [ `expr "${path##*/}" : "[0-9]*\.[0-9]*\.[0-9]*$"` != 0 ]; then
+          if [ -d "$path" ]; then
+            installed=("${installed[@]}" "${path##*/}")
+          fi
+        fi
+    done
+    echo "${installed[*]}"
+}
 
 e_header "Installing Rbenv"
-
 if [[ ! "$(type -P rbenv)" ]]; then
   git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
   # TODO: add check here
@@ -22,22 +36,20 @@ else
 fi
 
 e_header "Installing Ruby"
-
 if [[ ! "$(type -P ruby)" ]]; then
-  # should check this too
-  rbenv install "${current_stable}"
-  e_success "Installed Ruby ${current_stable}"
-
-  rbenv global "${current_stable}"
+  for v in $(to_install "${ruby_versions[*]}" "$(get_ruby_versions)"); do
+    rbenv install "${v}"
+    e_success "Installed Ruby ${default_ruby}"
+  done
+  rbenv global "${default_ruby}"
   rbenv rehash
-  e_success "Set Ruby ${current_stable} as global"
+  e_success "Set Ruby ${default_ruby} as global"
 else
   e_header "Ruby already installed :)"
 fi
 
 # Install Gems.
 if [[ "$(type -P gem)" ]]; then
-
   list="$(to_install "${ruby_gems[*]}" "$(gem list | awk '{print $1}')")"
   if [[ "$list" ]]; then
     e_header "Installing Ruby gems: $list"
