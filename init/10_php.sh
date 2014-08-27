@@ -1,9 +1,25 @@
 #!/usr/bin/env bash
 
-declare default_php="5.5.16"
-declare old_stable="5.3.29"
+declare default_php=5.5.16
+declare php_versions=(
+  "$default_php"
+  5.3.29
+)
 
-# TODO: this is horrible
+function get_php_versions() {
+  local installed=()
+  local v
+  for path in "$HOME/.phpbrew/php/"*; do
+    if [ `expr "${path##*/}" : "php-[0-9]*\.[0-9]*\.[0-9]*$"` != 0 ]; then
+      if [ -d "$path" ]; then
+        v="${path##*/}"
+        installed=("${installed[@]}" "${v:4}")
+      fi
+    fi
+  done
+  echo "${installed[*]}"
+}
+
 function phpbrew_deps_install() {
   sudo apt-get build-dep php5
   sudo apt-get install -y php5 php5-dev php-pear \
@@ -31,12 +47,12 @@ e_header "Installing Phpbrew"
 if [[ ! "$(type -P phpbrew)" ]]; then
   phpbrew_deps_install
   curl -L -O https://github.com/phpbrew/phpbrew/raw/master/phpbrew
-  # TODO: add check here
-  chmod +x phpbrew
-  sudo mv phpbrew /usr/bin/phpbrew
-  # TODO: add check here
-  phpbrew init
-  [ -s ~/.phpbrew/bashrc ] && . ~/.phpbrew/bashrc
+  if [[ -s phpbrew ]]; then
+    chmod +x phpbrew
+    sudo mv phpbrew /usr/bin/phpbrew
+    [[ "$(type -P phpbrew)" ]] && phpbrew init
+    [[ -s ~/.phpbrew/bashrc ]] && . ~/.phpbrew/bashrc
+  fi
   if [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
     phpbrew lookup-prefix ubuntu
   else
@@ -49,11 +65,14 @@ fi
 
 e_header "Installing Php"
 if [[ "$(type -P phpbrew)" ]]; then
-  phpbrew install "${old_stable}" +default
-  phpbrew install "${default_php}" +default
+  for v in $(to_install "${php_versions[*]}" "$(get_php_versions)"); do
+    phpbrew install "${v}" +default
+  done
   phpbrew switch "${default_php}"
-  e_header "Installing Composer"
-  phpbrew install-composer
+  if [[ ! "$(type -P composer)" ]]; then
+    e_header "Installing Composer"
+    phpbrew install-composer
+  fi
 else
   e_error "Phpbrew was not installed correctly :/"
 fi

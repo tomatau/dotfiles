@@ -10,19 +10,38 @@ npm_globals=(
   yo
 )
 
-declare default_node="v0.10"
+declare default_node="v0.10.31"
+declare node_versions=(
+  "$default_node"
+)
+
+function get_nvm_versions() {
+  local installed=()
+  for path in "$HOME/.nvm/"*; do
+    if [ `expr "${path##*/}" : "v[0-9]*\.[0-9]*\.[0-9]*$"` != 0 ]; then
+      if [ -d "$path" ]; then
+        installed=("${installed[@]}" "${path##*/}")
+      fi
+    fi
+  done
+  echo "${installed[*]}"
+}
 
 function nvm_set_current_node() {
-  nvm install $default_node
-  default_node="$(nvm current)"
+  for v in $(to_install "${node_versions[*]}" "$(get_nvm_versions)"); do
+    nvm install "$v"
+  done
+  # default_node="$(nvm current)"
   nvm alias default "$default_node"
   e_success "Installed Node $default_node and set as current"
 }
 
 function install_nvm() {
-  curl https://raw.githubusercontent.com/creationix/nvm/v0.13.1/install.sh | bash
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  if [[ ! -s "$NVM_DIR/nvm.sh" ]]; then
+    curl https://raw.githubusercontent.com/creationix/nvm/v0.13.1/install.sh | bash
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  fi
 }
 
 # Install Nvm
