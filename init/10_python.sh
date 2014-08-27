@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
 PYENV_ROOT="$HOME/.pyenv"
-# python_installs=(
-#   pip
-# )
 
-# python_eggs=(
-#   nose
-# )
+declare default_python=2.7.6
+declare python_versions=(
+    "$default_python"
+    3.4.1
+)
 
 # export NOSE_REDNOSE=1
 e_header "Installing Pyenv"
@@ -26,11 +25,22 @@ fi
 
 e_header "Installing Python"
 
-# TODO: iterate over versions with checks
+
+function get_python_versions() {
+    local installed=()
+    for path in "$HOME/.pyenv/versions/"*; do
+      if [ -d "$path" ]; then
+        installed=("${installed[@]}" "${path##*/}")
+      fi
+    done
+    echo "${installed[*]}"
+}
+
 if [[ "$(type -P pyenv)" ]]; then
-  pyenv install 2.7.6
-  pyenv install 3.4.1
-  pyenv global 2.7.6
+  for v in $(to_install "${python_versions[*]}" "$(get_python_versions)"); do
+    pyenv install "$v"
+  done
+  pyenv global "$default_python"
   pyenv rehash
 else
   e_error "Pyenv was not installed correctly :/"
