@@ -11,6 +11,7 @@ This will:
 - copy all of the files from /dotifles/bin to ~/.bin (except those with dotfiles prefix)
 - run all the scripts in init
     - installs Z, NVM for node, Pyenv for Python, Rbenv for Ruby and Phpbrew for PHP
+        - installs configurable versions for each
     - installs a bunch of Ubuntu packages
     - TODO: make the OSX scripts work
     - TODO: somehow add the repos needed for ubuntu packages :S
@@ -26,13 +27,9 @@ I've aimed to keep it organised as I can but there's still slop in the php stuff
 Also, my github Username and Email are in the .gitconfig.
 
 TODO: 
-- .vimrc
-- convert all .vim/bundle's to submodules
 - ssh
-- java?
 - inputrc
-- ngrok?
-
+- java?
 
 Created by Thomas "tomatao" Hudspith-Tatham
 credits to:

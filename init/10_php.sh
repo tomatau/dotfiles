@@ -43,7 +43,6 @@ function phpbrew_deps_install() {
 }
 
 e_header "Installing Phpbrew"
-
 if [[ ! "$(type -P phpbrew)" ]]; then
   phpbrew_deps_install
   curl -L -O https://github.com/phpbrew/phpbrew/raw/master/phpbrew
@@ -75,8 +74,10 @@ if [[ "$(type -P phpbrew)" ]]; then
   fi
 else
   e_error "Phpbrew was not installed correctly :/"
+  return 1
 fi
 
+e_success "Phpbrew, PHP and Composer setup :)"
 # if [[ -s ~/.bin/composer.phar ]] && [[ "$(type -P php)" ]]; then
 #   curl -sS https://getcomposer.org/installer | php -- --install-dir=~/.bin
 # fi

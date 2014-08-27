@@ -7,7 +7,7 @@ e_header "Updating APT"
 
 # Install APT packages. 
 # build-essential and below req for pyenv
-packages=(
+declare packages=(
   vim
   tree
   git
@@ -27,7 +27,7 @@ packages=(
 
 # Go through the package manager checking if the package already exists
 # if it doesn't, add it to the list
-list=()
+declare list=()
 for package in "${packages[@]}"; do
   if [[ ! "$(dpkg -l "$package" 2>/dev/null | grep "^ii  $package")" ]]; then
     list=("${list[@]}" "$package")

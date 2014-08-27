@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-ruby_gems=(
-  sass
-)
 declare default_ruby=2.1.2
 declare ruby_versions=(
   "$default_ruby"
+)
+declare ruby_gems=(
+  sass
 )
 
 function get_ruby_versions() {
@@ -49,6 +49,7 @@ else
 fi
 
 # Install Gems.
+e_header "Installing Ruby Gems"
 if [[ "$(type -P gem)" ]]; then
   list="$(to_install "${ruby_gems[*]}" "$(gem list | awk '{print $1}')")"
   if [[ "$list" ]]; then
@@ -57,5 +58,8 @@ if [[ "$(type -P gem)" ]]; then
     rbenv rehash
   fi
 else
-  e_header "Gem already installed :)"
+  e_error "Gem's can't be installed :/"
+  return 1
 fi
+
+e_success "Rbenv, Ruby and Gems setup :)"

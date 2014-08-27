@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-npm_globals=(
+# Can remove the .31 here to just install the latest
+# should uncomment the default_node="$(nvm current)" too
+declare default_node="v0.10.31"
+declare node_versions=(
+  "$default_node"
+)
+declare npm_globals=(
   bower
   grunt-cli
   gulp
@@ -8,12 +14,6 @@ npm_globals=(
   karma-cli
   protractor
   yo
-)
-# Can remove the .31 here to just install the latest
-# should uncomment the default_node="$(nvm current)" too
-declare default_node="v0.10.31"
-declare node_versions=(
-  "$default_node"
 )
 
 function get_nvm_versions() {
@@ -59,7 +59,7 @@ e_header "Updating Npm"
 if [[ "$(type -P npm)" ]]; then
   npm install -g npm
 else
-  e_error "Node didn't work again :("
+  e_error "Npm was not installed correctly :/"
   return 1
 fi
 
@@ -69,11 +69,9 @@ e_header "Installing Npm Modules"
   installed=(*);
   popd;
 } > /dev/null
-
 list="$(to_install "${npm_globals[*]}" "${installed[*]}")"
-
 if [[ "$list" ]]; then
-  e_header "modules: $list, for $default_node"
+  e_header "Npm modules: $list, for $default_node"
   npm install -g $list
 fi
 
