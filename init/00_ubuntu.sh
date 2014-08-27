@@ -8,6 +8,7 @@ e_header "Updating APT"
 # Install APT packages. 
 # build-essential and below req for pyenv
 packages=(
+  vim
   tree
   git
   curl
