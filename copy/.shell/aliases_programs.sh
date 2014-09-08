@@ -42,7 +42,7 @@ alias week='date +%V'
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 
 # vim to allow Ctrl+S to save
-vim() {
+function vim() {
   # Save current stty options.
   local STTYOPTS="$(stty -g)"
  
@@ -55,7 +55,7 @@ vim() {
   # Restore saved stty options.
   stty "$STTYOPTS"
 }
-vim_command() {
+function vim_command() {
   if (( $+commands[reattach-to-user-namespace] )); then
     # See: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
     command reattach-to-user-namespace vim "$@"
