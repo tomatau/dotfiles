@@ -2,7 +2,7 @@
 
 [[ -s ~/.bin/z/z.sh ]] && . ~/.bin/z/z.sh
 
-if which rvenv > /dev/null; then
+if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
 
