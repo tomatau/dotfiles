@@ -1,0 +1,28 @@
+{
+    "bold_folder_labels": true,
+    "color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+    "default_line_ending": "unix",
+    "detect_slow_plugins": false,
+    "dictionary": "Packages/Language - English/en_GB.dic",
+    "draw_minimap_border": true,
+    "draw_white_space": "selection",
+    "fade_fold_buttons": false,
+    "font_size": 9,
+    "highlight_line": true,
+    "highlight_modified_tabs": true,
+    "ignored_packages":
+    [
+        "Vintage",
+        "Markdown"
+    ],
+    "margin": 4,
+    "rulers":
+    [
+        90,
+        120
+    ],
+    "tab_size": 4,
+    "translate_tabs_to_spaces": true,
+    "word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?_",
+    "word_wrap": "true"
+}
