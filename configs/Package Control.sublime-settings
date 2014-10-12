@@ -1,0 +1,29 @@
+{
+	"installed_packages":
+	[
+		"All Autocomplete",
+		"ApacheConf.tmLanguage",
+		"Better CoffeeScript",
+		"BracketHighlighter",
+		"Dayle Rees Color Schemes",
+		"DocBlockr",
+		"Emmet",
+		"GitGutter",
+		"Handlebars",
+		"HTML-CSS-JS Prettify",
+		"INI",
+		"JsFormat",
+		"JSHint Gutter",
+		"Laravel 4 Artisan",
+		"Laravel Blade Highlighter",
+		"Markdown Preview",
+		"MarkdownEditing",
+		"Mocha Snippets",
+		"PlainTasks",
+		"Pretty JSON",
+		"Sass",
+		"SASS Build",
+		"SideBarEnhancements",
+		"Surround"
+	]
+}
