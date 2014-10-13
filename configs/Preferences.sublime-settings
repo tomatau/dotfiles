@@ -9,13 +9,13 @@
     "draw_minimap_border": true,
     "draw_white_space": "selection",
     "fade_fold_buttons": false,
-	"folder_exclude_patterns":
-	[
-		".svn",
-		".git",
-		".hg",
-		"__pycache__"
-	],
+    "folder_exclude_patterns":
+    [
+        ".svn",
+        ".git",
+        ".hg",
+        "__pycache__"
+    ],
     "font_size": 9,
     "highlight_line": true,
     "highlight_modified_tabs": true,
@@ -31,8 +31,8 @@
         90,
         120
     ],
-	"show_full_path": true,
-	"spell_check": true,
+    "show_full_path": true,
+    "spell_check": true,
     "tab_size": 4,
     "translate_tabs_to_spaces": true,
     "word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?_",
