@@ -1,6 +1,8 @@
 [user]
-    name = tomatau
-    email = toma_toom@hotmail.com
+    name = Thomas Hudspith-Tatham
+    email = iammotivated@gmail.com
+[github]
+    user = tomatau
 
 [core]
     editor = subl
