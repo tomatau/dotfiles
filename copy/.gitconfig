@@ -6,8 +6,6 @@
 
 [core]
     editor = subl
-    attributesfile = ~/.gitattributes
-    excludesfile = ~/.gitignore
 
 [alias]
     b = branch
