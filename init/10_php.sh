@@ -21,25 +21,34 @@ function get_php_versions() {
 }
 
 function phpbrew_deps_install() {
-  sudo apt-get build-dep php5
-  sudo apt-get install -y php5 php5-dev php-pear \
-    autoconf automake bison libbz2-dev \
-    libxslt1-dev re2c libxml2 libxml2-dev php5-cli
-  # +gd +openssl +gettext +mhash +mcrypt +icu
-  sudo apt-get install -y libfreetype6 libfreetype6-dev \
-    libpng12-0 libpng12-dev libjpeg-dev libjpeg8-dev \
-    libjpeg8 libgd-dev libgd3 libxpm4
-  sudo apt-get install -y libssl-dev openssl
-  sudo apt-get install -y gettext libgettextpo-dev libgettextpo0
-  sudo apt-get install -y libicu48 libicu-dev
-  sudo apt-get install -y libmhash-dev libmhash2
-  sudo apt-get install -y libmcrypt-dev libmcrypt4
-  # mysql
-  sudo apt-get install mysql-server mysql-client \
-    libmysqlclient-dev libmysqld-dev
-  # postgresql
-  sudo apt-get install postgresql postgresql-client \
-    postgresql-contrib
+    # Ubuntu only
+  if [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
+    e_header "Ubuntu Phpbrew deps"
+    sudo apt-get build-dep php5
+    sudo apt-get install -y php5 php5-dev php-pear \
+      autoconf automake bison libbz2-dev \
+      libxslt1-dev re2c libxml2 libxml2-dev php5-cli
+    # +gd +openssl +gettext +mhash +mcrypt +icu
+    sudo apt-get install -y libfreetype6 libfreetype6-dev \
+      libpng12-0 libpng12-dev libjpeg-dev libjpeg8-dev \
+      libjpeg8 libgd-dev libgd3 libxpm4
+    sudo apt-get install -y libssl-dev openssl
+    sudo apt-get install -y gettext libgettextpo-dev libgettextpo0
+    sudo apt-get install -y libicu48 libicu-dev
+    sudo apt-get install -y libmhash-dev libmhash2
+    sudo apt-get install -y libmcrypt-dev libmcrypt4
+    # mysql
+    sudo apt-get install mysql-server mysql-client \
+      libmysqlclient-dev libmysqld-dev
+    # postgresql
+    sudo apt-get install postgresql postgresql-client \
+      postgresql-contrib
+  fi
+  if [[ "$OSTYPE" =~ ^darwin ]]; then
+    e_header "OSX Phpbrew deps"
+    brew install automake autoconf curl pcre re2c mhash libtool icu4c gettext jpeg libxml2 mcrypt gmp libevent
+    brew link icu4c
+  fi
 }
 
 e_header "Installing Phpbrew"

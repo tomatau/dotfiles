@@ -5,6 +5,7 @@
 declare default_node="v0.10.31"
 declare node_versions=(
   "$default_node"
+  v0.11.14
 )
 declare npm_globals=(
   bower
@@ -14,6 +15,7 @@ declare npm_globals=(
   karma-cli
   protractor
   yo
+  nodemon
 )
 
 function get_nvm_versions() {

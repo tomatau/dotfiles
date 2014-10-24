@@ -3,6 +3,9 @@
 alias plz="sudo "
 alias c="clear"
 alias reload="exec $SHELL -l"
+export EDITOR='subl -w'
+export LESSEDIT='subl %f'
+export VISUAL="$EDITOR"
 
 # Start an HTTP server from a directory, optionally specifying the port
 function server2() {

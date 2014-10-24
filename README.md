@@ -8,8 +8,8 @@ bash ./dotfiles/bin/dotfiles.sh
 
 This will:
 
-- copy all of the files from /dotifles/bin to ~/.bin (except those with dotfiles prefix)
-- run all the scripts in init
+- copy all of the files from `/dotifles/bin` to `~/.bin` (except those with a `dotfiles_` prefix)
+- run all the scripts in the `init` folder
     - installs Z, NVM for node, Pyenv for Python, Rbenv for Ruby and Phpbrew for PHP
         - installs configurable versions for each
     - installs a bunch of Ubuntu packages
