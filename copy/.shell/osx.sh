@@ -11,8 +11,8 @@ elif [ -f /etc/bash_completion ];
 fi;
 
 # Show/hide hidden files in Finder
-alias showHidden="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hideHidden="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+alias hiddenShow="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hiddenHide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
