@@ -3,7 +3,6 @@
     email = iammotivated@gmail.com
 [github]
     user = tomatau
-
 [core]
     editor = subl
     excludesfile = ~/.gitignore
@@ -14,18 +13,19 @@
     # trustctime = false
 
 [alias]
-    b = branch
-    co = checkout
     a = add
     aa = add -A
-    s = status -s
+    b = branch
     cm = commit -m
     cam = commit -am
+    co = checkout
+    d = diff
+    s = status -s
     amend = commit --amend
     unstage = reset HEAD
     co = checkout
     last = log -1 -p HEAD
-    d = diff
+    m = merge
     ps = push
     pl = pull
     r = rm --cached
@@ -37,7 +37,6 @@
 
 [help]
     autocorrect = 1
-
 [web]
     browser = google-chrome
 
