@@ -4,7 +4,7 @@
 [[ "$OSTYPE" =~ ^darwin ]] || return 1
 
 # Add tab completion for many Bash commands
-if which brew > /dev/null && [ -f "$(brew --prefix)/etc/bash_completion" ]; 
+if which brew > /dev/null && [ -f "$(brew --prefix)/etc/bash_completion" ];
     then source "$(brew --prefix)/etc/bash_completion";
 elif [ -f /etc/bash_completion ];
     then source /etc/bash_completion;
@@ -20,6 +20,9 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
+# Sublime
+SUBL="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+alias subl="$SUBL"
 
 # Make 'less' more.
 # [[ "$(type -P lesspipe.sh)" ]] && eval "$(lesspipe.sh)"
