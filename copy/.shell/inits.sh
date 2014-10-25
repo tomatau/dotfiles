@@ -7,7 +7,7 @@ if which rbenv > /dev/null ; then
 fi
 
 if which pyenv > /dev/null ; then
-  eval "$(pyenv init -)";
+  eval "$(rbenv init -)";
 fi
 
 PHPBREW_SET_PROMPT=1
