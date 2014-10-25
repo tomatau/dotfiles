@@ -21,6 +21,7 @@
     co = checkout
     d = diff
     s = status -s
+    st = status
     amend = commit --amend
     unstage = reset HEAD
     co = checkout
