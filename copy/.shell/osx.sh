@@ -11,11 +11,23 @@ elif [ -f /etc/bash_completion ];
 fi;
 
 # Show/hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+alias showHidden="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hideHidden="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+
+# Make 'less' more.
+# [[ "$(type -P lesspipe.sh)" ]] && eval "$(lesspipe.sh)"
+
+# # Start ScreenSaver. This will lock the screen if locking is enabled.
+# alias ss="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+
+# cd into whatever is the forefront Finder window.
+function cdf() {  # short for cdfinder
+    cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
+}

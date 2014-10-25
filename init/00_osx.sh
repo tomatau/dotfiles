@@ -23,8 +23,12 @@ if [[ "$(type -P brew)" ]]; then
     e_header "Updating Homebrew"
     brew doctor
     brew update
+    # Install GNU `sed`, overwriting the built-in `sed`
+    # brew install gnu-sed --default-names
     brew install wget --enable-iri
     brew install vim --override-system-vi
+    # brew install homebrew/dupes/grep
+    # brew install homebrew/dupes/screen
     # Install Homebrew recipes. 
     recipes=(
         bash
@@ -33,13 +37,15 @@ if [[ "$(type -P brew)" ]]; then
         ack
         git
         tree
-        npm
+        node
         curl
     )
+    # node also installs npm
     list="$(to_install "${recipes[*]}" "$(brew list)")" if [[ "$list" ]]; then
         e_header "Installing Homebrew recipes: $list"
         brew install $list
     fi
+    brew cleanup
     # This is where brew stores its binary symlinks 
     local binroot="$(brew --config | awk '/HOMEBREW_PREFIX/ {print $2}')"/bin
 

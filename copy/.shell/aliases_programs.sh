@@ -3,12 +3,9 @@
 alias plz="sudo "
 alias c="clear"
 alias reload="exec $SHELL -l"
-export EDITOR='subl -w'
-export LESSEDIT='subl %f'
-export VISUAL="$EDITOR"
 
 # Start an HTTP server from a directory, optionally specifying the port
-function server2() {
+function serve2() {
   local port="${1:-8000}";
   sleep 1 && open "http://localhost:${port}/" &
   # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
@@ -24,6 +21,8 @@ function phpserver() {
   sleep 1 && open "http://${ip}:${port}/" &
   php -S "${ip}:${port}";
 }
+# alias compo='composer --ansi'
+# alias art='php artisan --ansi'
 
 # `tree` with hidden files and color enabled,
 # ignoring the `.git` directory, 
@@ -66,3 +65,6 @@ function vim_command() {
     command vim "$@"
   fi
 }
+
+# ngrok
+# alias ngrokserv='ngrok -subdomain=tomatao 8000'
