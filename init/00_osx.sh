@@ -41,7 +41,8 @@ if [[ "$(type -P brew)" ]]; then
         curl
     )
     # node also installs npm
-    list="$(to_install "${recipes[*]}" "$(brew list)")" if [[ "$list" ]]; then
+    list="$(to_install "${recipes[*]}" "$(brew list)")"
+    if [[ "$list" ]]; then
         e_header "Installing Homebrew recipes: $list"
         brew install $list
     fi
