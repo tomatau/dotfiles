@@ -20,6 +20,9 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
+# quick open
+alias o=open
+
 # Sublime
 SUBL="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias subl="$SUBL"

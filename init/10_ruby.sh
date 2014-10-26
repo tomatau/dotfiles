@@ -3,9 +3,11 @@
 declare default_ruby=2.1.2
 declare ruby_versions=(
   "$default_ruby"
+  2.1.3
 )
 declare ruby_gems=(
   sass
+  bundler
 )
 
 function get_ruby_versions() {
@@ -36,7 +38,8 @@ else
 fi
 
 e_header "Installing Ruby"
-if [[ ! "$(type -P ruby)" ]]; then
+# if [[ ! "$(type -P ruby)" ]]; then # assumes no global ruby
+if [[ "$(type -P rbenv)" ]]; then
   for v in $(to_install "${ruby_versions[*]}" "$(get_ruby_versions)"); do
     rbenv install "${v}"
     e_success "Installed Ruby ${default_ruby}"
@@ -45,7 +48,7 @@ if [[ ! "$(type -P ruby)" ]]; then
   rbenv rehash
   e_success "Set Ruby ${default_ruby} as global"
 else
-  e_header "Ruby already installed :)"
+  e_header "Rbenv did not install :/"
 fi
 
 # Install Gems.
