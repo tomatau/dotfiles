@@ -95,11 +95,11 @@ prompt_git() {
             git rev-parse --short HEAD 2> /dev/null || \
             echo '(unknown)')";
 
-        [ -n "${s}" ] && s=" [${s}]";
+        [ -n "${s}" ] && s="${s}";
 
-        echo -e "${1}${branchName}${blue}${s}";
+        echo -e " ${blue}±${pink}${1}${branchName}${yellow}${s}${reset}";
     else
-        return;
+        echo " ${blue}○${reset}";
     fi;
 }
 
@@ -114,6 +114,7 @@ if tput setaf 1 &> /dev/null; then
     green=$(tput setaf 64);
     orange=$(tput setaf 166);
     purple=$(tput setaf 125);
+    pink=$(tput setaf 163);
     red=$(tput setaf 124);
     violet=$(tput setaf 61);
     white=$(tput setaf 15);
@@ -149,12 +150,12 @@ fi;
 
 # Set the terminal title to the current working directory.
 PS1="\[\033]0;\w\007\]";
-PS1+="\[${bold}\]\n"; # newline
+PS1+="\n"; # newline
 PS1+="\[${userStyle}\]\u"; # username
-PS1+="\[${white}\] @ ";
+PS1+="\[${violet}\] @ ";
 PS1+="\[${hostStyle}\]\h"; # host
 PS1+=" \[${green}\]\w"; # working directory
-PS1+="\$(prompt_git \" ${violet}\")"; # Git repository details
+PS1+="\$(prompt_git \" ${pink}\")"; # Git repository details
 PS1+="\n";
 PS1+="\$ \[${reset}\]"; # `$` (and reset color)
 export PS1;
