@@ -32,10 +32,20 @@ Doesn't install brew casks, you'll need to install some stuff manually:
 - Sublime Text 3
 - Google Chrome
 - iTerm
+    + keys for cmd+left and cmd+right
 - divvy
 - Karabinder
+- cd to
 - Firefox, Opera, Canary
 - Redis Manager
+- Text Mate
+- Slack
+- MacDown
+- uTorrent
+- LastPass
+- CleanMyMac 2
+- MySQL Workbench
+- Sequel Pro
 
 Node, Ruby and Php sometimes mess up, not sure why...
 
