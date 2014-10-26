@@ -29,7 +29,7 @@ if [[ "$(type -P brew)" ]]; then
     brew install vim --override-system-vi
     # brew install homebrew/dupes/grep
     # brew install homebrew/dupes/screen
-    # Install Homebrew recipes. 
+    # Install Homebrew recipes.
     recipes=(
         bash
         bash-completion
@@ -38,6 +38,8 @@ if [[ "$(type -P brew)" ]]; then
         git
         tree
         node
+        mongodb
+        redis
         curl
     )
     # node also installs npm
@@ -47,7 +49,7 @@ if [[ "$(type -P brew)" ]]; then
         brew install $list
     fi
     brew cleanup
-    # This is where brew stores its binary symlinks 
+    # This is where brew stores its binary symlinks
     local binroot="$(brew --config | awk '/HOMEBREW_PREFIX/ {print $2}')"/bin
 
     # bash

@@ -1,7 +1,7 @@
 # Dotfiles
 
 ### Usage:
-```
+```shell
 git clone git@github.com:tomatau/dotfiles.git
 bash ./dotfiles/bin/dotfiles.sh
 ```
