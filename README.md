@@ -1,7 +1,7 @@
 # Dotfiles
 
 ### Usage:
-```shell
+```bash
 git clone git@github.com:tomatau/dotfiles.git
 bash ./dotfiles/bin/dotfiles.sh
 ```
@@ -12,23 +12,37 @@ This will:
 - run all the scripts in the `init` folder
     - installs Z, NVM for node, Pyenv for Python, Rbenv for Ruby and Phpbrew for PHP
         - installs configurable versions for each
-    - installs a bunch of Ubuntu packages
-    - TODO: make the OSX scripts work
-    - TODO: somehow add the repos needed for ubuntu packages :S
+    - if Ubunti, install a bunch of packages
+    - if OSX, install brew and some bundles
 - copies all the files from /dotfiles/copy/ to ~
     - .bash_profile/.bashrc/.gitconfig/.gitignore
     - the /copy/.shell folder contains other shell scripts all sourced inside .bashrc
     - you can add new files here they will all get picked up and sourced
+- also contains a bunch of config files for:
+	- sublime text
+	- icons for sublime text and iTunes
 
 All files have .sh to help editors know what's going on
 
 I've aimed to keep it organised as I can but there's still slop in the php stuff, the prompt and a few other bits like what nvm does to the .bash_profile
 
+#### Things of Note
+
+Doesn't install brew casks, you'll need to install some stuff manually:
+- Sublime Text 3
+- Google Chrome
+- iTerm
+- divvy
+- Karabinder
+- Firefox, Opera, Canary
+- Redis Manager
+
+Node, Ruby and Php sometimes mess up, not sure why...
+
 Also, my github Username and Email are in the .gitconfig.
 
-TODO: 
+#### Possible Todo List: 
 - ssh
-- inputrc
 - java?
 
 Created by Thomas "tomatao" Hudspith-Tatham
