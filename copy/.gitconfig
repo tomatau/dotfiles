@@ -4,7 +4,7 @@
 [github]
     user = tomatau
 [core]
-    editor = subl
+    # editor = subl
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes
 
