@@ -76,16 +76,30 @@ if [[ "$(type -P brew)" ]]; then
 
     casks=(
         asepsis
+        cd-to
+        cleanmymac2
+        divvy
         firefox
+        firefoxdeveloperedition
         flux
         google-chrome
+        google-chrome-canary
+        heroku-toolbelt
         iterm2
         karabinder
+        lastpass
         lunchy
+        macdown
+        mysqlworkbench
+        opera
+        rdm
+        sequel-pro
         skype
         slack
         sublime-text3
+        textmate
         the-unarchiver
+        utorrent
         virtualbox
         vlc
     )
@@ -100,6 +114,8 @@ if [[ "$(type -P brew)" ]]; then
         brew cask install $cask_list
     fi
     brew cask cleanup
+
+    ln -s "/opt/homebrew-cask/Caskroom/google-chrome/latest/Google Chrome.app/Contents/MacOS/Google\ Chrome" "/Users/tomatao/.bin/google-chome"
 fi
 
 e_success "OSX specific install complete"

@@ -28,24 +28,7 @@ I've aimed to keep it organised as I can but there's still slop in the php stuff
 
 #### Things of Note
 
-Doesn't install brew casks, you'll need to install some stuff manually:
-- Sublime Text 3
-- Google Chrome
-- iTerm
-    + keys for cmd+left and cmd+right
-- divvy
-- Karabinder
-- cd to
-- Firefox, Opera, Canary
-- Redis Manager
-- Text Mate
-- Slack
-- MacDown
-- uTorrent
-- LastPass
-- CleanMyMac 2
-- MySQL Workbench
-- Sequel Pro
+- iTerm keys for cmd+left and cmd+right
 
 Node, Ruby and Php sometimes mess up, not sure why...
 

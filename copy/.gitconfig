@@ -4,7 +4,7 @@
 [github]
     user = tomatau
 [core]
-    editor = vim
+    editor = subl -n -w
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes
 
@@ -18,14 +18,21 @@
     a = add
     aa = add -A
     b = branch
+    c = commit
     cm = commit -m
+    ca = commit -a
     cam = commit -am
     co = checkout
     d = diff
+    dsd = diff --staged
+    dst = diff --stat
+    new = log master.. --reverse
     s = status -s
     st = status
-    amend = commit --amend
+    cia = commit --amend -C HEAD
     unstage = reset HEAD
+    uncommit = reset HEAD~
+    unpush = push -f origin HEAD^:master
     co = checkout
     last = log -1 -p HEAD
     m = merge
@@ -36,15 +43,35 @@
     # View abbreviated SHA, description, and history graph of the latest 20 commits
     l = log --pretty=oneline -n 20 --graph --abbrev-commit
     # show custom graph
-    g  = log --graph --pretty=custom
+    g = log --graph --pretty=custom
+    newb = checkout master -b
 
 [help]
     autocorrect = 1
 [web]
-    browser = google-chrome
+    browser = open
 
+[rebase]
+    autosquash = true
+
+[diff]
+    tool = bcomp
+    renames = copies
+    # detect renames
+[difftool "bcomp"]
+    trustExitCode = true
+    prompt = false
+    cmd = "/usr/local/bin/bcomp" "$LOCAL" "$REMOTE"
 [merge]
-    tool = meld
+    tool = bcomp
+
+[mergetool]
+    prompt = false
+    keepBackup = false
+# opendiff kdiff3 tkdiff xxdiff meld tortoisemerge gvimdiff diffuse diffmerge ecmerge p4merge araxis bc3 codecompare emerge vimdiff
+[mergetool "bcomp"]
+    trustExitCode = true
+    cmd = "/usr/local/bin/bcomp" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 
 [color]
     ui = true
@@ -71,3 +98,7 @@
     #                     │        └─ decorations (branch, heads or tags)
     #                     └─ hash (abbreviated)
 
+[filter "lfs"]
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true

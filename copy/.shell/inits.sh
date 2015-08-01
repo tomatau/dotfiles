@@ -29,3 +29,8 @@ fi
 
 PHPBREW_SET_PROMPT=1
 [[ -s ~/.phpbrew/bashrc ]] && . ~/.phpbrew/bashrc
+
+# export DOCKER_HOST=tcp://192.168.59.103:2376
+# # export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
+# export DOCKER_CERT_PATH=/Users/tomatao/.boot2docker/certs/boot2docker-vm
+# export DOCKER_TLS_VERIFY=1

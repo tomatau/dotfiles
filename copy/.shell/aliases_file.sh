@@ -5,7 +5,6 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias cd..="cd .."
 alias -- -="cd -"
 
 # Detect which `ls` flavor is in use

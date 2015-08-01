@@ -23,15 +23,8 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 # quick open
 alias o=open
 
-# Sublime
-SUBL="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
-alias subl="$SUBL"
-
-# Make 'less' more.
-# [[ "$(type -P lesspipe.sh)" ]] && eval "$(lesspipe.sh)"
-
-# # Start ScreenSaver. This will lock the screen if locking is enabled.
-# alias ss="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+# Start ScreenSaver. This will lock the screen if locking is enabled.
+alias ss="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 
 # cd into whatever is the forefront Finder window.
 function cdf() {  # short for cdfinder

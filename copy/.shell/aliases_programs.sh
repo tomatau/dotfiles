@@ -25,9 +25,9 @@ function phpserver() {
 # alias art='php artisan --ansi'
 
 # `tree` with hidden files and color enabled,
-# ignoring the `.git` directory, 
+# ignoring the `.git` directory,
 # listing directories first. The output gets piped into
-# `less` preserve color and line numbers, 
+# `less` preserve color and line numbers,
 # unless the output is small enough for one screen.
 function tre() {
   tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
@@ -47,13 +47,13 @@ alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date
 function vim() {
   # Save current stty options.
   local STTYOPTS="$(stty -g)"
- 
+
   # Disable intercepting of ctrl-s and ctrl-q as flow control.
   stty stop '' -ixoff -ixon
- 
+
   # Execute vim.
   vim_command "$@"
- 
+
   # Restore saved stty options.
   stty "$STTYOPTS"
 }
@@ -67,4 +67,7 @@ function vim_command() {
 }
 
 # ngrok
-# alias ngrokserv='ngrok -subdomain=tomatao 8000'
+function ngrokserver() {
+  local port="${1:-9000}";
+  ngrok -subdomain=tomatao "${port}"
+}

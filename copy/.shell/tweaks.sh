@@ -17,7 +17,7 @@ export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 # Faster npm for Europeans <3
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"
 
-export EDITOR='subl -w'
+export EDITOR='subl'
 # export LESSEDIT='subl %f'
 # export VISUAL="$EDITOR"
 
