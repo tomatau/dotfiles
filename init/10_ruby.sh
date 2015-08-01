@@ -3,7 +3,8 @@
 declare default_ruby=2.1.2
 declare ruby_versions=(
   "$default_ruby"
-  2.1.3
+  2.1.5
+  2.2.1
 )
 declare ruby_gems=(
   sass
