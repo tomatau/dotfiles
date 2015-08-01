@@ -24,11 +24,11 @@ if [[ "$(type -P brew)" ]]; then
     brew doctor
     brew update
     # Install GNU `sed`, overwriting the built-in `sed`
-    # brew install gnu-sed --default-names
+
     brew install wget --enable-iri
     brew install vim --override-system-vi
-    # brew install homebrew/dupes/grep
-    # brew install homebrew/dupes/screen
+    brew install homebrew/dupes/grep
+    brew install homebrew/dupes/screen
     # Install Homebrew recipes.
     recipes=(
         ack
@@ -54,7 +54,6 @@ if [[ "$(type -P brew)" ]]; then
         tomcat
         tree
     )
-        # node
 
     casks=(
         asepsis
@@ -63,7 +62,7 @@ if [[ "$(type -P brew)" ]]; then
         google-chrome
         iterm2
         karabinder
-        lunchy # ppstgres launcher, needs plist
+        lunchy
         skype
         slack
         the-unarchiver
@@ -89,6 +88,13 @@ if [[ "$(type -P brew)" ]]; then
         e_header "Making $binroot/bash your default shell"
         sudo chsh -s "$binroot/bash" "$USER" >/dev/null 2>&1
     fi
+
+    cask_list="$(to_install "${casks[*]}" "$(brew cask list 2>/dev/null)")"
+    if [[ "$list" ]]; then
+        e_header "Installing Homebrew casks: $cask_list"
+        brew cask install $cask_list
+    fi
+    brew cask cleanup
 fi
 
 e_success "OSX specific install complete"
