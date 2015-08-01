@@ -55,21 +55,6 @@ if [[ "$(type -P brew)" ]]; then
         tree
     )
 
-    casks=(
-        asepsis
-        firefox
-        flux
-        google-chrome
-        iterm2
-        karabinder
-        lunchy
-        skype
-        slack
-        the-unarchiver
-        virtualbox
-        vlc
-    )
-
     list="$(to_install "${recipes[*]}" "$(brew list)")"
     if [[ "$list" ]]; then
         e_header "Installing Homebrew recipes: $list"
@@ -85,9 +70,29 @@ if [[ "$(type -P brew)" ]]; then
         echo "$binroot/bash" | sudo tee -a /etc/shells >/dev/null
     fi
     if [[ "$(dscl . -read ~ UserShell | awk '{print $2}')" != "$binroot/bash" ]]; then
-        e_header "Making $binroot/bash your default shell"
+        e_header "Making $binroot/bash your default sheman ll"
         sudo chsh -s "$binroot/bash" "$USER" >/dev/null 2>&1
     fi
+
+    casks=(
+        asepsis
+        firefox
+        flux
+        google-chrome
+        iterm2
+        karabinder
+        lunchy
+        skype
+        slack
+        sublime-text3
+        the-unarchiver
+        virtualbox
+        vlc
+    )
+
+    brew tap caskroom/versions
+    # Hack to show the first-run brew-cask password prompt immediately.
+    brew cask info this-is-somewhat-annoying 2>/dev/null
 
     cask_list="$(to_install "${casks[*]}" "$(brew cask list 2>/dev/null)")"
     if [[ "$list" ]]; then
