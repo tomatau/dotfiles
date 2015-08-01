@@ -2,6 +2,7 @@
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+shopt -s histverify
 
 # Entries beginning with space aren't added into history, and duplicate
 # entries will be erased (leaving the most recent entry).

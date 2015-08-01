@@ -97,7 +97,7 @@ prompt_git() {
 
         [ -n "${s}" ] && s="${s}";
 
-        echo -e " ${blue}±${pink}${1}${branchName}${yellow}${s}${reset}";
+        echo -e " ${blue}±${violet}${1}${branchName}${pink}${s}${reset}";
     else
         echo " ${blue}○${reset}";
     fi;
@@ -145,17 +145,17 @@ fi;
 if [[ "${SSH_TTY}" ]]; then
     hostStyle="${bold}${red}";
 else
-    hostStyle="${yellow}";
+    hostStyle="${green}";
 fi;
 
 # Set the terminal title to the current working directory.
 PS1="\[\033]0;\w\007\]";
 PS1+="\n"; # newline
 PS1+="\[${userStyle}\]\u"; # username
-PS1+="\[${violet}\] @ ";
+PS1+="\[${cyan}\] @ ";
 PS1+="\[${hostStyle}\]\h"; # host
-PS1+=" \[${green}\]\w"; # working directory
-PS1+="\$(prompt_git \" ${pink}\")"; # Git repository details
+PS1+=" \[${yellow}\]\w"; # working directory
+PS1+="\$(prompt_git \" ${violet}\")"; # Git repository details
 PS1+="\n";
 PS1+="\$ \[${reset}\]"; # `$` (and reset color)
 export PS1;

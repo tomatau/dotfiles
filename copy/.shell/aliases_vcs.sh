@@ -43,14 +43,14 @@ AWK
 }
 
 # open last commit in GitHub, in the browser.
-function gfu() {
+function glc() {
   local n="${@:-1}"
   n=$((n-1))
   git web--browse  $(git log -n 1 --skip=$n --pretty=oneline | awk "{printf \"$(gurl)/commit/%s\", substr(\$1,1,7)}")
 }
 
 # open current branch + path in GitHub, in the browser.
-alias gpu='git web--browse $(gurlp)'
+alias gopen='git web--browse $(gurlp)'
 
 # take this repo and copy it to somewhere else minus the .git stuff.
 function gitexport(){
