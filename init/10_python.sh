@@ -6,6 +6,7 @@ declare default_python=2.7.6
 declare python_versions=(
   "$default_python"
   3.4.1
+  anaconda-2.1.0
 )
 
 function get_python_versions() {
