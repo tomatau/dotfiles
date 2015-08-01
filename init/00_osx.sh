@@ -31,18 +31,46 @@ if [[ "$(type -P brew)" ]]; then
     # brew install homebrew/dupes/screen
     # Install Homebrew recipes.
     recipes=(
+        ack
         bash
         bash-completion
+        brew-cask
         cowsay
-        ack
-        git
-        tree
-        node
-        mongodb
-        redis
         curl
+        docker
+        elasticsearch
+        git
+        imagemagick
+        maven
+        mongodb
+        mongodb
+        mycli
+        mysql
+        postgresqk
+        pycli
+        redis
+        sqlite
+        ssh-copy-id
+        tomcat
+        tree
     )
-    # node also installs npm
+        # node
+
+    casks=(
+        asepsis
+        firefox
+        flux
+        google-chrome
+        iterm2
+        karabinder
+        lunchy # ppstgres launcher, needs plist
+        skype
+        slack
+        the-unarchiver
+        virtualbox
+        vlc
+    )
+
     list="$(to_install "${recipes[*]}" "$(brew list)")"
     if [[ "$list" ]]; then
         e_header "Installing Homebrew recipes: $list"
