@@ -35,6 +35,7 @@ if [[ "$(type -P brew)" ]]; then
         bash
         bash-completion
         brew-cask
+        boot2docker
         cowsay
         curl
         docker
@@ -43,10 +44,9 @@ if [[ "$(type -P brew)" ]]; then
         imagemagick
         maven
         mongodb
-        mongodb
         mycli
         mysql
-        postgresqk
+        postgresql
         pycli
         redis
         sqlite
@@ -81,7 +81,7 @@ if [[ "$(type -P brew)" ]]; then
         divvy
         firefox
         firefoxdeveloperedition
-        flux
+        # flux
         google-chrome
         google-chrome-canary
         heroku-toolbelt
