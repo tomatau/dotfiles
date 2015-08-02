@@ -115,7 +115,21 @@ if [[ "$(type -P brew)" ]]; then
     fi
     brew cask cleanup
 
-    ln -s "/opt/homebrew-cask/Caskroom/google-chrome/latest/Google Chrome.app/Contents/MacOS/Google\ Chrome" "/Users/tomatao/.bin/google-chome"
+    # ln -s "/opt/homebrew-cask/Caskroom/google-chrome/latest/Google Chrome.app/Contents/MacOS/Google\ Chrome" "/Users/tomatao/.bin/google-chome"
+
+    plists=(
+        elasticsearch
+        postgresql
+        mongodb
+        nginx
+        redis
+        mysql
+    )
+
+    for p in plists; do
+        lunchy install "/usr/local/opt/${p}/homebrew.mxcl.${p}.plist"
+    done
+
 fi
 
 e_success "OSX specific install complete"
