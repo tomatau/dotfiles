@@ -6,17 +6,9 @@ case $- in
       *) return;;
 esac
 
-# Load Shell Scripts
-
-# ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
-# ~/.extra can be used for settings you don’t want to commit
-# for file in ./copy/.shell/{extra,prompt,exports,aliases,functions}; do
-#   [ -r ${file} ] && . ${file}
-# done
-
-for file in ~/.shell/*; do
-  . "$file"
+# Load Shell Scripts in order
+for file in ~/.shell/{options,history,aliases_file,aliases_programs,aliases_vcs,osx,ubuntu,tweaks,wizenoze,prompt}.sh; do
+  [ -r ${file} ] && source ${file}
 done
 
 unset file
-

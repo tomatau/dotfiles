@@ -14,9 +14,6 @@ export LESS_TERMCAP_md="${yellow}";
 # shells instead of the default "last window closed" history
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
-# Faster npm for Europeans <3
-command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"
-
 export EDITOR='subl'
 # export LESSEDIT='subl %f'
 # export VISUAL="$EDITOR"

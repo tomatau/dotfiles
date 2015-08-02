@@ -16,4 +16,4 @@ export HISTTIMEFORMAT="[%F %T] "
 # alias r="fc -s"
 
 # Make some commands not show up in history
-export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help";
+export HISTIGNORE="ls:l:ll:cd:cd -:pwd:exit:date:* --help";
