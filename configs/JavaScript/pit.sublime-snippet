@@ -1,0 +1,10 @@
+<snippet>
+  <content><![CDATA[
+pit('${1:should do what...}',(${2:done})=>{
+  return ${0:}
+});
+]]></content>
+    <tabTrigger>pit</tabTrigger>
+    <scope>source.js</scope>
+    <description>pit() testing</description>
+</snippet>

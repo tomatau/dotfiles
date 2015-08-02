@@ -1,8 +1,4 @@
 {
-    // Markdown Editing
-    // "color_scheme": "Packages/MarkdownEditing/MarkdownEditor-Dark.tmTheme",
-    // "color_scheme": "Packages/MarkdownEditing/MarkdownEditor.tmTheme",
-    // "color_scheme": "Packages/MarkdownEditing/MarkdownEditor-Yellow.tmTheme",
     "color_scheme": "Packages/MarkdownEditing/MarkdownEditor-Focus.tmTheme",
 
     "draw_centered": false,

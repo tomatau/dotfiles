@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+before${1:Each}((${2:done})=>{
+  ${3:}
+});
+]]></content>
+  <tabTrigger>befr</tabTrigger>
+  <scope>source.js</scope>
+</snippet>

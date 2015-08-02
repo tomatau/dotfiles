@@ -1,16 +1,31 @@
 {
     "always_show_minimap_viewport": true,
+    "binary_file_patterns":
+    [
+        "*.jpg",
+        "*.jpeg",
+        "*.png",
+        "*.gif",
+        "*.ttf",
+        "*.tga",
+        "*.dds",
+        "*.ico",
+        "*.eot",
+        "*.pdf",
+        "*.swf",
+        "*.jar",
+        "*.zip"
+    ],
     "bold_folder_labels": true,
-    "color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
-    // "color_scheme": "Packages/Dayle Rees Color Schemes/sublime/darkside.tmTheme",
-    "default_encoding": "UTF-8",
+    "color_scheme": "Packages/Oceanic Next Color Scheme/Oceanic Next.tmTheme",
+    "create_window_at_startup": false,
     "default_line_ending": "unix",
-    "detect_indentation": false,
+    "detect_indentation": true,
     "detect_slow_plugins": false,
     "dictionary": "Packages/Language - English/en_GB.dic",
-    // "dictionary": "Packages/Language - English/en_US.dic",
     "draw_minimap_border": true,
-    "draw_white_space": "selection",
+    "draw_white_space": "all",
+    "enable_tab_scrolling": true,
     "ensure_newline_at_eof_on_save": false,
     "fade_fold_buttons": false,
     "file_exclude_patterns":
@@ -21,6 +36,7 @@
         "._*",
         "Thumbs.db",
         ".Spotlight-V100",
+        "*.scssc",
         ".Trashes"
     ],
     "folder_exclude_patterns":
@@ -33,27 +49,40 @@
     "font_size": 11,
     "highlight_line": true,
     "highlight_modified_tabs": true,
+    "hot_exit": true,
     "ignored_packages":
     [
-        "Vintage",
-        "Markdown"
+        "Markdown",
+        "Vintage"
     ],
-	"line_padding_bottom": 4,
-    "margin": 4,
+    "indent_guide_options":
+    [
+        "draw_normal"
+    ],
+    "line_padding_bottom": 4,
+    "margin": 2,
     "match_brackets": true,
     "match_brackets_angle": true,
-    "remember_open_files": false,
+    "open_files_in_new_window": false,
+    "overlay_scroll_bars": "enabled",
+    "remember_open_files": true,
     "rulers":
     [
         90,
         120
     ],
+    "Seti_SB_bright": true,
+    "Seti_orange_button": true,
+    "Seti_orange_label": true,
+    "Seti_tabs_small": true,
     "show_encoding": true,
     "show_full_path": true,
     "spell_check": true,
-    "tab_size": 4,
+    "tab_size": 2,
+    "theme": "Seti_orig.sublime-theme",
     "translate_tabs_to_spaces": true,
     "trim_trailing_white_space_on_save": true,
+    "use_tab_stops": true,
     "word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?_",
-    "word_wrap": "true"
+    "word_wrap": true
 }

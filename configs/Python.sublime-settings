@@ -1,5 +1,4 @@
 {   /* HalfLife Peel Darkside Contrast */
     "color_scheme": "Packages/Dayle Rees Color Schemes/sublime/Earthsong.tmTheme",
-    "font_size": 11,
-    "font_options": ["no_bold"]
+    "tab_size": 4
 }
