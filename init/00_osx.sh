@@ -76,6 +76,7 @@ if [[ "$(type -P brew)" ]]; then
 
     casks=(
         asepsis
+        beyond-compare
         cd-to
         cleanmymac2
         divvy
