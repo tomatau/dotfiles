@@ -1,8 +1,9 @@
 {
-	"extensions":
-	[
-		"jsx",
-		"es6",
-		"js"
-	]
+  "extensions":
+  [
+    "jsx",
+    "es6",
+    "js",
+    "es"
+  ]
 }

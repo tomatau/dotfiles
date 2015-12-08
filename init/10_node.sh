@@ -2,17 +2,14 @@
 
 # Can remove the .31 here to just install the latest
 # should uncomment the default_node="$(nvm current)" too
-declare default_node="v0.10.40"
+declare default_node="v4.2.3"
 declare node_versions=(
   "$default_node"
-  v0.12.7
-  iojs-v2.5.0
+  v0.12.9
+  v5.1.1
 )
 declare npm_globals=(
-  bower
-  gulp
   http-server
-  nodemon
 )
 
 function get_nvm_versions() {

@@ -34,8 +34,8 @@ if [[ "$(type -P brew)" ]]; then
         ack
         bash
         bash-completion
-        brew-cask
         boot2docker
+        brew-cask
         cowsay
         curl
         docker
@@ -46,6 +46,8 @@ if [[ "$(type -P brew)" ]]; then
         mongodb
         mycli
         mysql
+        nginx
+        pgcli
         postgresql
         pycli
         redis
@@ -53,6 +55,7 @@ if [[ "$(type -P brew)" ]]; then
         ssh-copy-id
         tomcat
         tree
+        vim
     )
 
     list="$(to_install "${recipes[*]}" "$(brew list)")"
@@ -82,7 +85,7 @@ if [[ "$(type -P brew)" ]]; then
         divvy
         firefox
         firefoxdeveloperedition
-        # flux
+        flux
         google-chrome
         google-chrome-canary
         heroku-toolbelt
@@ -120,11 +123,11 @@ if [[ "$(type -P brew)" ]]; then
 
     plists=(
         elasticsearch
-        postgresql
         mongodb
-        nginx
-        redis
         mysql
+        nginx
+        postgresql
+        redis
     )
 
     for p in plists; do

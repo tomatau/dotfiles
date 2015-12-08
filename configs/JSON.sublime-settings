@@ -1,9 +1,10 @@
 {
   "color_scheme": "Packages/Dayle Rees Color Schemes/sublime/contrast/zacks-contrast.tmTheme",
-	"extensions":
-	[
-		".jshintrc",
-		".bowerrc",
-		".babelrc"
-	]
+  "extensions":
+  [
+    ".jshintrc",
+    ".bowerrc",
+    ".babelrc",
+    ".eslintrc"
+  ]
 }

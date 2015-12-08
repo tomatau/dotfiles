@@ -1,8 +1,8 @@
 <snippet>
     <content><![CDATA[
-after${1:Each}((${2:done})=>{
-  ${3:}
-});
+after${1:Each}(${2:function}(${4:done})${3:=>} {
+  ${5:}
+})
 ]]></content>
   <tabTrigger>aftr</tabTrigger>
   <scope>source.js</scope>

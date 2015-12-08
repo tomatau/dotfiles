@@ -7,7 +7,6 @@ declare ruby_versions=(
   2.2.1
 )
 declare ruby_gems=(
-  sass
   bundler
 )
 

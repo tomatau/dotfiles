@@ -1,9 +1,9 @@
 <snippet>
   <content><![CDATA[
-describe('${1:what?}', ${2:function}(${4:done})${3:=>} {
+context('${1:what?}', ${2:function}(${4:done})${3:=>} {
   ${5:}
 })
 ]]></content>
-  <tabTrigger>desc</tabTrigger>
+  <tabTrigger>cont</tabTrigger>
   <scope>source.js</scope>
 </snippet>

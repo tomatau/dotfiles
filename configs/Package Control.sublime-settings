@@ -12,6 +12,7 @@
 		"DocBlockr",
 		"EditorConfig",
 		"Emmet",
+		"GenerateUUID",
 		"GitGutter",
 		"Handlebars",
 		"HTML-CSS-JS Prettify",
@@ -28,9 +29,13 @@
 		"Rust",
 		"Sass",
 		"SASS Build",
+		"SCSS",
 		"Seti_UI",
 		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeLinter-contrib-eslint",
 		"Surround",
+		"SyncedSideBar",
 		"TOML"
 	]
 }

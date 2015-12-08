@@ -23,7 +23,7 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 # quick open
 alias o=open
 
-# Start ScreenSaver. This will lock the screen if locking is enabled.
+# # Start ScreenSaver. This will lock the screen if locking is enabled.
 alias ss="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 
 # cd into whatever is the forefront Finder window.

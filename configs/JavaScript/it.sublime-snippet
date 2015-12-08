@@ -1,8 +1,8 @@
 <snippet>
   <content><![CDATA[
-it('${1:should do what...}',(${2:done})=>{
-  ${0:}
-});
+it('${1:should do what...}', ${2:function}(${4:done})${3:=>} {
+  ${5:expect}
+})
 ]]></content>
     <tabTrigger>it</tabTrigger>
     <scope>source.js</scope>

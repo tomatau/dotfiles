@@ -52,22 +52,30 @@ function vim() {
   stty stop '' -ixoff -ixon
 
   # Execute vim.
-  vim_command "$@"
+  command vim "$@"
 
   # Restore saved stty options.
   stty "$STTYOPTS"
-}
-function vim_command() {
-  if (( $+commands[reattach-to-user-namespace] )); then
-    # See: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
-    command reattach-to-user-namespace vim "$@"
-  else
-    command vim "$@"
-  fi
 }
 
 # ngrok
 function ngrokserver() {
   local port="${1:-9000}";
   ngrok -subdomain=tomatao "${port}"
+}
+
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home"
+
+function setjdk() {
+  if [ $# -ne 0 ]; then
+    removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
+    if [ -n "${JAVA_HOME+x}" ]; then
+      removeFromPath $JAVA_HOME
+    fi
+    export JAVA_HOME=`/usr/libexec/java_home -v $@`
+    export PATH=$JAVA_HOME/bin:$PATH
+  fi
+}
+function removeFromPath() {
+  export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }
