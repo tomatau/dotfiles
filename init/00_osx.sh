@@ -35,7 +35,7 @@ if [[ "$(type -P brew)" ]]; then
         bash
         bash-completion
         boot2docker
-        brew-cask
+        cask
         cowsay
         curl
         docker
