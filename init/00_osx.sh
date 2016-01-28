@@ -29,13 +29,58 @@ if [[ "$(type -P brew)" ]]; then
     brew install vim --override-system-vi
     brew install homebrew/dupes/grep
     brew install homebrew/dupes/screen
+
+    brew install cask
+    
+    casks=(
+        java
+        beyond-compare
+        cd-to
+        cleanmymac2
+        shiftit
+        firefox
+        firefoxdeveloperedition
+        flux
+        google-chrome
+        google-chrome-canary
+        heroku-toolbelt
+        iterm2
+        lastpass
+        lunchy
+        macdown
+        mysqlworkbench
+        opera
+        rdm
+        sequel-pro
+        skype
+        slack
+        sublime-text3
+        textmate
+        the-unarchiver
+        utorrent
+        virtualbox
+        vlc
+    )
+
+    brew tap caskroom/versions
+    # Hack to show the first-run brew-cask password prompt immediately.
+    brew cask info this-is-somewhat-annoying 2>/dev/null
+
+    cask_list="$(to_install "${casks[*]}" "$(brew cask list 2>/dev/null)")"
+    if [[ "$list" ]]; then
+        e_header "Installing Homebrew casks: $cask_list"
+        brew cask install $cask_list
+    fi
+    brew cask cleanup
+
+    # ln -s "/opt/homebrew-cask/Caskroom/google-chrome/latest/Google Chrome.app/Contents/MacOS/Google\ Chrome" "/Users/tomatao/.bin/google-chome"
+
     # Install Homebrew recipes.
     recipes=(
         ack
         bash
         bash-completion
         boot2docker
-        cask
         cowsay
         curl
         docker
@@ -76,51 +121,7 @@ if [[ "$(type -P brew)" ]]; then
         e_header "Making $binroot/bash your default sheman ll"
         sudo chsh -s "$binroot/bash" "$USER" >/dev/null 2>&1
     fi
-
-    casks=(
-        asepsis
-        beyond-compare
-        cd-to
-        cleanmymac2
-        divvy
-        firefox
-        firefoxdeveloperedition
-        flux
-        google-chrome
-        google-chrome-canary
-        heroku-toolbelt
-        iterm2
-        karabinder
-        lastpass
-        lunchy
-        macdown
-        mysqlworkbench
-        opera
-        rdm
-        sequel-pro
-        skype
-        slack
-        sublime-text3
-        textmate
-        the-unarchiver
-        utorrent
-        virtualbox
-        vlc
-    )
-
-    brew tap caskroom/versions
-    # Hack to show the first-run brew-cask password prompt immediately.
-    brew cask info this-is-somewhat-annoying 2>/dev/null
-
-    cask_list="$(to_install "${casks[*]}" "$(brew cask list 2>/dev/null)")"
-    if [[ "$list" ]]; then
-        e_header "Installing Homebrew casks: $cask_list"
-        brew cask install $cask_list
-    fi
-    brew cask cleanup
-
-    # ln -s "/opt/homebrew-cask/Caskroom/google-chrome/latest/Google Chrome.app/Contents/MacOS/Google\ Chrome" "/Users/tomatao/.bin/google-chome"
-
+    
     plists=(
         elasticsearch
         mongodb
