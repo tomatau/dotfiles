@@ -31,35 +31,36 @@ if [[ "$(type -P brew)" ]]; then
     brew install homebrew/dupes/screen
 
     brew install cask
-    
+
     casks=(
-        java
+        atom
         beyond-compare
         cd-to
         cleanmymac2
-        shiftit
         firefox
         firefoxdeveloperedition
         flux
         google-chrome
         google-chrome-canary
-        heroku-toolbelt
         iterm2
+        java
         lastpass
         lunchy
-        macdown
         mysqlworkbench
         opera
         rdm
         sequel-pro
+        shiftit
         skype
         slack
-        sublime-text3
+        sublime-text
         textmate
         the-unarchiver
         utorrent
+        visual-studio-code
         virtualbox
         vlc
+        xquartz
     )
 
     brew tap caskroom/versions
@@ -80,12 +81,13 @@ if [[ "$(type -P brew)" ]]; then
         ack
         bash
         bash-completion
-        boot2docker
-        cowsay
+        chromedriver
         curl
         docker
         elasticsearch
+        ffmpeg
         git
+        highlight
         imagemagick
         maven
         mongodb
@@ -94,13 +96,13 @@ if [[ "$(type -P brew)" ]]; then
         nginx
         pgcli
         postgresql
-        pycli
         redis
         sqlite
         ssh-copy-id
         tomcat
         tree
         vim
+        yarn
     )
 
     list="$(to_install "${recipes[*]}" "$(brew list)")"
@@ -121,7 +123,7 @@ if [[ "$(type -P brew)" ]]; then
         e_header "Making $binroot/bash your default sheman ll"
         sudo chsh -s "$binroot/bash" "$USER" >/dev/null 2>&1
     fi
-    
+
     plists=(
         elasticsearch
         mongodb

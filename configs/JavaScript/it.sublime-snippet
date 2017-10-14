@@ -1,7 +1,7 @@
 <snippet>
   <content><![CDATA[
-it('${1:should do what...}', ${2:function}(${4:done})${3:=>} {
-  ${5:expect}
+it('${1:should do what...}', ${2:function}(${4:done}) ${3:=>} {
+  ${0:expect}
 })
 ]]></content>
     <tabTrigger>it</tabTrigger>

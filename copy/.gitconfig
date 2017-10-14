@@ -50,6 +50,7 @@
     g = log --graph --pretty=custom
     newb = checkout master -b
     delbr = push origin --delete
+    pf = push --force-with-lease
 
 [help]
     autocorrect = 1

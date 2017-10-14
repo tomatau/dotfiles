@@ -64,7 +64,7 @@ function ngrokserver() {
   ngrok -subdomain=tomatao "${port}"
 }
 
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home"
 
 function setjdk() {
   if [ $# -ne 0 ]; then

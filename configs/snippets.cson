@@ -1,0 +1,97 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+# '.source.coffee':
+#   'Console log':
+#     'prefix': 'log'
+#     'body': 'console.log $1'
+#
+# Each scope (e.g. '.source.coffee' above) can only be declared once.
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it in the
+# Atom Flight Manual:
+# https://atom.io/docs/latest/using-atom-basic-customization#cson
+'.source.js':
+ 'Console Log':
+   'prefix': 'clog'
+   'body': 'console.log(${1:arguments})'
+ 'Console Dir':
+   'prefix': 'cdir'
+   'body': 'console.dir(${1:arguments})'
+ 'Describe Block':
+   'prefix': 'desc'
+   'body': """
+   describe(`${1:What}`, () => {
+     ${0}
+   })
+   """
+ 'Context Block':
+   'prefix': 'cont'
+   'body': """
+   context(`${1:What}`, () => {
+     ${0}
+   })
+   """
+ 'It Block':
+   'prefix': 'it'
+   'body': """
+   it(`${1:does what?}`, ${3:async }(${2:done}) => {
+     ${0}
+   })
+   """
+ 'Before Block':
+   'prefix': 'befr'
+   'body': """
+   before${1:Each}((${3:done}) => {
+     ${0}
+   })
+   """
+ 'After Block':
+   'prefix': 'atfr'
+   'body': """
+   after${1:Each}((${3:done}) => {
+     ${0}
+   })
+   """
+ 'Import Statement':
+   'prefix': 'import'
+   'body': 'import ${1:module} from \'${2:where}\''
+ 'React Create Class':
+   'prefix': 'rcc'
+   'body': """
+import React, { Component, PropTypes } from 'react'
+
+export default class ${1:ComponentName} extends Component {
+  render() {
+    return ${2:(
+      ${3:<div>${0}</div>}
+    )}
+  }
+}
+   """
+ 'React Create Stateless Component':
+   'prefix': 'rcp'
+   'body': """
+import React, { PropTypes } from 'react'
+import cx from 'classnames'
+
+const ${1:ComponentName} = ({ className, children, ...props }) => (
+  <div className={cx('${1:ComponentName}', className)} {...props}>
+    {children}
+  </div>
+)
+
+${1:ComponentName}.propTypes = {
+  className: PropTypes.string,
+}
+
+export default ${1:ComponentName}
+   """

@@ -1,8 +1,0 @@
-{
-    "color_scheme": "Packages/MarkdownEditing/MarkdownEditor-Focus.tmTheme",
-
-    "draw_centered": false,
-    "line_numbers": true,
-    "highlight_line": true,
-    "rulers": [80]
-}

@@ -1,11 +1,21 @@
 {
-	"Seti_SB_bright": true,
+	"Seti_blue_scrollbar": true,
 	"Seti_orange_button": true,
 	"Seti_orange_label": true,
 	"Seti_tabs_small": true,
 	"added_words":
 	[
-		"heroku"
+		"heroku",
+		"Tomatao",
+		"tomatao",
+		"github",
+		"Hudspith",
+		"Tatham",
+		"Breko",
+		"Webpack",
+		"Redux",
+		"Koa",
+		"middleware"
 	],
 	"always_show_minimap_viewport": true,
 	"binary_file_patterns":
@@ -25,7 +35,7 @@
 		"*.zip"
 	],
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/Oceanic Next Color Scheme/Oceanic Next.tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Oceanic Next (SL).tmTheme",
 	"create_window_at_startup": false,
 	"default_line_ending": "unix",
 	"detect_indentation": true,

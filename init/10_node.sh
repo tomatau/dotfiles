@@ -2,11 +2,11 @@
 
 # Can remove the .31 here to just install the latest
 # should uncomment the default_node="$(nvm current)" too
-declare default_node="v4.2.3"
+declare default_node="v8.7.0"
 declare node_versions=(
   "$default_node"
-  v0.12.9
-  v5.1.1
+  v0.12.18
+  v7.10.1
 )
 declare npm_globals=(
   http-server
@@ -29,13 +29,13 @@ function nvm_set_current_node() {
     nvm install "$v"
   done
   # default_node="$(nvm current)"
-  nvm alias default "$default_node"
+  nvm alias stable "$default_node"
   e_success "Installed Node $default_node and set as current"
 }
 
 function install_nvm() {
   if [[ ! -s "$NVM_DIR/nvm.sh" ]]; then
-    curl https://raw.githubusercontent.com/creationix/nvm/v0.13.1/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
   fi
