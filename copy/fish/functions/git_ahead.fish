@@ -2,33 +2,37 @@
 function git_ahead -a ahead behind none
   not git_is_repo; and return
 
-  set -l commit_count (command git rev-list --count --left-right "@{upstream}...HEAD" ^/dev/null)
+  set -l commit_count \
+    (command git rev-list \
+      --count \
+      --left-right "@{upstream}...HEAD" \
+    ^/dev/null)
   echo $commit_count | read -l behind_count ahead_count
 
   switch "$commit_count"
   case ""
     return
   case "0"\t"0"
-    echo -n -s (set_color 555) "[ $none ]"
+    echo -ns (set_color 555) "[ $none ]"
   case "*"
-    echo -n -s (set_color 555) "[ "
+    echo -ns (set_color 555) "[ "
     switch "$behind_count"
     case "0"
-      echo -n -s (set_color aaa)
+      echo -ns (set_color aaa)
     case "*"
-      echo -n -s (set_color red)
+      echo -ns (set_color red)
     end
-    echo -n -s $behind_count $behind
+    echo -ns $behind_count $behind
 
-    echo -n -s (set_color normal) " "
+    echo -ns (set_color normal) " "
 
     switch "$ahead_count"
     case "0"
-      echo -n -s (set_color aaa)
+      echo -ns (set_color aaa)
     case "*"
-      echo -n -s (set_color green)
+      echo -ns (set_color green)
     end
-    echo -n -s $ahead_count $ahead
-    echo -n -s (set_color 555) " ]"
+    echo -ns $ahead_count $ahead
+    echo -ns (set_color 555) " ]"
   end
 end
