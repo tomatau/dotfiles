@@ -1,6 +1,6 @@
 set -g fish_prompt_pwd_dir_length 2
 
-set -x NPM_TOKEN 6cf62718-106f-4a17-bb6a-d4961a2b98d1
+set -x NPM_TOKEN <change me>
 
 set -x NVM_DIR "$HOME/.nvm"
 
