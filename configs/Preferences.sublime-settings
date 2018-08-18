@@ -35,7 +35,7 @@
 		"*.zip"
 	],
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/User/SublimeLinter/Oceanic Next (SL).tmTheme",
+	"color_scheme": "Packages/User/Oceanic Next (SL).tmTheme",
 	"create_window_at_startup": false,
 	"default_line_ending": "unix",
 	"detect_indentation": true,

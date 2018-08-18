@@ -43,50 +43,56 @@
  'It Block':
    'prefix': 'it'
    'body': """
-   it(`${1:does what?}`, ${3:async }(${2:done}) => {
+   it(`${1:does what?}`, ${2:async }() => {
      ${0}
    })
    """
  'Before Block':
    'prefix': 'befr'
    'body': """
-   before${1:Each}((${3:done}) => {
+   before${1:Each}(${2:async }() => {
      ${0}
    })
    """
  'After Block':
    'prefix': 'atfr'
    'body': """
-   after${1:Each}((${3:done}) => {
+   after${1:Each}(${2:async }() => {
      ${0}
    })
    """
  'Import Statement':
    'prefix': 'import'
-   'body': 'import ${1:module} from \'${2:where}\''
+   'body': 'import ${2:module} from \'${1:where}\''
  'React Create Class':
    'prefix': 'rcc'
    'body': """
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
 
 export default class ${1:ComponentName} extends Component {
+  static propTypes = {
+    className: PropTypes.string,
+  };
+
   render() {
-    return ${2:(
-      ${3:<div>${0}</div>}
-    )}
+    const { className, ...props } = this.props
+    return (
+      ${2:<div className={cx('${1:ComponentName}', className)} {...props} />}
+    )
   }
 }
    """
  'React Create Stateless Component':
    'prefix': 'rcp'
    'body': """
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 
-const ${1:ComponentName} = ({ className, children, ...props }) => (
-  <div className={cx('${1:ComponentName}', className)} {...props}>
-    {children}
-  </div>
+const ${1:ComponentName} = ({ className, ...props }) => (
+  <div className={cx('${1:ComponentName}', className)} {...props} />
 )
 
 ${1:ComponentName}.propTypes = {
