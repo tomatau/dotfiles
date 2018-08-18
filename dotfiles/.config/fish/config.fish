@@ -1,4 +1,5 @@
 set -g fish_prompt_pwd_dir_length 2
+set -Ux LSCOLORS fxefcxdxbxexexabagacad
 
 set -x NPM_TOKEN "tmp-123-abc"
 
