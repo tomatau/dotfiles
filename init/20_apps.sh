@@ -46,6 +46,7 @@ packages=(
     seti-ui
     sort-lines
     sublime-block-comment
+    svg-preview
 )
 
 apm install ${packages[*]}
