@@ -36,6 +36,7 @@ function install_nvm() {
   if [[ ! -s "$NVM_DIR/nvm.sh" ]]; then
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
     export NVM_DIR="$HOME/.nvm"
+    export NPM_TOKEN="tmp-abc-1234" # fix bug with .npmrc
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
   fi
 }
