@@ -22,7 +22,6 @@ else
     --exclude "dotfiles_sync.sh" \
     --exclude "dotfiles" \
     --exclude "editor-settings" \
-    --exclude "fish" \
     --exclude "init" \
     --exclude "tmp" \
     --exclude "README.md" \

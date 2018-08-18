@@ -23,7 +23,7 @@ function fish_prompt_git_status
     echo -ns $set_normal ' '
     echo -ns $set_magenta (git_branch_name)
 
-    if git_is_touched or git_has_untracked or git_has_stashed
+    if git_is_touched; or git_has_untracked; or git_has_stashed
       echo -ns $set_normal ' '
       if git_has_changed
         echo -ns $set_pink $dirty
