@@ -26,7 +26,7 @@ It will run the scripts in the following directories:
 
 It will then do nothing :D DOTFILES!!!
 HELP
-exit; 
+exit;
 fi
 
 #  TODO gitpull here for remote repo so we're up to date!?!
@@ -42,16 +42,14 @@ cd $PARENT
 shopt -s dotglob
 shopt -s nullglob # make * eval to nothing if no files
 
+e_header "Copying dotfiles!"
+rsync -av "$PARENT/dotfiles/" ~
+
 # Run the installtion scripts in the following
 e_header "Initializing!"
 run_directory "init"
 
-e_header "Copying!"
-run_directory "copy"
-
 # Add binaries to path
-PATH=~/.bin:$PATH
-export PATH
 . ~/.bash_profile
 
 e_header "All done! - Rember to restart your shell! :)"

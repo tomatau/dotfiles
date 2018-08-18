@@ -14,6 +14,8 @@ else
   rsync -av \
     --exclude ".git/" \
     --exclude ".DS_Store" \
+    --exclude ".gitmodules" \
+    --exclude ".gitignore" \
     --exclude "dotfiles.sh" \
     --exclude "dotfiles_functions.sh" \
     --exclude "dotfiles_requirements.sh" \
