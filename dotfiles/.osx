@@ -2,6 +2,8 @@
 
 # ~/.osx — http://mths.be/osx
 
+defaults write org.shiftitapp.ShiftIt multipleActionsCycleWindowSizes YES
+
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
@@ -143,7 +145,3 @@ defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
 # disable startup sounds
 sudo nvram SystemAudioVolume=%80
-
-
-
-
