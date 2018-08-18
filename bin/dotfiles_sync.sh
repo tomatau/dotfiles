@@ -18,8 +18,8 @@ else
     --exclude "dotfiles_functions.sh" \
     --exclude "dotfiles_requirements.sh" \
     --exclude "dotfiles_sync.sh" \
-    --exclude "configs" \
-    --exclude "copy" \
+    --exclude "dotfiles" \
+    --exclude "editor-settings" \
     --exclude "fish" \
     --exclude "init" \
     --exclude "tmp" \
