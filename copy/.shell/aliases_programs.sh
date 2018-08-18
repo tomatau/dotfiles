@@ -64,8 +64,6 @@ function ngrokserver() {
   ngrok -subdomain=tomatao "${port}"
 }
 
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home"
-
 function setjdk() {
   if [ $# -ne 0 ]; then
     removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'

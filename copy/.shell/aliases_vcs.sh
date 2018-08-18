@@ -25,9 +25,6 @@ function gurl() {
   echo "https://github.com/$user_repo"
 }
 
-# Current Branch or SHA if detatched
-alias gbs='git branch | perl -ne '"'"'/^\* (?:\(detached from (.*)\)|(.*))/ && print "$1$2"'"'"''
-
 # GitHub URL for current repo, including current branch + path.
 alias gurlp='echo $(gurl)/tree/$(gbs)/$(git rev-parse --show-prefix)'
 
@@ -57,4 +54,3 @@ function gitexport(){
   mkdir -p "$1"
   git archive master | tar -x -C "$1"
 }
-

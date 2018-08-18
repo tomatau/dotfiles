@@ -18,29 +18,33 @@
     a = add
     aa = add -A
     b = branch
+    s = status -s
+    st = status
     c = commit
     cm = commit -m
     ca = commit -a
     cam = commit -am
+    camn = commit -am --no-verify
+    cia = commit --amend -C HEAD
+    cian = commit --amend -C HEAD --no-verify
+    mend = commit --amend
     co = checkout
     d = diff
     dsd = diff --staged
     dst = diff --stat
     new = log master.. --reverse
-    s = status -s
-    st = status
-    cia = commit --amend -C HEAD
-    mend = commit --amend
     unstage = reset HEAD
     uncommit = reset HEAD~
     unpush = push -f origin HEAD^:master
     ignore = update-index --assume-unchanged
     unignore = update-index --no-assume-unchanged
     ignored = !git ls-files -v | grep "^[[:lower:]]"
-    co = checkout
     last = log -1 -p HEAD
     m = merge
     ps = push
+    psn = push --no-verify
+    pf = push --force-with-lease
+    pfn = push --force-with-lease --no-verify
     pl = pull
     r = rm --cached
     wdiff = diff --color-words
@@ -53,7 +57,7 @@
     pf = push --force-with-lease
 
 [help]
-    autocorrect = 1
+    autocorrect = 2
 [web]
     browser = open
 
@@ -61,23 +65,23 @@
     autosquash = true
 
 [diff]
-    tool = bcomp
+    tool = atom
     renames = copies
     # detect renames
-[difftool "bcomp"]
+[difftool "atom"]
     trustExitCode = true
     prompt = false
-    cmd = "/usr/local/bin/bcomp" "$LOCAL" "$REMOTE"
+    cmd = "/usr/local/bin/atom" "$LOCAL" "$REMOTE"
 [merge]
-    tool = bcomp
+    tool = atom
 
 [mergetool]
     prompt = false
     keepBackup = false
 # opendiff kdiff3 tkdiff xxdiff meld tortoisemerge gvimdiff diffuse diffmerge ecmerge p4merge araxis bc3 codecompare emerge vimdiff
-[mergetool "bcomp"]
+[mergetool "atom"]
     trustExitCode = true
-    cmd = "/usr/local/bin/bcomp" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+    cmd = "/usr/local/bin/atom" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 
 [color]
     ui = true
