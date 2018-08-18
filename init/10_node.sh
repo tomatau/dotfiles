@@ -35,6 +35,8 @@ function nvm_set_current_node() {
 function install_nvm() {
   if [[ ! -s "$NVM_DIR/nvm.sh" ]]; then
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
   fi
 }
 

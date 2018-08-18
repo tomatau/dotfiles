@@ -40,7 +40,7 @@ if [[ "$(type -P brew)" ]]; then
         google-chrome
         iterm2
         java
-        karabiner
+        karabiner-elements
         sequel-pro
         shiftit
         skype
@@ -48,8 +48,8 @@ if [[ "$(type -P brew)" ]]; then
         sublime-text
         textmate
         the-unarchiver
-        visual-studio-code
         virtualbox
+        visual-studio-code
         vlc
         xquartz
     )
@@ -72,6 +72,7 @@ if [[ "$(type -P brew)" ]]; then
         bash-completion
         curl
         ffmpeg
+        fish
         git
         highlight
         imagemagick
@@ -87,7 +88,7 @@ if [[ "$(type -P brew)" ]]; then
         vim
     )
 
-    recipe_list="$(to_install "${recipes[*]}" "$(brew recipe_list)")"
+    recipe_list="$(to_install "${recipes[*]}" "$(brew list)")"
     if [[ "$recipe_list" ]]; then
         e_header "Installing Homebrew recipes: $recipe_list"
         brew install $recipe_list
