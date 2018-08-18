@@ -31,6 +31,7 @@ if [[ "$(type -P brew)" ]]; then
     brew install cask
 
     casks=(
+        airflow
         atom
         cd-to
         cleanmymac
@@ -41,6 +42,7 @@ if [[ "$(type -P brew)" ]]; then
         iterm2
         java
         karabiner-elements
+        qbittorrent
         sequel-pro
         shiftit
         skype
