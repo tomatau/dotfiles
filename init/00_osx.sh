@@ -108,4 +108,9 @@ if [[ "$(type -P brew)" ]]; then
     fi
 fi
 
+if [[ "$(type -P fish)" ]]; then
+    e_header "Install fisher plugins for fish!"
+    fish -c fisher
+fi
+
 e_success "OSX specific install complete"

@@ -1,10 +1,8 @@
 set -g fish_prompt_pwd_dir_length 2
 
-set -x NPM_TOKEN <change me>
+set -x NPM_TOKEN "tmp-123-abc"
 
 set -x NVM_DIR "$HOME/.nvm"
-
-bass source "$NVM_DIR/nvm.sh"
 
 if test -d $HOME/.bin
     set PATH $HOME/.bin $PATH
