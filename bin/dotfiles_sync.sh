@@ -12,11 +12,19 @@ if [[ $REPLY =~ ^[Nn]$ ]]; then
   e_header "Skipped ~/.bin overwrite"
 else
   rsync -av \
-    --exclude ".git/" --exclude ".DS_Store" \
-    --exclude "dotfiles.sh" --exclude "dotfiles_requirements.sh" \
-    --exclude "dotfiles_functions.sh" --exclude "dotfiles_sync.sh" \
-    --exclude "init" --exclude "copy" --exclude "tmp" \
-    --exclude "README.md" "$PWATH/.." ~
+    --exclude ".git/" \
+    --exclude ".DS_Store" \
+    --exclude "dotfiles.sh" \
+    --exclude "dotfiles_functions.sh" \
+    --exclude "dotfiles_requirements.sh" \
+    --exclude "dotfiles_sync.sh" \
+    --exclude "configs" \
+    --exclude "copy" \
+    --exclude "fish" \
+    --exclude "init" \
+    --exclude "tmp" \
+    --exclude "README.md" \
+    "$PWATH/.." ~
 
   if [[ "$new_dotfiles_install" != 1 ]]; then
     e_header "Removing old bin"
