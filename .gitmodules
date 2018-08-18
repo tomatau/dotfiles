@@ -1,0 +1,21 @@
+[submodule "copy/.vim/bundle/es.next.syntax.vim"]
+	path = copy/.vim/bundle/es.next.syntax.vim
+	url = git@github.com:othree/es.next.syntax.vim.git
+[submodule "copy/.vim/bundle/jellybeans.vim"]
+	path = copy/.vim/bundle/jellybeans.vim
+	url = git@github.com:nanotech/jellybeans.vim.git
+[submodule "copy/.vim/bundle/nerdtree"]
+	path = copy/.vim/bundle/nerdtree
+	url = git@github.com:scrooloose/nerdtree.git
+[submodule "copy/.vim/bundle/vim-airline"]
+	path = copy/.vim/bundle/vim-airline
+	url = git@github.com:vim-airline/vim-airline.git
+[submodule "copy/.vim/bundle/vim-gitgutter"]
+	path = copy/.vim/bundle/vim-gitgutter
+	url = git@github.com:airblade/vim-gitgutter.git
+[submodule "copy/.vim/bundle/vim-jsx"]
+	path = copy/.vim/bundle/vim-jsx
+	url = git@github.com:mxw/vim-jsx.git
+[submodule "copy/.vim/bundle/yajs-core.vim"]
+	path = copy/.vim/bundle/yajs-core.vim
+	url = git@github.com:othree/yajs-core.vim.git
