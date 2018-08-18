@@ -74,6 +74,7 @@ function setjdk() {
     export PATH=$JAVA_HOME/bin:$PATH
   fi
 }
+
 function removeFromPath() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }

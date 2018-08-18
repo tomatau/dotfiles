@@ -23,32 +23,24 @@ if [[ "$(type -P brew)" ]]; then
     e_header "Updating Homebrew"
     brew doctor
     brew update
-    # Install GNU `sed`, overwriting the built-in `sed`
 
     brew install wget --enable-iri
     brew install vim --override-system-vi
-    brew install homebrew/dupes/grep
-    brew install homebrew/dupes/screen
+    brew tap homebrew/cask
 
     brew install cask
 
     casks=(
         atom
-        beyond-compare
         cd-to
-        cleanmymac2
+        cleanmymac
+        chromedriver
         firefox
-        firefoxdeveloperedition
-        flux
+        firefox-developer-edition
         google-chrome
-        google-chrome-canary
         iterm2
         java
-        lastpass
-        lunchy
-        mysqlworkbench
-        opera
-        rdm
+        karabiner
         sequel-pro
         shiftit
         skype
@@ -56,7 +48,6 @@ if [[ "$(type -P brew)" ]]; then
         sublime-text
         textmate
         the-unarchiver
-        utorrent
         visual-studio-code
         virtualbox
         vlc
@@ -64,11 +55,9 @@ if [[ "$(type -P brew)" ]]; then
     )
 
     brew tap caskroom/versions
-    # Hack to show the first-run brew-cask password prompt immediately.
-    brew cask info this-is-somewhat-annoying 2>/dev/null
 
     cask_list="$(to_install "${casks[*]}" "$(brew cask list 2>/dev/null)")"
-    if [[ "$list" ]]; then
+    if [[ "$cask_list" ]]; then
         e_header "Installing Homebrew casks: $cask_list"
         brew cask install $cask_list
     fi
@@ -81,34 +70,27 @@ if [[ "$(type -P brew)" ]]; then
         ack
         bash
         bash-completion
-        chromedriver
         curl
-        docker
-        elasticsearch
         ffmpeg
         git
         highlight
         imagemagick
-        maven
         mongodb
         mycli
         mysql
         nginx
         pgcli
         postgresql
-        redis
         sqlite
         ssh-copy-id
-        tomcat
         tree
         vim
-        yarn
     )
 
-    list="$(to_install "${recipes[*]}" "$(brew list)")"
-    if [[ "$list" ]]; then
-        e_header "Installing Homebrew recipes: $list"
-        brew install $list
+    recipe_list="$(to_install "${recipes[*]}" "$(brew recipe_list)")"
+    if [[ "$recipe_list" ]]; then
+        e_header "Installing Homebrew recipes: $recipe_list"
+        brew install $recipe_list
     fi
     brew cleanup
     # This is where brew stores its binary symlinks
@@ -123,20 +105,6 @@ if [[ "$(type -P brew)" ]]; then
         e_header "Making $binroot/bash your default sheman ll"
         sudo chsh -s "$binroot/bash" "$USER" >/dev/null 2>&1
     fi
-
-    plists=(
-        elasticsearch
-        mongodb
-        mysql
-        nginx
-        postgresql
-        redis
-    )
-
-    for p in plists; do
-        lunchy install "/usr/local/opt/${p}/homebrew.mxcl.${p}.plist"
-    done
-
 fi
 
 e_success "OSX specific install complete"
