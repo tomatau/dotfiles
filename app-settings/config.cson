@@ -1,0 +1,17 @@
+"*":
+  core:
+    telemetryConsent: "no"
+    themes: [
+      "seti-ui"
+      "one-dark-syntax"
+    ]
+  editor:
+    fontFamily: "Operator Mono, Menlo, Consolas, DejaVu Sans Mono, monospace"
+    fontSize: 16
+    scrollPastEnd: true
+    showIndentGuide: true
+    softWrap: true
+  "seti-ui":
+    compactView: true
+  welcome:
+    showOnStartup: false

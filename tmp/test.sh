@@ -6,13 +6,9 @@ PARENT=$( dirname $PWATH )
 
 source "$PARENT/bin/dotfiles_functions.sh"
 
-binroot="$(brew --config | awk '/HOMEBREW_PREFIX/ {print $2}')"/bin
+declare app_settings_path="$PARENT/app-settings"
 
-echo "$(type $binroot/yo)"
-if [[ "$(type $binroot/yo)" &&  ! "$(cat /etc/shells | grep -q "/bin/bash")" ]]; then
-  echo "I RAN"
-fi
-
-if [[ "$(type $binroot/yo)" && "$(cat /etc/shells | grep -q "/bin/bash")" ]]; then
-  e_header "Adding $binroot/bash to the list of acceptable shells"
-fi
+declare atom_path="$HOME/.atom/"
+cp "$app_settings_path/config.cson" "$atom_path"
+cp "$app_settings_path/keymap.cson" "$atom_path"
+cp "$app_settings_path/snippets.cson" "$atom_path"

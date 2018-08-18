@@ -3,18 +3,18 @@
 # Abort if not OSX
 [[ "$OSTYPE" =~ ^darwin ]] || return 1
 
-declare app_settings="$PARENT/app-settings"
-declare app_support="$HOME/Library/Application Support"
+declare app_settings_path="$PARENT/app-settings"
+declare app_support_path="$HOME/Library/Application Support"
 
 e_header "Copying iTerm2 profiles"
-cp "$app_settings/iTerm2.json" "$app_support/iTerm2/DynamicProfiles/"
+cp "$app_settings_path/iTerm2.json" "$app_support_path/iTerm2/DynamicProfiles/"
 
 e_header "Copying Sublime Text Package Settings"
-declare st3_user="$app_support/Sublime Text 3/Packages/User/"
-cp "$app_settings/Package Control.sublime-settings" "$st3_user"
-cp "$app_settings/Preferences.sublime-settings" "$st3_user"
-cp "$app_settings/Default (OSX).sublime-keymap" "$st3_user"
-cp -r "$app_settings/JavaScript" "$st3_user/JavaScript/"
+declare st3_user_path="$app_support_path/Sublime Text 3/Packages/User/"
+cp "$app_settings_path/Package Control.sublime-settings" "$st3_user_path"
+cp "$app_settings_path/Preferences.sublime-settings" "$st3_user_path"
+cp "$app_settings_path/Default (OSX).sublime-keymap" "$st3_user_path"
+cp -r "$app_settings_path/JavaScript" "$st3_user_path/JavaScript/"
 
 e_header "Install Atom Packages"
 packages=(
@@ -49,3 +49,11 @@ packages=(
 )
 
 apm install ${packages[*]}
+
+e_header "Copy Atom Settings"
+
+declare atom_path="$HOME/.atom/"
+cp "$app_settings_path/config.cson" "$atom_path"
+cp "$app_settings_path/keymap.cson" "$atom_path"
+cp "$app_settings_path/snippets.cson" "$atom_path"
+cp "$app_settings_path/styles.less" "$atom_path"
