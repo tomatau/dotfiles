@@ -1,0 +1,21 @@
+{
+  "editor.fontSize": 16,
+  "editor.fontFamily": "Operator Mono, Menlo, Monaco, 'Courier New', monospace",
+  "explorer.openEditors.visible": 0,
+  "editor.rulers": [90, 120],
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "editor.wrappingIndent": "deepIndent",
+  "workbench.editor.closeOnFileDelete": false,
+  "workbench.enableExperiments": false,
+  "window.restoreWindows": "all",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "terminal.external.osxExec": "iTerm.app",
+  "telemetry.enableTelemetry": false,
+  "workbench.iconTheme": "vscode-icons",
+  "atomKeymap.promptV3Features": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.formatOnPaste": true
+}

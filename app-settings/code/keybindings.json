@@ -10,4 +10,8 @@
     "command": "editor.action.addSelectionToNextFindMatch",
     "when": "editorFocus"
   },
+  {
+    "key": "cmd+k cmd+right",
+    "command": "workbench.action.moveEditorToNextGroup"
+  }
 ]

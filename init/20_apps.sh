@@ -10,14 +10,10 @@ e_header "Copying iTerm2 profiles"
 cp "$app_settings_path/iTerm2.json" "$app_support_path/iTerm2/DynamicProfiles/"
 
 e_header "Copying Sublime Text Package Settings"
-declare st3_user_path="$app_support_path/Sublime Text 3/Packages/User/"
-cp "$app_settings_path/Package Control.sublime-settings" "$st3_user_path"
-cp "$app_settings_path/Preferences.sublime-settings" "$st3_user_path"
-cp "$app_settings_path/Default (OSX).sublime-keymap" "$st3_user_path"
-cp -r "$app_settings_path/JavaScript" "$st3_user_path/JavaScript/"
+cp -r "$app_settings_path/subl/" "$app_support_path/Sublime Text 3/Packages/User/"
 
 e_header "Install Atom Packages"
-packages=(
+atom_packages=(
     advanced-open-file
     autocomplete-paths
     autocomplete-plus
@@ -48,13 +44,27 @@ packages=(
     sublime-block-comment
     svg-preview
 )
-
-apm install ${packages[*]}
+apm install ${atom_packages[*]}
 
 e_header "Copy Atom Settings"
+cp -r "$app_settings_path/atom/" "$HOME/.atom/"
 
-declare atom_path="$HOME/.atom/"
-cp "$app_settings_path/config.cson" "$atom_path"
-cp "$app_settings_path/keymap.cson" "$atom_path"
-cp "$app_settings_path/snippets.cson" "$atom_path"
-cp "$app_settings_path/styles.less" "$atom_path"
+e_header "Install Code Extensions"
+code_packages=(
+    christian-kohler.npm-intellisense
+    dbaeumer.vscode-eslint
+    EditorConfig.EditorConfig
+    geeebe.duplicate
+    mgmcdermott.vscode-language-babel
+    ms-vscode.atom-keybindings
+    PeterJausovec.vscode-docker
+    robertohuertasm.vscode-icons
+    Tyriar.sort-lines
+    wmaurer.change-case
+)
+for package in "${code_packages[@]}"; do
+    code --install-extension $package
+done
+
+e_header "Copy VSCode Settings"
+cp -r "$app_settings_path/code/" "$app_support_path/Code/User"

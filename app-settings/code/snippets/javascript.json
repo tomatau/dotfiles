@@ -1,0 +1,18 @@
+{
+  "Console Log": {
+    "prefix": "clog",
+    "scope": "javascript,typescript",
+    "body": [
+      "console.log(${0:arguments})"
+    ],
+    "description": "Console.log"
+  },
+  "Console Dir": {
+    "prefix": "cdir",
+    "scope": "javascript,typescript",
+    "body": [
+      "console.dir(${0:arguments})"
+    ],
+    "description": "Console.dir"
+  }
+}
