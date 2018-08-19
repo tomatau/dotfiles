@@ -79,13 +79,14 @@ export default class ${1:ComponentName} extends Component {
   render() {
     const { className, ...props } = this.props
     return (
-      ${2:<div className={cx('${1:ComponentName}', className)} {...props} />}
+      <div className={cx('${1:ComponentName}', className)} {...props} />
     )
   }
 }
+
    """
  'React Create Stateless Component':
-   'prefix': 'rcp'
+   'prefix': 'rcsc'
    'body': """
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -100,4 +101,5 @@ ${1:ComponentName}.propTypes = {
 }
 
 export default ${1:ComponentName}
+
    """
