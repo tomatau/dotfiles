@@ -33,6 +33,7 @@ if [[ "$(type -P brew)" ]]; then
     casks=(
         airflow
         atom
+        bitbar
         cd-to
         cleanmymac
         chromedriver
