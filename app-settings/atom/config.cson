@@ -1,5 +1,9 @@
 "*":
   core:
+    disabledPackages: [
+      "language-gfm"
+      "linter-retext"
+    ]
     telemetryConsent: "no"
     themes: [
       "seti-ui"

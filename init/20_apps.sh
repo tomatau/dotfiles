@@ -16,7 +16,6 @@ e_header "Install Atom Packages"
 atom_packages=(
     advanced-open-file
     autocomplete-paths
-    autocomplete-plus
     busy-signal # dep
     change-case
     duplicate-line-or-selection
@@ -54,13 +53,18 @@ code_packages=(
     christian-kohler.npm-intellisense
     dbaeumer.vscode-eslint
     EditorConfig.EditorConfig
+    Equinusocio.vsc-material-theme
     geeebe.duplicate
+    lunaryorn.fish-ide
     mgmcdermott.vscode-language-babel
     ms-vscode.atom-keybindings
     PeterJausovec.vscode-docker
     robertohuertasm.vscode-icons
+    skyapps.fish-vscode
+    sleistner.vscode-fileutils
     Tyriar.sort-lines
     wmaurer.change-case
+    yzhang.markdown-all-in-one
 )
 for package in "${code_packages[@]}"; do
     code --install-extension $package
