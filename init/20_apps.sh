@@ -35,7 +35,7 @@ atom_packages=(
     linter-eslint
     linter-jsonlint
     linter-retext
-    linter-scss-lint
+    linter-sass-lint
     linter-ui-default # dep
     pretty-json
     seti-ui
