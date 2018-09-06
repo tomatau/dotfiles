@@ -12,5 +12,9 @@
   {
     "key": "cmd+k cmd+right",
     "command": "workbench.action.moveEditorToNextGroup"
+  },
+  {
+    "key": "shift+ctrl+/",
+    "command": "editor.action.blockComment"
   }
 ]

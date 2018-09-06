@@ -51,12 +51,14 @@ cp -r "$app_settings_path/atom/" "$HOME/.atom/"
 e_header "Install Code Extensions"
 code_packages=(
     christian-kohler.npm-intellisense
+    christian-kohler.path-intellisense
     dbaeumer.vscode-eslint
     EditorConfig.EditorConfig
     Equinusocio.vsc-material-theme
     geeebe.duplicate
     lunaryorn.fish-ide
     mgmcdermott.vscode-language-babel
+    mikestead.dotenv
     ms-vscode.atom-keybindings
     PeterJausovec.vscode-docker
     robertohuertasm.vscode-icons

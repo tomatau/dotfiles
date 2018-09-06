@@ -46,7 +46,10 @@
     pf = push --force-with-lease
     pfn = push --force-with-lease --no-verify
     pl = pull
-    r = rm --cached
+    rmc = rm --cached
+    re = rebase
+    rec = rebase --continue
+    rea = rebase --abort
     wdiff = diff --color-words
     # View abbreviated SHA, description, and history graph of the latest 20 commits
     l = log --pretty=oneline -n 20 --graph --abbrev-commit
