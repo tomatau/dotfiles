@@ -1,14 +1,16 @@
 {
   "atomKeymap.promptV3Features": true,
   "editor.fontFamily": "Operator Mono, Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 16,
+  "editor.fontSize": 14,
   "editor.formatOnPaste": true,
   "editor.multiCursorModifier": "ctrlCmd",
-  "editor.rulers": [90, 120],
+  "editor.rulers": [
+    90,
+    120
+  ],
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "editor.wrappingIndent": "deepIndent",
-  "explorer.decorations.badges": false,
   "explorer.openEditors.visible": 0,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -21,4 +23,13 @@
   "workbench.enableExperiments": false,
   "workbench.iconTheme": "eq-material-theme-icons-darker",
   "workbench.startupEditor": "newUntitledFile",
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+  },
+  "emmet.syntaxProfiles": {
+    "jsx": {
+      "attr_quotes": "single"
+    }
+  }
 }
