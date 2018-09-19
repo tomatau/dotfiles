@@ -26,7 +26,7 @@ alias o=open
 alias reload="exec $SHELL -l"
 
 # brew
-alias brewupdate="brew update; and brew cleanup; and brew cask upgrade; and brew cask cleanup"
+alias brewupdate="brew update; and brew upgrade; and brew cask upgrade; and brew cleanup"
 
 # docker
 alias dockerkillall='docker kill (docker ps -q)'
