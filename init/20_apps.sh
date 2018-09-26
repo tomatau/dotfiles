@@ -52,9 +52,12 @@ e_header "Install Code Extensions"
 code_packages=(
     christian-kohler.npm-intellisense
     christian-kohler.path-intellisense
+    cssho.vscode-svgviewer
     dbaeumer.vscode-eslint
+    dunstontc.viml
     EditorConfig.EditorConfig
     Equinusocio.vsc-material-theme
+    ExodiusStudios.comment-anchors
     geeebe.duplicate
     lunaryorn.fish-ide
     mgmcdermott.vscode-language-babel
@@ -62,6 +65,7 @@ code_packages=(
     ms-vscode.atom-keybindings
     PeterJausovec.vscode-docker
     robertohuertasm.vscode-icons
+    sidneys1.gitconfig
     skyapps.fish-vscode
     sleistner.vscode-fileutils
     Tyriar.sort-lines

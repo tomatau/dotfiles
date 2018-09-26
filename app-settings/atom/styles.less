@@ -1,3 +1,23 @@
 li.texteditor.tab.modified {
     color: #ff9520;
 }
+
+@header-color: #e06c75;
+
+.syntax--md {
+  .syntax--heading-2 {
+    color: spin(@header-color, 20);
+  }
+  .syntax--heading-3 {
+    color: spin(@header-color, 40);
+  }
+  .syntax--heading-4 {
+    color: spin(@header-color, 60);
+  }
+  .syntax--heading-5 {
+    color: spin(@header-color, 80);
+  }
+  .syntax--heading-6 {
+    color: spin(@header-color, 100);
+  }
+}
