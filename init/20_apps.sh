@@ -50,6 +50,7 @@ cp -r "$app_settings_path/atom/" "$HOME/.atom/"
 
 e_header "Install Code Extensions"
 code_packages=(
+    asvetliakov.snapshot-tools
     christian-kohler.npm-intellisense
     christian-kohler.path-intellisense
     cssho.vscode-svgviewer
@@ -63,12 +64,17 @@ code_packages=(
     mgmcdermott.vscode-language-babel
     mikestead.dotenv
     ms-vscode.atom-keybindings
+    Orta.vscode-jest
     PeterJausovec.vscode-docker
-    robertohuertasm.vscode-icons
+    ritwickdey.LiveServer
     sidneys1.gitconfig
     skyapps.fish-vscode
     sleistner.vscode-fileutils
+    streetsidesoftware.code-spell-checker
+    techer.open-in-browser
+    travisthetechie.write-good-linter
     Tyriar.sort-lines
+    vscode-icons-team.vscode-icons
     wmaurer.change-case
     yzhang.markdown-all-in-one
 )
