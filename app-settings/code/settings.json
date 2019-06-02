@@ -1,16 +1,34 @@
 {
   "atomKeymap.promptV3Features": true,
   "editor.fontFamily": "Operator Mono, Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 14,
   "editor.formatOnPaste": true,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.rulers": [
     90,
     120
   ],
+  "editor.snippetSuggestions": "top",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "editor.wrappingIndent": "deepIndent",
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "punctuation.definition.comment",
+        "settings": {
+          "fontStyle": "italic",
+          "foreground": "#ff7bed",
+        }
+      },
+      {
+        "scope": "comment",
+        "settings": {
+          "fontStyle": "italic",
+          "foreground": "#ff7bed",
+        }
+      }
+    ]
+  },
   "explorer.openEditors.visible": 0,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -21,7 +39,6 @@
   "workbench.colorTheme": "Material Theme Darker High Contrast",
   "workbench.editor.closeOnFileDelete": false,
   "workbench.enableExperiments": false,
-  "workbench.iconTheme": "eq-material-theme-icons-darker",
   "workbench.startupEditor": "newUntitledFile",
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
@@ -31,5 +48,42 @@
     "jsx": {
       "attr_quotes": "single"
     }
-  }
+  },
+  "window.zoomLevel": 0,
+  "jest.autoEnable": false,
+  "breadcrumbs.enabled": true,
+  "explorer.confirmDragAndDrop": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "workbench.editor.highlightModifiedTabs": true,
+  "write-good.languages": [
+    "markdown",
+    "md",
+    "plaintext"
+  ],
+  "cSpell.enabledLanguageIds": [
+    "asciidoc",
+    "latex",
+    "markdown",
+    "plaintext",
+    "pub",
+    "restructuredtext",
+    "text"
+  ],
+  "cSpell.userWords": [
+    "Abiogenesis",
+    "falafel",
+    "modularisation",
+    "performant",
+    "permaculture",
+    "postgre",
+    "postgres",
+    "sql",
+    "walkthrough",
+    "wireframes"
+  ],
+  "extensions.ignoreRecommendations": false,
+  "workbench.colorCustomizations": {},
+  "diffEditor.ignoreTrimWhitespace": false,
+  "workbench.list.automaticKeyboardNavigation": false,
+  "editor.fontSize": 13
 }

@@ -16,5 +16,11 @@
   {
     "key": "shift+ctrl+/",
     "command": "editor.action.blockComment"
-  }
+  },
+  // damn thing breaks minimize, override to remove the maths crap
+  {
+    "key": "cmd+m",
+    "command": "",
+    "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
+  },
 ]
