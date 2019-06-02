@@ -32,18 +32,25 @@ if [[ "$(type -P brew)" ]]; then
 
     casks=(
         airflow
+        android-file-transfer
         atom
         bitbar
         cd-to
-        cleanmymac
         chromedriver
+        cleanmymac
+        dbeaver-community
+        discord
+        docker
         firefox
         firefox-developer-edition
         google-chrome
         iterm2
         java
         karabiner-elements
+        now
+        postman
         qbittorrent
+        robo-3t
         sequel-pro
         shiftit
         skype
@@ -54,6 +61,7 @@ if [[ "$(type -P brew)" ]]; then
         virtualbox
         visual-studio-code
         vlc
+        whatsapp
         xquartz
     )
 
@@ -77,6 +85,7 @@ if [[ "$(type -P brew)" ]]; then
         ffmpeg
         fish
         git
+        heroku
         highlight
         imagemagick
         mongodb
