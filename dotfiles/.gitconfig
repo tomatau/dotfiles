@@ -29,9 +29,9 @@
     cian = commit --amend -C HEAD --no-verify
     mend = commit --amend
     co = checkout
-    d = diff
-    dsd = diff --staged
-    dst = diff --stat
+    d = diff -- ':!package-lock.json'
+    dsd = diff --staged -- ':!package-lock.json'
+    dst = diff --stat -- ':!package-lock.json'
     new = log master.. --reverse
     unstage = reset HEAD
     uncommit = reset HEAD~
@@ -47,9 +47,9 @@
     pfn = push --force-with-lease --no-verify
     pl = pull
     rmc = rm --cached
-    rb = rebase
-    rbc = rebase --continue
-    rba = rebase --abort
+	rb = rebase
+	rbc = rebase --continue
+	rba = rebase --abort
     wdiff = diff --color-words
     # View abbreviated SHA, description, and history graph of the latest 20 commits
     l = log --pretty=oneline -n 20 --graph --abbrev-commit
@@ -58,9 +58,8 @@
     newb = checkout master -b
     delbr = push origin --delete
     pf = push --force-with-lease
-
 [help]
-    autocorrect = 3
+    autocorrect = 20
 [web]
     browser = open
 
