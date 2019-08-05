@@ -63,15 +63,14 @@ code_packages=(
     lunaryorn.fish-ide
     mgmcdermott.vscode-language-babel
     mikestead.dotenv
+    ms-azuretools.vscode-docker
     ms-vscode.atom-keybindings
     Orta.vscode-jest
-    PeterJausovec.vscode-docker
     ritwickdey.LiveServer
     sidneys1.gitconfig
     skyapps.fish-vscode
     sleistner.vscode-fileutils
     streetsidesoftware.code-spell-checker
-    techer.open-in-browser
     travisthetechie.write-good-linter
     Tyriar.sort-lines
     vscode-icons-team.vscode-icons

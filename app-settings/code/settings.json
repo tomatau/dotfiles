@@ -85,5 +85,6 @@
   "workbench.colorCustomizations": {},
   "diffEditor.ignoreTrimWhitespace": false,
   "workbench.list.automaticKeyboardNavigation": false,
-  "editor.fontSize": 13
+  "editor.fontSize": 13,
+  "liveServer.settings.donotShowInfoMsg": true
 }
