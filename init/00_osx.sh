@@ -43,10 +43,14 @@ if [[ "$(type -P brew)" ]]; then
         docker
         firefox
         firefox-developer-edition
+        franz
         google-chrome
+        google-backup-and-sync
+        iina
         iterm2
         java
         karabiner-elements
+        lulu
         now
         postman
         qbittorrent
@@ -60,9 +64,8 @@ if [[ "$(type -P brew)" ]]; then
         the-unarchiver
         virtualbox
         visual-studio-code
-        vlc
-        whatsapp
         xquartz
+        yed
     )
 
     brew tap caskroom/versions
@@ -88,6 +91,7 @@ if [[ "$(type -P brew)" ]]; then
         heroku
         highlight
         imagemagick
+        jq
         mongodb
         mycli
         mysql
@@ -96,6 +100,7 @@ if [[ "$(type -P brew)" ]]; then
         postgresql
         sqlite
         ssh-copy-id
+        tldr
         tree
         vim
     )
