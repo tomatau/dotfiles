@@ -21,6 +21,7 @@ atom_packages=(
     duplicate-line-or-selection
     editorconfig
     emmet
+    file-icons
     foldername-tabs
     highlight-selected
     hyperclick
@@ -53,6 +54,7 @@ code_packages=(
     asvetliakov.snapshot-tools
     christian-kohler.npm-intellisense
     christian-kohler.path-intellisense
+    CoenraadS.bracket-pair-colorizer
     cssho.vscode-svgviewer
     dbaeumer.vscode-eslint
     dunstontc.viml
@@ -60,7 +62,9 @@ code_packages=(
     Equinusocio.vsc-material-theme
     ExodiusStudios.comment-anchors
     geeebe.duplicate
+    joshpeng.theme-charcoal-oceanicnext
     lunaryorn.fish-ide
+    marcoms.oceanic-plus
     mgmcdermott.vscode-language-babel
     mikestead.dotenv
     ms-azuretools.vscode-docker
@@ -71,6 +75,7 @@ code_packages=(
     skyapps.fish-vscode
     sleistner.vscode-fileutils
     streetsidesoftware.code-spell-checker
+    tomoki1207.pdf
     travisthetechie.write-good-linter
     Tyriar.sort-lines
     vscode-icons-team.vscode-icons

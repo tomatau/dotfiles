@@ -62,7 +62,20 @@ export default class ${1:ComponentName} extends Component {
     )
   }
 }
+   """
+ 'React Create Class Simple':
+   'prefix': 'rccs'
+   'body': """
+import React, { Component } from 'react'
 
+export default class ${1:ComponentName} extends Component {
+  render() {
+    const { ...props } = this.props
+    return (
+      <div {...props} />
+    )
+  }
+}
    """
  'React Create Stateless Component':
    'prefix': 'rcsc'
@@ -71,14 +84,28 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 
-const ${1:ComponentName} = ({ className, ...props }) => (
-  <div className={cx('${1:ComponentName}', className)} {...props} />
-)
+function ${1:ComponentName}({ className, ...props }) {
+  return (
+    <div className={cx('${1:ComponentName}', className)} {...props} />
+  )
+}
 
 ${1:ComponentName}.propTypes = {
   className: PropTypes.string,
 }
 
 export default ${1:ComponentName}
+   """
+ 'React Create Stateless Component Simple':
+   'prefix': 'rcscs'
+   'body': """
+import React from 'react'
 
+function ${1:ComponentName}({ ...props }) {
+  return (
+    <div {...props} />
+  )
+}
+
+export default ${1:ComponentName}
    """

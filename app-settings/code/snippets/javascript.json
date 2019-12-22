@@ -1,7 +1,6 @@
 {
   "Console_Log": {
     "prefix": "clog",
-    "scope": "javascript,typescript",
     "body": [
       "console.log(${0:arguments})"
     ],
@@ -9,7 +8,6 @@
   },
   "Console_Dir": {
     "prefix": "cdir",
-    "scope": "javascript,typescript",
     "body": [
       "console.dir(${0:arguments})"
     ],
@@ -17,7 +15,6 @@
   },
   "Describe_Block": {
     "prefix": "desc",
-    "scope": "javascript,typescript",
     "body": [
       "describe(`${1:What}`, () => {",
       "\t${0}",
@@ -27,7 +24,6 @@
   },
   "Context_Block": {
     "prefix": "cont",
-    "scope": "javascript,typescript",
     "body": [
       "context(`${1:What}`, () => {",
       "\t${0}",
@@ -37,7 +33,6 @@
   },
   "It_Block": {
     "prefix": "it",
-    "scope": "javascript,typescript",
     "body": [
       "it(`${1:does what?}`, ${2:async }() => {",
       "\t${0}",
@@ -47,7 +42,6 @@
   },
   "Before_Block": {
     "prefix": "befr",
-    "scope": "javascript,typescript",
     "body": [
       "before${1:Each}(${2:async }() => {",
       "\t${0}",
@@ -57,7 +51,6 @@
   },
   "After_Block": {
     "prefix": "aftr",
-    "scope": "javascript,typescript",
     "body": [
       "after${1:Each}(${2:async }() => {",
       "\t${0}",
@@ -67,7 +60,6 @@
   },
   "Import_Statement": {
     "prefix": "import",
-    "scope": "javascript,typescript",
     "body": [
       "import ${2:module} from '${1:where}'"
     ],
@@ -75,7 +67,6 @@
   },
   "React_Create_Class": {
     "prefix": "rcc",
-    "scope": "javascript,typescript",
     "body": [
       "import React, { Component } from 'react'",
       "import PropTypes from 'prop-types'",
@@ -99,7 +90,6 @@
   },
   "React_Create_Class_Simple": {
     "prefix": "rccs",
-    "scope": "javascript,typescript",
     "body": [
       "import React, { Component } from 'react'",
       "",
@@ -118,15 +108,16 @@
   },
   "React_Create_Stateless_Component": {
     "prefix": "rcsc",
-    "scope": "javascript,typescript",
     "body": [
       "import React from 'react'",
       "import PropTypes from 'prop-types'",
       "import cx from 'classnames'",
       "",
-      "const ${1:${TM_FILENAME/(.*)\\..+$/$1/}} = ({ className, ...props }) => (",
-      "\t<div className={cx('${1:${TM_FILENAME/(.*)\\..+$/$1/}}', className)} {...props} />",
-      ")",
+      "function ${1:${TM_FILENAME/(.*)\\..+$/$1/}}({ className, ...props }) {",
+      "\treturn (",
+      "\t\t<div className={cx('${1:${TM_FILENAME/(.*)\\..+$/$1/}}', className)} {...props} />",
+      "\t)",
+      "}",
       "",
       "${1:${TM_FILENAME/(.*)\\..+$/$1/}}.propTypes = {",
       "\tclassName: PropTypes.string,",
@@ -136,5 +127,21 @@
       ""
     ],
     "description": "React Create Stateless Component"
+  },
+  "React_Create_Stateless_Component_Simple": {
+    "prefix": "rcscs",
+    "body": [
+      "import React from 'react'",
+      "",
+      "function ${1:${TM_FILENAME/(.*)\\..+$/$1/}}({ ...props }) {",
+      "\treturn (",
+      "\t\t<div {...props} />",
+      "\t)",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME/(.*)\\..+$/$1/}}",
+      ""
+    ],
+    "description": "React Create Stateless Component Simple"
   }
 }
