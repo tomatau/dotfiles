@@ -5,7 +5,7 @@
 declare default_node="v10.15.3"
 declare node_versions=(
   "$default_node"
-  v12.3.1
+  v12.14.0
 )
 declare npm_globals=(
   ndb
