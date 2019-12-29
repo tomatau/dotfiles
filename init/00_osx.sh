@@ -34,6 +34,7 @@ if [[ "$(type -P brew)" ]]; then
         airflow
         android-file-transfer
         atom
+        betterzip
         bitbar
         cd-to
         chromedriver
@@ -46,6 +47,7 @@ if [[ "$(type -P brew)" ]]; then
         franz
         google-chrome
         google-backup-and-sync
+        grammarly
         iina
         iterm2
         java
@@ -54,6 +56,12 @@ if [[ "$(type -P brew)" ]]; then
         now
         postman
         qbittorrent
+        qlcolorcode
+        qlimagesize
+        qlmarkdown
+        qlstephen
+        qlvideo
+        quicklook-json
         robo-3t
         sequel-pro
         shiftit
