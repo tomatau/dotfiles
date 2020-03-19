@@ -11,4 +11,4 @@ fi
 
 export PATH
 
-[[ -s ~/.bin/z/z.sh ]] && . ~/.bin/z/z.sh
+[[ -s "$HOME/.bin/z/z.sh" ]] && . "$HOME/.bin/z/z.sh"
