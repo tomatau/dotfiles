@@ -8,23 +8,25 @@ fi
 
 read -p "Overwrite existing .bin? [following install may break if not](y/n) " -n 1;
 echo "";
+
 if [[ $REPLY =~ ^[Nn]$ ]]; then
   e_header "Skipped ~/.bin overwrite"
 else
   rsync -av \
-    --exclude ".git/" \
     --exclude ".DS_Store" \
-    --exclude ".gitmodules" \
+    --exclude ".git/" \
     --exclude ".gitignore" \
-    --exclude "dotfiles.sh" \
+    --exclude ".gitmodules" \
+    --exclude "app-settings" \
     --exclude "dotfiles_functions.sh" \
     --exclude "dotfiles_requirements.sh" \
     --exclude "dotfiles_sync.sh" \
+    --exclude "dotfiles.sh" \
     --exclude "dotfiles" \
     --exclude "editor-settings" \
     --exclude "init" \
-    --exclude "tmp" \
     --exclude "README.md" \
+    --exclude "tmp" \
     "$PWATH/.." ~
 
   if [[ "$new_dotfiles_install" != 1 ]]; then

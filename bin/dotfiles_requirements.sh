@@ -11,6 +11,7 @@ if [[ ! "$(type -P git)" && "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
   e_header "Installing Git"
   sudo apt-get -qq install git
 fi
+
 if [[ ! "$(type -P git)" ]]; then
   e_error "Git should be installed. It isn't. Aborting."
   exit 1
