@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # when running scripts this is filename (nice)
-SCRIPT=$( basename "$0" )
+SCRIPT=$(basename "$0")
 # PWATH PATH
-PWATH="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PARENT=$( dirname $PWATH )
+PWATH="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PARENT=$(dirname $PWATH)
 
 echo "DOTFILES! - Let's Rock It!"
 
@@ -41,6 +41,9 @@ cd $PARENT
 # Tweak file globbing.
 shopt -s dotglob
 shopt -s nullglob # make * eval to nothing if no files
+
+e_header "Updating submodules."
+git submodule update --init --recursive --remote
 
 e_header "Copying dotfiles!"
 rsync -av "$PARENT/dotfiles/" ~
