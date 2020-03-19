@@ -15,6 +15,7 @@
     scrollPastEnd: true
     showIndentGuide: true
     softWrap: true
+    softWrapHangingIndent: 4
   "linter-retext": {}
   "linter-scss-lint":
     disableWhenNoConfigFileInPath: true
