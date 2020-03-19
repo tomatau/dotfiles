@@ -1,5 +1,6 @@
 {
   "Console_Log": {
+    "scope": "javascript,typescript,typescriptreact",
     "prefix": "clog",
     "body": [
       "console.log(${0:arguments})"
@@ -7,6 +8,7 @@
     "description": "Console.log"
   },
   "Console_Dir": {
+    "scope": "javascript,typescript,typescriptreact",
     "prefix": "cdir",
     "body": [
       "console.dir(${0:arguments})"
@@ -14,6 +16,7 @@
     "description": "Console.dir"
   },
   "Describe_Block": {
+    "scope": "javascript,typescript,typescriptreact",
     "prefix": "desc",
     "body": [
       "describe(`${1:What}`, () => {",
@@ -23,6 +26,7 @@
     "description": "Describe Block"
   },
   "Context_Block": {
+    "scope": "javascript,typescript,typescriptreact",
     "prefix": "cont",
     "body": [
       "context(`${1:What}`, () => {",
@@ -32,6 +36,7 @@
     "description": "Context Block"
   },
   "It_Block": {
+    "scope": "javascript,typescript,typescriptreact",
     "prefix": "it",
     "body": [
       "it(`${1:does what?}`, ${2:async }() => {",
@@ -41,6 +46,7 @@
     "description": "It Block"
   },
   "Before_Block": {
+    "scope": "javascript,typescript,typescriptreact",
     "prefix": "befr",
     "body": [
       "before${1:Each}(${2:async }() => {",
@@ -50,6 +56,7 @@
     "description": "Before Block"
   },
   "After_Block": {
+    "scope": "javascript,typescript,typescriptreact",
     "prefix": "aftr",
     "body": [
       "after${1:Each}(${2:async }() => {",
@@ -59,6 +66,7 @@
     "description": "After Block"
   },
   "Import_Statement": {
+    "scope": "javascript,typescript,typescriptreact",
     "prefix": "import",
     "body": [
       "import ${2:module} from '${1:where}'"
@@ -66,6 +74,7 @@
     "description": "Import Statement"
   },
   "React_Create_Class": {
+    "scope": "javascript,typescript,typescriptreact",
     "prefix": "rcc",
     "body": [
       "import React, { Component } from 'react'",
@@ -89,6 +98,7 @@
     "description": "React Create Class"
   },
   "React_Create_Class_Simple": {
+    "scope": "javascript,typescript,typescriptreact",
     "prefix": "rccs",
     "body": [
       "import React, { Component } from 'react'",
@@ -107,6 +117,7 @@
     "description": "React Create Class Simple"
   },
   "React_Create_Stateless_Component": {
+    "scope": "javascript,typescript,typescriptreact",
     "prefix": "rcsc",
     "body": [
       "import React from 'react'",
@@ -129,6 +140,7 @@
     "description": "React Create Stateless Component"
   },
   "React_Create_Stateless_Component_Simple": {
+    "scope": "javascript,typescript,typescriptreact",
     "prefix": "rcscs",
     "body": [
       "import React from 'react'",

@@ -1,16 +1,43 @@
 {
   "atomKeymap.promptV3Features": true,
+  "breadcrumbs.enabled": true,
+  "diffEditor.ignoreTrimWhitespace": false,
   "editor.fontFamily": "Operator Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 13,
   "editor.formatOnPaste": true,
   "editor.multiCursorModifier": "ctrlCmd",
-  "editor.rulers": [
-    90,
-    120
-  ],
+  "editor.semanticHighlighting.enabled": false,
   "editor.snippetSuggestions": "top",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "editor.wrappingIndent": "deepIndent",
+  "extensions.ignoreRecommendations": false,
+  "explorer.openEditors.visible": 0,
+  "emmet.triggerExpansionOnTab": true,
+  "explorer.confirmDragAndDrop": false,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.validate.enable": false,
+  "jest.autoEnable": false,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "telemetry.enableTelemetry": false,
+  "terminal.external.osxExec": "iTerm.app",
+  "typescript.validate.enable": false,
+  "window.restoreWindows": "all",
+  "window.zoomLevel": 0,
+  "workbench.colorCustomizations": {},
+  "workbench.colorTheme": "Material Theme Darker High Contrast",
+  "workbench.editor.closeOnFileDelete": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.enableExperiments": false,
+  "workbench.list.automaticKeyboardNavigation": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.rulers": [
+    90,
+    120
+  ],
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
@@ -29,18 +56,6 @@
       }
     ]
   },
-  "explorer.openEditors.visible": 0,
-  "files.insertFinalNewline": true,
-  "files.trimFinalNewlines": true,
-  "files.trimTrailingWhitespace": true,
-  "telemetry.enableTelemetry": false,
-  "terminal.external.osxExec": "iTerm.app",
-  "window.restoreWindows": "all",
-  "workbench.colorTheme": "Material Theme Darker High Contrast",
-  "workbench.editor.closeOnFileDelete": false,
-  "workbench.enableExperiments": false,
-  "workbench.startupEditor": "newUntitledFile",
-  "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
   },
@@ -49,18 +64,12 @@
       "attr_quotes": "single"
     }
   },
-  "window.zoomLevel": 0,
-  "jest.autoEnable": false,
-  "breadcrumbs.enabled": true,
-  "explorer.confirmDragAndDrop": false,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "workbench.editor.highlightModifiedTabs": true,
   "write-good.languages": [
     "markdown",
     "md",
     "plaintext"
   ],
-  "cSpell.enabledLanguageIds": [
+  "cSpell.enableFiletypes": [
     "asciidoc",
     "latex",
     "markdown",
@@ -81,13 +90,5 @@
     "sql",
     "walkthrough",
     "wireframes"
-  ],
-  "extensions.ignoreRecommendations": false,
-  "workbench.colorCustomizations": {},
-  "diffEditor.ignoreTrimWhitespace": false,
-  "workbench.list.automaticKeyboardNavigation": false,
-  "editor.fontSize": 13,
-  "liveServer.settings.donotShowInfoMsg": true,
-  "typescript.validate.enable": false,
-  "javascript.validate.enable": false,
+  ]
 }
