@@ -5,8 +5,12 @@ set -x NPM_TOKEN "tmp-123-abc"
 
 set -x NVM_DIR "$HOME/.nvm"
 
-if test -d $HOME/.bin
-    set PATH $HOME/.bin $PATH
+set -x PGUSER "postgres"
+
+set PATH "/usr/local/bin" "/opt/X11/bin" "/usr/local/sbin" $PATH
+
+if test -d "$HOME/.bin"
+    set PATH "$HOME/.bin" $PATH
 end
 
 set EDITOR 'subl'
@@ -23,7 +27,7 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 # quick open
 alias o=open
 
-alias reload="exec $SHELL -l"
+alias reload="exec "(which fish)" -l"
 
 # brew
 alias brewupdate="brew update; and brew upgrade; and brew cask upgrade; and brew cleanup"
