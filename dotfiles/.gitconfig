@@ -49,6 +49,7 @@
     rmc = rm --cached
 	rb = rebase
 	rbc = rebase --continue
+	rbs = rebase --skip
 	rba = rebase --abort
     wdiff = diff --color-words
     # View abbreviated SHA, description, and history graph of the latest 20 commits
@@ -59,7 +60,7 @@
     delbr = push origin --delete
     pf = push --force-with-lease
 [help]
-    autocorrect = 20
+    autocorrect = 4
 [web]
     browser = open
 
