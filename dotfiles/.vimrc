@@ -12,7 +12,7 @@ set wildmenu
 
 " general appearance
 syntax enable
-set number
+set number relativenumber
 set showcmd
 set ruler " show line and col number of cursor in bottom
 set cursorline " underline cursor
@@ -39,7 +39,7 @@ set nrformats-=octal
 
 " tabs and indentation
 set autoindent " maintains indentation for next line
-set smartindent " indents for blocks
+set cindent " indents for blocks
 set tabstop=2 " normal mode
 set softtabstop=2 " insert mode
 set shiftwidth=2 " esc & v mode
