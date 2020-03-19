@@ -7,8 +7,7 @@ if [[ -d ~/.bin ]]; then
     {
       pushd ~/.bin
       git clone https://github.com/rupa/z.git
-      [[ -s ~/.bin/z/z.sh ]] && chmod +x ./z/z.sh
-      # ln -s ~/.bin/z/z.sh z.sh # link to ./bin/z.sh in path
+      [[ -s ~/.bin/z/z.sh ]] && chmod +x ~/.bin/z/z.sh
       popd
     } > /dev/null
     e_success "Installed Z"

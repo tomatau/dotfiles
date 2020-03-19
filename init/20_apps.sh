@@ -54,14 +54,17 @@ code_packages=(
     asvetliakov.snapshot-tools
     christian-kohler.npm-intellisense
     christian-kohler.path-intellisense
-    CoenraadS.bracket-pair-colorizer
+    CoenraadS.bracket-pair-colorizer-2
     cssho.vscode-svgviewer
     dbaeumer.vscode-eslint
     dunstontc.viml
     EditorConfig.EditorConfig
+    Equinusocio.vsc-community-material-theme
     Equinusocio.vsc-material-theme
+    equinusocio.vsc-material-theme-icons
     ExodiusStudios.comment-anchors
     geeebe.duplicate
+    JaimeOlivares.yuml
     joshpeng.theme-charcoal-oceanicnext
     lunaryorn.fish-ide
     marcoms.oceanic-plus

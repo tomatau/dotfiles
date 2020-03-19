@@ -2,15 +2,14 @@
 
 # Can remove the .31 here to just install the latest
 # should uncomment the default_node="$(nvm current)" too
-declare default_node="v10.18.0"
+declare default_node="v12.16.1"
 declare node_versions=(
   "$default_node"
-  v12.14.0
-  v13.5.0
+  v13.11.0
 )
 declare npm_globals=(
   ndb
-  http-server
+  # http-server
 )
 
 function get_nvm_versions() {
@@ -29,14 +28,13 @@ function nvm_set_current_node() {
   for v in $(to_install "${node_versions[*]}" "$(get_nvm_versions)"); do
     nvm install "$v"
   done
-  # default_node="$(nvm current)"
   nvm alias stable "$default_node"
   e_success "Installed Node $default_node and set as current"
 }
 
 function install_nvm() {
   if [[ ! -s "$NVM_DIR/nvm.sh" ]]; then
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
     export NVM_DIR="$HOME/.nvm"
     export NPM_TOKEN="tmp-abc-1234" # fix bug with .npmrc
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
@@ -55,7 +53,7 @@ fi
 # Update Npm
 e_header "Updating Npm"
 if [[ "$(type -P npm)" ]]; then
-  npm install -g npm
+  npm install -g npm yarn
 else
   e_error "Npm was not installed correctly :/"
   return 1
