@@ -1,4 +1,11 @@
 function __prompt_parent -a dir -d 'prompt_pwd without current dir'
+  if test 70 -lt $COLUMNS
+    set -g fish_prompt_pwd_dir_length 9
+  else if test 70 -lt $COLUMNS
+    set -g fish_prompt_pwd_dir_length 4
+  else
+    set -g fish_prompt_pwd_dir_length 2
+  end
   string replace $dir '' (prompt_pwd)
 end
 
