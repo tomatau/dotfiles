@@ -66,6 +66,7 @@ if [[ "$(type -P brew)" ]]; then
         visual-studio-code
         xquartz
         yed
+        zoomus
     )
 
     cask_list="$(to_install "${casks[*]}" "$(brew cask list 2>/dev/null)")"
