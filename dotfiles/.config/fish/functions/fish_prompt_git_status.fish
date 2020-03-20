@@ -1,6 +1,6 @@
 function fish_prompt_git_status
   set -l set_normal (set_color normal)
-  set -l set_blue (set_color blue)
+  set -l set_blue (set_color 0366d6)
   set -l set_magenta (set_color magenta)
   set -l set_pink (set_color FF69B4)
 
@@ -19,8 +19,10 @@ function fish_prompt_git_status
 
   if git_is_repo
     echo -ns $set_normal ' '
-    echo -ns $set_blue '±'
-    echo -ns $set_normal ' '
+    if test 50 -lt $COLUMNS
+      echo -ns $set_blue '±'
+      echo -ns $set_normal ' '
+    end
     echo -ns $set_magenta (git_branch_name)
 
     if git_is_touched; or git_has_untracked; or git_has_stashed

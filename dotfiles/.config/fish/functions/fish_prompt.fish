@@ -61,10 +61,6 @@ function __finish_segments -S -d 'Close open prompt segments'
   set current_bg
 end
 
-function __prompt_node_version -d 'Show current node version'
-  echo -ns '⏣ ' (nvm current)
-end
-
 function __bobthefish_prompt_status -S -a last_status \
   -d 'Display symbols for a non zero exit status, root and background jobs'
   set -l nonzero
@@ -132,30 +128,52 @@ function __bobthefish_prompt_status -S -a last_status \
   end
 end
 
-function fish_prompt
+function __prompt_node_version -d 'Show current node version'
+  set -l current_version (nvm current)
+  if [ $current_version != 'none' ]
+    echo -ns $current_version ' '
+  end
+end
+
+function __long_prompt
   set -l last_status $status
   set -l current_bg
 
+  set -l dullgreen 1C3A13
+  set -l brightgreen 4B7703
+  set -l champagne F1DAC4
+  set -l myblue 0366d6
+  set -l tomatao CD4A03
+  set -l grey 222222
+
   set -l set_normal (set_color normal)
-  set -l set_green (set_color 4B7703)
-  set -l set_blue (set_color blue)
-  set -l set_tomato (set_color CD4A03)
 
   if not set -q VIRTUAL_ENV_DISABLE_PROMPT
     set -g VIRTUAL_ENV_DISABLE_PROMPT true
   end
 
-  __bobthefish_prompt_status $last_status
-  echo -ns $set_tomato (whoami)
-  # echo -ns $set_blue ' @ '
-  # echo -ns $set_green (prompt_hostname)
-  echo -ns ' '
-  __start_segment 222 # grey
+  if test 70 -lt $COLUMNS
+    __bobthefish_prompt_status $last_status
+    set_color $tomatao
+    echo -ns (whoami)
+    echo -ns ' '
+  end
+
+  if test 80 -lt $COLUMNS
+    __start_segment $grey 999
+    echo -ns (hostname -s)
+    echo -ns ' '
+  end
+
+  __start_segment black
   __prompt_dir
   echo -ns ' '
-  __start_segment 4B7703 fff # green
-  __prompt_node_version
-  echo -ns ' '
+
+  if test 50 -lt $COLUMNS
+    __start_segment $brightgreen $champagne
+    __prompt_node_version
+  end
+
   __finish_segments
   fish_prompt_git_status
 
@@ -163,9 +181,13 @@ function fish_prompt
   echo
   if test $VIRTUAL_ENV
     printf "(%s) " \
-      ($set_blue)\
+      (set_color $myblue)\
       (basename $VIRTUAL_ENV)\
       ($set_normal)
   end
   echo -ns $set_normal '↪ '
+end
+
+function fish_prompt
+  __long_prompt
 end
