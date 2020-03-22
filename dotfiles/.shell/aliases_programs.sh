@@ -61,7 +61,7 @@ function vim() {
 # ngrok
 function ngrokserver() {
   local port="${1:-9000}";
-  ngrok -subdomain=tomatao "${port}"
+  ngrok http -subdomain=tomatao "${port}"
 }
 
 function setjdk() {

@@ -46,6 +46,7 @@ if [[ "$(type -P brew)" ]]; then
         java
         karabiner-elements
         lulu
+        ngrok
         postman
         qbittorrent
         qlcolorcode
