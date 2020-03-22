@@ -83,6 +83,7 @@ if [[ "$(type -P brew)" ]]; then
         bash
         bash-completion
         curl
+        direnv
         ffmpeg
         fish
         gh
