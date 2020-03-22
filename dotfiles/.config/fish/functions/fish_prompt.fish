@@ -1,7 +1,7 @@
 function __prompt_parent -a dir -d 'prompt_pwd without current dir'
-  if test 70 -lt $COLUMNS
+  if test 100 -lt $COLUMNS
     set -g fish_prompt_pwd_dir_length 9
-  else if test 70 -lt $COLUMNS
+  else if test 80 -lt $COLUMNS
     set -g fish_prompt_pwd_dir_length 4
   else
     set -g fish_prompt_pwd_dir_length 2
@@ -20,8 +20,10 @@ function __prompt_dir -d 'Show dir with current dir bolded'
     case "$HOME"
       echo -ns $set_yellow_bold '~'
     case '*'
-      echo -ns $set_amber (__prompt_parent $dir) \
-        $set_yellow_bold $dir
+      if test 80 -lt $COLUMNS
+        echo -ns $set_amber (__prompt_parent $dir)
+      end
+      echo -ns $set_yellow_bold $dir
   end
 end
 
@@ -132,6 +134,8 @@ function __bobthefish_prompt_status -S -a last_status \
       set_color -b $colour_initial_segment_cant
       echo -n $cant_write_glyph
     end
+  # else
+  #   __start_segment 000 $tomatao
   end
 end
 
@@ -152,6 +156,8 @@ function __long_prompt
   set -l myblue 0366d6
   set -l tomatao CD4A03
   set -l grey 222222
+  set -l lightgrey 444444
+  set -l brightgrey 999999
 
   set -l set_normal (set_color normal)
 
@@ -166,13 +172,13 @@ function __long_prompt
     echo -ns ' '
   end
 
-  if test 80 -lt $COLUMNS
-    __start_segment $grey 999
+  if test 95 -lt $COLUMNS
+    __start_segment $lightgrey $brightgrey
     echo -ns (hostname -s)
     echo -ns ' '
   end
 
-  __start_segment black
+  __start_segment $grey
   __prompt_dir
   echo -ns ' '
 
@@ -186,12 +192,6 @@ function __long_prompt
 
   # Line 2
   echo
-  if test $VIRTUAL_ENV
-    printf "(%s) " \
-      (set_color $myblue)\
-      (basename $VIRTUAL_ENV)\
-      ($set_normal)
-  end
   echo -ns $set_normal '↪ '
 end
 
