@@ -30,7 +30,6 @@ if [[ "$(type -P brew)" ]]; then
         atom
         betterzip
         bitbar
-        cd-to
         chromedriver
         cleanmymac
         dbeaver-community
@@ -47,6 +46,7 @@ if [[ "$(type -P brew)" ]]; then
         karabiner-elements
         lulu
         ngrok
+        openinterminal
         postman
         qbittorrent
         qlcolorcode
