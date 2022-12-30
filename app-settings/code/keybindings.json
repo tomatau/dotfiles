@@ -23,4 +23,8 @@
     "command": "",
     "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
   },
+  {
+    "key":"ctrl+shift+\\",
+    "command": "workbench.action.toggleAuxiliaryBar"
+  }
 ]

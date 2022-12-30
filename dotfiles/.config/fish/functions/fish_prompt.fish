@@ -165,14 +165,22 @@ function __long_prompt
     set -g VIRTUAL_ENV_DISABLE_PROMPT true
   end
 
-  if test 70 -lt $COLUMNS
+  if test 80 -lt $COLUMNS
     __bobthefish_prompt_status $last_status
-    set_color $tomatao
-    echo -ns (whoami)
+
+    set -l me (whoami)
+    set_color -o $tomatao
+
+    if [$me != $USER]
+      echo -ns $me
+    else
+      echo -ns 'ⓞ'
+    end
+
     echo -ns ' '
   end
 
-  if test 95 -lt $COLUMNS
+  if test 100 -lt $COLUMNS
     __start_segment $lightgrey $brightgrey
     echo -ns (hostname -s)
     echo -ns ' '
@@ -182,7 +190,7 @@ function __long_prompt
   __prompt_dir
   echo -ns ' '
 
-  if test 50 -lt $COLUMNS
+  if test 80 -lt $COLUMNS
     __start_segment $brightgreen $champagne
     __prompt_node_version
   end

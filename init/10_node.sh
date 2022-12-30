@@ -2,14 +2,15 @@
 
 # Can remove the .31 here to just install the latest
 # should uncomment the default_node="$(nvm current)" too
-declare default_node="v12.16.1"
+declare default_node="v16.19.0"
 declare node_versions=(
   "$default_node"
-  v13.11.0
+  v12.22.12
+  node
 )
 declare npm_globals=(
-  ndb
-  # http-server
+  http-server
+  # ndb
 )
 
 function get_nvm_versions() {
@@ -34,7 +35,7 @@ function nvm_set_current_node() {
 
 function install_nvm() {
   if [[ ! -s "$NVM_DIR/nvm.sh" ]]; then
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
     export NVM_DIR="$HOME/.nvm"
     export NPM_TOKEN="tmp-abc-1234" # fix bug with .npmrc
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"

@@ -54,7 +54,7 @@ code_packages=(
     asvetliakov.snapshot-tools
     christian-kohler.npm-intellisense
     christian-kohler.path-intellisense
-    CoenraadS.bracket-pair-colorizer-2
+    # CoenraadS.bracket-pair-colorizer-2
     cssho.vscode-svgviewer
     dbaeumer.vscode-eslint
     dunstontc.viml
@@ -66,6 +66,8 @@ code_packages=(
     geeebe.duplicate
     JaimeOlivares.yuml
     joshpeng.theme-charcoal-oceanicnext
+    jpoissonnier.vscode-styled-components
+    kumar-harsh.graphql-for-vscode
     lunaryorn.fish-ide
     marcoms.oceanic-plus
     mgmcdermott.vscode-language-babel
@@ -75,9 +77,11 @@ code_packages=(
     Orta.vscode-jest
     ritwickdey.LiveServer
     sidneys1.gitconfig
+    silvenon.mdx
     skyapps.fish-vscode
     sleistner.vscode-fileutils
     streetsidesoftware.code-spell-checker
+    stylelint.vscode-stylelint
     tomoki1207.pdf
     travisthetechie.write-good-linter
     Tyriar.sort-lines

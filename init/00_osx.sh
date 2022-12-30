@@ -13,7 +13,7 @@ fi
 # Install Homebrew.
 if [[ ! "$(type -P brew)" ]]; then
     e_header "Installing Homebrew"
-    true | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Exit if, for some reason, Homebrew is not installed.
@@ -28,15 +28,13 @@ if [[ "$(type -P brew)" ]]; then
         airflow
         android-file-transfer
         atom
-        betterzip
         bitbar
         chromedriver
         cleanmymac
-        dbeaver-community
+        # dbeaver-community
         discord
         docker
-        firefox-developer-edition
-        franz
+        # firefox-developer-edition
         google-backup-and-sync
         google-chrome
         grammarly
@@ -45,29 +43,29 @@ if [[ "$(type -P brew)" ]]; then
         java
         karabiner-elements
         lulu
-        ngrok
+        # ngrok
         openinterminal
         postman
-        qbittorrent
+        # qbittorrent
         qlcolorcode
         qlimagesize
         qlmarkdown
         qlstephen
         qlvideo
         quicklook-json
-        robo-3t
-        sequel-pro
+        # robo-3t
+        # sequel-pro
         shiftit
-        skype
+        # skype
         slack
         sublime-text
         textmate
         the-unarchiver
-        virtualbox
+        # virtualbox
         visual-studio-code
         xquartz
-        yed
-        zoomus
+        # yed
+        zoom
     )
 
     cask_list="$(to_install "${casks[*]}" "$(brew cask list 2>/dev/null)")"
@@ -82,28 +80,31 @@ if [[ "$(type -P brew)" ]]; then
         ack
         bash
         bash-completion
+        bat
         curl
         direnv
         ffmpeg
         fish
-        gh
+        # gh
         git
+        git-delta
         gnutls
-        heroku
+        # heroku
         highlight
         imagemagick
         jq
-        mongodb
-        mysql
-        nginx
-        postgresql
+        # mongodb
+        # mysql
+        # nginx
+        # postgresql
         shellcheck
-        sqlite
+        # sqlite
         ssh-copy-id
         tldr
         tree
         vim
         wget
+        zsh
     )
 
     recipe_list="$(to_install "${recipes[*]}" "$(brew list)")"
@@ -121,21 +122,27 @@ if [[ "$(type -P brew)" ]]; then
         echo "$binroot/bash" | sudo tee -a /etc/shells >/dev/null
     fi
 
+    # zsh
+    if [[ "$(type -P $binroot/zsh)" && ! "$(cat /etc/shells | grep -q "$binroot/zsh")" ]]; then
+        e_header "Adding $binroot/zsh to the list of acceptable shells"
+        echo "$binroot/zsh" | sudo tee -a /etc/shells >/dev/null
+    fi
+
     # fish
     if [[ "$(type -P $binroot/fish)" && ! "$(cat /etc/shells | grep -q "$binroot/fish")" ]]; then
         e_header "Adding $binroot/fish to the list of acceptable shells"
         echo "$binroot/fish" | sudo tee -a /etc/shells >/dev/null
     fi
 
-    if [[ "$(dscl . -read ~ UserShell | awk '{print $2}')" != "$binroot/bash" ]]; then
-        e_header "Making $binroot/bash your default shell"
-        sudo chsh -s "$binroot/bash" "$USER" >/dev/null 2>&1
+    if [[ "$(dscl . -read ~ UserShell | awk '{print $2}')" != "$binroot/fish" ]]; then
+        e_header "Making $binroot/fish your default shell"
+        sudo chsh -s "$binroot/fish" "$USER" >/dev/null 2>&1
     fi
 fi
 
-if [[ "$(type -P fish)" ]]; then
-    e_header "Install fisher plugins for fish!"
-    fish -c fisher
-fi
+# if [[ "$(type -P fish)" ]]; then
+#     e_header "Install fisher plugins for fish!"
+#     fish -c fisher
+# fi
 
 e_success "OSX specific install complete"

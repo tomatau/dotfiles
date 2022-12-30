@@ -6,7 +6,6 @@
   "editor.fontSize": 13,
   "editor.formatOnPaste": true,
   "editor.multiCursorModifier": "ctrlCmd",
-  "editor.semanticHighlighting.enabled": false,
   "editor.snippetSuggestions": "top",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
@@ -58,15 +57,26 @@
   },
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
+    "typescript": "typescriptreact",
   },
   "emmet.syntaxProfiles": {
     "jsx": {
       "attr_quotes": "single"
-    }
+    },
+    "tsx": {
+      "attr_quotes": "single"
+    },
+    "js": {
+      "attr_quotes": "single"
+    },
+    "ts": {
+      "attr_quotes": "single"
+    },
   },
   "write-good.languages": [
     "markdown",
     "md",
+    "mdx",
     "plaintext"
   ],
   "cSpell.enableFiletypes": [

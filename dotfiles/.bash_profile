@@ -12,3 +12,5 @@ fi
 export PATH
 
 [[ -s "$HOME/.bin/z/z.sh" ]] && . "$HOME/.bin/z/z.sh"
+
+# eval "$(direnv hook bash)"

@@ -6,7 +6,7 @@ function git_ahead -a ahead behind none
     (command git rev-list \
       --count \
       --left-right "@{upstream}...HEAD" \
-    ^/dev/null)
+    2>/dev/null)
   echo $commit_count | read -l behind_count ahead_count
 
   switch "$commit_count"
