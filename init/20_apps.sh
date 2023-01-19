@@ -7,47 +7,12 @@ declare app_settings_path="$PARENT/app-settings"
 declare app_support_path="$HOME/Library/Application Support"
 
 e_header "Copying iTerm2 profiles"
+mkdir "$app_support_path/iTerm2/DynamicProfiles/"
 cp "$app_settings_path/iTerm2.json" "$app_support_path/iTerm2/DynamicProfiles/"
 
 e_header "Copying Sublime Text Package Settings"
-cp -r "$app_settings_path/subl/" "$app_support_path/Sublime Text 3/Packages/User/"
-
-e_header "Install Atom Packages"
-atom_packages=(
-    advanced-open-file
-    autocomplete-paths
-    busy-signal # dep
-    change-case
-    duplicate-line-or-selection
-    editorconfig
-    emmet
-    file-icons
-    foldername-tabs
-    highlight-selected
-    hyperclick
-    intentions # dep
-    js-hyperclick
-    jumpy
-    language-babel
-    language-docker
-    language-fish-shell
-    language-markdown
-    linter # dep
-    linter-eslint
-    linter-jsonlint
-    linter-retext
-    linter-sass-lint
-    linter-ui-default # dep
-    pretty-json
-    seti-ui
-    sort-lines
-    sublime-block-comment
-    svg-preview
-)
-apm install ${atom_packages[*]}
-
-e_header "Copy Atom Settings"
-cp -r "$app_settings_path/atom/" "$HOME/.atom/"
+mkdir "$app_support_path/Sublime Text/Packages/User/"
+cp -r "$app_settings_path/subl/" "$app_support_path/Sublime Text/Packages/User/"
 
 e_header "Install Code Extensions"
 code_packages=(

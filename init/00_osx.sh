@@ -29,7 +29,6 @@ if [[ "$(type -P brew)" ]]; then
     casks=(
         # airflow
         # android-file-transfer
-        atom
         bitbar
         chromedriver
         cleanmymac

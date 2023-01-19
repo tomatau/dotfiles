@@ -86,10 +86,6 @@
     colorMoved = default
     renames = copies
     # detect renames
-[difftool "atom"]
-    trustExitCode = true
-    prompt = false
-    cmd = "/usr/local/bin/atom" "$LOCAL" "$REMOTE"
 [merge]
     conflictstyle = diff3
 
@@ -97,9 +93,6 @@
     prompt = false
     keepBackup = false
 # opendiff kdiff3 tkdiff xxdiff meld tortoisemerge gvimdiff diffuse diffmerge ecmerge p4merge araxis bc3 codecompare emerge vimdiff
-[mergetool "atom"]
-    trustExitCode = true
-    cmd = "/usr/local/bin/atom" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 
 [color]
     ui = true
