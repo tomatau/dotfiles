@@ -14,10 +14,12 @@ fi
 if [[ ! "$(type -P brew)" ]]; then
     e_header "Installing Homebrew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.bash_profile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Exit if, for some reason, Homebrew is not installed.
-[[ ! "$(type -P brew)" ]] && e_error "Homebrew failed to install." && return 1
+[[ ! "$(type -P brew)" ]] && e_error "Homebrew failed to install." && exit 1
 
 if [[ "$(type -P brew)" ]]; then
     e_header "Updating Homebrew"
@@ -25,8 +27,8 @@ if [[ "$(type -P brew)" ]]; then
     brew update
 
     casks=(
-        airflow
-        android-file-transfer
+        # airflow
+        # android-file-transfer
         atom
         bitbar
         chromedriver
@@ -71,7 +73,7 @@ if [[ "$(type -P brew)" ]]; then
     cask_list="$(to_install "${casks[*]}" "$(brew cask list 2>/dev/null)")"
     if [[ "$cask_list" ]]; then
         e_header "Installing Homebrew casks: $cask_list"
-        brew cask install $cask_list
+        brew install --cask $cask_list
     fi
     brew cask cleanup
 
