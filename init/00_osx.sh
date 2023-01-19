@@ -37,7 +37,7 @@ if [[ "$(type -P brew)" ]]; then
         discord
         docker
         # firefox-developer-edition
-        google-backup-and-sync
+        # google-backup-and-sync
         google-chrome
         grammarly
         iina
@@ -70,12 +70,12 @@ if [[ "$(type -P brew)" ]]; then
         zoom
     )
 
-    cask_list="$(to_install "${casks[*]}" "$(brew cask list 2>/dev/null)")"
+    cask_list="$(to_install "${casks[*]}" "$(brew list --cask 2>/dev/null)")"
     if [[ "$cask_list" ]]; then
         e_header "Installing Homebrew casks: $cask_list"
         brew install --cask $cask_list
     fi
-    brew cask cleanup
+    brew cleanup --cask
 
     # Install Homebrew recipes.
     recipes=(
