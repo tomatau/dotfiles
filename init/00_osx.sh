@@ -58,7 +58,7 @@ if [[ "$(type -P brew)" ]]; then
         # sequel-pro
         shiftit
         # skype
-        slack
+        # slack
         sublime-text
         textmate
         the-unarchiver
