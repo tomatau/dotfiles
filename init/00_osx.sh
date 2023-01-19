@@ -74,7 +74,7 @@ if [[ "$(type -P brew)" ]]; then
         e_header "Installing Homebrew casks: $cask_list"
         brew install --cask $cask_list
     fi
-    brew cleanup --cask
+    brew cleanup
 
     # Install Homebrew recipes.
     recipes=(
