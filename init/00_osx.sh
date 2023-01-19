@@ -42,7 +42,6 @@ if [[ "$(type -P brew)" ]]; then
         grammarly
         iina
         iterm2
-        java
         karabiner-elements
         lulu
         # ngrok
@@ -94,6 +93,7 @@ if [[ "$(type -P brew)" ]]; then
         # heroku
         highlight
         imagemagick
+        java
         jq
         # mongodb
         # mysql
