@@ -14,14 +14,16 @@ export NPM_TOKEN="REPLACE-ME"
 export PGUSER="postgres"
 
 function add_to_path_if_exists() {
-  local directory ="$1"
+  local dir="$1"
+  local colon_path="${PATH//:/:}"
+  colon_path="${colon_path// //}"
 
-  if ! [ -d "$directory" ]; then
+  if ! [ -d "$dir" ]; then
     return
   fi
 
-  if ! [ ":$PATH:" == *":$directory:"* ]; then
-    export PATH="$PATH:$directory"
+  if ! [[ $colon_path == *":$dir:"* ]]; then
+    export PATH="$PATH:$dir"
   fi
 }
 
@@ -29,10 +31,9 @@ function remove_from_path() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }
 
-add_to_path_if_exists("/usr/local/sbin")
-add_to_path_if_exists("$GOPATH/bin")
-add_to_path_if_exists("$HOME/.cargo/bin")
-add_to_path_if_exists("$HOME/.bin")
+add_to_path_if_exists "$GOPATH/bin"
+add_to_path_if_exists "$HOME/.cargo/bin"
+add_to_path_if_exists "$HOME/.bin"
 
 export PATH
 
@@ -44,6 +45,8 @@ done
 unset file
 
 # Programs...
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 if [ -x "$(command -v direnv)" ]; then
   eval "$(direnv hook bash)"

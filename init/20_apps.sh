@@ -42,23 +42,28 @@ cp -r "$app_settings_path/subl/User/" "$sublime_user_packages"
 
 e_header "Copy Nushell Settings"
 
-local nushell_suppprt="$app_support_path/nushell/"
+local nushell_support_path="$app_support_path/nushell/"
 
-if [[ -d "$nushell_suppprt_path" ]]; then
+if ! [[ -d "$nushell_support_path" ]]; then
     e_header "Merging Nushell Settings"
-    cat "$app_settings_path/nushell/env.nu" >> "$nushell_suppprt_path/env.nu"
-    cat "$app_settings_path/nushell/config.nu" >> "$nushell_suppprt_path/config.nu"
+    mkdir -p "$nushell_support_path"
+    cp "$app_settings_path/nushell/env.nu" "$nushell_support_path"
+    cp "$app_settings_path/nushell/config.nu" "$nushell_support_path"
+else
+    cat "$app_settings_path/nushell/env.nu" >> "$nushell_support_path/env.nu"
+    cat "$app_settings_path/nushell/config.nu" >> "$nushell_support_path/config.nu"
 fi
+
 
 # TextMate
 
 e_header "Install TextMate Settings"
 
 local textmate_bundles_path="$app_support_path/TextMate/Managed/Bundles/"
-if [[ -d "$textmate_bundles_path" ]]; then
-    cd $textmate_bundles_path
-    git clone git://github.com/l15n/fish-tmbundle.git "Fish.tmbundle"
+if ! [[ -d "$textmate_bundles_path" ]]; then
+    mkdir -p $textmate_bundles_path
 fi
+git git@github.com:sanssecours/Fish.tmbundle.git
 
 # VSCode
 

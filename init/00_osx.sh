@@ -25,10 +25,10 @@ if [[ "$(type -P brew)" ]]; then
     e_header "Updating Homebrew"
     brew doctor
     brew update
+    brew tap homebrew/cask-fonts
 
     cask_dependencies=(
         xquartz
-        java
         docker
     )
 
@@ -42,11 +42,6 @@ if [[ "$(type -P brew)" ]]; then
         discord
         firefox
         folx
-        font-3270-nerd-font
-        font-monofur-nerd-font
-        font-overpass-nerd-font
-        font-ubuntu-mono-nerd-font
-        google-backup-and-sync
         google-chrome
         google-cloud-sdk
         grammarly
@@ -92,6 +87,7 @@ if [[ "$(type -P brew)" ]]; then
         curl
         git
         gnutls
+        java
         rustup-init
         vim
         wget
@@ -106,6 +102,10 @@ if [[ "$(type -P brew)" ]]; then
         ffmpeg
         fish
         fnm
+        font-3270-nerd-font
+        font-monofur-nerd-font
+        font-overpass-nerd-font
+        font-ubuntu-mono-nerd-font
         gh
         git-delta
         highlight

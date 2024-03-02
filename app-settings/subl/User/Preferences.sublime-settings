@@ -14,7 +14,13 @@
     "Webpack",
     "Redux",
     "Koa",
-    "middleware"
+    "middleware",
+    "Dotfiles",
+    "tomatau",
+    "dotfiles",
+    "com",
+    "Nushell",
+    "Karabinder"
   ],
   "always_show_minimap_viewport": true,
   "binary_file_patterns": [
@@ -33,7 +39,7 @@
     "*.zip"
   ],
   "bold_folder_labels": true,
-  "color_scheme": "Packages/Oceanic Next Color Scheme/Oceanic Next.tmTheme",
+  "color_scheme": "Adaptify Dark.sublime-color-scheme",
   "create_window_at_startup": false,
   "default_line_ending": "unix",
   "detect_indentation": true,
@@ -71,11 +77,12 @@
   "show_full_path": true,
   "spell_check": true,
   "tab_size": 2,
-  "theme": "Seti_orig.sublime-theme",
+  "theme": "Adaptive.sublime-theme",
   "translate_tabs_to_spaces": true,
   "trim_trailing_white_space_on_save": true,
   "use_tab_stops": true,
   "word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?_",
   "word_wrap": true,
-  "index_files": true
+  "index_files": true,
+  "font_face": "OverpassM Nerd Font Propo"
 }

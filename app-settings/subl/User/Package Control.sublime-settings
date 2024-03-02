@@ -6,12 +6,15 @@
     "Dockerfile Syntax Highlighting",
     "EditorConfig",
     "Emmet",
+    "FileIcons",
+    "fish",
     "GitGutter",
     "HTML-CSS-JS Prettify",
     "JsFormat",
     "JsPrettier",
     "Markdown Extended",
     "MarkdownEditing",
+    "Nushell",
     "Oceanic Next Color Scheme",
     "Package Control",
     "Pretty JSON",
@@ -21,7 +24,10 @@
     "SublimeLinter",
     "SublimeLinter-contrib-eslint",
     "Surround",
-    "SyncedSideBar"
+    "SyncedSideBar",
+    "Theme - Adaptify",
+    "Theme - DAneo",
+    "TOML"
   ],
   "in_process_packages": []
 }

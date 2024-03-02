@@ -6,10 +6,11 @@ set -x PNPM_HOME "$HOME/Library/pnpm"
 set -x PGUSER "postgres"
 set -x PYENV_ROOT "$HOME/.pyenv"
 set -x EDITOR "subl -w"
+set -x STARSHIP_CONFIG "$HOME/.config/starship-fish.toml"
 
 # Paths
 
-set PATH /usr/local/bin /opt/X11/bin /usr/local/sbin $PATH
+set PATH /opt/homebrew/bin /usr/local/bin /opt/X11/bin /usr/local/sbin $PATH
 
 if test -d "$PYENV_ROOT/bin"
     fish_add_path "$PYENV_ROOT/bin"
@@ -36,6 +37,10 @@ end
 if command -q pyenv
     pyenv init - | source
     status --is-interactive; and pyenv virtualenv-init - | source
+end
+
+if command -q fnm
+    fnm env --use-on-cd | source
 end
 
 if command -q zoxide

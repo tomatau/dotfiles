@@ -1,4 +1,3 @@
-
 export GOPATH="$HOME/Code/tomatao/go"
 export PYENV_ROOT="$HOME/.pyenv"
 export NPM_TOKEN="REPLACE-ME"
@@ -6,14 +5,16 @@ export PGUSER="postgres"
 export EDITOR='subl -w'
 
 function add_to_path_if_exists() {
-  local directory ="$1"
+  local dir="$1"
+  local colon_path="${PATH//:/:}"
+  colon_path="${colon_path// //}"
 
-  if ! [ -d "$directory" ]; then
+  if ! [ -d "$dir" ]; then
     return
   fi
 
-  if ! [ ":$PATH:" == *":$directory:"* ]; then
-    export PATH="$PATH:$directory"
+  if ! [[ $colon_path == *":$dir:"* ]]; then
+    export PATH="$PATH:$dir"
   fi
 }
 
@@ -21,10 +22,9 @@ function remove_from_path() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }
 
-add_to_path_if_exists("/usr/local/sbin")
-add_to_path_if_exists("$GOPATH/bin")
-add_to_path_if_exists("$HOME/.cargo/bin")
-add_to_path_if_exists("$HOME/.bin")
+add_to_path_if_exists "$GOPATH/bin"
+add_to_path_if_exists "$HOME/.cargo/bin"
+add_to_path_if_exists "$HOME/.bin"
 
 export PATH
 
@@ -73,13 +73,7 @@ function f() {
   find . -name "$1"
 }
 
-# Enable tab completion for `g` by marking it as an alias for `git`
-if which brew > /dev/null && [ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
-  source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-  complete -o default -o nospace \
-    -F "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" \
-    g;
-fi;
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 if [ -x "$(command -v direnv)" ]; then
   eval "$(direnv hook bash)"
@@ -127,6 +121,15 @@ function setjdk() {
   export PATH=$JAVA_HOME/bin:$PATH
   java -version
 }
+
+# Enable tab completion for `g` by marking it as an alias for `git`
+if which brew > /dev/null && [ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+  source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  # complete -o default -o nospace \
+  #   -F "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" \
+  #   g;
+fi;
+
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

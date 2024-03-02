@@ -9,6 +9,7 @@ $env.STARSHIP_CONFIG = $"($env.HOME)/.config/starship-nushell.toml"
 $env.PATH = (
     $env.PATH
     | split row (char esep)
+    | prepend '/opt/homebrew/bin'
     | prepend '/usr/local/bin'
     | prepend '/usr/local/sbin'
     | prepend $"($env.HOME)/.bin"

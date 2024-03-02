@@ -1,7 +1,5 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Inserts a blank line between shell prompts
-add_newline = false
 right_format = """$time"""
 palette = 'tomatao'
 
@@ -14,16 +12,13 @@ color_purple = '#b343ea'
 color_red = '#cc241d'
 color_yellow = '#d79921'
 
-[character]
-success_symbol = '[➜](bold green)'
-
-[line_break]
-disabled = true
-
 [directory]
-style = "fg:color_aqua"
+style = "fg:color_yellow"
 fish_style_pwd_dir_length = 3
 read_only = " 󰌾"
+
+[character]
+success_symbol = '[➜](bold green)'
 
 [time]
 disabled = false
