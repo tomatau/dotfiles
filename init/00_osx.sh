@@ -26,93 +26,131 @@ if [[ "$(type -P brew)" ]]; then
     brew doctor
     brew update
 
+    cask_dependencies=(
+        xquartz
+        java
+        docker
+    )
+
     casks=(
-        # airflow
-        # android-file-transfer
-        bitbar
+        airflow
+        anaconda
+        android-file-transfer
         chromedriver
         cleanmymac
-        # dbeaver-community
+        cog
         discord
-        docker
-        # firefox-developer-edition
-        # google-backup-and-sync
+        firefox
+        folx
+        font-3270-nerd-font
+        font-monofur-nerd-font
+        font-overpass-nerd-font
+        font-ubuntu-mono-nerd-font
+        google-backup-and-sync
         google-chrome
+        google-cloud-sdk
         grammarly
         iina
-        iterm2
         karabiner-elements
-        lulu
-        # ngrok
+        messenger
+        ngrok
+        nordvpn
+        obsidian
         openinterminal
         postman
-        # qbittorrent
         qlcolorcode
         qlimagesize
         qlmarkdown
         qlstephen
         qlvideo
         quicklook-json
-        # robo-3t
-        # sequel-pro
         shiftit
-        # skype
-        # slack
+        slack
+        soulseek
+        spotify
         sublime-text
         textmate
         the-unarchiver
-        # virtualbox
+        thunderbird
         visual-studio-code
-        xquartz
-        # yed
+        warp
+        whatsapp
         zoom
     )
 
-    cask_list="$(to_install "${casks[*]}" "$(brew list --cask 2>/dev/null)")"
-    if [[ "$cask_list" ]]; then
-        e_header "Installing Homebrew casks: $cask_list"
-        brew install --cask $cask_list
+    cask_list_deps="$(to_install "${cask_dependencies[*]}" "$(brew list --cask 2>/dev/null)")"
+    if [[ "$cask_list_deps" ]]; then
+        e_header "Installing dependency casks"
+        e_header "casks = $cask_list_deps"
+        brew install --cask $cask_list_deps
     fi
-    brew cleanup
 
     # Install Homebrew recipes.
-    recipes=(
+    recipe_dependencies=(
         ack
         bash
-        bash-completion
-        bat
         curl
-        direnv
-        ffmpeg
-        fish
-        # gh
         git
-        git-delta
         gnutls
-        # heroku
-        highlight
-        imagemagick
-        java
-        jq
-        # mongodb
-        # mysql
-        # nginx
-        # postgresql
-        shellcheck
-        # sqlite
-        ssh-copy-id
-        tldr
-        tree
+        rustup-init
         vim
         wget
         zsh
     )
 
+    recipes=(
+        bash-completion
+        bat
+        bpython
+        direnv
+        ffmpeg
+        fish
+        fnm
+        gh
+        git-delta
+        highlight
+        imagemagick
+        jq
+        kubernetes-cli
+        lsd
+        minikube
+        nushell
+        ollama
+        poetry
+        pulumi
+        pyenv
+        pyenv-virtualenv
+        ssh-copy-id
+        starship
+        tldr
+        zoxide
+        zsh-autosuggestions
+    )
+
+    recipe_list_deps="$(to_install "${recipe_dependencies[*]}" "$(brew list)")"
+    if [[ "$recipe_list_deps" ]]; then
+        e_header "Installing dependency recipes"
+        e_header "recipes = $recipe_list_deps"
+        brew install $recipe_list_deps
+    fi
+
+    e_header "Installing rust..."
+    rustup-init -y
+
+    cask_list="$(to_install "${casks[*]}" "$(brew list --cask 2>/dev/null)")"
+    if [[ "$cask_list" ]]; then
+        e_header "Installing remaining casks"
+        e_header "casks = $cask_list"
+        brew install --cask $cask_list
+    fi
+
     recipe_list="$(to_install "${recipes[*]}" "$(brew list)")"
     if [[ "$recipe_list" ]]; then
-        e_header "Installing Homebrew recipes: $recipe_list"
+        e_header "Installing remaining recipes"
+        e_header "recipes = $recipe_list"
         brew install $recipe_list
     fi
+
     brew cleanup
     # This is where brew stores its binary symlinks
     local binroot="$(brew --config | awk '/HOMEBREW_PREFIX/ {print $2}')"/bin
@@ -135,15 +173,16 @@ if [[ "$(type -P brew)" ]]; then
         echo "$binroot/fish" | sudo tee -a /etc/shells >/dev/null
     fi
 
+    # updating default zsh
     if [[ "$(dscl . -read ~ UserShell | awk '{print $2}')" != "$binroot/fish" ]]; then
-        e_header "Making $binroot/fish your default shell"
-        sudo chsh -s "$binroot/fish" "$USER" >/dev/null 2>&1
+        e_header "Making upgraded $binroot/zsh your default shell"
+        sudo chsh -s "$binroot/zsh" "$USER" >/dev/null 2>&1
     fi
 fi
 
-# if [[ "$(type -P fish)" ]]; then
-#     e_header "Install fisher plugins for fish!"
-#     fish -c fisher
-# fi
+if [[ "$(type -P fish)" ]]; then
+    e_header "Install fisher plugins for fish!"
+    fish -c fisher
+fi
 
 e_success "OSX specific install complete"

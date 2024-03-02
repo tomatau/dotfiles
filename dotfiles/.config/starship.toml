@@ -1,0 +1,17 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = false
+right_format = """$time"""
+
+[character]
+success_symbol = '[➜](bold green)'
+
+[line_break]
+disabled = true
+
+[directory]
+fish_style_pwd_dir_length = 3
+
+[time]
+disabled = false

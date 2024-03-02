@@ -1,20 +1,34 @@
 [user]
     name = Thomas Hudspith-Tatham
     email = iammotivated@gmail.com
+
 [github]
     user = tomatau
+
 [core]
     editor = subl -n -w
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes
+	pager = delta
 
     # Make `git rebase` safer on OS X
     # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
     # trustctime = false
+
+[init]
+	defaultBranch = main
+
 [push]
     default = simple
+
 [pull]
     rebase = true
+
+[rebase]
+    autosquash = true
+
+[help]
+    autocorrect = 3
 
 [alias]
     a = add
@@ -23,21 +37,25 @@
     s = status -s
     st = status
     c = commit
+	cn = commit --no-verify
     cm = commit -m
+    cmn = commit -m --no-verify
     ca = commit -a
+    can = commit -a --no-verify
     cam = commit -am
     camn = commit -am --no-verify
     cia = commit --amend -C HEAD
     cian = commit --amend -C HEAD --no-verify
     mend = commit --amend
     co = checkout
+    conew = checkout origin/main -b
     d = diff -- ':!package-lock.json'
     dsd = diff --staged -- ':!package-lock.json'
     dst = diff --stat -- ':!package-lock.json'
     new = log master.. --reverse
     unstage = reset HEAD
     uncommit = reset HEAD~
-    unpush = push -f origin HEAD^:master
+    unpush = push -f origin HEAD^:main
     ignore = update-index --assume-unchanged
     unignore = update-index --no-assume-unchanged
     ignored = !git ls-files -v | grep "^[[:lower:]]"
@@ -58,58 +76,65 @@
     l = log --pretty=oneline -n 20 --graph --abbrev-commit
     # show custom graph
     g = log --graph --pretty=custom
-    newb = checkout main -b
     delbr = push origin --delete
-    pf = push --force-with-lease
-[help]
-    autocorrect = 20
-[web]
-    browser = open
 
-[pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
 [delta]
     syntax-theme = Monokai Extended
-    navigate = true
+    navigate = true    # use n and N to move between diff sections
+    # light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    side-by-side = true
+    line-numbers = true
+
+
 [interactive]
     diffFilter = delta --color-only
-[init]
-    defaultBranch = main
 
-[rebase]
-    autosquash = true
+[merge]
+    conflictstyle = diff3
 
 [diff]
     colorMoved = default
-    renames = copies
-    # detect renames
-[merge]
-    conflictstyle = diff3
+	# renames = copies # detect renames
+
+# [diff]
+#     tool = atom
+#     renames = copies
+# [difftool "atom"]
+#     trustExitCode = true
+#     prompt = false
+#     cmd = "/usr/local/bin/atom" "$LOCAL" "$REMOTE"
+# [merge]
+#     tool = atom
 
 [mergetool]
     prompt = false
     keepBackup = false
+
 # opendiff kdiff3 tkdiff xxdiff meld tortoisemerge gvimdiff diffuse diffmerge ecmerge p4merge araxis bc3 codecompare emerge vimdiff
+# [mergetool "atom"]
+#     trustExitCode = true
+#     cmd = "/usr/local/bin/atom" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 
 [color]
     ui = true
+
 [color "branch"]
     current = yellow bold
     local = green bold
     remote = cyan bold
+
 [color "diff"]
     meta = yellow bold
     frag = magenta bold # line info
     old = red bold # deletions
     new = green bold # additions
     whitespace = red reverse
+
 [color "status"]
     added = green bold
     changed = yellow bold
     untracked = red bold
+
 [pretty]
     # Custom log output
     custom = "%C(magenta)%h%C(red)%d %C(yellow)%ar %C(green)%s %C(yellow)(%an)"
@@ -123,3 +148,9 @@
     clean = git-lfs clean %f
     smudge = git-lfs smudge %f
     required = true
+
+[web]
+    browser = open
+
+[url "git@github.com:"]
+    insteadOf = https://github.com/

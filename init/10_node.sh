@@ -1,76 +1,27 @@
 #!/usr/bin/env bash
 
-# Can remove the .31 here to just install the latest
-# should uncomment the default_node="$(nvm current)" too
-declare default_node="v16.19.0"
+declare default_node="v20"
 declare node_versions=(
   "$default_node"
-  v12.22.12
-  node
 )
 declare npm_globals=(
-  http-server
-  # ndb
+  npm
+  yarn
+  pnpm
 )
 
-function get_nvm_versions() {
-  local installed=()
-  for path in "$HOME/.nvm/"*; do
-    if [ `expr "${path##*/}" : "v[0-9]*\.[0-9]*\.[0-9]*$"` != 0 ]; then
-      if [ -d "$path" ]; then
-        installed=("${installed[@]}" "${path##*/}")
-      fi
-    fi
+function fnm_set_current_node() {
+  for v in $node_versions; do
+    fnm install "$v"
   done
-  echo "${installed[*]}"
-}
-
-function nvm_set_current_node() {
-  for v in $(to_install "${node_versions[*]}" "$(get_nvm_versions)"); do
-    nvm install "$v"
-  done
-  nvm alias stable "$default_node"
+  fnm alias "$default_node" stable
   e_success "Installed Node $default_node and set as current"
 }
 
-function install_nvm() {
-  if [[ ! -s "$NVM_DIR/nvm.sh" ]]; then
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-  fi
+e_header "Installing node versions"
+fnm_set_current_node
 
-  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-  export NPM_TOKEN="tmp-abc-1234" # fix bug with .npmrc
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-}
+e_header "Npm modules for $default_node = $npm_globals"
+npm install -g $npm_globals
 
-# Install Nvm
-e_header "Installing Nvm"
-if [[ "$(type -P curl)" ]]; then
-  install_nvm
-  nvm_set_current_node
-else
-  e_error "Needs CURL to install Nvm"
-fi
-
-# Update Npm
-e_header "Updating Npm"
-if [[ "$(type -P npm)" ]]; then
-  npm install -g npm yarn
-else
-  e_error "Npm was not installed correctly :/"
-  return 1
-fi
-
-e_header "Installing Npm Modules"
-{
-  pushd "$(npm config get prefix)/lib/node_modules";
-  installed=(*);
-  popd;
-} > /dev/null
-npm_list="$(to_install "${npm_globals[*]}" "${installed[*]}")"
-if [[ "$npm_list" ]]; then
-  e_header "Npm modules: $npm_list, for $default_node"
-  npm install -g $npm_list
-fi
-
-e_success "Nvm, Node and Npm setup :)"
+e_success "Fnm, Node and Npm setup :)"

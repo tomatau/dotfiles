@@ -1,47 +1,28 @@
 #!/bin/bash
 
-alias plz="sudo "
-alias c="clear"
 alias reload="exec $SHELL -l"
+alias g="git"
 
-# Start an HTTP server from a directory, optionally specifying the port
-function serve2() {
-  local port="${1:-8000}";
-  sleep 1 && open "http://localhost:${port}/" &
-  # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
-  # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
-  python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
-}
+export EDITOR='subl -w'
+export GREP_OPTIONS='--color=auto'
 
-# Start a PHP server from a directory, optionally specifying the port
-# (Requires PHP 5.4.0+.)
-function phpserver() {
-  local port="${1:-9000}";
-  local ip="localhost";
-  sleep 1 && open "http://${ip}:${port}/" &
-  php -S "${ip}:${port}";
-}
-# alias compo='composer --ansi'
-# alias art='php artisan --ansi'
+alias brewupdate="brew update && brew upgrade && brew upgrade --cask && brew cleanup"
 
-# `tree` with hidden files and color enabled,
-# ignoring the `.git` directory,
-# listing directories first. The output gets piped into
-# `less` preserve color and line numbers,
-# unless the output is small enough for one screen.
-function tre() {
-  tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
-}
+# Kill all running containers.
+alias dockerkillall='docker kill $(docker ps -q)'
+# Delete all stopped containers.
+alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
+# Delete all untagged images.
+alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
+# Delete all stopped containers and untagged images.
+alias dockerclean='dockercleanc || true && dockercleani'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Get week number
-alias week='date +%V'
-
-# Stopwatch
-alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
+# Enable tab completion for `g` by marking it as an alias for `git`
+if which brew > /dev/null && [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+  complete -o default -o nospace \
+    -F "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" \
+    g;
+fi;
 
 # vim to allow Ctrl+S to save
 function vim() {
@@ -58,32 +39,14 @@ function vim() {
   stty "$STTYOPTS"
 }
 
-# ngrok
 function ngrokserver() {
   local port="${1:-9000}";
-  ngrok http -subdomain=tomatao "${port}"
+  ngrok -subdomain=tomatao "${port}"
 }
 
 function setjdk() {
-  if [ $# -ne 0 ]; then
-    removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
-    if [ -n "${JAVA_HOME+x}" ]; then
-      removeFromPath $JAVA_HOME
-    fi
-    export JAVA_HOME=`/usr/libexec/java_home -v $@`
-    export PATH=$JAVA_HOME/bin:$PATH
-  fi
+  remove_from_path `/usr/libexec/java_home`
+  export JAVA_HOME=`/usr/libexec/java_home -v $@`
+  export PATH=$JAVA_HOME/bin:$PATH
+  java -version
 }
-
-function removeFromPath() {
-  export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
-}
-
-# Kill all running containers.
-alias dockerkillall='docker kill $(docker ps -q)'
-# Delete all stopped containers.
-alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
-# Delete all untagged images.
-alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
-# Delete all stopped containers and untagged images.
-alias dockerclean='dockercleanc || true && dockercleani'
