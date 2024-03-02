@@ -180,9 +180,16 @@ if [[ "$(type -P brew)" ]]; then
     fi
 fi
 
-if [[ "$(type -P fish)" ]]; then
-    e_header "Install fisher plugins for fish!"
-    fish -c fisher
+# Create my directories yo
+if [[ ! -d "$HOME/Code" ]]; then
+    mkdir $HOME/Code
 fi
+
+# Need to be in fish shell to install terminal
+# if [[ "$(type -P fish)" ]]; then
+#     e_header "Install fisher plugins for fish!"
+#     curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish \
+#         | source && fisher install jorgebucaran/fisher
+# fi
 
 e_success "OSX specific install complete"

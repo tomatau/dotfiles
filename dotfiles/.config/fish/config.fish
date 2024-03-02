@@ -2,7 +2,6 @@ set -g fish_prompt_pwd_dir_length 2
 set -Ux LSCOLORS fxefcxdxbxexexabagacad
 set -x GOPATH "$HOME/Code/tomatao/go"
 set -x NPM_TOKEN "REPLACEME"
-set -x NVM_DIR "$HOME/.nvm"
 set -x PNPM_HOME "$HOME/Library/pnpm"
 set -x PGUSER "postgres"
 set -x PYENV_ROOT "$HOME/.pyenv"

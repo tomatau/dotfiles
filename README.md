@@ -1,6 +1,7 @@
 # Dotfiles
 
-### Usage:
+## Usage:
+
 ```bash
 git clone git@github.com:tomatau/dotfiles.git
 bash ./dotfiles/bin/dotfiles.sh
@@ -8,39 +9,27 @@ bash ./dotfiles/bin/dotfiles.sh
 
 This will:
 
-- copy all of the files from `/dotifles/bin` to `~/.bin` (except those with a `dotfiles_` prefix)
-- run all the scripts in the `init` folder
-    - installs Z, NVM for node, Pyenv for Python, Rbenv for Ruby and Phpbrew for PHP
-        - installs configurable versions for each
-    - if Ubunti, install a bunch of packages
-    - if OSX, install brew and some bundles
-- copies all the files from /dotfiles/copy/ to ~
-    - .bash_profile/.bashrc/.gitconfig/.gitignore
-    - the /copy/.shell folder contains other shell scripts all sourced inside .bashrc
-    - you can add new files here they will all get picked up and sourced
+- copy the files from `/dotfiles/bin` to `~/.bin` (except those with a `dotfiles_` prefix)
+- run all the scripts in the `/init/` folder
+  - installs `brew`, `fnm`, `pyenv`, etc...
+- copies all the files from `/dotfiles/` to `~`
+  - `.bash_profile`, `.bashrc`, `.zshrc`, `.config`, `.gitconfig`, etc..
+  - the `/dotfiles/.shell` folder contains other shell scripts all sourced inside `.bashrc`
 - also contains a bunch of config files for:
-	- sublime text
-	- icons for sublime text and iTunes
+  - VSCode
+  - Sublime Text
+  - Vim
+  - Nushell
+  - Fish
+  - Karabinder mappings
 
-All files have .sh to help editors know what's going on
+## Notes
 
-I've aimed to keep it organised as I can but there's still slop in the php stuff, the prompt and a few other bits like what nvm does to the .bash_profile
+- My Github username and email are in the .gitconfig.
 
-#### Things of Note
+## Thanks to
 
-- iTerm keys for cmd+left and cmd+right
+I took a bunch of bash from these repos as I'm terrible at it...
 
-Node, Ruby and Php sometimes mess up, not sure why...
-
-Also, my github Username and Email are in the .gitconfig.
-
-#### Possible Todo List: 
-- ssh
-- java?
-
-Created by Thomas "tomatao" Hudspith-Tatham
-credits to:
-
-"Cowboy" Ben Alman - https://github.com/cowboy/dotfiles
-
-mathiasbynens - https://github.com/mathiasbynens/dotfiles
+- https://github.com/cowboy/dotfiles
+- https://github.com/mathiasbynens/dotfiles

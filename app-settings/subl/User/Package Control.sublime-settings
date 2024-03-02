@@ -1,0 +1,27 @@
+{
+  "installed_packages": [
+    "All Autocomplete",
+    "Babel",
+    "BracketHighlighter",
+    "Dockerfile Syntax Highlighting",
+    "EditorConfig",
+    "Emmet",
+    "GitGutter",
+    "HTML-CSS-JS Prettify",
+    "JsFormat",
+    "JsPrettier",
+    "Markdown Extended",
+    "MarkdownEditing",
+    "Oceanic Next Color Scheme",
+    "Package Control",
+    "Pretty JSON",
+    "SCSS",
+    "Seti_UI",
+    "SideBarEnhancements",
+    "SublimeLinter",
+    "SublimeLinter-contrib-eslint",
+    "Surround",
+    "SyncedSideBar"
+  ],
+  "in_process_packages": []
+}
