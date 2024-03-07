@@ -4,6 +4,7 @@ alias reload="exec $SHELL -l"
 alias g="git"
 
 export EDITOR='subl -w'
+export PAGER='moar'
 export GREP_OPTIONS='--color=auto'
 
 alias brewupdate="brew update && brew upgrade && brew upgrade --cask && brew cleanup"

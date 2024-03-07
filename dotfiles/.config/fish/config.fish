@@ -6,6 +6,7 @@ set -x PNPM_HOME "$HOME/Library/pnpm"
 set -x PGUSER "postgres"
 set -x PYENV_ROOT "$HOME/.pyenv"
 set -x EDITOR "subl -w"
+set -x PAGER "moar"
 set -x STARSHIP_CONFIG "$HOME/.config/starship-fish.toml"
 
 # Paths
@@ -27,6 +28,13 @@ end
 if test -d "$HOME/.bin"
     fish_add_path "$HOME/.bin"
 end
+
+# Aliases
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 # Initialisers
 

@@ -3,6 +3,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export NPM_TOKEN="REPLACE-ME"
 export PGUSER="postgres"
 export EDITOR='subl -w'
+export PAGER='moar'
 
 function add_to_path_if_exists() {
   local dir="$1"
