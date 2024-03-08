@@ -13,16 +13,12 @@ set -x STARSHIP_CONFIG "$HOME/.config/starship-fish.toml"
 
 set PATH /opt/homebrew/bin /usr/local/bin /opt/X11/bin /usr/local/sbin $PATH
 
-if test -d "$PYENV_ROOT/bin"
-    fish_add_path "$PYENV_ROOT/bin"
-end
-
 if test -d "$GOPATH/bin"
     fish_add_path "$GOPATH/bin"
 end
 
 if test -d "$HOME/.cargo/bin"
-    fish_add_path "$HOME/.bin"
+    fish_add_path "$HOME/.cargo/bin"
 end
 
 if test -d "$HOME/.bin"
