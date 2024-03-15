@@ -2,6 +2,7 @@
 
 right_format = """$time"""
 palette = 'tomatao'
+command_timeout = 800
 
 [palettes.tomatao]
 color_blue = '#458588'
@@ -14,6 +15,7 @@ color_yellow = '#d79921'
 
 [directory]
 style = "fg:color_yellow"
+repo_root_style = "bold yellow"
 fish_style_pwd_dir_length = 3
 read_only = " 󰌾"
 

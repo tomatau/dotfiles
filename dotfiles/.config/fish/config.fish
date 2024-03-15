@@ -8,6 +8,7 @@ set -x PYENV_ROOT "$HOME/.pyenv"
 set -x EDITOR "subl -w"
 set -x PAGER "moar"
 set -x STARSHIP_CONFIG "$HOME/.config/starship-fish.toml"
+set -gx PROTO_HOME "$HOME/.proto"
 
 # Paths
 

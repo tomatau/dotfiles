@@ -1,0 +1,11 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-\\": "workspace::ToggleLeftDock",
+      "ctrl-|": "workspace::ToggleRightDock",
+      "ctrl-shift-t": "workspace::ToggleBottomDock",
+      "ctrl-shift-c": "project_panel::CollapseAllEntries"
+    }
+  }
+]

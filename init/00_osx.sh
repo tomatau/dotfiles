@@ -33,6 +33,7 @@ if [[ "$(type -P brew)" ]]; then
     )
 
     casks=(
+        arc
         airflow
         anaconda
         android-file-transfer
@@ -46,11 +47,16 @@ if [[ "$(type -P brew)" ]]; then
         google-cloud-sdk
         grammarly
         iina
+        iterm2
+        kap
         karabiner-elements
+        lastpass
+        lm-studio
         messenger
         ngrok
         nordvpn
         obsidian
+        ollamac
         openinterminal
         postman
         qlcolorcode
@@ -59,17 +65,19 @@ if [[ "$(type -P brew)" ]]; then
         qlstephen
         qlvideo
         quicklook-json
-        shiftit
+        raycast
         slack
         soulseek
         spotify
         sublime-text
+        syntax-highlight
         textmate
         the-unarchiver
         thunderbird
         visual-studio-code
         warp
         whatsapp
+        zed
         zoom
     )
 
@@ -88,6 +96,7 @@ if [[ "$(type -P brew)" ]]; then
         git
         gnutls
         java
+        proto
         rustup-init
         vim
         wget
@@ -95,6 +104,7 @@ if [[ "$(type -P brew)" ]]; then
     )
 
     recipes=(
+        awscli
         bash-completion
         bat
         bpython
@@ -106,24 +116,34 @@ if [[ "$(type -P brew)" ]]; then
         font-monofur-nerd-font
         font-overpass-nerd-font
         font-ubuntu-mono-nerd-font
+        fzf
         gh
         git-delta
+        helm
         highlight
         imagemagick
+        iredis
         jq
+        k9s
         kubernetes-cli
+        lastpass-cli
         lsd
         minikube
+        moar
         nushell
         ollama
         poetry
         pulumi
         pyenv
         pyenv-virtualenv
+        redis
+        sqlite
         ssh-copy-id
         starship
+        terraform
         tldr
         zoxide
+        zsh
         zsh-autosuggestions
     )
 

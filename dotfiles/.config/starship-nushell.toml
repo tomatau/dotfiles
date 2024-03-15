@@ -17,6 +17,7 @@ success_symbol = '[➜](bold green)'
 
 [directory]
 style = "fg:color_purple"
+repo_root_style = "bold purple"
 fish_style_pwd_dir_length = 3
 read_only = " 󰌾"
 

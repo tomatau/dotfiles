@@ -10,6 +10,7 @@ esac
 
 export GOPATH="$HOME/Code/tomatao/go"
 export PYENV_ROOT="$HOME/.pyenv"
+export PROTO_HOME="$HOME/.proto"
 export NPM_TOKEN="REPLACE-ME"
 export PGUSER="postgres"
 
@@ -34,6 +35,8 @@ function remove_from_path() {
 add_to_path_if_exists "$GOPATH/bin"
 add_to_path_if_exists "$HOME/.cargo/bin"
 add_to_path_if_exists "$HOME/.bin"
+add_to_path_if_exists "$PROTO_HOME/shims"
+add_to_path_if_exists "$PROTO_HOME/bin"
 
 export PATH
 
@@ -68,6 +71,8 @@ fi
 if [ -x "$(command -v starship)" ]; then
   eval "$(starship init bash)"
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

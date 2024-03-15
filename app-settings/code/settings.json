@@ -25,7 +25,7 @@
   "breadcrumbs.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fontFamily": "Operator Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "OverpassM Nerd Font Propo, Operator Mono, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 13,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
@@ -197,7 +197,8 @@
   "extensions.ignoreRecommendations": false,
   "files.associations": {
     "**/.github/**/*.yml": "github-actions-workflow",
-    "*.mdx": "mdx"
+    "*.mdx": "mdx",
+    "Modelfile": "modelfile"
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -233,7 +234,6 @@
   "terminal.external.osxExec": "iTerm.app",
   "typescript.tsdk": "./node_modules/typescript/lib",
   "typescript.validate.enable": true,
-  "window.commandCenter": false,
   "window.restoreWindows": "all",
   "workbench.colorCustomizations": {
     "editorCodeLens.foreground": "#787776e6",
@@ -272,5 +272,10 @@
   "[rust]": {
     "editor.defaultFormatter": "jinxdash.prettier-rust"
   },
-  "editor.inlineSuggest.suppressSuggestions": true
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "explorer.confirmPasteNative": false,
+  "gitlens.views.commitDetails.files.layout": "tree",
+  "cSpell.userWords": ["pulumi", "rustacean"],
+  "jupyter.interactiveWindow.textEditor.executeSelection": true,
+  "window.customTitleBarVisibility": "windowed"
 }
