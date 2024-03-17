@@ -1,13 +1,13 @@
 set -g fish_prompt_pwd_dir_length 2
 set -Ux LSCOLORS fxefcxdxbxexexabagacad
-set -x GOPATH "$HOME/Code/tomatao/go"
-set -x NPM_TOKEN "REPLACEME"
-set -x PNPM_HOME "$HOME/Library/pnpm"
-set -x PGUSER "postgres"
-set -x PYENV_ROOT "$HOME/.pyenv"
-set -x EDITOR "subl -w"
-set -x PAGER "moar"
-set -x STARSHIP_CONFIG "$HOME/.config/starship-fish.toml"
+set -gx GOPATH "$HOME/Code/tomatao/go"
+set -gx NPM_TOKEN "REPLACEME"
+set -gx PNPM_HOME "$HOME/Library/pnpm"
+set -gx PGUSER "postgres"
+set -gx PYENV_ROOT "$HOME/.pyenv"
+set -gx EDITOR "subl -w"
+set -gx PAGER "moar"
+set -gx STARSHIP_CONFIG "$HOME/.config/starship-fish.toml"
 set -gx PROTO_HOME "$HOME/.proto"
 
 # Paths
@@ -26,12 +26,28 @@ if test -d "$HOME/.bin"
     fish_add_path "$HOME/.bin"
 end
 
+if test -d "$PROTO_HOME/shims"
+    fish_add_path "$PROTO_HOME/shims"
+end
+
+if test -d "$PROTO_HOME/bin"
+    fish_add_path "$PROTO_HOME/bin"
+end
+
 # Aliases
 
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+alias ls="lsd"
+alias l='ls -lF'
+alias ll='ls -lF --ignore-config'
+alias la='ls -AlF'
+alias laa='ls -AlF --ignore-config'
+alias las='ls -AlFS'
+alias lt='ls --tree -d'
+alias lta='ls --tree --ignore-config'
 
 # Initialisers
 
