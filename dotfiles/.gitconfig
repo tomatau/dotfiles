@@ -9,7 +9,7 @@
     editor = subl -n -w
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes
-	pager = delta
+    pager = delta
 
     # Make `git rebase` safer on OS X
     # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
@@ -37,7 +37,7 @@
     s = status -s
     st = status
     c = commit
-	cn = commit --no-verify
+    cn = commit --no-verify
     cm = commit -m
     cmn = commit -m --no-verify
     ca = commit -a
@@ -50,9 +50,13 @@
     co = checkout
     conew = checkout origin/main -b
     d = diff -- ':!package-lock.json'
+	dt = difftool -- ':!package-lock.json'
     dsd = diff --staged -- ':!package-lock.json'
+	dtsd = difftool --staged -- ':!package-lock.json'
     dst = diff --stat -- ':!package-lock.json'
-    new = log master.. --reverse
+    dtst = difftool --stat -- ':!package-lock.json'
+    dword = diff --color-words
+    dnew = log main.. --reverse
     unstage = reset HEAD
     uncommit = reset HEAD~
     unpush = push -f origin HEAD^:main
@@ -67,11 +71,10 @@
     pfn = push --force-with-lease --no-verify
     pl = pull
     rmc = rm --cached
-	rb = rebase
-	rbc = rebase --continue
-	rbs = rebase --skip
-	rba = rebase --abort
-    wdiff = diff --color-words
+    rb = rebase
+    rbc = rebase --continue
+    rbs = rebase --skip
+    rba = rebase --abort
     # View abbreviated SHA, description, and history graph of the latest 20 commits
     l = log --pretty=oneline -n 20 --graph --abbrev-commit
     # show custom graph
@@ -80,11 +83,10 @@
 
 [delta]
     syntax-theme = Monokai Extended
-    navigate = true    # use n and N to move between diff sections
-    # light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    navigate = true     # use n and N to move between diff sections
+    # light = false     # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
     side-by-side = true
     line-numbers = true
-
 
 [interactive]
     diffFilter = delta --color-only
@@ -94,15 +96,20 @@
 
 [diff]
     colorMoved = default
-	# renames = copies # detect renames
+    # renames = copies # detect renames
+    tool = difftastic
 
-# [diff]
-#     tool = atom
-#     renames = copies
 # [difftool "atom"]
 #     trustExitCode = true
 #     prompt = false
 #     cmd = "/usr/local/bin/atom" "$LOCAL" "$REMOTE"
+
+[difftool]
+    prompt = false
+
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
+
 # [merge]
 #     tool = atom
 
@@ -111,6 +118,7 @@
     keepBackup = false
 
 # opendiff kdiff3 tkdiff xxdiff meld tortoisemerge gvimdiff diffuse diffmerge ecmerge p4merge araxis bc3 codecompare emerge vimdiff
+
 # [mergetool "atom"]
 #     trustExitCode = true
 #     cmd = "/usr/local/bin/atom" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
