@@ -36,6 +36,7 @@ end
 
 # Aliases
 
+alias rd="rawdog"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."

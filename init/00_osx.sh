@@ -33,16 +33,20 @@ if [[ "$(type -P brew)" ]]; then
     )
 
     casks=(
-        arc
         airflow
         anaconda
         android-file-transfer
+        brave-browser
         chromedriver
         cleanmymac
         cog
         discord
         firefox
         folx
+        font-3270-nerd-font
+        font-monofur-nerd-font
+        font-overpass-nerd-font
+        font-ubuntu-mono-nerd-font
         google-chrome
         google-cloud-sdk
         grammarly
@@ -95,7 +99,7 @@ if [[ "$(type -P brew)" ]]; then
         curl
         git
         gnutls
-        java
+        # java
         proto
         rustup-init
         vim
@@ -108,14 +112,11 @@ if [[ "$(type -P brew)" ]]; then
         bash-completion
         bat
         bpython
+        difftastic
         direnv
         ffmpeg
         fish
         fnm
-        font-3270-nerd-font
-        font-monofur-nerd-font
-        font-overpass-nerd-font
-        font-ubuntu-mono-nerd-font
         fzf
         gh
         git-delta
@@ -136,7 +137,9 @@ if [[ "$(type -P brew)" ]]; then
         pulumi
         pyenv
         pyenv-virtualenv
+        rawdog
         redis
+        snyk
         sqlite
         ssh-copy-id
         starship
@@ -194,7 +197,7 @@ if [[ "$(type -P brew)" ]]; then
     fi
 
     # updating default zsh
-    if [[ "$(dscl . -read ~ UserShell | awk '{print $2}')" != "$binroot/fish" ]]; then
+    if [[ "$(dscl . -read ~ UserShell | awk '{print $2}')" != "$binroot/zsh" ]]; then
         e_header "Making upgraded $binroot/zsh your default shell"
         sudo chsh -s "$binroot/zsh" "$USER" >/dev/null 2>&1
     fi
