@@ -1,9 +1,9 @@
 [user]
     name = Thomas Hudspith-Tatham
-    email = iammotivated@gmail.com
+    email = thomas.h-t@dendra.io
 
 [github]
-    user = tomatau
+    user = thomash-t
 
 [core]
     editor = subl -n -w

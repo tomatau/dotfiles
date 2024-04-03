@@ -33,7 +33,6 @@ if [[ "$(type -P brew)" ]]; then
     )
 
     casks=(
-        airflow
         anaconda
         android-file-transfer
         brave-browser
@@ -42,7 +41,6 @@ if [[ "$(type -P brew)" ]]; then
         cog
         discord
         firefox
-        folx
         font-3270-nerd-font
         font-monofur-nerd-font
         font-overpass-nerd-font
@@ -71,7 +69,6 @@ if [[ "$(type -P brew)" ]]; then
         quicklook-json
         raycast
         slack
-        soulseek
         spotify
         sublime-text
         syntax-highlight
@@ -134,7 +131,6 @@ if [[ "$(type -P brew)" ]]; then
         nushell
         ollama
         poetry
-        pulumi
         pyenv
         pyenv-virtualenv
         rawdog
