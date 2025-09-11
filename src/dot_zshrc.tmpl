@@ -1,10 +1,19 @@
-export GOPATH="$HOME/Code/tomatao/go"
-export PYENV_ROOT="$HOME/.pyenv"
-export PROTO_HOME="$HOME/.proto"
-export NPM_TOKEN="REPLACE-ME"
-export PGUSER="postgres"
+export XDG_CONFIG_HOME="$HOME/.config"
 export EDITOR='subl -w'
-export PAGER='moar'
+export GOPATH="$HOME/Code/tomatao/go"
+{{ $token_name := printf "npm token for %s" .chezmoi.hostname -}}
+{{ $token := (index (lastpassRaw $token_name) 0).note -}}
+{{- if $token -}}
+export NPM_TOKEN={{ $token | quote }}
+{{- else -}}
+export NPM_TOKEN="hostname-specific-token-not-found"
+{{- end }}
+export PAGER='moor'
+export PGUSER="postgres"
+export PNPM_HOME="$HOME/Library/pnpm"
+export PROTO_HOME="$HOME/.proto"
+export PYENV_ROOT="$HOME/.pyenv"
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship.toml"
 
 function add_to_path_if_exists() {
   local dir="$1"
@@ -24,11 +33,14 @@ function remove_from_path() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }
 
-add_to_path_if_exists "$GOPATH/bin"
-add_to_path_if_exists "$HOME/.cargo/bin"
+add_to_path_if_exists "/usr/local/bin"
 add_to_path_if_exists "$HOME/.bin"
 add_to_path_if_exists "$PROTO_HOME/shims"
-add_to_path_if_exists "$PROTO_HOME/bin"
+add_to_path_if_exists "$HOME/.local/bin"
+add_to_path_if_exists "$HOME/.cargo/bin"
+add_to_path_if_exists "$GOPATH/bin"
+add_to_path_if_exists "$PYENV_ROOT/shims"
+# add_to_path_if_exists "$PROTO_HOME/bin"
 
 export PATH
 
@@ -45,12 +57,12 @@ alias -- -="cd -"
 
 alias ls="lsd"
 alias l='ls -lF'
-alias ll='ls -lF --ignore-config'
+alias li='ls -lF --ignore-config'
 alias la='ls -AlF'
-alias laa='ls -AlF --ignore-config'
+alias lai='ls -AlF --ignore-config'
 alias las='ls -AlFS'
 alias lt='ls --tree -d'
-alias lta='ls --tree --ignore-config'
+alias lti='ls --tree --ignore-config'
 
 alias brewupdate="brew update && brew upgrade && brew upgrade --cask && brew cleanup"
 
@@ -78,6 +90,10 @@ function f() {
 }
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+if [ -f $(brew --prefix)/etc/brew-wrap ];then
+  source $(brew --prefix)/etc/brew-wrap
+fi
 
 if [ -x "$(command -v direnv)" ]; then
   eval "$(direnv hook bash)"
@@ -131,23 +147,48 @@ function setjdk() {
 # Enable tab completion for `g` by marking it as an alias for `git`
 if which brew > /dev/null && [ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
   source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-  # complete -o default -o nospace \
-  #   -F "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" \
-  #   g;
 fi;
 
+# re-initialise the shell's completion system with brew commands
+if type brew &>/dev/null
+then
+  if [[ ":$FPATH:" != *":$(brew --prefix)/share/zsh/site-functions:"* ]]; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  fi
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+  autoload -Uz compinit
+  compinit
+fi
+
+if [ -f "$(brew --prefix)/opt/asdf/libexec/asdf.sh" ]; then
+  . "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
+fi
+
+__conda_path="$(brew --prefix)/anaconda3";
+__conda_setup="$($__conda_path/bin/conda 'shell.bash' 'hook' 2> /dev/null)";
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "$__conda_path/etc/profile.d/conda.sh" ]; then
+        . "$__conda_path/etc/profile.d/conda.sh"
     else
-        export PATH="/usr/local/anaconda3/bin:$PATH"
+        export PATH="$__conda_path/bin:$PATH"
     fi
 fi
+unset __conda_path
 unset __conda_setup
-# <<< conda initialize <<<
+
+# custom word boundaries
+# Define word boundaries to include . and - as separators
+# WORDCHARS=${WORDCHARS//[.-]/}
+# only a-Z and 0-9 are considered "words"
+WORDCHARS=''
+
+# Bind Option+LeftArrow and Option+Backspace for word navigation
+bindkey "^[b" backward-word
+bindkey "^[f" forward-word
+bindkey "^[[1;3D" backward-word
+bindkey "^[[1;3C" forward-word
+bindkey "^[3~" backward-kill-word
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
