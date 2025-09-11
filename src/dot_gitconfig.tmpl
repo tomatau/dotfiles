@@ -1,9 +1,12 @@
 [user]
-    name = Thomas Hudspith-Tatham
-    email = iammotivated@gmail.com
+    name = {{ .git.name }}
+    email = {{ .git.email }}
 
 [github]
-    user = tomatau
+    user = {{ .github.user }}
+
+[branch]
+    sort = -committerdate
 
 [core]
     editor = subl -n -w
@@ -18,6 +21,10 @@
 [init]
 	defaultBranch = main
 
+[pager]
+    branch = false
+    stash = false
+
 [push]
     default = simple
 
@@ -27,8 +34,15 @@
 [rebase]
     autosquash = true
 
+[rerere]
+    enabled = true
+    autoupdate = true
+
 [help]
-    autocorrect = 3
+    autocorrect = prompt
+
+[tag]
+    sort = version:refname
 
 [alias]
     a = add
@@ -38,23 +52,25 @@
     st = status
     c = commit
     cn = commit --no-verify
-    cm = commit -m
-    cmn = commit -m --no-verify
-    ca = commit -a
-    can = commit -a --no-verify
-    cam = commit -am
-    camn = commit -am --no-verify
+    cm = commit --message
+    cmn = commit --message --no-verify
+    ca = commit --all
+    can = commit --all --no-verify
+    cam = commit --all --message
+    camn = commit --all --message --no-verify
     cia = commit --amend -C HEAD
     cian = commit --amend -C HEAD --no-verify
     mend = commit --amend
+    mendn = commit --amend --no-verify
     co = checkout
-    conew = checkout origin/main -b
-    d = diff -- ':!package-lock.json'
-	dt = difftool -- ':!package-lock.json'
-    dsd = diff --staged -- ':!package-lock.json'
-	dtsd = difftool --staged -- ':!package-lock.json'
-    dst = diff --stat -- ':!package-lock.json'
-    dtst = difftool --stat -- ':!package-lock.json'
+    cob = checkout -b
+    cobom = checkout origin/main -b
+    d = diff -- ':!package-lock.json' ':!bun.lock' ':!pnpm-lock.yaml'
+    dt = difftool -- ':!package-lock.json' ':!bun.lock' ':!pnpm-lock.yaml'
+    dsd = diff --staged -- ':!package-lock.json' ':!bun.lock' ':!pnpm-lock.yaml'
+    dtsd = difftool --staged -- ':!package-lock.json' ':!bun.lock' ':!pnpm-lock.yaml'
+    dst = diff --stat -- ':!package-lock.json' ':!bun.lock' ':!pnpm-lock.yaml'
+    dtst = difftool --stat -- ':!package-lock.json' ':!bun.lock' ':!pnpm-lock.yaml'
     dword = diff --color-words
     dnew = log main.. --reverse
     unstage = reset HEAD
@@ -65,11 +81,16 @@
     ignored = !git ls-files -v | grep "^[[:lower:]]"
     last = log -1 -p HEAD
     m = merge
+    ma = merge --abort
     ps = push
     psn = push --no-verify
     pf = push --force-with-lease
+    pff = push --force
     pfn = push --force-with-lease --no-verify
+    pffn = push --force --no-verify
     pl = pull
+    plr = pull --rebase
+    plf = pull --force
     rmc = rm --cached
     rb = rebase
     rbc = rebase --continue
@@ -77,14 +98,18 @@
     rba = rebase --abort
     # View abbreviated SHA, description, and history graph of the latest 20 commits
     l = log --pretty=oneline -n 20 --graph --abbrev-commit
+    ln = !git --no-pager log --pretty=oneline -n 20 --graph --abbrev-commit
+    lnf = !git --no-pager log --pretty=oneline -n 20 --graph
     # show custom graph
     g = log --graph --pretty=custom
     delbr = push origin --delete
 
 [delta]
     syntax-theme = Monokai Extended
-    navigate = true     # use n and N to move between diff sections
-    # light = false     # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    # use n and N to move between diff sections
+    navigate = true
+    # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    # light = false
     side-by-side = true
     line-numbers = true
 
@@ -110,14 +135,15 @@
 [difftool "difftastic"]
     cmd = difft "$LOCAL" "$REMOTE"
 
-# [merge]
-#     tool = atom
-
 [mergetool]
     prompt = false
     keepBackup = false
 
+
 # opendiff kdiff3 tkdiff xxdiff meld tortoisemerge gvimdiff diffuse diffmerge ecmerge p4merge araxis bc3 codecompare emerge vimdiff
+
+# [merge]
+#     tool = atom
 
 # [mergetool "atom"]
 #     trustExitCode = true
