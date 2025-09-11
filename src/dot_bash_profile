@@ -1,0 +1,7 @@
+# might not be bash, e.g. `sh`. So, check for bash
+if [ -n "$BASH_VERSION" ]; then
+    # share settings between login and interactive shells
+    if [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
+    fi
+fi
