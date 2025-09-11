@@ -1,0 +1,20 @@
+export XDG_CONFIG_HOME="$HOME/.config"
+export EDITOR='subl -w'
+export GOPATH="$HOME/Code/tomatao/go"
+{{ $token_name := printf "npm token for %s" .chezmoi.hostname -}}
+{{ $token := (index (lastpassRaw $token_name) 0).note -}}
+{{- if $token -}}
+export NPM_TOKEN={{ $token | quote }}
+{{- else -}}
+export NPM_TOKEN="hostname-specific-token-not-found"
+{{- end }}
+export PAGER='moor'
+export PGUSER="postgres"
+export PNPM_HOME="$HOME/Library/pnpm"
+export PROTO_HOME="$HOME/.proto"
+export PYENV_ROOT="$HOME/.pyenv"
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship.toml"
+
+if [[ "$SHELL" == "bash" ]]; then
+  export GREP_OPTIONS='--color=auto'
+fi

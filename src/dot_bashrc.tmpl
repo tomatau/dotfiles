@@ -1,11 +1,18 @@
+#!/usr/bin/env bash
+
+# if not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
 # shell scripts in specific order
 shell_scripts=(
   env_vars
   path_management
-  zsh_options
-  zsh_completions
-  zsh_custom_boundaries
+  bash_options
+  bash_completions
+  bash_custom_boundaries
   history
   aliases_file
   aliases_programs
@@ -27,4 +34,4 @@ if [ -f $(brew --prefix)/etc/brew-wrap ];then
 fi
 
 # PROGRAMS
-source ~/.shell/zsh_init_programs.sh
+source ~/.shell/bash_init_programs.sh

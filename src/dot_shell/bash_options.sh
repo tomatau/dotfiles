@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -14,11 +14,13 @@ shopt -s dirspell
 # include filenames beginning with a . in the results of expansions
 shopt -s dotglob
 
-# If set, the pattern "**" used in a pathname expansion context will
+# the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+shopt -s globstar
 
-# Case-insensitive globbing (used in pathname expansion)
+# case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 
-
+# append to the history file, don't overwrite it
+shopt -s histappend
+shopt -s histverify
