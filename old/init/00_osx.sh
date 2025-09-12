@@ -176,31 +176,31 @@ if [[ "$(type -P brew)" ]]; then
 
     # brew cleanup
     # This is where brew stores its binary symlinks
-    local binroot="$(brew --config | awk '/HOMEBREW_PREFIX/ {print $2}')"/bin
+    # local binroot="$(brew --config | awk '/HOMEBREW_PREFIX/ {print $2}')"/bin
 
-    # bash
-    if [[ "$(type -P $binroot/bash)" && ! "$(cat /etc/shells | grep -q "$binroot/bash")" ]]; then
-        e_header "Adding $binroot/bash to the list of acceptable shells"
-        echo "$binroot/bash" | sudo tee -a /etc/shells >/dev/null
-    fi
+    # # bash
+    # if [[ "$(type -P $binroot/bash)" && ! "$(cat /etc/shells | grep -q "$binroot/bash")" ]]; then
+    #     e_header "Adding $binroot/bash to the list of acceptable shells"
+    #     echo "$binroot/bash" | sudo tee -a /etc/shells >/dev/null
+    # fi
 
-    # zsh
-    if [[ "$(type -P $binroot/zsh)" && ! "$(cat /etc/shells | grep -q "$binroot/zsh")" ]]; then
-        e_header "Adding $binroot/zsh to the list of acceptable shells"
-        echo "$binroot/zsh" | sudo tee -a /etc/shells >/dev/null
-    fi
+    # # zsh
+    # if [[ "$(type -P $binroot/zsh)" && ! "$(cat /etc/shells | grep -q "$binroot/zsh")" ]]; then
+    #     e_header "Adding $binroot/zsh to the list of acceptable shells"
+    #     echo "$binroot/zsh" | sudo tee -a /etc/shells >/dev/null
+    # fi
 
-    # fish
-    if [[ "$(type -P $binroot/fish)" && ! "$(cat /etc/shells | grep -q "$binroot/fish")" ]]; then
-        e_header "Adding $binroot/fish to the list of acceptable shells"
-        echo "$binroot/fish" | sudo tee -a /etc/shells >/dev/null
-    fi
+    # # fish
+    # if [[ "$(type -P $binroot/fish)" && ! "$(cat /etc/shells | grep -q "$binroot/fish")" ]]; then
+    #     e_header "Adding $binroot/fish to the list of acceptable shells"
+    #     echo "$binroot/fish" | sudo tee -a /etc/shells >/dev/null
+    # fi
 
     # updating default zsh
-    if [[ "$(dscl . -read ~ UserShell | awk '{print $2}')" != "$binroot/zsh" ]]; then
-        e_header "Making upgraded $binroot/zsh your default shell"
-        sudo chsh -s "$binroot/zsh" "$USER" >/dev/null 2>&1
-    fi
+    # if [[ "$(dscl . -read ~ UserShell | awk '{print $2}')" != "$binroot/zsh" ]]; then
+    #     e_header "Making upgraded $binroot/zsh your default shell"
+    #     sudo chsh -s "$binroot/zsh" "$USER" >/dev/null 2>&1
+    # fi
 fi
 
 # # Create my directories yo
