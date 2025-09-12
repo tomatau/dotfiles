@@ -1,5 +1,6 @@
 alias reload="exec $SHELL -l"
 alias g="git"
+alias ch="chezmoi"
 
 alias brewupdate="brew update && brew upgrade && brew upgrade --cask && brew cleanup"
 
