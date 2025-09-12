@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+source "{{ .chezmoi.sourceDir }}/.scripts/utils.sh.tmpl"
+
+set_strict_mode
+
+p_header white "Installing dependencies..."
+
+# install rust if not installed
+if ! command -v rustc &> /dev/null; then
+  p_header purple "Installing Rust..."
+  rustup-init -y
+else
+  p_header green "Rust already installed..."
+fi

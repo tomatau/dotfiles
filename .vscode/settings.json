@@ -1,5 +1,6 @@
 {
   "files.associations": {
-    "*.tmpl": "shellscript"
+    "*.tmpl": "shellscript",
+    "**/.brew/*": "ruby"
   }
 }

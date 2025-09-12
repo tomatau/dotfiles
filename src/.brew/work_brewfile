@@ -1,0 +1,13 @@
+tap "snyk/tap"
+
+# FORMULAS
+brew "awscli"
+brew "helm"
+brew "k9s"
+brew "kubernetes-cli"
+brew "minikube"
+brew "snyk"
+brew "tfenv" # terraform version management
+
+# CASKS
+cask "gcloud-cli"
