@@ -17,12 +17,19 @@ function remove_from_path() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }
 
-add_to_path_if_exists "/usr/local/bin"
+# my overrides
 add_to_path_if_exists "$HOME/.bin"
+
+# version management
 add_to_path_if_exists "$PROTO_HOME/shims"
+
+# system packages
+eval "$(/opt/homebrew/bin/brew shellenv)"
+add_to_path_if_exists "/usr/local/bin"
 add_to_path_if_exists "$HOME/.local/bin"
+
+# language packages
 add_to_path_if_exists "$HOME/.cargo/bin"
 add_to_path_if_exists "$GOPATH/bin"
-# add_to_path_if_exists "$PROTO_HOME/bin"
 
 export PATH

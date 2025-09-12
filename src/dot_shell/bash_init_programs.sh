@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Brewfile management
+if [ -f $(brew --prefix)/etc/brew-wrap ];then
+  source $(brew --prefix)/etc/brew-wrap
+fi
+
 if [ -x "$(command -v direnv)" ]; then
   eval "$(direnv hook bash)"
 fi

@@ -26,12 +26,5 @@ done
 
 unset file
 
-# HOMEBREW
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-if [ -f $(brew --prefix)/etc/brew-wrap ];then
-  source $(brew --prefix)/etc/brew-wrap
-fi
-
 # PROGRAMS
 source ~/.shell/bash_init_programs.sh
