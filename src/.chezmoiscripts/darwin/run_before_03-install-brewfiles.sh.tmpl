@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+source "{{ .chezmoi.sourceDir }}/.scripts/utils.sh.tmpl"
+
+set_strict_mode
+
+p_header white "Installing brewfile..."
+
+p_header purple "Installing common brewfile..."
+brew bundle --verbose --file={{ .chezmoi.sourceDir }}/.brew/common_brewfile
+
+{{- if eq .profile "personal" }}
+
+p_header purple "Installing personal brewfile..."
+brew bundle --verbose --file={{ .chezmoi.sourceDir }}/.brew/personal_brewfile
+
+{{- else if eq .mode "work" }}
+
+p_header purple "Installing work brewfile..."
+brew bundle --verbose --file={{ .chezmoi.sourceDir }}/.brew/work_brewfile
+
+{{- end }}
+
+p_header green "Installed all brewfiles! Cleaning up..."
+brew cleanup

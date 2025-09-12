@@ -1,0 +1,21 @@
+
+# CASKS
+cask "airflow"
+cask "cleanmymac"
+cask "cog-app"
+cask "discord"
+cask "folx"
+cask "kiro"
+cask "lm-studio"
+cask "messenger"
+cask "mindmac"
+cask "nordvpn"
+cask "soulseek"
+cask "thunderbird"
+cask "tradingview"
+cask "whatsapp"
+
+# MAC APPS
+mas 'GarageBand (10.4.12)', id: 682658836
+mas 'HP Smart (18.10.1)', id: 1474276998
+mas 'iMovie (10.4.3)', id: 408981434
