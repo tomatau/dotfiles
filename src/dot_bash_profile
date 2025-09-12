@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # might not be bash, e.g. `sh`. So, check for bash
 if [ -n "$BASH_VERSION" ]; then
     # share settings between login and interactive shells
