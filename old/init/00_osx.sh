@@ -203,10 +203,10 @@ if [[ "$(type -P brew)" ]]; then
     fi
 fi
 
-# Create my directories yo
-if [[ ! -d "$HOME/Code" ]]; then
-    mkdir $HOME/Code
-fi
+# # Create my directories yo
+# if [[ ! -d "$HOME/Code" ]]; then
+#     mkdir $HOME/Code
+# fi
 
 # Need to be in fish shell to install terminal
 # if [[ "$(type -P fish)" ]]; then
