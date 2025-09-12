@@ -1,8 +1,13 @@
+#!/usr/bin/env zsh
+
+# if not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
 # shell scripts in specific order
 shell_scripts=(
-  env_vars
-  path_management
   zsh_options
   zsh_completions
   zsh_custom_boundaries
@@ -20,8 +25,6 @@ done
 unset file
 
 # HOMEBREW
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 if [ -f $(brew --prefix)/etc/brew-wrap ];then
   source $(brew --prefix)/etc/brew-wrap
 fi
