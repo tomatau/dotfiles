@@ -1,18 +1,30 @@
+{{ $choices := list "personal" "work" -}}
+{{ $profile := promptChoiceOnce . "personal" "Which profile" $choices -}}
+
+{{ $email := "iammotivated@gmail.com" -}}
+{{ $github_name := "tomatau" -}}
+
+{{- if eq $profile "work" -}}
+  {{ $email = promptStringOnce . "email" "Github email address" "iammotivated@gmail.com" -}}
+  {{ $github_name = promptStringOnce . "github_name" "Github name" "tomatau" -}}
+{{- end -}}
+
 {{- /* The sourceDir will be set by the `init` command */ -}}
 sourceDir = "{{ .chezmoi.sourceDir }}"
 
 [data]
+profile = {{ $profile | quote }}
 
 [data.git]
 name = "Thomas Hudspith-Tatham"
-email = "iammotivated@gmail.com"
+email = {{ $email | quote }}
 
 [data.github]
-user = "tomatau"
+user = {{ $github_name | quote }}
 
 [data.lastpass]
 username = "iammotivated@gmail.com"
 
 [data.npm]
 author = "Thomas `tomatao` Hudspith-Tatham"
-email = "iammotivated@gmail.com"
+email = {{ $email | quote }}
