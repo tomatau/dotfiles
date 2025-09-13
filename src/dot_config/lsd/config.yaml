@@ -1,0 +1,7 @@
+ignore-globs:
+  - "!.github"
+  - .git
+  - node_modules
+
+icons:
+  separator: "  "
