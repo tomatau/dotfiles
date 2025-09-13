@@ -2,6 +2,7 @@
   "files.associations": {
     "*.tmpl": "shellscript",
     "**/.brew/*": "ruby",
-    "**/dot_config/zed/*.json": "jsonc"
+    "**/dot_config/zed/*.json": "jsonc",
+    "dot_vimrc": "viml"
   }
 }
