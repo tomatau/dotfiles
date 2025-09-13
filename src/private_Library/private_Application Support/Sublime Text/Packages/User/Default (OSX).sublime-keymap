@@ -1,0 +1,14 @@
+[
+  {
+    "keys": ["super+\\"],
+    "command": "toggle_side_bar"
+  },
+  {
+    "keys": ["option+up"],
+    "command": "swap_line_up"
+  },
+  {
+    "keys": ["option+down"],
+    "command": "swap_line_down"
+  }
+]
