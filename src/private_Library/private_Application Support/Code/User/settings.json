@@ -1,0 +1,262 @@
+{
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[rust]": {
+    "editor.defaultFormatter": "jinxdash.prettier-rust"
+  },
+  "[elixir]": {
+    "editor.bracketPairColorization.enabled": false,
+    "editor.defaultFormatter": "JakeBecker.elixir-ls"
+  },
+  "[gleam]": {
+    "editor.defaultFormatter": "gleam.gleam"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform"
+  },
+  "[terraform-vars]": {
+    "editor.defaultFormatter": "hashicorp.terraform"
+  },
+  "breadcrumbs.enabled": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "OverpassM Nerd Font Propo, Operator Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 13,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.rulers": [80, 100],
+  "editor.snippetSuggestions": "top",
+  "editor.tabSize": 2,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      /* COMMON */
+      {
+        "scope": "punctuation.definition.comment",
+        "settings": {
+          "fontStyle": "italic",
+          "foreground": "#ff7bed"
+        }
+      },
+      {
+        "scope": "comment, comment.line.double-slash",
+        "settings": {
+          "fontStyle": "italic",
+          "foreground": "#ff7bed"
+        }
+      },
+      {
+        "scope": "heading.2.markdown entity.name.section.markdown",
+        "settings": {
+          "foreground": "#ff9421"
+        }
+      },
+      {
+        "scope": "heading.3.markdown entity.name.section.markdown",
+        "settings": {
+          "foreground": "#83d440"
+        }
+      },
+      {
+        "scope": "heading.4.markdown entity.name.section.markdown",
+        "settings": {
+          "foreground": "#00d5ff"
+        }
+      },
+      {
+        "scope": "markup.quote",
+        "settings": {
+          "foreground": "#60a66f"
+        }
+      }
+    ]
+  },
+  "editor.wordWrap": "on",
+  "editor.wrappingIndent": "deepIndent",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "emmet.syntaxProfiles": {
+    "js": {
+      "attr_quotes": "single"
+    },
+    "jsx": {
+      "attr_quotes": "single"
+    },
+    "ts": {
+      "attr_quotes": "single"
+    },
+    "tsx": {
+      "attr_quotes": "single"
+    }
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.openEditors.visible": 1,
+  "extensions.ignoreRecommendations": false,
+  "files.associations": {
+    "**/.github/**/*.yml": "github-actions-workflow",
+    "*.mdx": "mdx",
+    "Modelfile": "modelfile"
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "git.allowForcePush": true,
+  "git.confirmForcePush": false,
+  "git.confirmSync": false,
+  "git.rebaseWhenSync": true,
+  "grammarly.files.include": [
+    "**/readme.md",
+    "**/README.md",
+    "**/*.txt",
+    "**/*.mdx"
+  ],
+  "grammarly.selectors": [
+    {
+      "language": "markdown",
+      "scheme": "file"
+    }
+  ],
+  "html.format.wrapLineLength": 90,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "jupyter.interactiveWindow.creationMode": "perFile",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "npm.enableRunFromFolder": true,
+  "prettier.arrowParens": "avoid",
+  "prettier.bracketSameLine": false,
+  "prettier.jsxSingleQuote": true,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.external.osxExec": "iTerm.app",
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "typescript.validate.enable": true,
+  "window.restoreWindows": "all",
+  "workbench.colorCustomizations": {
+    "editorCodeLens.foreground": "#787776e6",
+    "editorCursor.foreground": "#00ff40",
+    "notebook.cellBorderColor": "#111",
+    "notebook.editorBackground": "#232629",
+    "notebook.focusedCellBackground": "#232629",
+    "notebook.focusedCellBorder": "#ff9500",
+    "notebook.outputContainerBackgroundColor": "#16181a",
+    "notebook.selectedCellBackground": "#232629"
+  },
+  "workbench.colorTheme": "One Monokai",
+  "workbench.editor.closeOnFileDelete": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.enableExperiments": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "write-good.languages": ["markdown", "md", "mdx", "plaintext"],
+  "terminal.integrated.inheritEnv": false,
+  "grammarly.config.documentDialect": "british",
+  "grammarly.config.documentDomain": "casual",
+  "window.zoomLevel": 1,
+  "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"],
+  "notebook.stickyScroll.enabled": true,
+  "editor.stickyScroll.enabled": true,
+  "workbench.tree.stickyScrollMaxItemCount": 5,
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "explorer.confirmPasteNative": false,
+  "gitlens.views.commitDetails.files.layout": "tree",
+  "cSpell.userWords": ["initialised", "pulumi", "rustacean"],
+  "jupyter.interactiveWindow.textEditor.executeSelection": true,
+  "editor.fontLigatures": true,
+  "cSpell.enabled": false,
+  "code-livebook.livebookPort": 62259,
+  "workbench.iconTheme": "material-icon-theme",
+  "zenMode.centerLayout": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.fullScreen": false,
+  "workbench.editor.tabSizing": "shrink",
+  "github.copilot.advanced": {
+    "authProvider": "github"
+  },
+  "chat.agent.enabled": true,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.showSlider": "always",
+  "editor.minimap.enabled": false,
+  "pgsql.serverGroups": [
+    {
+      "name": "Servers",
+      "id": "EF8D0DF6-278B-48B9-9731-1CCF60D87F0C",
+      "isDefault": true
+    }
+  ],
+  "pgsql.connections": [
+    {
+      "id": "42BB6A38-CD36-4F48-ABA6-44925DCC8890",
+      "groupId": "EF8D0DF6-278B-48B9-9731-1CCF60D87F0C",
+      "authenticationType": "SqlLogin",
+      "connectTimeout": 15,
+      "applicationName": "vscode-pgsql",
+      "clientEncoding": "utf8",
+      "sslmode": "prefer",
+      "server": "localhost",
+      "user": "admin",
+      "port": "",
+      "database": "local_agent_db",
+      "password": "",
+      "profileName": "local_agent_db, local_agent_db (admin)",
+      "hostaddr": "",
+      "expiresOn": 0,
+      "profileSource": 0,
+      "displayName": "local_agent_db, local_agent_db (admin)",
+      "savePassword": true
+    }
+  ],
+  "database-client.autoSync": true,
+  "pgsql.enableQueryHistoryCapture": false,
+  "svgPreview.autoOpen": false,
+  "docker.extension.enableComposeLanguageServer": false,
+  "roo-cline.allowedCommands": [
+    "npm test",
+    "npm install",
+    "tsc",
+    "git log",
+    "git diff",
+    "git show"
+  ],
+  "roo-cline.deniedCommands": [],
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "biome.suggestInstallingGlobally": false,
+  "workbench.activityBar.location": "top",
+  "diffEditor.codeLens": true,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "vs-kubernetes": {
+    "vscode-kubernetes.minikube-path-mac": "/Users/tomatao/.vs-kubernetes/tools/minikube/darwin-arm64/minikube"
+  },
+  "harper.dialect": "British"
+}
