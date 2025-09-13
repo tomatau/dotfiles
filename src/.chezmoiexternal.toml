@@ -1,0 +1,39 @@
+["Library/Application Support/TextMate/Managed/Bundles/Fish.tmbundle"]
+    type = "git-repo"
+    url = "git@github.com:sanssecours/Fish.tmbundle.git"
+    refreshPeriod = "168h"
+
+[".vim/bundle/es.next.syntax.vim"]
+    type = "git-repo"
+    url = "git@github.com:othree/es.next.syntax.vim.git"
+    refreshPeriod = "168h"
+
+[".vim/bundle/jellybeans.vim"]
+    type = "git-repo"
+    url = "git@github.com:nanotech/jellybeans.vim.git"
+    refreshPeriod = "168h"
+
+[".vim/bundle/nerdtree"]
+    type = "git-repo"
+    url = "git@github.com:scrooloose/nerdtree.git"
+    refreshPeriod = "168h"
+
+[".vim/bundle/vim-airline"]
+    type = "git-repo"
+    url = "git@github.com:vim-airline/vim-airline.git"
+    refreshPeriod = "168h"
+
+[".vim/bundle/vim-gitgutter"]
+    type = "git-repo"
+    url = "git@github.com:airblade/vim-gitgutter.git"
+    refreshPeriod = "168h"
+
+[".vim/bundle/vim-jsx"]
+    type = "git-repo"
+    url = "git@github.com:mxw/vim-jsx.git"
+    refreshPeriod = "168h"
+
+[".vim/bundle/yajs-core.vim"]
+    type = "git-repo"
+    url = "git@github.com:othree/yajs-core.vim"
+    refreshPeriod = "168h"
