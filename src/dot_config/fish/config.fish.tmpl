@@ -1,0 +1,111 @@
+set -g fish_prompt_pwd_dir_length 2
+set -gx XDG_CONFIG_HOME "$HOME/.config"
+set -gx EDITOR "subl -w"
+set -gx GOPATH "$HOME/Code/tomatao/go"
+set -Ux LSCOLORS fxefcxdxbxexexabagacad
+{{ $token_name := printf "npm token for %s" .chezmoi.hostname -}}
+{{ $token := (index (lastpassRaw $token_name) 0).note -}}
+{{- if $token -}}
+set -gx NPM_TOKEN {{ $token | quote }}
+{{- else -}}
+set -gx NPM_TOKEN "hostname-specific-token-not-found"
+{{- end }}
+set -gx PAGER "moor"
+set -gx PGUSER "postgres"
+set -gx PNPM_HOME "$HOME/Library/pnpm"
+set -gx PROTO_HOME "$HOME/.proto"
+set -gx PYENV_ROOT "$HOME/.pyenv"
+set -gx STARSHIP_CONFIG "$XDG_CONFIG_HOME/starship-fish.toml"
+
+# PATH MANAGEMENT
+
+fish_add_path /opt/X11/bin
+
+# my overrides
+if test -d "$HOME/.bin"
+    fish_add_path "$HOME/.bin"
+end
+
+# version management
+if test -d "$PROTO_HOME/shims"
+    fish_add_path "$PROTO_HOME/shims"
+end
+
+# system packages
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+if test -d "/usr/local/bin"
+    fish_add_path "/usr/local/bin"
+end
+
+if test -d "$HOME/.local/bin"
+    fish_add_path "$HOME/.local/bin"
+end
+
+# language packages
+if test -d "$HOME/.cargo/bin"
+    fish_add_path "$HOME/.cargo/bin"
+end
+
+if test -d "$GOPATH/bin"
+    fish_add_path "$GOPATH/bin"
+end
+
+# ALIASES
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ls="lsd"
+alias l='ls -lF'
+alias li='ls -lF --ignore-config'
+alias la='ls -AlF'
+alias lai='ls -AlF --ignore-config'
+alias las='ls -AlFS'
+alias lt='ls --tree -d'
+alias lti='ls --tree --ignore-config'
+
+# INIT PROGRAMS
+
+if test -f (brew --prefix)/etc/brew-wrap.fish
+  source (brew --prefix)/etc/brew-wrap.fish
+end
+
+if command -q direnv
+    direnv hook fish | source
+end
+
+if command -q pyenv
+    pyenv init - | source
+    status --is-interactive; and pyenv virtualenv-init - | source
+end
+
+if command -q zoxide
+    zoxide init fish | source
+end
+
+if command -q fnm
+    fnm env --use-on-cd | source
+end
+
+if command -q starship
+    starship init fish | source
+end
+
+if command -q fzf
+    fzf --fish | source
+end
+
+if test -f $(brew --prefix)/opt/asdf/libexec/asdf.fish
+    source $(brew --prefix)/opt/asdf/libexec/asdf.fish
+end
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f $(brew --prefix)/anaconda3/bin/conda
+    eval $(brew --prefix)/anaconda3/bin/conda "shell.fish" hook $argv | source
+end
+# <<< conda initialize <<<
+
+string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
