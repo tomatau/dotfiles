@@ -1,0 +1,19 @@
+{{ include (joinPath .chezmoi.sourceDir "/.starship/common_root.toml") }}
+
+# inserts a blank line between prompts
+add_newline = true
+
+{{ include (joinPath .chezmoi.sourceDir "/.starship/common_palettes.toml") }}
+color_blue = '#007acc'
+color_light_blue = '#66c2ff'
+
+{{ include (joinPath .chezmoi.sourceDir "/.starship/common_inputting.toml") }}
+
+[line_break]
+disabled = false
+
+{{ include (joinPath .chezmoi.sourceDir "/.starship/common_directory.toml") }}
+style = "fg:color_blue"
+repo_root_style = "bold color_light_blue"
+
+{{ include (joinPath .chezmoi.sourceDir "/.starship/common_apps.toml") }}

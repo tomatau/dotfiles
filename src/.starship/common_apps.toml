@@ -1,25 +1,12 @@
-"$schema" = 'https://starship.rs/config-schema.json'
-
-right_format = """$time"""
-palette = 'tomatao'
-
-[palettes.tomatao]
-color_blue = '#458588'
-color_aqua = '#04b4b4'
-color_green = '#52981a'
-color_orange = '#d65d0e'
-color_purple = '#b343ea'
-color_red = '#cc241d'
-color_yellow = '#d79921'
-
-[character]
-success_symbol = '[➜](bold green)'
-
-[directory]
+[direnv]
+disabled = false
+format = '[$symbol $loaded$allowed]($style) '
+symbol = ""
+allowed_msg = ''
+loaded_msg = '󰄭'
+not_allowed_msg = ''
+unloaded_msg = "not loaded"
 style = "fg:color_purple"
-repo_root_style = "bold purple"
-fish_style_pwd_dir_length = 3
-read_only = " 󰌾"
 
 [time]
 disabled = false
@@ -27,35 +14,23 @@ disabled = false
 [aws]
 symbol = " "
 
-[buf]
-symbol = " "
-
-[c]
-symbol = " "
+[bun]
+symbol = " "
 
 [conda]
 symbol = " "
 
-[crystal]
-symbol = " "
+[container]
+symbol = "⬢ "
 
-[dart]
-symbol = " "
+[deno]
+symbol = " "
 
 [docker_context]
 symbol = " "
 
 [elixir]
 symbol = " "
-
-[elm]
-symbol = " "
-
-[fennel]
-symbol = " "
-
-[fossil_branch]
-symbol = " "
 
 [git_branch]
 style = "fg:color_green"
@@ -68,20 +43,14 @@ ahead = '⇡$count'
 diverged = '⇕⇡$ahead_count⇣$behind_count'
 behind = '⇣$count'
 
+[gleam]
+symbol = "⭐ "
+
 [golang]
 symbol = " "
 
-[guix_shell]
-symbol = " "
-
 [haskell]
 symbol = " "
-
-[haxe]
-symbol = " "
-
-[hg_branch]
-symbol = " "
 
 [hostname]
 ssh_symbol = " "
@@ -89,32 +58,14 @@ ssh_symbol = " "
 [java]
 symbol = " "
 
-[julia]
-symbol = " "
-
-[kotlin]
-symbol = " "
-
-[lua]
-symbol = " "
+[jobs]
+symbol = "✦ "
 
 [memory_usage]
 symbol = "󰍛 "
 
-[meson]
-symbol = "󰔷 "
-
-[nim]
-symbol = "󰆥 "
-
-[nix_shell]
-symbol = " "
-
 [nodejs]
 symbol = " "
-
-[ocaml]
-symbol = " "
 
 [os.symbols]
 Alpaquita = " "
@@ -160,20 +111,11 @@ Windows = "󰍲 "
 [package]
 symbol = "󰏗 "
 
-[perl]
-symbol = " "
-
 [php]
 symbol = " "
 
-[pijul_channel]
-symbol = " "
-
 [python]
 symbol = " "
-
-[rlang]
-symbol = "󰟔 "
 
 [ruby]
 symbol = " "
@@ -183,9 +125,6 @@ symbol = " "
 
 [scala]
 symbol = " "
-
-[swift]
-symbol = " "
 
 [zig]
 symbol = " "

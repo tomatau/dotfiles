@@ -1,0 +1,13 @@
+{{ include (joinPath .chezmoi.sourceDir "/.starship/common_root.toml") -}}
+command_timeout = 800
+
+{{ include (joinPath .chezmoi.sourceDir "/.starship/common_palettes.toml") -}}
+color_blue = '#458588'
+color_aqua = '#04b4b4'
+
+{{ include (joinPath .chezmoi.sourceDir "/.starship/common_inputting.toml") }}
+{{ include (joinPath .chezmoi.sourceDir "/.starship/common_directory.toml") -}}
+style = "fg:color_yellow"
+repo_root_style = "bold yellow"
+
+{{ include (joinPath .chezmoi.sourceDir "/.starship/common_apps.toml") }}

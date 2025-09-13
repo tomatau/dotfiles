@@ -1,0 +1,4 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+right_format = """$time"""
+palette = 'tomatao'
