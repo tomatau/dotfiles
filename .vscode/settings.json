@@ -1,6 +1,7 @@
 {
   "files.associations": {
     "*.tmpl": "shellscript",
-    "**/.brew/*": "ruby"
+    "**/.brew/*": "ruby",
+    "**/dot_config/zed/*.json": "jsonc"
   }
 }

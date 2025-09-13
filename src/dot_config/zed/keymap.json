@@ -1,0 +1,12 @@
+[
+  {
+    "bindings": {
+      "cmd-\\": "workspace::ToggleLeftDock",
+      "cmd-shift-d": "editor::DuplicateSelection",
+      "ctrl-|": "workspace::ToggleRightDock",
+      "ctrl-shift-t": "workspace::ToggleBottomDock",
+      "ctrl-shift-c": "project_panel::CollapseAllEntries",
+      "ctrl-cmd-g": "editor::SelectAllMatches"
+    }
+  }
+]
