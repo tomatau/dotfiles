@@ -1,35 +1,34 @@
 
-function add_to_path_if_exists() {
+function prepend_path() {
   local dir="$1"
-  local colon_path="${PATH//:/:}"
-  colon_path="${colon_path// //}"
 
-  if ! [ -d "$dir" ]; then
+  if ! [[ -d "$dir" ]]; then
     return
   fi
 
-  if ! [[ $colon_path == *":$dir:"* ]]; then
-    export PATH="$PATH:$dir"
-  fi
+  remove_from_path $dir
+
+  export PATH="$dir${PATH:+:$PATH}"
 }
 
 function remove_from_path() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }
 
-# my overrides
-add_to_path_if_exists "$HOME/.bin"
-
-# version management
-add_to_path_if_exists "$PROTO_HOME/shims"
+# language packages
+prepend_path "$GOPATH/bin"
+prepend_path "$HOME/.cargo/bin"
 
 # system packages
-eval "$(/opt/homebrew/bin/brew shellenv)"
-add_to_path_if_exists "/usr/local/bin"
-add_to_path_if_exists "$HOME/.local/bin"
+prepend_path "$HOME/.local/bin"
+prepend_path "/usr/local/bin"
+prepend_path "/opt/homebrew/sbin"
+prepend_path "/opt/homebrew/bin"
 
-# language packages
-add_to_path_if_exists "$HOME/.cargo/bin"
-add_to_path_if_exists "$GOPATH/bin"
+# version management
+prepend_path "$PROTO_HOME/shims"
+
+# my overrides
+prepend_path "$HOME/.bin"
 
 export PATH
