@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+source "{{ .chezmoi.sourceDir }}/.scripts/utils.sh.tmpl"
+
+set_strict_mode
+
+{{ $fisher_plugins :=  joinPath .chezmoi.sourceDir "/dot_config/fish/fish_plugins" }}
+
+# fisher_plugins hash: {{ include $fisher_plugins | sha256sum }}
+
+p_header white "Installing fisher and fish plugins..."
+
+if command -v fish &>/dev/null; then
+  if command -v "fish -c fisher" &>/dev/null; then
+    p_header purple "Installing fisher..."
+
+    # 1. Download the installer and pipe it to `source` (a fish builtin)
+    # 2. `fisher install` to complete the installation
+
+    fisher_url="https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish"
+
+    install_cmd="curl -sL ${fisher_url} | source \
+      && fisher install jorgebucaran/fisher"
+
+    # run the fisher installer from within a fish shell
+    if fish -c "$install_cmd"; then
+      p_header green "Fisher installed..."
+    else
+      p_header red "Fisher installation failed..."
+    fi
+  else
+    p_header green "Fisher already installed..."
+  fi
+
+  # 3. `fisher update` to install plugins listed in `~/.config/fish/fish_plugins`
+  p_header white "Updating fisher plugins..."
+  fish -c "fisher update"
+else
+  p_header yellow "Fish shell not found. Skipping fisher installation."
+fi
