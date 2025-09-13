@@ -26,7 +26,9 @@ if [ -x "$(command -v starship)" ]; then
   eval "$(starship init bash)"
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+if [ -x "$(command -v fzf)" ]; then
+  eval "$(fzf --bash)"
+fi
 
 if [ -f "$(brew --prefix)/opt/asdf/libexec/asdf.sh" ]; then
   . "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
