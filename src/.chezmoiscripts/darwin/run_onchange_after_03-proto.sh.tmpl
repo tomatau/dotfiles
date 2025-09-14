@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+source "{{ .chezmoi.sourceDir }}/.scripts/utils.sh.tmpl"
+
+set_strict_mode
+
+p_header white "Installing proto plugins and tools..."
+
+if ! command -v proto &> /dev/null; then
+  p_header red "proto not installed..."
+  brew install proto
+fi
+
+proto install bun
+proto install deno
+proto install go
+proto install uv
+
+p_header green "Proto tools installed..."
