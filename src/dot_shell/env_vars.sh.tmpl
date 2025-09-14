@@ -16,6 +16,16 @@ export PROTO_HOME="$HOME/.proto"
 export PYENV_ROOT="$HOME/.pyenv"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship.toml"
 export FNM_COREPACK_ENABLED="true"
+export FZF_COMPLETION_TRIGGER="**"
+export FZF_DEFAULT_OPTS="
+--style default
+--preview 'fzf-preview.sh {}'
+--bind 'ctrl-p:toggle-preview'
+"
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
+export FZF_CTRL_T_COMMAND="fd --hidden --follow --exclude .git"
+export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
+export FZF_CTRL_R_OPTS="--style default --no-preview"
 
 if [[ "$SHELL" == "bash" ]]; then
   export GREP_OPTIONS="--color=auto"
