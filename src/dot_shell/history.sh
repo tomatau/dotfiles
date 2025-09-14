@@ -8,5 +8,5 @@ export HISTSIZE=10000
 export HISTFILESIZE=10000
 export HISTTIMEFORMAT="[%F %T] "
 
-# make some commands not show up in history
-export HISTIGNORE="ls:l:li:la:lai:las:lt:lti:cd:cd -:-:pwd:exit:date:* --help";
+# Commands not to show up in history
+export HISTIGNORE="pwd:..:...:....:.....:ls:l:li:la:lai:las:lt:lti:cd:cd -:-:pwd:exit:date:* --help";

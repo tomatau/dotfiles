@@ -7,7 +7,9 @@ set_strict_mode
 p_header white "Creating directories..."
 
 if [[ ! -d "$HOME/Code" ]]; then
-    mkdir $HOME/Code
+    mkdir $CODE_PATH
+    mkdir $CODE_PATH/tomatao
+    mkdir $GOPATH
 else
     p_header green "Code directory already exists..."
 fi
