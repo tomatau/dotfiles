@@ -25,7 +25,6 @@ brew "gemini-cli"
 brew "gh"
 brew "git-delta"
 brew "git"
-brew "git"
 brew "highlight"
 brew "imagemagick"
 brew "iredis"
@@ -35,20 +34,15 @@ brew "lsd"
 brew "moor"
 brew "openjdk"
 brew "pipe-rename" # renamer
-brew "poetry"
 brew "proto"
-brew "pyenv-virtualenv"
-brew "pyenv"
 brew "python@3.12"
 brew "redis"
-brew "rust"
 brew "rustup"
 brew "ssh-copy-id"
 brew "starship" # PS1
 brew "superfile" # spf, terminal file manager
 brew "tlrc" # manuals
 brew "trash-cli"
-brew "uv"
 brew "vim"
 brew "wget"
 brew "zoxide" # navigation
