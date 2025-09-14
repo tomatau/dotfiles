@@ -1,2 +1,6 @@
 [character]
 success_symbol = '[➜](green)'
+
+[sudo]
+symbol = '🧙 '
+disabled = false
