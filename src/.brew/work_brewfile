@@ -7,7 +7,9 @@ brew "k9s"
 brew "kubernetes-cli"
 brew "minikube"
 brew "snyk"
-brew "tfenv" # terraform version management
+
+# Use `proto install` with terraform plugin
+# brew "tfenv" # terraform version management
 
 # CASKS
 cask "gcloud-cli"
