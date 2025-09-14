@@ -18,8 +18,3 @@ alias lti='ls --tree --ignore-config'
 function take() {
   mkdir -p "$@" && cd "$@"
 }
-
-# find shorthand
-function f() {
-  find . -name "$1"
-}
