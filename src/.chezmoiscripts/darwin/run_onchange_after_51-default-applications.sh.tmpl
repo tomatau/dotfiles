@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+# Uses the uniform type identifier (UTI)
+# To find one:
+# mdls -name kMDItemContentType /path/to/file.ext
+
+source "{{ .chezmoi.sourceDir }}/.scripts/utils.sh.tmpl"
+
+set_strict_mode
+
+p_header white "Setting default applications..."
+
+if ! command -v duti &> /dev/null; then
+  p_header purple "Installing duti..."
+  brew install duti
+else
+  p_header green "Duti already installed..."
+fi
+
+p_header white "Setting default applications..."
+
+duti -s com.sublimetext.4 public.plain-text all
+duti -s com.sublimetext.4 public.data all
+duti -s com.sublimetext.4 public.json all
+duti -s com.sublimetext.4 public.tsx all
+duti -s com.sublimetext.4 public.yaml all
+duti -s com.sublimetext.4 public.css all
+# duti -s com.sublimetext.4 public.html all
+duti -s com.sublimetext.4 net.daringfireball.markdown all
+duti -s com.sublimetext.4 com.netscape.javascript-source all
+duti -s com.sublimetext.4 com.barebones.bbedit.scss-source all
+# .rs
+duti -s com.sublimetext.4 org.rust-lang.rust all
+# .go
+duti -s com.sublimetext.4 org.go.source all
+# .ts
+duti -s com.sublimetext.4 public.mpeg-2-transport-stream all
+# .toml
+duti -s com.sublimetext.4 dyn.ah62d4rv4ge81k55rru all
+# .tmpl
+duti -s com.sublimetext.4 dyn.ah62d4rv4ge81k5puru all
+# .code-snippets
+duti -s com.sublimetext.4 dyn.ah62d4rv4ge80g55eqy01g5xmsb2gn7dx all
+# .sublime-package
+duti -s com.sublimetext.4 dyn.ah62d4rv4ge81g7pcrvy043mrsbu0g45bq7wu all
+# .env
+duti -s com.sublimetext.4 dyn.ah62d4rv4ge80n5x0 all
+# .snap
+duti -s com.sublimetext.4 dyn.ah62d4rv4ge81g5xbsa all
+
+p_header white "Default applications complete..."
