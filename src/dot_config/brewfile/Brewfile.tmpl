@@ -1,0 +1,11 @@
+{{ $common_brewfile := joinPath .chezmoi.sourceDir "/.brew/common_brewfile" -}}
+{{ $personal_brewfile := joinPath .chezmoi.sourceDir "/.brew/personal_brewfile" -}}
+{{ $work_brewfile :=  joinPath .chezmoi.sourceDir "/.brew/work_brewfile" -}}
+
+{{- include $common_brewfile }}
+
+{{- if eq .profile "personal" }}
+{{ include $personal_brewfile -}}
+{{- else if eq .mode "work" }}
+{{ include $work_brewfile -}}
+{{- end }}
