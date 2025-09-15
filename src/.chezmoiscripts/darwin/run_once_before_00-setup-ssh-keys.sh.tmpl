@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+source "{{ .chezmoi.sourceDir }}/.scripts/utils.sh.tmpl"
+
+set_strict_mode
+
+p_header white "Starting SSH key setup..."
+
+{{ $ssh_dir := joinPath .chezmoi.homeDir ".ssh" -}}
+{{ $private_ssh_key := joinPath $ssh_dir "id_ed25519_temp" -}}
+
+if [[ ! -f {{ $private_ssh_key | quote }} ]]; then
+  p_header white "Creating .ssh directory..."
+
+  mkdir -p {{ $ssh_dir }}
+
+  p_header purple "Generating private key..."
+
+  ssh-keygen -t ed25519 -C {{ .email | quote }} -f {{ $private_ssh_key | quote }} -N ""
+
+  p_header purple "Starting agent and adding key..."
+
+  eval "$(ssh-agent -s)"
+  ssh-add {{ $private_ssh_key }}
+fi
+
+if ! ssh -i {{ $private_ssh_key }} -T git@github.com &>/dev/null; then
+  p_header yellow "Key not setup in GitHub......"
+
+  p_header purple "Copying public key to clipboard..."
+  pbcopy < {{ $private_ssh_key }}.pub
+
+  p_header white "Your public key has been copied to your clipboard..."
+  p_header white "Go add the key at https://github.com/settings/keys"
+
+  read -p "Press [Enter] to continue once you've added the key to GitHub..."
+
+  if ssh -i {{ $private_ssh_key }} -T git@github.com &>/dev/null; then
+    p_header white "Successfully connected to GitHub!"
+  else
+    p_header red "Failed to connect to GitHub..."
+  fi
+fi
