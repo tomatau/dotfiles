@@ -36,7 +36,7 @@ else
   fd --hidden --follow --exclude .git
 fi
 "
-export FZF_ALT_C_OPTS="--no-preview"
+export FZF_ALT_C_OPTS="--preview 'lsd --tree -d {}'"
 export FZF_ALT_C_COMMAND="
 if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
   git ls-files --cached --others --exclude-standard | xargs -I {} dirname {} | sort -u
