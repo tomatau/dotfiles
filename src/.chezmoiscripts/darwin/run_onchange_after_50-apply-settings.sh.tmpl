@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+source "{{ .chezmoi.sourceDir }}/.scripts/utils.sh.tmpl"
+
+set_strict_mode
+
+p_header white "Applying macOS settings..."
+
+if [ -f "${HOME}/.osx" ]; then
+  source "${HOME}/.osx"
+fi
+
+p_header purple "Restarting affected applications to apply settings..."
+
+for app in "Dock" \
+  "Finder" \
+  "SystemUIServer"; do
+  killall "${app}" &> /dev/null
+done
+
+p_header green "Applied macOS settings..."

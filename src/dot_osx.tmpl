@@ -1,0 +1,193 @@
+#!/usr/bin/env bash
+
+# General UI/UX
+###############
+
+# Allow text selection in Quick Look windows
+defaults write com.apple.finder QLEnableTextSelection -bool true
+
+# Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# Trackpad, Mouse, and Input
+############################
+
+# Trackpad: enable tap to click for this user and for the login screen
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Set Trackpad scaling
+defaults write "Apple Global Domain" com.apple.trackpad.scaling -float 0.875
+
+# Disable force click
+defaults write "Apple Global Domain" com.apple.trackpad.forceClick -bool false
+
+# Enable three finger drag
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+
+# Disable natural scrolling
+defaults write "Apple Global Domain" com.apple.swipescrolldirection -bool false
+
+# Finder
+########
+
+# Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# Disable shadow in screenshots
+defaults write com.apple.screencapture disable-shadow -bool true
+
+# Don't hide the Library folder
+chflags nohidden ~/Library
+
+# Show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Show path bar
+defaults write com.apple.finder ShowPathbar -bool true
+
+# Sort folders first
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# Open new Finder windows to home directory
+defaults write com.apple.finder NewWindowTargetPath -string "file://{{ .chezmoi.homeDir }}/"
+
+# Show icons for hard drives, servers, and removable media on the desktop
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+
+# When performing a search, search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Use list view in all Finder windows by default
+defaults write com.apple.Finder FXPreferredViewStyle -string "Nlsv"
+
+# Show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Dock
+######
+
+# Set dock tile size
+defaults write com.apple.dock tilesize -int 51
+
+# Enable dock magnification
+defaults write com.apple.dock magnification -bool true
+
+# Set dock magnification size
+defaults write com.apple.dock largesize -int 103
+
+# Speed up Mission Control animations
+defaults write com.apple.dock expose-animation-duration -float 0.1
+
+# Remove the auto-hiding Dock delay
+defaults write com.apple.dock autohide-delay -float 0
+
+# Automatically hide and show the Dock
+defaults write com.apple.dock autohide -bool false
+
+# Don't show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
+# Safari & WebKit
+#################
+
+# FIXME: Could not write domain
+# Enable the Develop menu and the Web Inspector in Safari
+# defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+# defaults write com.apple.Safari IncludeDevelopMenu -bool true
+# defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+
+# Add a context menu item for showing the Web Inspector in web views
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+# Mail.app
+##########
+
+# FIXME: Could not write domain
+# Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>`
+# defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
+
+# Menubar
+#########
+
+# Clock
+defaults write com.apple.menuextra.clock IsAnalog -bool false
+defaults write com.apple.menuextra.clock ShowAMPM -bool true
+defaults write com.apple.menuextra.clock ShowDate -bool true
+defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
+
+################################
+# Custom Apps                  #
+################################
+
+# Ice.app
+#########
+
+# Automatically re-hide the menu bar
+defaults write com.jordanbaird.Ice AutoRehide -bool true
+# Allow toggling the "Always Hidden" section
+defaults write com.jordanbaird.Ice CanToggleAlwaysHiddenSection -bool true
+# Don't use a template image for the custom Ice icon
+defaults write com.jordanbaird.Ice CustomIceIconIsTemplate -bool false
+# Enable the "Always Hidden" section
+defaults write com.jordanbaird.Ice EnableAlwaysHiddenSection -bool true
+# Hide application menus (e.g., File, Edit) when the menu bar is hidden
+defaults write com.jordanbaird.Ice HideApplicationMenus -bool true
+# Set the location of the Ice bar to the top
+defaults write com.jordanbaird.Ice IceBarLocation -int 0
+# Set additional spacing between menu bar items to 0
+defaults write com.jordanbaird.Ice ItemSpacingOffset -int 0
+# Set the re-hide interval to 15 seconds
+defaults write com.jordanbaird.Ice RehideInterval -int 15
+# Use the "smart" re-hide strategy
+defaults write com.jordanbaird.Ice RehideStrategy -int 0
+# Show all sections when dragging a menu bar item
+defaults write com.jordanbaird.Ice ShowAllSectionsOnUserDrag -bool true
+# Show the Ice icon in the menu bar
+defaults write com.jordanbaird.Ice ShowIceIcon -bool true
+# Show hidden menu bar items on click
+defaults write com.jordanbaird.Ice ShowOnClick -bool true
+# Don't show hidden menu bar items on hover
+defaults write com.jordanbaird.Ice ShowOnHover -bool false
+# Set the hover delay to 0.2 seconds (if enabled)
+defaults write com.jordanbaird.Ice ShowOnHoverDelay -float 0.2
+# Show hidden menu bar items when scrolling in the menu bar area
+defaults write com.jordanbaird.Ice ShowOnScroll -bool true
+# Show dividers between sections
+defaults write com.jordanbaird.Ice ShowSectionDividers -bool true
+# Set the temporary show interval to 15 seconds
+defaults write com.jordanbaird.Ice TempShowInterval -int 15
+# Use the Ice bar
+defaults write com.jordanbaird.Ice UseIceBar -bool true
+
+# OpenInTerminal.app
+####################
+
+# Show the OpenInTerminal icon in the menu bar
+defaults write wang.jianing.app.OpenInTerminal "NSStatusItem Visible Item-0" -bool true
+
+# RunCat.app
+############
+
+# Set the preferred horizontal position of the RunCat icon in the menu bar
+defaults write com.kyome.RunCat "NSStatusItem Preferred Position Item-0" -int 331
+# Hide the RunCat icon in the menu bar
+defaults write com.kyome.RunCat "NSStatusItem Visible Item-1" -bool false
+# Don't show the system info bar on click
+defaults write com.kyome.RunCat activateSystemInfoBar -bool false
+# Flip the running animation horizontally
+defaults write com.kyome.RunCat flipHorizontally -bool true
+# Don't invert the speed (faster animation for higher CPU usage)
+defaults write com.kyome.RunCat invertSpeed -bool false
+# Set the runner to the default cat
+defaults write com.kyome.RunCat runnerId -string "cat.com.kyome"
+# Don't automatically select a runner
+defaults write com.kyome.RunCat selectAutomatically -bool false
+# Don't use the system accent color for the runner
+defaults write com.kyome.RunCat useAccentColor -bool false
