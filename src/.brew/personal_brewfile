@@ -1,4 +1,6 @@
-
+############
+# PERSONAL #
+############
 # CASKS
 cask "airflow"
 cask "cleanmymac"
