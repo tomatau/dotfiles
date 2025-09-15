@@ -11,6 +11,7 @@ brew "bat"
 brew "bc" # numeric processing language
 brew "bpython"
 brew 'brew-file'
+brew "chafa" # terminal graphics
 brew "chezmoi"
 brew "coreutils"
 brew "curl"
