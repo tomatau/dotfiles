@@ -17,6 +17,24 @@ set -gx PROTO_HOME "$HOME/.proto"
 set -gx PYENV_ROOT "$HOME/.pyenv"
 set -gx STARSHIP_CONFIG "$XDG_CONFIG_HOME/starship-fish.toml"
 
+# FZF SETTINGS
+set -gx FZF_COMPLETION_TRIGGER "**"
+set -gx FZF_DEFAULT_OPTS "
+--style default
+--preview 'toms-fzf-preview.sh {}'
+--bind 'ctrl-p:toggle-preview'
+"
+
+# Hook into the existing fish_prompt without overriding it
+functions --copy fish_prompt _original_fish_prompt
+function fish_prompt
+    __update_fzf_commands
+    _original_fish_prompt
+end
+
+set -gx FZF_ALT_C_OPTS "--no-preview"
+set -gx FZF_CTRL_R_OPTS "--style default --no-preview"
+
 # PATH MANAGEMENT
 
 fish_add_path /opt/X11/bin
