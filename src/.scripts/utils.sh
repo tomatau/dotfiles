@@ -1,4 +1,4 @@
-#!/usr/bin/env bash/
+#!/usr/bin/env bash
 
 set_strict_mode() {
   # exit immediately on non-zero exit code
@@ -18,6 +18,8 @@ p_header() {
     "red") printf "\n\e[31m%s\n\e[0m" "$message" ;;
     "green") printf "\n\e[32m%s\n\e[0m" "$message" ;;
     "purple") printf "\n\e[35m%s\n\e[0m" "$message" ;;
+    "amber") printf "\n\e[33m%s\n\e[0m" "$message" ;;
+    "blue") printf "\n\e[34m%s\n\e[0m" "$message" ;;
     "white") printf "\n\e[37m%s\n\e[0m" "$message" ;;
     *) printf "%s\n" "$message" ;;
   esac

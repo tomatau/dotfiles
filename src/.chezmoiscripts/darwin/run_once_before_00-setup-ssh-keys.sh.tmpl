@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source "{{ .chezmoi.sourceDir }}/.scripts/utils.sh.tmpl"
+source "{{ .chezmoi.sourceDir }}/.scripts/utils.sh"
 
 set_strict_mode
 
@@ -29,7 +29,7 @@ if [[ ! -f {{ $private_key_path | quote }} ]]; then
 fi
 
 if ! ssh -i {{ $private_key_path | quote }} -T "git@github.com" &>/dev/null; then
-  p_header yellow "Key not setup in GitHub..."
+  p_header amber "Key not setup in GitHub..."
 
   p_header purple "Copying public key to clipboard..."
   pbcopy < {{ $pub_key_path | quote }}
