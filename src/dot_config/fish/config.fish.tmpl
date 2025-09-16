@@ -1,7 +1,9 @@
 set -g fish_prompt_pwd_dir_length 2
 set -gx XDG_CONFIG_HOME "$HOME/.config"
 set -gx EDITOR "subl -w"
-set -gx GOPATH "$HOME/Code/tomatao/go"
+set -gx CODE_PATH {{ .code_path | quote }}
+set -gx CODE_PATH_TOM {{ .code_path_tom | quote }}
+set -gx GOPATH "$CODE_PATH/go"
 set -Ux LSCOLORS fxefcxdxbxexexabagacad
 {{ $token_name := printf "npm token for %s" .chezmoi.hostname -}}
 {{ $token := (index (lastpassRaw $token_name) 0).note -}}
@@ -37,36 +39,33 @@ set -gx FZF_CTRL_R_OPTS "--style default --no-preview"
 
 # PATH MANAGEMENT
 
-fish_add_path /opt/X11/bin
+# system packages
+fish_add_path --prepend "/opt/X11/bin"
+if test -d "$HOME/.local/bin"
+    fish_add_path --prepend "$HOME/.local/bin"
+end
+fish_add_path --prepend "/usr/local/bin"
+fish_add_path --prepend "/opt/homebrew/sbin"
+fish_add_path --prepend "/opt/homebrew/bin"
 
-# my overrides
-if test -d "$HOME/.bin"
-    fish_add_path "$HOME/.bin"
+# language packages
+if test -d "$GOPATH/bin"
+    fish_add_path --prepend "$GOPATH/bin"
+end
+
+if test -d "$HOME/.cargo/bin"
+    fish_add_path --prepend "$HOME/.cargo/bin"
 end
 
 # version management
 if test -d "$PROTO_HOME/shims"
-    fish_add_path "$PROTO_HOME/shims"
+    fish_add_path --prepend "$PROTO_HOME/bin"
+    fish_add_path --prepend "$PROTO_HOME/shims"
 end
 
-# system packages
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-if test -d "/usr/local/bin"
-    fish_add_path "/usr/local/bin"
-end
-
-if test -d "$HOME/.local/bin"
-    fish_add_path "$HOME/.local/bin"
-end
-
-# language packages
-if test -d "$HOME/.cargo/bin"
-    fish_add_path "$HOME/.cargo/bin"
-end
-
-if test -d "$GOPATH/bin"
-    fish_add_path "$GOPATH/bin"
+# my overrides
+if test -d "$HOME/.bin"
+    fish_add_path --prepend "$HOME/.bin"
 end
 
 # ALIASES
@@ -87,7 +86,7 @@ alias lti='ls --tree --ignore-config'
 # INIT PROGRAMS
 
 if test -f (brew --prefix)/etc/brew-wrap.fish
-  source (brew --prefix)/etc/brew-wrap.fish
+    source (brew --prefix)/etc/brew-wrap.fish
 end
 
 if command -q direnv

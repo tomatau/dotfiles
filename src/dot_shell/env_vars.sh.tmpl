@@ -1,6 +1,7 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export EDITOR="subl -w"
-export CODE_PATH="$HOME/Code/"
+export CODE_PATH={{ .code_path | quote }}
+export CODE_PATH_TOM={{ .code_path_tom | quote }}
 export GOPATH="$CODE_PATH/go"
 {{ $token_name := printf "npm token for %s" .chezmoi.hostname -}}
 {{ $token := (index (lastpassRaw $token_name) 0).note -}}

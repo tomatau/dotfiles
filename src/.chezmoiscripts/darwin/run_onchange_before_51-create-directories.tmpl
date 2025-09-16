@@ -6,10 +6,18 @@ set_strict_mode
 
 p_header white "Creating directories..."
 
-if [[ ! -d "$HOME/Code" ]]; then
-    mkdir $CODE_PATH
-    mkdir $CODE_PATH/tomatao
-    mkdir $GOPATH
+p_header purple "Checking {{ .code_path }}..."
+
+if [[ ! -d {{ .code_path }} ]]; then
+    mkdir {{ .code_path }}
 else
-    p_header green "Code directory already exists..."
+    p_header green "{{ .code_path }} already exists..."
+fi
+
+p_header purple "Checking {{ .code_path_tom }}..."
+
+if [[ ! -d {{ .code_path_tom }} ]]; then
+    mkdir {{ .code_path_tom }}
+else
+    p_header green "{{ .code_path_tom }} already exists..."
 fi

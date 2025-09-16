@@ -3,6 +3,12 @@
 
 {{ $email := "iammotivated@gmail.com" -}}
 {{ $github_name := "tomatau" -}}
+{{ $code_path := "~/Code" }}
+{{ $code_path_tom := print $code_path "/tomht" }}
+
+{{- if eq $profile "personal" -}}
+  {{ $code_path_tom = print $code_path "/tomatao" }}
+{{- end -}}
 
 {{- if eq $profile "work" -}}
   {{ $email = promptStringOnce . "email" "Github email address" "iammotivated@gmail.com" -}}
@@ -15,6 +21,8 @@ sourceDir = "{{ .chezmoi.sourceDir }}"
 [data]
 profile = {{ $profile | quote }}
 email = {{ $email | quote }}
+code_path = {{ $code_path | quote }}
+code_path_tom = {{ $code_path_tom | quote }}
 
 [data.git]
 name = "Thomas Hudspith-Tatham"
@@ -22,6 +30,8 @@ email = {{ $email | quote }}
 
 [data.github]
 user = {{ $github_name | quote }}
+email = {{ $email | quote }}
+key_name = {{ list "id_ed25519" .github.user "github" | join "_" | quote }}
 
 [data.lastpass]
 username = "iammotivated@gmail.com"
@@ -29,3 +39,6 @@ username = "iammotivated@gmail.com"
 [data.npm]
 author = "Thomas `tomatao` Hudspith-Tatham"
 email = {{ $email | quote }}
+
+[diff]
+pager = "delta"
