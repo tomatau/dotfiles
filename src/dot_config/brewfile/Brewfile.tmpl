@@ -6,6 +6,6 @@
 
 {{- if eq .profile "personal" }}
 {{ include $personal_brewfile -}}
-{{- else if eq .mode "work" }}
+{{- else if eq .profile "work" }}
 {{ include $work_brewfile -}}
 {{- end }}
