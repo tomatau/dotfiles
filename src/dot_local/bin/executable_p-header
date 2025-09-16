@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [[ $# -ne 2 ]]; then
+  echo "Usage: $0 <color> <message>" >&2
+  echo "Available colors: red, green, purple, amber, blue, white" >&2
+  exit 1
+fi
+# Wraps the p-header function from the shared utils.sh library.
+
+UTILS_PATH="${HOME}/.local/lib/shell/utils.sh"
+
+if [[ ! -f "$UTILS_PATH" ]]; then
+  echo "Error: Utility script not found at $UTILS_PATH" >&2
+  echo "Please run 'chezmoi apply' to install it." >&2
+  exit 1
+fi
+
+source "$UTILS_PATH"
+
+p-header "$1" "$2"

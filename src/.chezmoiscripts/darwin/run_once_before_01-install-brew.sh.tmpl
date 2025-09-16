@@ -1,24 +1,24 @@
 #!/usr/bin/env bash
 
-source "{{ .chezmoi.sourceDir }}/.scripts/utils.sh"
+source "{{ .chezmoi.sourceDir }}/dot_local/lib/shell/utils.sh"
 
-set_strict_mode
+set-strict-mode
 
-p_header white "Starting brew install..."
+p-header white "Starting brew install..."
 
 # install homebrew if not installed
 if ! command -v brew &> /dev/null; then
-  p_header purple "Installing Homebrew..."
+  p-header purple "Installing Homebrew..."
   # don't ask for user input
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-  p_header green "Homebrew already installed..."
+  p-header green "Homebrew already installed..."
 fi
 
-p_header white "Enable brew..."
+p-header white "Enable brew..."
 # enable brew for subsequent scripts
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-p_header white "Updating brew..."
+p-header white "Updating brew..."
 brew doctor
 brew update

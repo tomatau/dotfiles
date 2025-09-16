@@ -23,7 +23,7 @@ set -gx STARSHIP_CONFIG "$XDG_CONFIG_HOME/starship-fish.toml"
 set -gx FZF_COMPLETION_TRIGGER "**"
 set -gx FZF_DEFAULT_OPTS "
 --style default
---preview 'toms-fzf-preview.sh {}'
+--preview 'toms-fzf-preview {}'
 --bind 'ctrl-p:toggle-preview'
 "
 
@@ -41,9 +41,6 @@ set -gx FZF_CTRL_R_OPTS "--style default --no-preview"
 
 # system packages
 fish_add_path --prepend "/opt/X11/bin"
-if test -d "$HOME/.local/bin"
-    fish_add_path --prepend "$HOME/.local/bin"
-end
 fish_add_path --prepend "/usr/local/bin"
 fish_add_path --prepend "/opt/homebrew/sbin"
 fish_add_path --prepend "/opt/homebrew/bin"
@@ -64,8 +61,8 @@ if test -d "$PROTO_HOME/shims"
 end
 
 # my overrides
-if test -d "$HOME/.bin"
-    fish_add_path --prepend "$HOME/.bin"
+if test -d "$HOME/.local/bin"
+    fish_add_path --prepend "$HOME/.local/bin"
 end
 
 # ALIASES

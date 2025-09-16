@@ -4,20 +4,20 @@
 # To find one:
 # mdls -name kMDItemContentType /path/to/file.ext
 
-source "{{ .chezmoi.sourceDir }}/.scripts/utils.sh"
+source "{{ .chezmoi.sourceDir }}/dot_local/lib/shell/utils.sh"
 
-set_strict_mode
+set-strict-mode
 
-p_header white "Setting default applications..."
+p-header white "Setting default applications..."
 
 if ! command -v duti &> /dev/null; then
-  p_header purple "Installing duti..."
+  p-header purple "Installing duti..."
   brew install duti
 else
-  p_header green "Duti already installed..."
+  p-header green "Duti already installed..."
 fi
 
-p_header white "Setting default applications..."
+p-header white "Setting default applications..."
 
 duti -s com.sublimetext.4 public.plain-text all
 duti -s com.sublimetext.4 public.data all
@@ -48,4 +48,4 @@ duti -s com.sublimetext.4 dyn.ah62d4rv4ge80n5x0 all
 # .snap
 duti -s com.sublimetext.4 dyn.ah62d4rv4ge81g5xbsa all
 
-p_header white "Default applications complete..."
+p-header white "Default applications complete..."

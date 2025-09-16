@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-source "{{ .chezmoi.sourceDir }}/.scripts/utils.sh"
+source "{{ .chezmoi.sourceDir }}/dot_local/lib/shell/utils.sh"
 
-set_strict_mode
+set-strict-mode
 
-p_header white "Installing node versions with FNM..."
+p-header white "Installing node versions with FNM..."
 
 if ! command -v fnm &> /dev/null; then
-  p_header red "FNM not installed..."
+  p-header red "FNM not installed..."
   brew install fnm
 fi
 
@@ -16,6 +16,6 @@ export FNM_COREPACK_ENABLED="true"
 fnm install --lts
 fnm install --latest
 
-p_header green "Node versions installed with PNPM and Yarn..."
+p-header green "Node versions installed with PNPM and Yarn..."
 
 fnm ls

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set_strict_mode() {
+set-strict-mode() {
   # exit immediately on non-zero exit code
   set -e
   # no silent errors
@@ -11,7 +11,7 @@ set_strict_mode() {
   # set -x
 }
 
-p_header() {
+p-header() {
   local color="$1"
   local message="$2"
   case "$color" in
@@ -21,6 +21,6 @@ p_header() {
     "amber") printf "\n\e[33m%s\n\e[0m" "$message" ;;
     "blue") printf "\n\e[34m%s\n\e[0m" "$message" ;;
     "white") printf "\n\e[37m%s\n\e[0m" "$message" ;;
-    *) printf "%s\n" "$message" ;;
+    *) printf "\n%s\n" "$message" ;;
   esac
 }

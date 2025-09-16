@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-source "{{ .chezmoi.sourceDir }}/.scripts/utils.sh"
+source "{{ .chezmoi.sourceDir }}/dot_local/lib/shell/utils.sh"
 
-set_strict_mode
+set-strict-mode
 
-p_header white "Installing proto plugins and tools..."
+p-header white "Installing proto plugins and tools..."
 
 if ! command -v proto &> /dev/null; then
-  p_header red "proto not installed..."
+  p-header red "proto not installed..."
   brew install proto
 fi
 
@@ -16,4 +16,4 @@ proto install deno
 proto install go
 proto install uv
 
-p_header green "Proto tools installed..."
+p-header green "Proto tools installed..."

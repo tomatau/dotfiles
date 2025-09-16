@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
-source "{{ .chezmoi.sourceDir }}/.scripts/utils.sh"
+source "{{ .chezmoi.sourceDir }}/dot_local/lib/shell/utils.sh"
 
-set_strict_mode
+set-strict-mode
 
-p_header white "Starting lastpass login..."
+p-header white "Starting lastpass login..."
 
 if ! command -v lpass &>/dev/null; then
-  p_header red "Error: lpass command not found..."
+  p-header red "Error: lpass command not found..."
   exit 1
 fi
 
 # login to lastpass if installed and not logged in
 if ! lpass status &>/dev/null; then
-  p_header purple "You must login to lastpass..."
+  p-header purple "You must login to lastpass..."
   lpass login {{ .lastpass.username }}
 else
-  p_header green "Lastpass already logged in..."
+  p-header green "Lastpass already logged in..."
 fi

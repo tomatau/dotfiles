@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-source "{{ .chezmoi.sourceDir }}/.scripts/utils.sh"
+source "{{ .chezmoi.sourceDir }}/dot_local/lib/shell/utils.sh"
 
-set_strict_mode
+set-strict-mode
 
-p_header white "Rust initialisation..."
+p-header white "Rust initialisation..."
 
 # install rustc if not installed
 if ! command -v rustc &> /dev/null; then
-  p_header purple "Initialising Rust..."
+  p-header purple "Initialising Rust..."
   brew install rustup
   rustup-init -y
 else
-  p_header green "Rust already initialised..."
+  p-header green "Rust already initialised..."
 fi

@@ -16,7 +16,6 @@ function remove_from_path() {
 }
 
 # system packages
-prepend_path "$HOME/.local/bin"
 prepend_path "/usr/local/bin"
 prepend_path "/opt/homebrew/sbin"
 prepend_path "/opt/homebrew/bin"
@@ -30,6 +29,6 @@ prepend_path "$PROTO_HOME/bin"
 prepend_path "$PROTO_HOME/shims"
 
 # my overrides
-prepend_path "$HOME/.bin"
+prepend_path "$HOME/.local/bin"
 
 export PATH

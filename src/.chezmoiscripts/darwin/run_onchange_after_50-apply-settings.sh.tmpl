@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-source "{{ .chezmoi.sourceDir }}/.scripts/utils.sh"
+source "{{ .chezmoi.sourceDir }}/dot_local/lib/shell/utils.sh"
 
-set_strict_mode
+set-strict-mode
 
-p_header white "Applying macOS settings..."
+p-header white "Applying macOS settings..."
 
 if [ -f "${HOME}/.osx" ]; then
   source "${HOME}/.osx"
 fi
 
-p_header purple "Restarting affected applications to apply settings..."
+p-header purple "Restarting affected applications to apply settings..."
 
 for app in "Dock" \
   "Finder" \
@@ -18,4 +18,4 @@ for app in "Dock" \
   killall "${app}" &> /dev/null
 done
 
-p_header green "Applied macOS settings..."
+p-header green "Applied macOS settings..."
