@@ -1,64 +1,16 @@
 #!/usr/bin/env bash
 
 source "{{ .chezmoi.sourceDir }}/dot_local/lib/shell/utils.sh"
+source "{{ .chezmoi.sourceDir }}/dot_local/lib/shell/setup-github-ssh.sh"
 
 set-strict-mode
 
 p-header white "Starting SSH key setup..."
 
 {{ $ssh_dir := joinPath .chezmoi.homeDir ".ssh" -}}
-{{ $private_key_path := joinPath $ssh_dir .github.key_name -}}
-{{ $pub_key_path := joinPath $ssh_dir (print .github.key_name ".pub") -}}
+{{ $private_key := .github.key_name -}}
 
-if [[ ! -f {{ $private_key_path | quote }} ]]; then
-  p-header white "Creating .ssh directory..."
-
-  mkdir -p {{ $ssh_dir }}
-
-  p-header purple "Generating private key..."
-
-  ssh-keygen -t ed25519 \
-    -C {{ .github.email | quote }} \
-    -f {{ $private_key_path | quote }} \
-    -N ""
-
-  p-header purple "Starting agent and adding key..."
-
-  eval "$(ssh-agent -s)"
-  ssh-add {{ $private_key_path | quote }}
-else
-  p-header green "Private key already exists..."
-fi
-
-github-authenticated() {
-  ssh -i {{ $private_key_path | quote }} -T "git@github.com" -o StrictHostKeyChecking=no &>/dev/null
-  local exit_status=$?
-  if [ $exit_status -eq 1 ]; then
-    return 0  # Authenticated
-  elif [ $exit_status -eq 255 ]; then
-    return 1  # Not authenticated
-  else
-    echo "Unknown exit code: $exit_status when attempting to SSH into github.com"
-    return 2  # Unexpected error
-  fi
-}
-
-if ! github-authenticated; then
-  p-header amber "Key not setup in GitHub..."
-
-  p-header purple "Copying public key to clipboard..."
-  pbcopy < {{ $pub_key_path | quote }}
-
-  p-header white "Your public key has been copied to your clipboard..."
-  p-header white "Go add the key at https://github.com/settings/keys"
-
-  read -p "Press [Enter] to continue once you've added the key to GitHub..."
-
-  if github-authenticated; then
-    p-header white "Successfully connected to GitHub!..."
-  else
-    p-header red "Failed to connect to GitHub..."
-  fi
-else
-  p-header green "SSH key already authenticated with GitHub..."
-fi
+setup-github-ssh \
+  {{ .github.email | quote }} \
+  {{ $ssh_dir }} \
+  {{ $private_key }}

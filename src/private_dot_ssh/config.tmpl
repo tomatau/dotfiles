@@ -1,3 +1,5 @@
 Host github.com
-  AddKeysToAgent yes
+  User git
   IdentityFile ~/.ssh/{{ .github.key_name }}
+  AddKeysToAgent yes
+  IdentitiesOnly yes

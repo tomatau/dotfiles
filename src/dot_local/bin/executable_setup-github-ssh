@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [[ $# -ne 3 ]]; then
+  echo "Usage: $0 <github_email> <ssh_dir> <private_key>" >&2
+  echo "Example: setup-github-ssh bob@mail.com ~/.ssh id_ed25519_bob_github" >&2
+  exit 1
+fi
+
+# Wraps the `setup-github-ssh` function from the `.local/lib/`
+LOCAL_LIB_PATH="${HOME}/.local/lib/shell"
+UTILS_PATH="${LOCAL_LIB_PATH}/utils.sh"
+SETUP_GITHUB_SSH_PATH="${LOCAL_LIB_PATH}/setup-github-ssh.sh"
+
+if [[ ! -f "$UTILS_PATH" ]]; then
+  echo "Error: Utility script not found at $UTILS_PATH" >&2
+  echo "Please run 'chezmoi apply' to install it." >&2
+  exit 1
+fi
+
+if [[ ! -f "$SETUP_GITHUB_SSH_PATH" ]]; then
+  echo "Error: setup-github-ssh script not found at $SETUP_GITHUB_SSH_PATH" >&2
+  echo "Please run 'chezmoi apply' to install it." >&2
+  exit 1
+fi
+
+source "$UTILS_PATH"
+source "$SETUP_GITHUB_SSH_PATH"
+
+setup-github-ssh "$1" "$2" "$3"

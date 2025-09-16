@@ -1,9 +1,11 @@
 [user]
     name = {{ .git.name }}
     email = {{ .git.email }}
+    # proves author authenticity
+    signingkey = {{ joinPath .chezmoi.homeDir ".ssh" (print .github.key_name ".pub") }}
 
-[github]
-    user = {{ .github.user }}
+[gpg]
+    format = ssh
 
 [branch]
     sort = -committerdate
@@ -13,13 +15,12 @@
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes
     pager = delta
-
     # Make `git rebase` safer on OS X
     # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
     # trustctime = false
 
 [init]
-	defaultBranch = main
+    defaultBranch = main
 
 [pager]
     branch = false
