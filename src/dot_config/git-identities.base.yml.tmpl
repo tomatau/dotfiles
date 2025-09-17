@@ -1,0 +1,13 @@
+identities:
+  {{ .github.user }}:
+    git_name: {{ .git.name | squote }}
+    git_email: {{ .git.email | squote }}
+    ssh_key: '~/.ssh/{{ .github.key_name }}'
+    gh_user: {{ .github.user | squote }}
+{{- if eq .profile "work" -}}
+  personal:
+    git_name: {{ .git.name | squote }}
+    git_email: {{ .personal.email | squote }}
+    ssh_key: '~/.ssh/{{ .personal.key_name }}'
+    gh_user: {{ .personal.github_user | squote }}
+{{- end -}}

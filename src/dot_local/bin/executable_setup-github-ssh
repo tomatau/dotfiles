@@ -2,10 +2,15 @@
 
 set -euo pipefail
 
-if [[ $# -ne 3 ]]; then
-  echo "Usage: $0 <github_email> <ssh_dir> <private_key>" >&2
+if [[ $# -ne 4 ]]; then
+  echo "Usage: $0 <github_username> <github_email> <ssh_dir> <private_key>" >&2
   echo "Example: setup-github-ssh bob@mail.com ~/.ssh id_ed25519_bob_github" >&2
   exit 1
+fi
+
+if ! command -v yq >/dev/null; then
+  p-header red "⚠️ yq not installed, skipping"
+  exit 0
 fi
 
 # Wraps the `setup-github-ssh` function from the `.local/lib/`
@@ -28,4 +33,32 @@ fi
 source "$UTILS_PATH"
 source "$SETUP_GITHUB_SSH_PATH"
 
-setup-github-ssh "$1" "$2" "$3"
+USERNAME="$1"
+GITHUB_EMAIL="$2"
+SSH_DIR="$3"
+PRIVATE_KEY="$4"
+
+setup-github-ssh "$GITHUB_EMAIL" "$SSH_DIR" "$PRIVATE_KEY"
+
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
+LOCAL_FILE="$CONFIG_DIR/git-identities.local.yml"
+
+if [[ ! -f "$LOCAL_FILE" ]]; then
+  echo "identities:" > "$LOCAL_FILE"
+fi
+
+yq eval -i "
+  .identities.${USERNAME}.git_name |= \"Thomas Hudspith-Tatham\"
+  | .identities.${USERNAME}.git_email |= \"${GITHUB_EMAIL}\"
+  | .identities.${USERNAME}.ssh_key |= \"${SSH_DIR}/${PRIVATE_KEY}\"
+  | .identities.${USERNAME}.gh_user |= \"${USERNAME}\"
+" "$LOCAL_FILE"
+
+p-header green "✅ Identity '${USERNAME}' added/updated in $LOCAL_FILE"
+
+if command -v gh >/dev/null; then
+  if ! gh auth status --hostname github.com --user "$USERNAME" &>/dev/null; then
+    p-header purple "Logging into gh as $USERNAME..."
+    gh auth login --hostname github.com --git-protocol ssh --web
+  fi
+fi

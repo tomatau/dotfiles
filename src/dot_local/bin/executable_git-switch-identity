@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 1 ]]; then
+  p-header white "Usage: $0 <github_username>" >&2
+  p-header white "Example: git-switch-identity tomatau" >&2
+  exit 1
+fi
+
+if ! command -v yq >/dev/null; then
+  p-header red "⚠️ yq not installed, skipping"
+  exit 0
+fi
+
+LOCAL_LIB_PATH="${HOME}/.local/lib/shell"
+source "${LOCAL_LIB_PATH}/utils.sh"
+
+BASE="$XDG_CONFIG_HOME/git-identities.base.yml"
+LOCAL="$XDG_CONFIG_HOME/git-identities.local.yml"
+MERGED="$(mktemp)"
+
+yq eval-all '
+  . as $doc ireduce ({}; .identities *= ($doc.identities // {}))
+' "$BASE" "$LOCAL" > "$MERGED"
+
+IDENTITY="$1"
+
+if ! yq eval ".identities.$IDENTITY" "$MERGED" >/dev/null; then
+  p-header red "❌ Identity '$IDENTITY' not found in $BASE or $LOCAL"
+  exit 1
+fi
+
+# Read values from YAML
+SSH_KEY="$(yq eval ".identities.$IDENTITY.ssh_key" "$MERGED")"
+GIT_NAME="$(yq eval ".identities.$IDENTITY.git_name" "$MERGED")"
+GIT_EMAIL="$(yq eval ".identities.$IDENTITY.git_email" "$MERGED")"
+GIT_SIGNINGKEY="${SSH_KEY}.pub"
+GH_USER="$(yq eval ".identities.$IDENTITY.gh_user" "$MERGED")"
+
+# Update global git config
+git config --global user.name "$GIT_NAME"
+git config --global user.email "$GIT_EMAIL"
+git config --global user.signingkey "$GIT_SIGNINGKEY"
+git config --global core.sshCommand "ssh -i $SSH_KEY -o IdentitiesOnly=yes -F /dev/null"
+
+p-header green "🔧 Git config updated for $IDENTITY"
+
+# Switch gh CLI identity
+if command -v gh >/dev/null; then
+  if gh auth switch --user "$GH_USER"; then
+    p-header green "🔑 gh CLI switched to $GH_USER"
+  else
+    p-header amber "⚠️ Failed to switch gh user to $GH_USER"
+  fi
+else
+  p-header amber "⚠️ gh CLI not installed, skipping"
+fi
+
+rm -f "$MERGED"

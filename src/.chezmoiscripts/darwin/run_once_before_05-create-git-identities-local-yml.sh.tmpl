@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+source "{{ .chezmoi.sourceDir }}/dot_local/lib/shell/utils.sh"
+
+set-strict-mode
+
+p-header white "Creating git-identities.local.yml..."
+
+LOCAL="$XDG_CONFIG_HOME/git-identities.local.yml"
+
+if [[ ! -f "$LOCAL" ]]; then
+  echo "identities:" > "$LOCAL"
+fi

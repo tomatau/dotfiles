@@ -51,6 +51,7 @@ brew "tlrc" # manuals
 brew "trash-cli"
 brew "vim"
 brew "wget"
+brew "yq"
 brew "zoxide" # navigation
 brew "zsh-autosuggestions"
 brew "zsh"

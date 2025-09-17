@@ -1,8 +1,12 @@
 {{ $choices := list "personal" "work" -}}
 {{ $profile := promptChoiceOnce . "personal" "Which profile" $choices -}}
 
-{{ $email := "iammotivated@gmail.com" -}}
-{{ $github_name := "tomatau" -}}
+{{ $personal_email := "iammotivated@gmail.com" -}}
+{{ $personal_github_user := "tomatau" -}}
+
+{{- /* DEFAULTS */ -}}
+{{ $email := $personal_email -}}
+{{ $github_user := $personal_github_user -}}
 {{ $code_path := "~/Code" }}
 {{ $code_path_tom := print $code_path "/tomht" }}
 
@@ -10,9 +14,10 @@
   {{ $code_path_tom = print $code_path "/tomatao" }}
 {{- end -}}
 
+{{- /* WORK OVERRIDES */ -}}
 {{- if eq $profile "work" -}}
-  {{ $email = promptStringOnce . "email" "Github email address" "iammotivated@gmail.com" -}}
-  {{ $github_name = promptStringOnce . "github_name" "Github name" "tomatau" -}}
+  {{ $email = promptStringOnce . "email" "Github email address" $personal_email -}}
+  {{ $github_user = promptStringOnce . "github_user" "Github name" $personal_github_user -}}
 {{- end -}}
 
 {{- /* The sourceDir will be set by the `init` command */ -}}
@@ -29,16 +34,21 @@ name = "Thomas Hudspith-Tatham"
 email = {{ $email | quote }}
 
 [data.github]
-user = {{ $github_name | quote }}
+user = {{ $github_user | quote }}
 email = {{ $email | quote }}
-key_name = {{ list "id_ed25519" .github.user "github" | join "_" | quote }}
-
-[data.lastpass]
-username = "iammotivated@gmail.com"
+key_name = {{ list "id_ed25519" $github_user "github" | join "_" | quote }}
 
 [data.npm]
 author = "Thomas `tomatao` Hudspith-Tatham"
 email = {{ $email | quote }}
+
+[data.lastpass]
+username = "iammotivated@gmail.com"
+
+[data.personal]
+email = {{ $personal_email | quote }}
+github_user = {{ $personal_github_user | quote }}
+key_name = {{ list "id_ed25519" $personal_github_user "github" | join "_" | quote }}
 
 [diff]
 pager = "delta"

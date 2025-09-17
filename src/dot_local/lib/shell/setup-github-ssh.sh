@@ -9,7 +9,7 @@ setup-github-ssh() {
   local pub_key_path="$ssh_dir/$3.pub"
 
   if [[ ! -d $ssh_dir ]]; then
-    p-header white "Creating .ssh directory..."
+    p-header white "Creating $ssh_dir..."
     mkdir -p $ssh_dir
   fi
 
@@ -29,24 +29,7 @@ setup-github-ssh() {
     p-header green "Private key already exists..."
   fi
 
-  github-authenticated() {
-    ssh -i $private_key_path \
-      -T "git@github.com" \
-      -o IdentitiesOnly=yes \
-      -o StrictHostKeyChecking=no \
-      &>/dev/null
-
-    local exit_status=$?
-    if [ $exit_status -eq 1 ]; then
-      return 0  # Authenticated
-    elif [ $exit_status -eq 255 ]; then
-      return 1  # Not authenticated
-    else
-      return 2  # Unexpected error
-    fi
-  }
-
-  if ! github-authenticated; then
+  if ! github-authenticated $private_key_path; then
     p-header amber "Key not setup in GitHub..."
 
     p-header purple "Copying public key to clipboard..."
@@ -57,12 +40,30 @@ setup-github-ssh() {
 
     read -p "Press [Enter] to continue once you've added the key to GitHub..."
 
-    if github-authenticated; then
+    if github-authenticated $private_key_path; then
       p-header green "Successfully connected to GitHub!..."
     else
       p-header red "Failed to connect to GitHub..."
     fi
   else
     p-header green "SSH key already authenticated with GitHub..."
+  fi
+}
+
+github-authenticated() {
+  ssh -i "$1" \
+    -T "git@github.com" \
+    -o IdentitiesOnly=yes \
+    -o StrictHostKeyChecking=no \
+    -F /dev/null \
+    &>/dev/null
+
+  local exit_status=$?
+  if [ $exit_status -eq 1 ]; then
+    return 0  # Authenticated
+  elif [ $exit_status -eq 255 ]; then
+    return 1  # Not authenticated
+  else
+    return 2  # Unexpected error
   fi
 }
