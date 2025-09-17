@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ $# -ne 1 ]]; then
-  p-header white "Usage: $0 <github_username>" >&2
-  p-header white "Example: git-switch-identity tomatau" >&2
+usage() {
+  p-header white "Usage: $0 [--local] <github_username>|status" >&2
+  p-header white "Example: $0 tomatau" >&2
+  p-header white "Example: $0 --local tomatau" >&2
+  p-header white "Example: $0 status" >&2
   exit 1
+}
+
+if [[ $# -lt 1 || $# -gt 2 ]]; then
+  usage
 fi
 
 if ! command -v yq >/dev/null; then
@@ -15,42 +21,101 @@ fi
 LOCAL_LIB_PATH="${HOME}/.local/lib/shell"
 source "${LOCAL_LIB_PATH}/utils.sh"
 
-BASE="$XDG_CONFIG_HOME/git-identities.base.yml"
-LOCAL="$XDG_CONFIG_HOME/git-identities.local.yml"
-MERGED="$(mktemp)"
+LOCAL_MODE=false
+if [[ "$1" == "--local" ]]; then
+  LOCAL_MODE=true
+  shift
+fi
+CMD="$1"
+
+# -- STATUS --
+if [[ "$CMD" == "status" ]]; then
+  p-header white "🔹 Git (global):"
+  git config --global --get user.name || echo "user.name not set"
+  git config --global --get user.email || echo "user.email not set"
+  git config --global --get user.signingkey || echo "user.signingkey not set"
+  git config --global --get core.sshCommand || echo "core.sshCommand not set"
+
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+    p-header white "🔹 Git (local):"
+    git config --local --get user.name || echo "user.name not set"
+    git config --local --get user.email || echo "user.email not set"
+    git config --local --get user.signingkey || echo "user.signingkey not set"
+    git config --local --get core.sshCommand || echo "core.sshCommand not set"
+  else
+    p-header amber "⚠️ Not inside a git repository, no local config."
+  fi
+
+  p-header white "🔹 SSH:"
+  SSH_CMD="$(git config --global --get core.sshCommand || echo 'Not set')"
+  echo "global sshCommand: $SSH_CMD"
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+    LOCAL_SSH_CMD="$(git config --local --get core.sshCommand || echo 'Not set')"
+    echo "local sshCommand: $LOCAL_SSH_CMD"
+  fi
+
+  p-header white "🔹 GitHub CLI:"
+  if command -v gh >/dev/null; then
+    gh auth status || echo "Not authenticated"
+  else
+    echo "gh CLI not installed"
+  fi
+
+  exit 0
+fi
+
+# -- SWITCH --
+BASE_IDENTS="$XDG_CONFIG_HOME/git-identities.base.yml"
+LOCAL_IDENTS="$XDG_CONFIG_HOME/git-identities.local.yml"
+MERGED_IDENTS="$(mktemp)"
 
 yq eval-all '
   . as $doc ireduce ({}; .identities *= ($doc.identities // {}))
-' "$BASE" "$LOCAL" > "$MERGED"
+' "$BASE_IDENTS" "$LOCAL_IDENTS" > "$MERGED_IDENTS"
 
-IDENTITY="$1"
+IDENTITY="$CMD"
 
-if ! yq eval ".identities.$IDENTITY" "$MERGED" >/dev/null; then
-  p-header red "❌ Identity '$IDENTITY' not found in $BASE or $LOCAL"
+if ! yq eval ".identities.$IDENTITY" "$MERGED_IDENTS" >/dev/null; then
+  p-header red "❌ Identity '$IDENTITY' not found in $BASE_IDENTS or $LOCAL_IDENTS"
+  rm -f "$MERGED_IDENTS"
   exit 1
 fi
 
-SSH_KEY="$(yq eval ".identities.$IDENTITY.ssh_key" "$MERGED")"
-GIT_NAME="$(yq eval ".identities.$IDENTITY.git_name" "$MERGED")"
-GIT_EMAIL="$(yq eval ".identities.$IDENTITY.git_email" "$MERGED")"
+SSH_KEY="$(yq eval ".identities.$IDENTITY.ssh_key" "$MERGED_IDENTS")"
+GIT_NAME="$(yq eval ".identities.$IDENTITY.git_name" "$MERGED_IDENTS")"
+GIT_EMAIL="$(yq eval ".identities.$IDENTITY.git_email" "$MERGED_IDENTS")"
 GIT_SIGNINGKEY="${SSH_KEY}.pub"
-GH_USER="$(yq eval ".identities.$IDENTITY.gh_user" "$MERGED")"
+GH_USER="$(yq eval ".identities.$IDENTITY.gh_user" "$MERGED_IDENTS")"
 
-git config --global user.name "$GIT_NAME"
-git config --global user.email "$GIT_EMAIL"
-git config --global user.signingkey "$GIT_SIGNINGKEY"
-git config --global core.sshCommand "ssh -i $SSH_KEY -o IdentitiesOnly=yes -F /dev/null"
+CONFIG_SCOPE="--global"
+if $LOCAL_MODE; then
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+    CONFIG_SCOPE="--local"
+  else
+    p-header red "❌ --local specified but not inside a git repository"
+    rm -f "$MERGED_IDENTS"
+    exit 1
+  fi
+fi
 
-p-header green "🔧 Git config updated for $IDENTITY"
+git config $CONFIG_SCOPE user.name "$GIT_NAME"
+git config $CONFIG_SCOPE user.email "$GIT_EMAIL"
+git config $CONFIG_SCOPE user.signingkey "$GIT_SIGNINGKEY"
+git config $CONFIG_SCOPE core.sshCommand "ssh -i $SSH_KEY -o IdentitiesOnly=yes -F /dev/null"
 
-if command -v gh >/dev/null; then
+p-header green "🔧 Git config ($CONFIG_SCOPE) updated for $IDENTITY"
+
+# Only update gh if using global mode (gh has no concept of local repos)
+if [[ "$LOCAL_MODE" == "false" ]] && command -v gh >/dev/null; then
   if gh auth switch --user "$GH_USER"; then
     p-header green "🔑 gh CLI switched to $GH_USER"
   else
     p-header amber "⚠️ Failed to switch gh user to $GH_USER"
   fi
+elif [[ "$LOCAL_MODE" == "true" ]]; then
+  p-header amber "⚠️ Skipping gh switch (local mode has no effect on gh CLI)"
 else
   p-header amber "⚠️ gh CLI not installed, skipping"
 fi
 
-rm -f "$MERGED"
+rm -f "$MERGED_IDENTS"
