@@ -6,6 +6,8 @@ set-strict-mode
 
 p-header white "Applying macOS settings..."
 
+# .osx hash: {{ include (joinPath .chezmoi.sourceDir "/dot_osx.tmpl") | sha256sum }}
+
 if [ -f "${HOME}/.osx" ]; then
   source "${HOME}/.osx"
 fi

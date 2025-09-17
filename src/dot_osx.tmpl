@@ -191,3 +191,17 @@ defaults write com.kyome.RunCat runnerId -string "cat.com.kyome"
 defaults write com.kyome.RunCat selectAutomatically -bool false
 # Don't use the system accent color for the runner
 defaults write com.kyome.RunCat useAccentColor -bool false
+
+# Warp.app
+##########
+
+defaults write dev.warp.Warp-Stable ActivationHotkeyEnabled -bool true
+defaults write dev.warp.Warp-Stable ActivationHotkeyKeybinding -string "{\"ctrl\":true,\"alt\":false,\"shift\":false,\"cmd\":true,\"meta\":false,\"key\":\"t\"}"
+defaults write dev.warp.Warp-Stable CompletionsOpenWhileTyping -bool false
+defaults write dev.warp.Warp-Stable FontName -string "\"Monofur Nerd Font\""
+defaults write dev.warp.Warp-Stable FontSize -string "15.0"
+defaults write dev.warp.Warp-Stable "HonorPS1" -bool true
+defaults write dev.warp.Warp-Stable NewSessionShellOverride -string "\"/opt/homebrew/bin/fish"\"
+defaults write dev.warp.Warp-Stable OverrideOpacity -int 80
+defaults write dev.warp.Warp-Stable StartupShellOverride -string "\"/opt/homebrew/bin/fish"\"
+defaults write dev.warp.Warp-Stable Theme -string "\"Adeberry"\"
