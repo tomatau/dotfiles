@@ -22,6 +22,7 @@ The initialisation stage will prompt for:
 Next, it will apply the `chezmoi` repo:
 
 - Install `xcode-select` if it's not already installed
+- Setup SSH keys for `git` and `github`
 - Install `brew` for package management
 - Run `rustup-init` as some formulas can depend on it
 - Install brew formulas, casks, and VS Code extensions
@@ -36,7 +37,7 @@ Next, it will apply the `chezmoi` repo:
   - `.config/karabiner`
   - `.config/zed`
   - `.config/starship`
-  - `.zshrc` and `.bashrc`, sharing config in `~/.shells` for env_vars and aliases
+  - `.zshrc` and `.bashrc`, sharing config in `~/.shells` for `env vars` and aliases
   - `.condarc`
   - `.gitconfig`
   - `.inputrc`
@@ -53,11 +54,14 @@ Next, it will apply the `chezmoi` repo:
 - Install TextMate plugins
 - Configure `fzf`
 - Look for an NPM token in LastPass notes based on the machine's hostname
-- Install fisher plugins for fish
+- Install `fisher` plugins for `fish`
 - Install latest and LTS node versions with FNM
 - Enable `corepack` by default
 - Install `bun`, `deno`, `go`, and `uv` with `proto`
 - Apply MacOS settings
+- Install some custom shell scripts
+  - Create a new ssh identity with ssh file
+  - Switch git identity (`git` SSH key and `gh` auth)
 
 ## Manual steps
 
@@ -78,4 +82,5 @@ Not everything is friendly and supporting dotfiles.
 - **Terminal Tools**: Configurations for `starship`, `fzf`, `fish`, etc.
 - **Password Manager Integration**: Using LastPass.
 - **OSX System settings**: executing a `.osx` dotfile.
-- **Minimal changes**: only update dotfiles or sections when changed.
+- **Minimal changes**: determines fewest changes to dotfiles or scripts.
+- **Git identity switching**: Manage more than one git and GitHub users
