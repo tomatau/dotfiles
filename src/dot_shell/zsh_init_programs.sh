@@ -34,6 +34,10 @@ if [ -f "$(brew --prefix)/opt/asdf/libexec/asdf.sh" ]; then
   . "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
 fi
 
+if [ -f "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
 __conda_path="$(brew --prefix)/anaconda3";
 __conda_setup="$($__conda_path/bin/conda 'shell.zsh' 'hook' 2> /dev/null)";
 if [ $? -eq 0 ]; then

@@ -3,6 +3,7 @@ export EDITOR="subl -w"
 export CODE_PATH={{ .code_path | quote }}
 export CODE_PATH_TOM={{ .code_path_tom | quote }}
 export GOPATH="$CODE_PATH/go"
+export LANG="en_GB.UTF-8"
 {{ $token_name := printf "npm token for %s" .chezmoi.hostname -}}
 {{ $token := (index (lastpassRaw $token_name) 0).note -}}
 {{- if $token -}}

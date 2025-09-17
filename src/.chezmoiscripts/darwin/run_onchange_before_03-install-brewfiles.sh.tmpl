@@ -4,10 +4,9 @@ source "{{ .chezmoi.sourceDir }}/dot_local/lib/shell/utils.sh"
 
 set-strict-mode
 
-{{ $common_brewfile := joinPath .chezmoi.sourceDir "/.brew/common_brewfile" }}
-{{ $personal_brewfile := joinPath .chezmoi.sourceDir "/.brew/personal_brewfile" }}
-{{ $work_brewfile := joinPath .chezmoi.sourceDir "/.brew/work_brewfile" }}
-
+{{- $common_brewfile := joinPath .chezmoi.sourceDir "/.brew/common_brewfile" -}}
+{{ $personal_brewfile := joinPath .chezmoi.sourceDir "/.brew/personal_brewfile" -}}
+{{ $work_brewfile := joinPath .chezmoi.sourceDir "/.brew/work_brewfile" -}}
 # common_brewfile hash: {{ include $common_brewfile | sha256sum }}
 # personal_brewfile hash: {{ include $personal_brewfile | sha256sum }}
 # work_brewfile hash: {{ include $work_brewfile | sha256sum }}

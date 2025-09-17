@@ -4,8 +4,8 @@
 # directory name is executed as if it were the argument to a cd
 setopt AUTO_CD
 
-# auto fix all parts of a command
-setopt CORRECT_ALL
+# auto misspelled commands
+setopt CORRECT
 
 # include filenames beginning with a . in the results of expansions
 setopt DOT_GLOB

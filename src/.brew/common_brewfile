@@ -54,6 +54,7 @@ brew "wget"
 brew "yq"
 brew "zoxide" # navigation
 brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
 brew "zsh"
 
 # CASKS
@@ -81,6 +82,7 @@ cask "jordanbaird-ice"
 cask "kap"
 cask "karabiner-elements"
 cask "lastpass"
+cask "maccy"
 cask "ngrok"
 cask "obsidian"
 cask "ollama-app"

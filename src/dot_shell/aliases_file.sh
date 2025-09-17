@@ -5,6 +5,8 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias -- -="cd -"
 
+alias tm="trash"
+
 alias ls="lsd"
 alias l='ls -lF'
 alias li='ls -lF --ignore-config'
