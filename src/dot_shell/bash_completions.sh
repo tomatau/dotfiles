@@ -11,3 +11,6 @@ if which brew > /dev/null && [ -f "$(brew --prefix)/etc/bash_completion" ]; then
 elif [ -f /etc/bash_completion ]; then
   source /etc/bash_completion;
 fi
+
+# completions for switch user
+source ~/.local/share/tomatao/git-switch-identity-completion.sh bash

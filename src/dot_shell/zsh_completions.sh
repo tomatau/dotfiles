@@ -14,3 +14,6 @@ then
   autoload -Uz compinit
   compinit
 fi
+
+# completions for switch user
+source ~/.local/share/tomatao/git-switch-identity-completion.sh zsh
