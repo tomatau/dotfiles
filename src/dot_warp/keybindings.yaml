@@ -1,0 +1,5 @@
+---
+'input:open_completion_suggestions': ctrl-space
+'pane_group:toggle_maximize_pane': ctrl-shift-enter
+'workspace:toggle_ai_assistant': ctrl-shift-|
+'editor_view:insert_autosuggestion': tab
