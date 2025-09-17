@@ -8,9 +8,19 @@ set-strict-mode
 p-header white "Starting SSH key setup..."
 
 {{ $ssh_dir := joinPath .chezmoi.homeDir ".ssh" -}}
-{{ $private_key := .github.key_name -}}
+
+p-header white "Setup default Github SSH..."
 
 setup-github-ssh \
   {{ .github.email | quote }} \
   {{ $ssh_dir }} \
-  {{ $private_key }}
+  {{ .github.key_name }}
+
+{{- if eq .profile "work" }}
+p-header white "Setup personal Github SSH..."
+
+setup-github-ssh \
+  {{ .personal.email | quote }} \
+  {{ $ssh_dir }} \
+  {{ .personal.key_name }}
+{{- end }}
