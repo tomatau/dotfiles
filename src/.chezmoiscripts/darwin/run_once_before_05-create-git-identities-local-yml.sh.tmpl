@@ -6,7 +6,7 @@ set-strict-mode
 
 p-header white "Creating git-identities.local.yml..."
 
-LOCAL="$XDG_CONFIG_HOME/git-identities.local.yml"
+LOCAL={{ .files.git_identities_local | quote }}
 
 if [[ ! -f "$LOCAL" ]]; then
   echo "identities:" > "$LOCAL"

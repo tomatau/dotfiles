@@ -40,8 +40,7 @@ PRIVATE_KEY="$4"
 
 setup-github-ssh "$GITHUB_EMAIL" "$SSH_DIR" "$PRIVATE_KEY"
 
-CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
-LOCAL_FILE="$CONFIG_DIR/git-identities.local.yml"
+LOCAL_FILE={{ .files.git_identities_local | quote }}
 
 if [[ ! -f "$LOCAL_FILE" ]]; then
   echo "identities:" > "$LOCAL_FILE"

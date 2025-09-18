@@ -1,5 +1,5 @@
 set -g fish_prompt_pwd_dir_length 2
-set -gx XDG_CONFIG_HOME "$HOME/.config"
+set -gx XDG_CONFIG_HOME {{ .files.xdg_config_home | quote }}
 set -gx EDITOR "subl -w"
 set -gx CODE_PATH {{ .code_path | quote }}
 set -gx CODE_PATH_TOM {{ .code_path_tom | quote }}

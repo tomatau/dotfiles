@@ -1,9 +1,8 @@
 function __fish_git_switch_identity_complete
   set -l cur (commandline -ct)
 
-  set -l base "$XDG_CONFIG_HOME/git-identities.base.yml"
-  set -l local "$XDG_CONFIG_HOME/git-identities.local.yml"
-
+  set -l base {{ .files.git_identities_base | quote }}
+  set -l local {{ .files.git_identities_local | quote }}
 
   if not test -f $base -a -f $local
     return

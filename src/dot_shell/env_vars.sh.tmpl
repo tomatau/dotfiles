@@ -1,4 +1,4 @@
-export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CONFIG_HOME={{ .files.xdg_config_home | quote }}
 export EDITOR="subl -w"
 export CODE_PATH={{ .code_path | quote }}
 export CODE_PATH_TOM={{ .code_path_tom | quote }}

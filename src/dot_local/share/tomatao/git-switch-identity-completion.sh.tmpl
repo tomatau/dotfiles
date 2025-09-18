@@ -6,8 +6,8 @@
 SHELL_TYPE="${1:-bash}"
 
 _merge_identities() {
-  local base="$XDG_CONFIG_HOME/git-identities.base.yml"
-  local local="$XDG_CONFIG_HOME/git-identities.local.yml"
+  local base={{ .files.git_identities_base | quote }}
+  local local={{ .files.git_identities_local | quote }}
   yq eval-all '. as $doc ireduce ({}; .identities *= ($doc.identities // {})) | .identities | keys | .[]' "$base" "$local" 2>/dev/null
 }
 

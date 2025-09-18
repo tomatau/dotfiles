@@ -65,8 +65,8 @@ if [[ "$CMD" == "status" ]]; then
 fi
 
 # -- SWITCH --
-BASE_IDENTS="$XDG_CONFIG_HOME/git-identities.base.yml"
-LOCAL_IDENTS="$XDG_CONFIG_HOME/git-identities.local.yml"
+BASE_IDENTS={{ .files.git_identities_base | quote }}
+LOCAL_IDENTS={{ .files.git_identities_local | quote }}
 MERGED_IDENTS="$(mktemp)"
 
 yq eval-all '
