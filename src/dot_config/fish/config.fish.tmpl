@@ -5,7 +5,8 @@ set -gx CODE_PATH {{ .code_path | quote }}
 set -gx CODE_PATH_TOM {{ .code_path_tom | quote }}
 set -gx GOPATH "$CODE_PATH/go"
 set -gx LANG "$en_GB.UTF-8"
-set -Ux LSCOLORS fxefcxdxbxexexabagacad
+set -Ux LSCOLORS "fxefcxdxbxexexabagacad"
+set -Ux MANPAGER "most"
 {{ $token_name := printf "npm token for %s" .chezmoi.hostname -}}
 {{ $token := (index (lastpassRaw $token_name) 0).note -}}
 {{- if $token -}}

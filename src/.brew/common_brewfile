@@ -38,6 +38,7 @@ brew "jq"
 brew "lastpass-cli"
 brew "lsd"
 brew "moor"
+brew "most"
 brew "openjdk"
 brew "pipe-rename" # renamer
 brew "proto"
