@@ -204,4 +204,4 @@ mas "Numbers (14.4)", id: 409203825
 mas "Pages (14.4)", id: 409201541
 mas "PDFgear (2.15)", id: 6469021132
 mas "Perplexity (2.250818.0)", id: 6714467650
-mas "RunCat (12.3)", id: 1429033973
+mas 'RunCat (12.4)', id: 1429033973
