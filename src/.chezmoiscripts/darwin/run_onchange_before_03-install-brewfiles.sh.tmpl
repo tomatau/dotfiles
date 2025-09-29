@@ -21,7 +21,7 @@ brew bundle --verbose --file={{ $common_brewfile }}
 p-header purple "Installing personal brewfile..."
 brew bundle --verbose --file={{ $personal_brewfile }}
 
-{{- else if eq .mode "work" }}
+{{- else if eq .profile "work" }}
 
 p-header purple "Installing work brewfile..."
 brew bundle --verbose --file={{ $work_brewfile }}
