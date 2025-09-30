@@ -24,7 +24,7 @@
     "Pulumi",
     "cd",
     "subl",
-    "config",
+    "config"
   ],
   "always_show_minimap_viewport": true,
   "binary_file_patterns": [
@@ -43,7 +43,9 @@
     "*.zip"
   ],
   "bold_folder_labels": true,
-  "color_scheme": "Adaptify Dark.sublime-color-scheme",
+  "color_scheme": "auto",
+  "dark_color_scheme": "Breakers.sublime-color-scheme",
+  "light_color_scheme": "Mariana.sublime-color-scheme",
   "create_window_at_startup": false,
   "default_line_ending": "unix",
   "detect_indentation": true,
@@ -68,8 +70,7 @@
   "highlight_line": true,
   "highlight_modified_tabs": true,
   "hot_exit": true,
-  "ignored_packages": ["Vintage",
-  ],
+  "ignored_packages": ["Vintage"],
   "indent_guide_options": ["draw_normal"],
   "line_padding_bottom": 2,
   "margin": 2,
@@ -89,5 +90,5 @@
   "word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?_",
   "word_wrap": true,
   "index_files": true,
-  "font_face": "OverpassM Nerd Font Propo",
+  "font_face": "OverpassM Nerd Font Propo"
 }
