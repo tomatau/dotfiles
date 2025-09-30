@@ -45,6 +45,6 @@
 macos-option-as-alt = true
 keybind = ctrl+shift+enter=toggle_split_zoom
 keybind = global:ctrl+shift+y=toggle_visibility
-theme = dark:Catppuccin Frappe,light:Catppuccin Latte
+theme = Catppuccin Frappe
 unfocused-split-fill = #4e5266
 background-opacity = 0.9
