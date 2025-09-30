@@ -124,4 +124,6 @@ if test -f $(brew --prefix)/anaconda3/bin/conda
 end
 # <<< conda initialize <<<
 
+{{- if eq .profile "personal" }}
 string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
+{{- end }}
