@@ -11,7 +11,9 @@ set-strict-mode
 p-header white "Installing fisher and fish plugins..."
 
 if command -v fish &>/dev/null; then
-  if command -v "fish -c fisher" &>/dev/null; then
+  if fish -c "type -q fisher"; then
+    p-header green "Fisher already installed..."
+  else
     p-header purple "Installing fisher..."
 
     # 1. Download the installer and pipe it to `source` (a fish builtin)
@@ -28,8 +30,6 @@ if command -v fish &>/dev/null; then
     else
       p-header red "Fisher installation failed..."
     fi
-  else
-    p-header green "Fisher already installed..."
   fi
 
   # 3. `fisher update` to install plugins listed in `~/.config/fish/fish_plugins`
