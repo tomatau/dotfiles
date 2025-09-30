@@ -106,5 +106,10 @@
     "key": "cmd+K",
     "command": "workbench.action.terminal.clear",
     "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+/",
+    "command": "editor.action.commentLine",
+    "when": "editorTextFocus && !editorReadonly"
   }
 ]
