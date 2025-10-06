@@ -7,13 +7,22 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "icon_theme": "Catppuccin Frappé",
+  "base_keymap": "Atom",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Catppuccin Frappé",
+    "dark": "Catppuccin Frappé"
+  },
   "agent": {
     "always_allow_tool_actions": false
   },
   "ui_font_size": 16,
   "buffer_font_size": 16,
-  "theme": "One Dark",
+  "theme": {
+    "mode": "dark",
+    "light": "One Dark",
+    "dark": "One Dark"
+  },
   "buffer_font_family": "Monofur Nerd Font Propo",
   "tab_size": 2
 }
