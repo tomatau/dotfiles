@@ -19,7 +19,6 @@ if [ -x "$(command -v zoxide)" ]; then
 fi
 
 if [ -x "$(command -v fnm)" ]; then
-  echo "init fnm"
   eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 fi
 
@@ -38,6 +37,8 @@ fi
 if [ -f "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
   source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
+ssh-add --apple-load-keychain 2> /dev/null
 
 __conda_path="$(brew --prefix)/anaconda3";
 __conda_setup="$($__conda_path/bin/conda 'shell.zsh' 'hook' 2> /dev/null)";
