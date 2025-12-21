@@ -44,6 +44,20 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[dockercompose]": {
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.insertSpaces": true,
+    "editor.quickSuggestions": {
+      "comments": false,
+      "other": true,
+      "strings": true
+    },
+    "editor.tabSize": 2
+  },
   "breadcrumbs.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -252,14 +266,9 @@
   "biome.suggestInstallingGlobally": false,
   "workbench.activityBar.location": "top",
   "diffEditor.codeLens": true,
-  "github.copilot.enable": {
-    "*": false,
-    "plaintext": false,
-    "markdown": false,
-    "scminput": false
-  },
   "vs-kubernetes": {
     "vscode-kubernetes.minikube-path-mac": "/Users/tomatao/.vs-kubernetes/tools/minikube/darwin-arm64/minikube"
   },
-  "harper.dialect": "British"
+  "harper.dialect": "British",
+  "testing.resultsView.layout": "treeLeft"
 }
