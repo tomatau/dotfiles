@@ -8,6 +8,7 @@ brew "awscli"
 brew "helm"
 brew "k9s"
 brew "kubernetes-cli"
+brew "lazygit"
 brew "minikube"
 brew "snyk"
 
@@ -16,3 +17,5 @@ brew "snyk"
 
 # CASKS
 cask "gcloud-cli"
+cask "notion-calendar"
+cask "postico"

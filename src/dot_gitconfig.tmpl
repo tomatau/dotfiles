@@ -54,11 +54,11 @@
     c = commit
     cn = commit --no-verify
     cm = commit --message
-    cmn = commit --message --no-verify
+    cmn = commit --no-verify --message
     ca = commit --all
     can = commit --all --no-verify
     cam = commit --all --message
-    camn = commit --all --message --no-verify
+    camn = commit --all --no-verify --message
     cia = commit --amend -C HEAD
     cian = commit --amend -C HEAD --no-verify
     mend = commit --amend
@@ -167,8 +167,8 @@
     #                     └─ hash (abbreviated)
 
 [filter "lfs"]
-    clean = git-lfs clean %f
-    smudge = git-lfs smudge %f
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
     required = true
 
 [web]
@@ -176,3 +176,8 @@
 
 [url "git@github.com:"]
     insteadOf = https://github.com/
+
+{{- if eq .profile "personal" }}
+[url "git@github.com:framer"]
+    insteadOf = https://github.com/framer
+{{- end }}

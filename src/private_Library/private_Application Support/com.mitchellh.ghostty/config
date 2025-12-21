@@ -47,4 +47,4 @@ keybind = ctrl+shift+enter=toggle_split_zoom
 keybind = global:ctrl+shift+y=toggle_visibility
 theme = Catppuccin Frappe
 unfocused-split-fill = #4e5266
-background-opacity = 0.9
+background-opacity = 0.96

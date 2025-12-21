@@ -19,7 +19,7 @@ if [ -x "$(command -v zoxide)" ]; then
 fi
 
 if [ -x "$(command -v fnm)" ]; then
-  eval "$(fnm env --use-on-cd)"
+  eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 fi
 
 if [ -x "$(command -v starship)" ]; then
@@ -34,6 +34,8 @@ if [ -f "$(brew --prefix)/opt/asdf/libexec/asdf.sh" ]; then
   . "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
   . "$(brew --prefix)/opt/asdf/etc/bash_completion.d/asdf"
 fi
+
+ssh-add --apple-load-keychain 2> /dev/null
 
 __conda_path="$(brew --prefix)/anaconda3";
 __conda_setup="$($__conda_path/bin/conda 'shell.bash' 'hook' 2> /dev/null)";

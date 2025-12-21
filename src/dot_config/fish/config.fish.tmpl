@@ -117,6 +117,8 @@ if test -f $(brew --prefix)/opt/asdf/libexec/asdf.fish
     source $(brew --prefix)/opt/asdf/libexec/asdf.fish
 end
 
+ssh-add --apple-load-keychain 2> /dev/null
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 if test -f $(brew --prefix)/anaconda3/bin/conda

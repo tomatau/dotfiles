@@ -41,6 +41,9 @@
   "[terraform-vars]": {
     "editor.defaultFormatter": "hashicorp.terraform"
   },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "breadcrumbs.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",

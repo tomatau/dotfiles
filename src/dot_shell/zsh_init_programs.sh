@@ -19,7 +19,8 @@ if [ -x "$(command -v zoxide)" ]; then
 fi
 
 if [ -x "$(command -v fnm)" ]; then
-  eval "$(fnm env --use-on-cd)"
+  echo "init fnm"
+  eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 fi
 
 if [ -x "$(command -v starship)" ]; then

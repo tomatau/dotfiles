@@ -1,19 +1,27 @@
 
-# enable tab completion for `g` by marking it as an alias for `git`
+# zsh-autosuggestions
 if which brew > /dev/null && [ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
   source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi;
 
-# re-initialise the shell's completion system with brew commands
-if type brew &>/dev/null
-then
-  if [[ ":$FPATH:" != *":$(brew --prefix)/share/zsh/site-functions:"* ]]; then
-    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-  fi
-
-  autoload -Uz compinit
-  compinit
+# Docker completions
+if [ -d "$HOME/.docker/completions" ]; then
+  FPATH="$HOME/.docker/completions:$FPATH"
 fi
 
-# completions for switch user
-source ~/.local/share/tomatao/git-switch-identity-completion.sh zsh
+# Homebrew completions
+if type brew &>/dev/null; then
+  brew_fpath="$(brew --prefix)/share/zsh/site-functions"
+  if [[ -d "$brew_fpath" && ":$FPATH:" != *":$brew_fpath:"* ]]; then
+    FPATH="$brew_fpath:$FPATH"
+  fi
+fi
+
+# re-initialise the shell's completion system
+autoload -Uz compinit
+compinit
+
+# Custom completions rely on compinit
+if [ -f ~/.local/share/tomatao/git-switch-identity-completion.sh ]; then
+  source ~/.local/share/tomatao/git-switch-identity-completion.sh zsh
+fi

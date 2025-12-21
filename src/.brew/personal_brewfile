@@ -19,6 +19,9 @@ cask "tradingview"
 cask "whatsapp"
 
 # MAC APPS
+mas "Keynote (14.4)", id: 409183694
+mas "Numbers (14.4)", id: 409203825
+mas "Pages (14.4)", id: 409201541
 mas 'GarageBand (10.4.12)', id: 682658836
 mas 'HP (20.1)', id: 1474276998
 mas 'iMovie (10.4.3)', id: 408981434
