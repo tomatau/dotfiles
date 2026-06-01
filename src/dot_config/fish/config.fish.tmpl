@@ -16,6 +16,7 @@ set -gx NPM_TOKEN "hostname-specific-token-not-found"
 {{- end }}
 set -gx PAGER "moor"
 set -gx PGUSER "postgres"
+set -gx DFT_TAB_WIDTH 2
 set -gx PNPM_HOME "$HOME/Library/pnpm"
 set -gx PROTO_HOME "$HOME/.proto"
 set -gx PYENV_ROOT "$HOME/.pyenv"
@@ -115,6 +116,10 @@ end
 
 if test -f $(brew --prefix)/opt/asdf/libexec/asdf.fish
     source $(brew --prefix)/opt/asdf/libexec/asdf.fish
+end
+
+if command -q jj
+    jj util completion fish | source
 end
 
 ssh-add --apple-load-keychain 2> /dev/null

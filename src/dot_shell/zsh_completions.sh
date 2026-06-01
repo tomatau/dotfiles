@@ -25,3 +25,8 @@ compinit
 if [ -f ~/.local/share/tomatao/git-switch-identity-completion.sh ]; then
   source ~/.local/share/tomatao/git-switch-identity-completion.sh zsh
 fi
+
+# Custom completions rely on compinit
+if [ -x "$(command -v jj)" ]; then
+  source <(jj util completion zsh)
+fi

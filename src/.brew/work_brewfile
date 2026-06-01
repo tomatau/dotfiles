@@ -5,17 +5,22 @@ tap "snyk/tap"
 
 # FORMULAS
 brew "awscli"
+brew "git-lfs"
 brew "helm"
+brew "jj"
 brew "k9s"
 brew "kubernetes-cli"
 brew "lazygit"
 brew "minikube"
+brew "mkcert" # local tls certs
 brew "snyk"
+brew "stripe-cli"
 
 # Use `proto install` with terraform plugin
 # brew "tfenv" # terraform version management
 
 # CASKS
+cask "1password-cli"
 cask "gcloud-cli"
 cask "notion-calendar"
 cask "postico"

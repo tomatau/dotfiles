@@ -115,6 +115,7 @@
     # light = false
     side-by-side = true
     line-numbers = true
+    tabs = 2
 
 [interactive]
     diffFilter = delta --color-only
@@ -170,6 +171,7 @@
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
     required = true
+    process = git-lfs filter-process
 
 [web]
     browser = open
