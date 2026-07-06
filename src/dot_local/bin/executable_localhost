@@ -1,0 +1,103 @@
+#!/bin/bash
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+CADDYFILE="$HOME/.local/state/localhost/Caddyfile"
+
+add_subdomain() {
+  local subdomain=$1
+  local target=$2
+
+  # Determine if target is a directory path or a port number
+  if [[ "$target" =~ ^[0-9]+$ ]]; then
+    # Port: reverse proxy
+    cat >> "$CADDYFILE" << EOF
+$subdomain.localhost {
+  reverse_proxy localhost:$target
+  tls internal
+  encode gzip zstd
+}
+EOF
+    echo "Added $subdomain.localhost -> localhost:$target"
+  else
+    # Resolve to absolute path
+    local dir
+    dir=$(cd "$target" 2>/dev/null && pwd)
+    if [ -z "$dir" ]; then
+      echo "Error: directory '$target' not found"
+      exit 1
+    fi
+    cat >> "$CADDYFILE" << EOF
+$subdomain.localhost {
+  root * $dir
+  file_server browse
+  tls internal
+  encode gzip zstd
+}
+EOF
+    echo "Added $subdomain.localhost -> $dir"
+  fi
+}
+
+add_subdomain_cwd() {
+  local subdomain=$1
+  add_subdomain "$subdomain" "$(pwd)"
+}
+
+remove_by_name() {
+  local subdomain=$1
+  sed -i "" "/^$subdomain\.localhost {/,/^}/d" "$CADDYFILE"
+  echo "Removed $subdomain.localhost"
+}
+
+remove_by_port() {
+  local port=$1
+  local subdomain
+  subdomain=$(grep -B1 "reverse_proxy localhost:$port" "$CADDYFILE" | grep -o '[^ ]*\.localhost' | sed 's/\.localhost//')
+  if [ -n "$subdomain" ]; then
+    remove_by_name "$subdomain"
+  else
+    echo "No configuration found for port $port"
+  fi
+}
+
+reload_caddy() {
+  if pgrep -x "caddy" > /dev/null; then
+    echo "Reloading Caddy..."
+    caddy reload --config "$CADDYFILE"
+  else
+    echo "Starting Caddy..."
+    caddy start --config "$CADDYFILE"
+  fi
+}
+
+case "$1" in
+  add)
+    case $# in
+      2) add_subdomain_cwd "$2" ;;               # localhost add <subdomain>  -> serve cwd
+      3) add_subdomain "$2" "$3" ;;              # localhost add <subdomain> <port|dir>
+      *) echo "Usage: $(basename $0) add <subdomain> [port|dir]"; exit 1 ;;
+    esac
+    reload_caddy
+    ;;
+  remove)
+    if [ $# -ne 2 ]; then
+      echo "Usage: $(basename $0) remove <subdomain|port>"
+      exit 1
+    fi
+    if [[ "$2" =~ ^[0-9]+$ ]]; then
+      remove_by_port "$2"
+    else
+      remove_by_name "$2"
+    fi
+    reload_caddy
+    ;;
+  list)
+    cat "$CADDYFILE"
+    ;;
+  *)
+    echo "Usage: $(basename $0) add <subdomain> [port|dir]"
+    echo "       $(basename $0) remove <subdomain|port>"
+    echo "       $(basename $0) list"
+    exit 1
+    ;;
+esac
