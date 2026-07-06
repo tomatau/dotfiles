@@ -68,6 +68,12 @@ if test -d "$HOME/.local/bin"
     fish_add_path --prepend "$HOME/.local/bin"
 end
 
+# Added by LM Studio CLI (lms)
+if test -d "$HOME/.cache/lm-studio/bin"
+    fish_add_path --prepend "$HOME/.cache/lm-studio/bin"
+end
+# End of LM Studio CLI section
+
 # ALIASES
 
 alias ..="cd .."
@@ -130,7 +136,3 @@ if test -f $(brew --prefix)/anaconda3/bin/conda
     eval $(brew --prefix)/anaconda3/bin/conda "shell.fish" hook $argv | source
 end
 # <<< conda initialize <<<
-
-{{- if eq .profile "personal" }}
-string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
-{{- end }}

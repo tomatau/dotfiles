@@ -2,7 +2,7 @@
 # COMMON #
 ##########
 tap "oven-sh/bun"
-tap "rcmdnk/file"
+brew "rcmdnk/file/brew-file", trusted: true
 
 # FORMULAS
 brew "ack"
@@ -95,7 +95,7 @@ cask "openinterminal"
 cask "qlcolorcode"
 cask "qlcommonmark"
 cask "qlstephen"
-cask "qlvideo"
+cask "quicklook-video"
 cask "quicklook-json"
 cask "raycast"
 cask "responsively"

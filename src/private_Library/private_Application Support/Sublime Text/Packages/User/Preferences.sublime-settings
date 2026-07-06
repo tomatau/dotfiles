@@ -43,7 +43,7 @@
     "*.zip"
   ],
   "bold_folder_labels": true,
-  "color_scheme": "auto",
+  "color_scheme": "Adaptify Mariana.sublime-color-scheme",
   "dark_color_scheme": "Breakers.sublime-color-scheme",
   "light_color_scheme": "Mariana.sublime-color-scheme",
   "create_window_at_startup": false,

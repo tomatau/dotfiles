@@ -31,4 +31,8 @@ prepend_path "$PROTO_HOME/shims"
 # my overrides
 prepend_path "$HOME/.local/bin"
 
+# Added by LM Studio CLI (lms)
+prepend_path "$HOME/.cache/lm-studio/bin"
+# End of LM Studio CLI section
+
 export PATH
