@@ -3,6 +3,9 @@
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 CADDYFILE="$HOME/.local/state/localhost/Caddyfile"
 
+mkdir -p "$(dirname "$CADDYFILE")"
+[ -f "$CADDYFILE" ] || touch "$CADDYFILE"
+
 add_subdomain() {
   local subdomain=$1
   local target=$2
