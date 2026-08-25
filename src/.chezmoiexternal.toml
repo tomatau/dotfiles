@@ -1,5 +1,9 @@
 # Externals
 
+[".agents"]
+    type = "git-repo"
+    url = "git@github.com:tomatau/tomatao_dot_agents.git"
+
 ["Library/Application Support/TextMate/Managed/Bundles/Fish.tmbundle"]
     type = "git-repo"
     url = "git@github.com:sanssecours/Fish.tmbundle.git"
