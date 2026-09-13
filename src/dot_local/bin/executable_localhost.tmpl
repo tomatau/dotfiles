@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-CADDYFILE="$HOME/.local/state/localhost/Caddyfile"
+CADDYFILE="{{ .files.localhost_caddyfile }}"
 
 mkdir -p "$(dirname "$CADDYFILE")"
 [ -f "$CADDYFILE" ] || touch "$CADDYFILE"
@@ -68,8 +68,17 @@ reload_caddy() {
     echo "Reloading Caddy..."
     caddy reload --config "$CADDYFILE"
   else
-    echo "Starting Caddy..."
-    caddy start --config "$CADDYFILE"
+    echo "Caddy is not running. Start it with: brew services start caddy" >&2
+    return 1
+  fi
+}
+
+status_caddy() {
+  if pgrep -x "caddy" > /dev/null 2>&1; then
+    echo "Caddy is running."
+  else
+    echo "Caddy is not running."
+    return 1
   fi
 }
 
@@ -97,10 +106,14 @@ case "$1" in
   list)
     cat "$CADDYFILE"
     ;;
+  status)
+    status_caddy
+    ;;
   *)
     echo "Usage: $(basename $0) add <subdomain> [port|dir]"
     echo "       $(basename $0) remove <subdomain|port>"
     echo "       $(basename $0) list"
+    echo "       $(basename $0) status"
     exit 1
     ;;
 esac

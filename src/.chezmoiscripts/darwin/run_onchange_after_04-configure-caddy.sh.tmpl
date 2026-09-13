@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+source "{{ .chezmoi.sourceDir }}/dot_local/lib/shell/utils.sh"
+
+set-strict-mode
+
+CADDYFILE="{{ .files.localhost_caddyfile }}"
+BREW_CADDYFILE="$(brew --prefix)/etc/Caddyfile"
+
+p-header white "Configuring Caddy..."
+
+mkdir -p "$(dirname "$CADDYFILE")"
+
+if [[ ! -e "$CADDYFILE" ]]; then
+  cat > "$CADDYFILE" <<'EOF'
+{
+  # Keep the default admin endpoint available for `localhost` reloads.
+  admin 127.0.0.1:2019
+}
+EOF
+fi
+
+if [[ -L "$BREW_CADDYFILE" ]]; then
+  if [[ "$(readlink "$BREW_CADDYFILE")" != "$CADDYFILE" ]]; then
+    p-header red "Error: $BREW_CADDYFILE links somewhere unexpected."
+    exit 1
+  fi
+elif [[ -e "$BREW_CADDYFILE" ]]; then
+  p-header red "Error: $BREW_CADDYFILE already exists and is not a symlink."
+  exit 1
+else
+  ln -s "$CADDYFILE" "$BREW_CADDYFILE"
+fi
+
+p-header green "Caddy will read $CADDYFILE."
