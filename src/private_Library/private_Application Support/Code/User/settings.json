@@ -150,7 +150,7 @@
 	"git.confirmSync": false,
 	"git.rebaseWhenSync": true,
 	"html.format.wrapLineLength": 90,
-	"javascript.updateImportsOnFileMove.enabled": "always",
+	"js/ts.updateImportsOnFileMove.enabled": "always",
 	"jupyter.interactiveWindow.creationMode": "perFile",
 	"liveServer.settings.donotShowInfoMsg": true,
 	"npm.enableRunFromFolder": true,
@@ -161,8 +161,8 @@
 	"prettier.singleQuote": true,
 	"security.workspace.trust.untrustedFiles": "open",
 	"terminal.external.osxExec": "iTerm.app",
-	"typescript.tsdk": "./node_modules/typescript/lib",
-	"typescript.validate.enable": true,
+	"js/ts.tsdk.path": "./node_modules/typescript/lib",
+	"js/ts.validate.enabled": true,
 	"window.restoreWindows": "all",
 	"workbench.colorCustomizations": {
 		"editorCodeLens.foreground": "#787776e6",
@@ -236,28 +236,13 @@
 	"pgsql.enableQueryHistoryCapture": false,
 	"svgPreview.autoOpen": false,
 	"docker.extension.enableComposeLanguageServer": false,
-	"roo-cline.allowedCommands": [
-		"npm test",
-		"npm install",
-		"tsc",
-		"git log",
-		"git diff",
-		"git show"
-	],
-	"roo-cline.deniedCommands": [],
-	"diffEditor.hideUnchangedRegions.enabled": true,
-	"biome.suggestInstallingGlobally": false,
 	"workbench.activityBar.location": "top",
 	"diffEditor.codeLens": true,
-	"vs-kubernetes": {
-		"vscode-kubernetes.minikube-path-mac": "/Users/tomatao/.vs-kubernetes/tools/minikube/darwin-arm64/minikube"
-	},
+	"vs-kubernetes": {},
 	"harper.dialect": "British",
-	"makefile.configureOnOpen": true,
 	"redhat.telemetry.enabled": false,
 	"security.promptForLocalFileProtocolHandling": false,
 	"testing.resultsView.layout": "treeLeft",
-	"biome.configurationPath": "./.biome.json",
 	"json.schemaDownload.trustedDomains": {
 		"https://schemastore.azurewebsites.net/": true,
 		"https://raw.githubusercontent.com/": true,
@@ -268,5 +253,37 @@
 		"https://json-schema.org/": true,
 		"https://developer.microsoft.com/json-schemas/": true,
 		"https://biomejs.dev": true
-	}
+	},
+	"chat.disableAIFeatures": true,
+	"yaml.disableSchemaDetection": [
+		"**/.github/workflows/*.yml",
+		"**/.github/workflows/*.yaml",
+		"**/.gitea/workflows/*.yml",
+		"**/.gitea/workflows/*.yaml",
+		"**/.forgejo/workflows/*.yml",
+		"**/.forgejo/workflows/*.yaml"
+	],
+	"python.analysis.typeCheckingMode": "standard",
+	"diffEditor.renderSideBySide": true,
+	"explorer.fileNesting.patterns": {
+		"*.ts": "${capture}.js",
+		"*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+		"*.jsx": "${capture}.js",
+		"*.tsx": "${capture}.ts",
+		"tsconfig.json": "tsconfig.*.json",
+		"package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
+		"Cargo.toml": "Cargo.lock",
+		"*.sqlite": "${capture}.${extname}-*",
+		"*.db": "${capture}.${extname}-*",
+		"*.sqlite3": "${capture}.${extname}-*",
+		"*.db3": "${capture}.${extname}-*",
+		"*.sdb": "${capture}.${extname}-*",
+		"*.s3db": "${capture}.${extname}-*"
+	},
+	"workbench.editorAssociations": {
+		"{git,gitlens}:/**/*.livemd": "default",
+		"*.db": "sqlite-viewer.option"
+	},
+	"claudeCode.hideOnboarding": true,
+	"diffEditor.hideUnchangedRegions.enabled": true
 }

@@ -35,4 +35,8 @@ prepend_path "$HOME/.local/bin"
 prepend_path "$HOME/.cache/lm-studio/bin"
 # End of LM Studio CLI section
 
+# Added by Docker Desktop
+prepend_path "$$HOME/.docker/bin"
+# End of Docker Desktop section
+
 export PATH

@@ -7,6 +7,15 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "format_on_save": "on",
+  "formatter": [
+    {
+      "language_server": {
+        "name": "oxfmt"
+      }
+    }
+  ],
+  "diff_view_style": "split",
   "cli_default_open_behavior": "new_window",
   "project_panel": {
     "dock": "left"
@@ -18,6 +27,8 @@
     "dock": "left"
   },
   "git_panel": {
+    "group_by": "staging",
+    "tree_view": true,
     "dock": "left"
   },
   "base_keymap": "Atom",
@@ -27,6 +38,27 @@
     "dark": "Catppuccin Frappé"
   },
   "agent": {
+    "inline_assistant_model": {
+      "provider": "openrouter",
+      "model": "openrouter/free",
+      "enable_thinking": false
+    },
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "always_allow": [
+            {
+              "pattern": "^bunx\\s+oxlint(\\s|$)"
+            }
+          ]
+        }
+      }
+    },
+    "default_model": {
+      "provider": "openrouter",
+      "model": "openrouter/free",
+      "enable_thinking": true
+    },
     "dock": "right"
   },
   "ui_font_size": 16,
@@ -37,5 +69,6 @@
     "dark": "Catppuccin Frappé"
   },
   "buffer_font_family": "Monofur Nerd Font Propo",
-  "tab_size": 2
+  "tab_size": 2,
+  "context_servers": {}
 }

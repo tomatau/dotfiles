@@ -21,6 +21,7 @@ set -gx PNPM_HOME "$HOME/Library/pnpm"
 set -gx PROTO_HOME "$HOME/.proto"
 set -gx PYENV_ROOT "$HOME/.pyenv"
 set -gx STARSHIP_CONFIG "$XDG_CONFIG_HOME/starship-fish.toml"
+set -gx HASS_SERVER "http://192.168.0.118:8123"
 
 # FZF SETTINGS
 set -gx FZF_COMPLETION_TRIGGER "**"
@@ -73,6 +74,12 @@ if test -d "$HOME/.cache/lm-studio/bin"
     fish_add_path --prepend "$HOME/.cache/lm-studio/bin"
 end
 # End of LM Studio CLI section
+
+# The following lines were added by Docker Desktop to add commands to your PATH.
+if test -d "$HOME/.docker/bin"
+    fish_add_path --prepend "$HOME/.docker/bin"
+end
+# End of Docker Desktop section.
 
 # ALIASES
 

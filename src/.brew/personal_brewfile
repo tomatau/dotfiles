@@ -1,18 +1,31 @@
 ############
 # PERSONAL #
 ############
+# FORMULAS
+brew "himalaya"
+brew "homeassistant-cli"
+brew "just"
+brew "opencode"
+brew "yt-dlp"
+
 # CASKS
 cask "airflow"
 cask "cleanmymac"
 cask "cog-app"
+cask "cyberduck"
 cask "discord"
+cask "figma"
 cask "folx"
-cask "kiro"
+cask "hermes-desktop"
+cask "home-assistant"
+cask "kimi"
 cask "lm-studio"
-cask "mindmac"
 cask "nordvpn"
+cask "opencode-desktop"
 cask "slack"
 cask "soulseek"
+cask "steam"
+cask "t3-code"
 cask "thunderbird"
 cask "tradingview"
 cask "whatsapp"
