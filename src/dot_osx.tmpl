@@ -74,25 +74,16 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 ######
 
 # Set dock tile size
-defaults write com.apple.dock tilesize -int 51
+defaults write com.apple.dock tilesize -int 32
 
 # Enable dock magnification
 defaults write com.apple.dock magnification -bool true
 
 # Set dock magnification size
-defaults write com.apple.dock largesize -int 103
-
-# Speed up Mission Control animations
-defaults write com.apple.dock expose-animation-duration -float 0.1
-
-# Remove the auto-hiding Dock delay
-defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock largesize -int 72
 
 # Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool false
-
-# Don't show recent applications in Dock
-defaults write com.apple.dock show-recents -bool false
+defaults write com.apple.dock autohide -bool true
 
 defaults write com.apple.dock "mru-spaces" -bool false
 
@@ -132,13 +123,13 @@ defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
 #########
 
 # Automatically re-hide the menu bar
-defaults write com.jordanbaird.Ice AutoRehide -bool true
+defaults write com.jordanbaird.Ice AutoRehide -bool false
 # Allow toggling the "Always Hidden" section
 defaults write com.jordanbaird.Ice CanToggleAlwaysHiddenSection -bool true
 # Don't use a template image for the custom Ice icon
 defaults write com.jordanbaird.Ice CustomIceIconIsTemplate -bool false
 # Enable the "Always Hidden" section
-defaults write com.jordanbaird.Ice EnableAlwaysHiddenSection -bool true
+defaults write com.jordanbaird.Ice EnableAlwaysHiddenSection -bool false
 # Hide application menus (e.g., File, Edit) when the menu bar is hidden
 defaults write com.jordanbaird.Ice HideApplicationMenus -bool true
 # Set the location of the Ice bar to the top
@@ -158,11 +149,11 @@ defaults write com.jordanbaird.Ice ShowOnClick -bool true
 # Don't show hidden menu bar items on hover
 defaults write com.jordanbaird.Ice ShowOnHover -bool false
 # Set the hover delay to 0.2 seconds (if enabled)
-defaults write com.jordanbaird.Ice ShowOnHoverDelay -float 0.2
+defaults write com.jordanbaird.Ice ShowOnHoverDelay -string "0.2"
 # Show hidden menu bar items when scrolling in the menu bar area
 defaults write com.jordanbaird.Ice ShowOnScroll -bool true
 # Show dividers between sections
-defaults write com.jordanbaird.Ice ShowSectionDividers -bool true
+defaults write com.jordanbaird.Ice ShowSectionDividers -bool false
 # Set the temporary show interval to 15 seconds
 defaults write com.jordanbaird.Ice TempShowInterval -int 15
 # Use the Ice bar
@@ -174,25 +165,19 @@ defaults write com.jordanbaird.Ice UseIceBar -bool true
 # Show the OpenInTerminal icon in the menu bar
 defaults write wang.jianing.app.OpenInTerminal "NSStatusItem Visible Item-0" -bool true
 
-# RunCat.app
-############
+# RunCat Neo.app
+################
 
 # Set the preferred horizontal position of the RunCat icon in the menu bar
-defaults write com.kyome.RunCat "NSStatusItem Preferred Position Item-0" -int 331
-# Hide the RunCat icon in the menu bar
-defaults write com.kyome.RunCat "NSStatusItem Visible Item-1" -bool false
-# Don't show the system info bar on click
-defaults write com.kyome.RunCat activateSystemInfoBar -bool false
+defaults write com.kyome.Neo.RunCat "NSStatusItem Preferred Position Item-0" -int 397
+# Hide the secondary RunCat item in Control Centre
+defaults write com.kyome.Neo.RunCat "NSStatusItem VisibleCC Item-1" -bool false
+# Don't show the metrics bar
+defaults write com.kyome.Neo.RunCat SHOWS_METRICS_BAR -bool false
 # Flip the running animation horizontally
-defaults write com.kyome.RunCat flipHorizontally -bool true
-# Don't invert the speed (faster animation for higher CPU usage)
-defaults write com.kyome.RunCat invertSpeed -bool false
+defaults write com.kyome.Neo.RunCat IS_FLIPPED_HORIZONTALLY -bool false
 # Set the runner to the default cat
-defaults write com.kyome.RunCat runnerId -string "cat.com.kyome"
-# Don't automatically select a runner
-defaults write com.kyome.RunCat selectAutomatically -bool false
-# Don't use the system accent color for the runner
-defaults write com.kyome.RunCat useAccentColor -bool false
+defaults write com.kyome.Neo.RunCat RUNNER_ID -string "cat"
 
 # Warp.app
 ##########
