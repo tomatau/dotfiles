@@ -21,6 +21,5 @@ brew "stripe-cli"
 
 # CASKS
 cask "1password-cli"
-cask "gcloud-cli"
 cask "notion-calendar"
 cask "postico"
