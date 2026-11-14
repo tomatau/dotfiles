@@ -27,7 +27,7 @@ brew "difftastic"
 brew "diffnav"
 brew "direnv"
 brew "dnsmasq"
-brew "duti"
+brew "duti" # select default apps
 brew "envchain"
 brew "fd" # find alternative
 brew "ffmpeg"
@@ -221,4 +221,4 @@ vscode "yzhang.markdown-all-in-one"
 # MAC APPS
 mas "PDFgear (2.15)", id: 6469021132
 # mas "Perplexity (2.250818.0)", id: 6714467650
-mas 'RunCat (12.4)', id: 1429033973
+mas "RunCat Neo", id: 6757801838

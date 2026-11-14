@@ -30,7 +30,6 @@ Next, it will apply the `chezmoi` repo:
 - Set the default shell to `$(brew --prefix)/bin/zsh`
 - Create a `~/Code` directory and a directory for Golang
 - Copy the dotfiles for:
-
   - `.config/fish`
   - `.config/gh`
   - `.config/lsd`
@@ -68,6 +67,9 @@ Next, it will apply the `chezmoi` repo:
 Not everything is friendly and supporting dotfiles.
 
 - Import the Raycast settings from `manual/Raycast.rayconfig`
+- Before applying macOS settings, enable **System Settings → Privacy & Security →
+  Full Disk Access** for the terminal app running chezmoi (Warp, Ghostty, or iTerm2).
+  Fully quit and reopen the terminal app afterwards. macOS requires you to grant this access manually.
 
 ## Features
 
