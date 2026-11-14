@@ -1,3 +1,7 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- $current := .chezmoi.stdin | trim | default "{}" | fromJsonc -}}
+{{- $kubernetes := get $current "vs-kubernetes" | default dict -}}
+{{- $_ := set $kubernetes "vs-kubernetes.suppress-helm-not-found-alerts" true -}}
 {
 	"[html]": {
 		"editor.defaultFormatter": "vscode.html-language-features"
@@ -238,7 +242,8 @@
 	"docker.extension.enableComposeLanguageServer": false,
 	"workbench.activityBar.location": "top",
 	"diffEditor.codeLens": true,
-	"vs-kubernetes": {},
+	// The Kubernetes extension maintains this machine's tool paths here.
+	"vs-kubernetes": {{ $kubernetes | toPrettyJson "\t" | trim | replace "\n" "\n\t" }},
 	"harper.dialect": "British",
 	"redhat.telemetry.enabled": false,
 	"security.promptForLocalFileProtocolHandling": false,
@@ -285,5 +290,6 @@
 		"*.db": "sqlite-viewer.option"
 	},
 	"claudeCode.hideOnboarding": true,
-	"diffEditor.hideUnchangedRegions.enabled": true
+	"diffEditor.hideUnchangedRegions.enabled": true,
+	"gitlens.graph.details.location": "auto"
 }
