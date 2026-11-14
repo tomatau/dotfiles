@@ -1,27 +1,23 @@
-{
+{{- /* chezmoi:modify-template */ -}}
+{{- $desired := `{
   "Seti_blue_scrollbar": true,
   "Seti_orange_button": true,
   "Seti_orange_label": true,
   "Seti_tabs_small": true,
   "added_words": [
-    "heroku",
     "Tomatao",
     "tomatao",
     "github",
     "Hudspith",
     "Tatham",
-    "Breko",
     "Webpack",
     "Redux",
-    "Koa",
     "middleware",
     "Dotfiles",
     "tomatau",
     "dotfiles",
     "com",
-    "Nushell",
     "Karabinder",
-    "Pulumi",
     "cd",
     "subl",
     "config"
@@ -87,8 +83,15 @@
   "translate_tabs_to_spaces": true,
   "trim_trailing_white_space_on_save": true,
   "use_tab_stops": true,
-  "word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?_",
+  "word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}\u0060~?_",
   "word_wrap": true,
   "index_files": true,
   "font_face": "OverpassM Nerd Font Propo"
 }
+` -}}
+{{- /* Keep Sublime's formatting when the setting values already match. */ -}}
+{{- if and (trim .chezmoi.stdin) (deepEqual (fromJsonc .chezmoi.stdin) (fromJsonc $desired)) -}}
+{{- .chezmoi.stdin -}}
+{{- else -}}
+{{- $desired -}}
+{{- end -}}
