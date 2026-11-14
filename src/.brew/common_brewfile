@@ -55,9 +55,6 @@ brew "pi-coding-agent"
 brew "poppler" # PDF tools: pdftotext, pdfinfo, and pdftoppm
 brew "proto"
 brew "python@3.12"
-# unsure if fully migrated to uv
-# brew "pyenv"
-# brew "pyenv-virtualenv"
 brew "redis"
 brew "ripgrep"
 brew "rustup"

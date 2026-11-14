@@ -9,11 +9,6 @@ if [ -x "$(command -v direnv)" ]; then
   eval "$(direnv hook zsh)"
 fi
 
-if [ -x "$(command -v pyenv)" ]; then
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-fi
-
 if [ -x "$(command -v zoxide)" ]; then
   eval "$(zoxide init zsh)"
 fi

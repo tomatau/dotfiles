@@ -19,7 +19,6 @@ set -gx PGUSER "postgres"
 set -gx DFT_TAB_WIDTH 2
 set -gx PNPM_HOME "$HOME/Library/pnpm"
 set -gx PROTO_HOME "$HOME/.proto"
-set -gx PYENV_ROOT "$HOME/.pyenv"
 set -gx STARSHIP_CONFIG "$XDG_CONFIG_HOME/starship-fish.toml"
 set -gx HASS_SERVER "http://192.168.0.118:8123"
 
@@ -104,11 +103,6 @@ end
 
 if command -q direnv
     direnv hook fish | source
-end
-
-if command -q pyenv
-    pyenv init - | source
-    status --is-interactive; and pyenv virtualenv-init - | source
 end
 
 if command -q zoxide

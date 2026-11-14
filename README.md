@@ -75,7 +75,7 @@ Not everything is friendly and supporting dotfiles.
 - **Profiles**: for `personal` and `work`.
 - **Shell Customization**: Includes aliases, functions, and prompt themes for Bash, Zsh, and Fish.
 - **Dependency management**: Using brew.
-- **Version Managers**: Pre-configured for Node.js (`fnm`), Python (`pyenv` but prefer `uv`), and other languages using `proto` and `asdf`.
+- **Version Managers**: Pre-configured for Node.js (`fnm`), Python (`uv`, installed through `proto`), and other languages using `proto` and `asdf`.
 - **Editor Configurations**: Optimized settings for VSCode, Sublime Text, Zed, and Vim.
 - **Git Setup**: Includes `.gitconfig` with user details, aliases, and tweaks.
 - **Key Mappings**: Custom keyboard shortcuts using Karabiner.
