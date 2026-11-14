@@ -1,6 +1,8 @@
 ############
 # PERSONAL #
 ############
+tap "crmne/tap"
+
 # FORMULAS
 brew "himalaya"
 brew "homeassistant-cli"
@@ -28,7 +30,7 @@ cask "steam"
 cask "t3-code"
 cask "thunderbird"
 cask "tradingview"
-cask "whatsapp"
+cask "zapfast"
 
 # MAC APPS
 mas "Keynote (14.4)", id: 409183694
