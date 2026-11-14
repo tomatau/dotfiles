@@ -1,0 +1,64 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- $current := .chezmoi.stdin | trim | default "{}" | fromJson -}}
+{{- /* Own UI and chat preferences; preserve accounts, project overrides, and other local state. */ -}}
+{{- $preferences := `{
+  "notificationMode": "off",
+  "inAppNotificationsEnabled": false,
+  "diffColorScheme": "red-green",
+  "chatWidth": "full",
+  "effortDisplay": "label",
+  "appearanceContrast": 100,
+  "panelAnimationDurationMs": 50,
+  "confirmQuit": "direct",
+  "confirmThreadArchive": false,
+  "confirmThreadDelete": true,
+  "confirmThreadUnpin": false,
+  "diffFilesCollapsed": true,
+  "diffIgnoreWhitespace": true,
+  "diffLayout": "stacked",
+  "environmentIdentificationMode": "artwork",
+  "glassOpacity": 80,
+  "fontSizeInterface": 14,
+  "fontSizePrompt": 14,
+  "fontSizeCode": 12,
+  "fontSizeTerminal": 12,
+  "fontFamilyCode": "",
+  "fontFamilyComposer": "",
+  "fontFamilySans": "",
+  "fontFamilyTerminal": "",
+  "fontSmoothing": true,
+  "persistComposerContextStrip": true,
+  "pullRequestLinksOpenInApp": true,
+  "planModeEnabled": false,
+  "contextWindowMeterEnabled": false,
+  "composerRichTextEnabled": true,
+  "sendShortcut": "enter",
+  "followUpBehavior": "queue",
+  "proactivePanelsEnabled": false,
+  "showSkillsInSlashMenu": true,
+  "boringSidebarEnabled": false,
+  "boringSidebarMultilineRows": false,
+  "threadDetailsUsageEnabled": false,
+  "threadDetailsItems": {
+    "context": true,
+    "gitActions": false,
+    "servers": false,
+    "scripts": false,
+    "branch": false
+  },
+  "legacySidebarEnabled": false,
+  "sidebarWorkingShelfEnabled": true,
+  "sidebarProjectGroupingMode": "repository",
+  "sidebarProjectSortOrder": "updated_at",
+  "sidebarThreadSortOrder": "updated_at",
+  "timestampFormat": "locale",
+  "wordWrap": true,
+  "mathRenderingEnabled": false
+}` | fromJson -}}
+{{- $settings := mergeOverwrite (deepCopy $current) $preferences -}}
+{{- /* Keep T3 Code's formatting when the managed values already match. */ -}}
+{{- if deepEqual $current $settings -}}
+{{- .chezmoi.stdin -}}
+{{- else -}}
+{{ $settings | toPrettyJson }}
+{{- end -}}
