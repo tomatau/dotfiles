@@ -1,0 +1,132 @@
+editors:
+  extensions:
+    common:
+      - arsen.darcula-theme-for-elixir
+      - asvetliakov.snapshot-tools
+      - azemoh.one-monokai
+      - bierner.markdown-mermaid
+      - bpruitt-goddard.mermaid-markdown-syntax-highlighting
+      - bradlc.vscode-tailwindcss
+      - cardinal90.multi-cursor-case-preserve
+      - charliermarsh.ruff
+      - christian-kohler.npm-intellisense
+      - christian-kohler.path-intellisense
+      - cweijan.dbclient-jdbc
+      - cweijan.vscode-postgresql-client2
+      - dbaeumer.vscode-eslint
+      - denoland.vscode-deno
+      - docker.docker
+      - dunstontc.viml
+      - eamodio.gitlens
+      - editorconfig.editorconfig
+      - elijah-potter.harper
+      - exodiusstudios.comment-anchors
+      - geeebe.duplicate
+      - github.github-vscode-theme
+      - github.vscode-github-actions
+      - gleam.gleam
+      - golang.go
+      - hashicorp.terraform
+      - idleberg.applescript
+      - idleberg.jxa
+      - jaimeolivares.yuml
+      - jakebecker.elixir-ls
+      - jonasgruenwald.code-livebook
+      - kumar-harsh.graphql-for-vscode
+      - lunaryorn.fish-ide
+      # Syntax highlighting for Moon's Tera templates (.twig).
+      - mblode.twig-language-2
+      - mechatroner.rainbow-csv
+      - mermaidchart.vscode-mermaid-chart
+      - mgmcdermott.vscode-language-babel
+      - mikestead.dotenv
+      - mingteo.sort-selection-concentrically
+      - mkhl.direnv
+      - moonrepo.moon-console
+      - ms-azuretools.vscode-containers
+      - ms-azuretools.vscode-docker
+      - ms-dotnettools.vscode-dotnet-runtime
+      - ms-kubernetes-tools.vscode-kubernetes-tools
+      - ms-playwright.playwright
+      - ms-python.debugpy
+      - ms-python.python
+      - ms-toolsai.datawrangler
+      - ms-toolsai.jupyter
+      - ms-toolsai.jupyter-keymap
+      - ms-toolsai.jupyter-renderers
+      - ms-toolsai.vscode-jupyter-cell-tags
+      - ms-toolsai.vscode-jupyter-slideshow
+      - ms-vscode.atom-keybindings
+      - nefrob.vscode-just-syntax
+      - orta.vscode-jest
+      - oven.bun-vscode
+      - oxc.oxc-vscode
+      - pflannery.vscode-versionlens
+      - pkief.material-icon-theme
+      - qwtel.sqlite-viewer
+      - redhat.vscode-yaml
+      - ritwickdey.liveserver
+      - rust-lang.rust-analyzer
+      - sidneys1.gitconfig
+      - simonsiefke.svg-preview
+      - skyapps.fish-vscode
+      - sleistner.vscode-fileutils
+      - srshah.cosmic-gleam
+      - streetsidesoftware.code-spell-checker
+      - styled-components.vscode-styled-components
+      - tamasfe.even-better-toml
+      - tanvir.ollama-modelfile
+      - tomoki1207.pdf
+      - travisthetechie.write-good-linter
+      - tyriar.sort-lines
+      - unifiedjs.vscode-mdx
+      - vadimcn.vscode-lldb
+      - vscode-icons-team.vscode-icons
+      - wmaurer.change-case
+      - yoavbls.pretty-ts-errors
+      - yzhang.markdown-all-in-one
+  code:
+    extensions:
+      additional:
+        - anthropic.claude-code
+        - openai.chatgpt
+        # Cursor uses Anysphere's Pyright replacement for Pylance.
+        - ms-python.vscode-pylance
+        - ms-python.vscode-python-envs
+  cursor:
+    # VS Code is the settings baseline; these are Cursor's exceptions.
+    unset_settings:
+      - chat.agent.enabled
+      - chat.disableAIFeatures
+      - claudeCode.hideOnboarding
+      - python.analysis.typeCheckingMode
+      - workbench.activityBar.location
+    settings:
+      cursor.composer.codeBlockWordWrap: true
+      cursor.composer.queueMessageDefaultBehavior: stop-and-send
+      cursorpyright.analysis.typeCheckingMode: standard
+      explorer.confirmDelete: false
+      extensions.ignoreRecommendations: true
+      go.diagnostic.vulncheck: Imports
+      window.autoDetectColorScheme: false
+      window.titleBarStyle: native
+      workbench.colorTheme: GitHub Dark
+      workbench.editor.editorActionsLocation: titleBar
+      workbench.editor.showTabs: multiple
+      workbench.iconTheme: vscode-icons
+      workbench.secondarySideBar.showLabels: false
+      workbench.sideBar.location: right
+    extra_textmate_rules:
+      - scope: markup.bold
+        settings:
+          fontStyle: ''
+          foreground: '#e4a1af'
+      - scope: markup.italic
+        settings:
+          fontStyle: ''
+          foreground: '#77a1bd'
+    extensions:
+      additional:
+        - anysphere.cursorpyright
+        - anysphere.remote-containers
+        - anysphere.remote-ssh

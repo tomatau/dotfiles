@@ -7,27 +7,30 @@
 		"editor.defaultFormatter": "vscode.html-language-features"
 	},
 	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "oxc.oxc-vscode"
 	},
 	"[markdown]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "oxc.oxc-vscode"
 	},
 	"[python]": {
 		"editor.tabSize": 4,
 		"editor.defaultFormatter": "charliermarsh.ruff"
 	},
 	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "oxc.oxc-vscode"
 	},
 	"[typescriptreact]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "oxc.oxc-vscode"
 	},
 	"[yaml]": {
 		"editor.autoIndent": "advanced",
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "oxc.oxc-vscode"
 	},
 	"[rust]": {
-		"editor.defaultFormatter": "jinxdash.prettier-rust"
+		"editor.defaultFormatter": "rust-lang.rust-analyzer"
+	},
+	"[sql]": {
+		"editor.defaultFormatter": "cweijan.vscode-postgresql-client2"
 	},
 	"[elixir]": {
 		"editor.bracketPairColorization.enabled": false,
@@ -37,7 +40,7 @@
 		"editor.defaultFormatter": "gleam.gleam"
 	},
 	"[scss]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "oxc.oxc-vscode"
 	},
 	"[terraform]": {
 		"editor.defaultFormatter": "hashicorp.terraform"
@@ -46,7 +49,7 @@
 		"editor.defaultFormatter": "hashicorp.terraform"
 	},
 	"[json]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "oxc.oxc-vscode"
 	},
 	"[github-actions-workflow]": {
 		"editor.defaultFormatter": "redhat.vscode-yaml"
@@ -64,7 +67,9 @@
 	},
 	"breadcrumbs.enabled": true,
 	"diffEditor.ignoreTrimWhitespace": false,
-	"editor.defaultFormatter": "biomejs.biome",
+	"editor.defaultFormatter": "oxc.oxc-vscode",
+	// Enable Oxc in each project with "oxc.enable": true.
+	"oxc.enable": false,
 	"editor.fontFamily": "OverpassM Nerd Font Propo, Operator Mono, Menlo, Monaco, 'Courier New', monospace",
 	"editor.fontSize": 13,
 	"editor.formatOnPaste": true,
@@ -158,11 +163,7 @@
 	"jupyter.interactiveWindow.creationMode": "perFile",
 	"liveServer.settings.donotShowInfoMsg": true,
 	"npm.enableRunFromFolder": true,
-	"prettier.arrowParens": "avoid",
-	"prettier.bracketSameLine": false,
-	"prettier.jsxSingleQuote": true,
-	"prettier.semi": false,
-	"prettier.singleQuote": true,
+	"twig-language-2.formatting": false,
 	"security.workspace.trust.untrustedFiles": "open",
 	"terminal.external.osxExec": "iTerm.app",
 	"js/ts.tsdk.path": "./node_modules/typescript/lib",

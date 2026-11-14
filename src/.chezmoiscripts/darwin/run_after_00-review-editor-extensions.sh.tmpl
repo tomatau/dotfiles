@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+
+source "{{ .chezmoi.sourceDir }}/dot_local/lib/shell/utils.sh"
+
+set-strict-mode
+
+list_unlisted() {
+  local desired="$1" extension
+  while IFS= read -r extension; do
+    if [[ -n "$extension" && " $desired " != *" $extension "* ]]; then
+      printf '%s\n' "$extension"
+    fi
+  done <<< "$2"
+}
+
+choose_action() {
+  local prompt="$1" choices="$2" options="$3" fallback="$4" answer
+  while true; do
+    p-header blue "$prompt" >&2
+    printf '%s\n> ' "$choices" >&2
+    if ! IFS= read -r answer <&3; then
+      printf '\nExtension review input closed.\n' >&2
+      return 1
+    fi
+    answer="${answer:-$fallback}"
+    answer="$(printf '%s' "$answer" | tr '[:upper:]' '[:lower:]')"
+    if [[ ${#answer} -eq 1 && "$options" == *"$answer"* ]]; then
+      printf '%s' "$answer"
+      return
+    fi
+    printf 'Use the letter in brackets.\n' >&2
+  done
+}
+
+review_extensions() {
+  local editor="$1" desired="$2"
+  local installed missing="" unlisted extension answer
+  installed="$("$editor" --list-extensions)"
+
+  # Extension IDs are whitespace-free; desired contains the configured IDs.
+  for extension in $desired; do
+    if ! grep -Fqx -- "$extension" <<< "$installed"; then
+      missing+="$extension"$'\n'
+    fi
+  done
+  unlisted="$(list_unlisted "$desired" "$installed")"
+  if [[ -z "$missing$unlisted" ]]; then
+    p-header green "$editor extensions match the config."
+    return
+  fi
+
+  p-header purple "$editor extension differences:"
+  if [[ -n "$missing" ]]; then
+    printf '\n\033[1mConfigured but not installed:\033[0m\n%s' "$missing"
+  fi
+  if [[ -n "$unlisted" ]]; then
+    printf '\n\033[1mInstalled but not configured:\033[0m\n%s\n' "$unlisted"
+  fi
+  if ! { exec 3</dev/tty; } 2>/dev/null; then
+    printf 'Review requires a terminal. No %s extensions were changed.\n' "$editor" >&2
+    exit 1
+  fi
+
+  while IFS= read -r extension; do
+    [[ -n "$extension" ]] || continue
+    answer="$(choose_action "$editor: $extension" '[i]nstall / [s]kip / [q]uit (default: skip)?' isq s)"
+    case "$answer" in
+      i) "$editor" --install-extension "$extension" ;;
+      s) printf 'Skipped installing %s.\n' "$extension" ;;
+      q) exit 130 ;;
+    esac
+  done <<< "$missing"
+
+  # Re-read because extension packs can add dependencies during installation.
+  installed="$("$editor" --list-extensions)"
+  unlisted="$(list_unlisted "$desired" "$installed")"
+  while IFS= read -r extension; do
+    [[ -n "$extension" ]] || continue
+    answer="$(choose_action "$editor: $extension" '[k]eep / [r]emove / [q]uit (default: keep)?' krq k)"
+    case "$answer" in
+      r) "$editor" --uninstall-extension "$extension" ;;
+      k) printf 'Kept %s.\n' "$extension" ;;
+      q) exit 130 ;;
+    esac
+  done <<< "$unlisted"
+  exec 3<&-
+}
+
+{{ range $editor := list "code" "cursor" }}
+{{ $config := index $.editors $editor -}}
+review_extensions {{ $editor | quote }} \
+  {{ concat $.editors.extensions.common $config.extensions.additional | uniq | join " " | quote }}
+{{ end }}
+
+p-header green "Editor extension review complete."

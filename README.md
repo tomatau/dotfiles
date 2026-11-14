@@ -25,7 +25,8 @@ Next, it will apply the `chezmoi` repo:
 - Setup SSH keys for `git` and `github`
 - Install `brew` for package management
 - Run `rustup-init` as some formulas can depend on it
-- Install brew formulas, casks, and VS Code extensions
+- Install brew formulas and casks
+- Review VS Code and Cursor extensions using [`editors.yaml`](src/.chezmoidata/editors.yaml)
 - Setup system shells for `zsh`, `bash`, and `fish` using updated `brew` binaries
 - Set the default shell to `$(brew --prefix)/bin/zsh`
 - Create a `~/Code` directory and a directory for Golang
@@ -78,7 +79,7 @@ Not everything is friendly and supporting dotfiles.
 - **Shell Customization**: Includes aliases, functions, and prompt themes for Bash, Zsh, and Fish.
 - **Dependency management**: Using brew.
 - **Version Managers**: Pre-configured for Node.js (`fnm`), Python (`uv`, installed through `proto`), and other languages using `proto` and `asdf`.
-- **Editor Configurations**: Optimized settings for VSCode, Sublime Text, Zed, and Vim.
+- **Editor Configurations**: Settings for VS Code, Cursor, Sublime Text, Zed, and Vim.
 - **Git Setup**: Includes `.gitconfig` with user details, aliases, and tweaks.
 - **Key Mappings**: Custom keyboard shortcuts using Karabiner.
 - **Terminal Tools**: Configurations for `starship`, `fzf`, `fish`, etc.

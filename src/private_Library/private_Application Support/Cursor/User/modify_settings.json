@@ -1,0 +1,11 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- $settings := includeTemplate "private_Library/private_Application Support/Code/User/modify_settings.json" . | fromJsonc -}}
+{{- range .editors.cursor.unset_settings -}}
+{{- $_ := unset $settings . -}}
+{{- end -}}
+{{- range $key, $value := .editors.cursor.settings -}}
+{{- $_ := set $settings $key $value -}}
+{{- end -}}
+{{- $colors := index $settings "editor.tokenColorCustomizations" -}}
+{{- $_ := set $colors "textMateRules" (concat $colors.textMateRules .editors.cursor.extra_textmate_rules) -}}
+{{- $settings | toPrettyJson "\t" -}}
