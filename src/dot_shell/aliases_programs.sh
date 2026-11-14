@@ -34,7 +34,7 @@ function ngrokserver() {
 }
 
 function setjdk() {
-  remove_from_path `/usr/libexec/java_home`
+  remove_from_path "$(/usr/libexec/java_home)/bin"
   export JAVA_HOME=`/usr/libexec/java_home -v $@`
   export PATH=$JAVA_HOME/bin:$PATH
   java -version

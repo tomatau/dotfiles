@@ -80,6 +80,11 @@ if test -d "$HOME/.docker/bin"
 end
 # End of Docker Desktop section.
 
+# Antigravity IDE
+if test -d "$HOME/.antigravity-ide/antigravity-ide/bin"
+    fish_add_path --prepend "$HOME/.antigravity-ide/antigravity-ide/bin"
+end
+
 # ALIASES
 
 alias ..="cd .."

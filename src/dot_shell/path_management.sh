@@ -6,13 +6,21 @@ function prepend_path() {
     return
   fi
 
-  remove_from_path $dir
+  remove_from_path "$dir"
 
   export PATH="$dir${PATH:+:$PATH}"
 }
 
 function remove_from_path() {
-  export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
+  local dir="$1"
+  local padded_path=":$PATH:"
+
+  while [[ "$padded_path" == *":$dir:"* ]]; do
+    padded_path="${padded_path/":$dir:"/:}"
+  done
+
+  padded_path="${padded_path#:}"
+  export PATH="${padded_path%:}"
 }
 
 # system packages
@@ -36,7 +44,10 @@ prepend_path "$HOME/.cache/lm-studio/bin"
 # End of LM Studio CLI section
 
 # Added by Docker Desktop
-prepend_path "$$HOME/.docker/bin"
+prepend_path "$HOME/.docker/bin"
 # End of Docker Desktop section
+
+# Antigravity IDE
+prepend_path "$HOME/.antigravity-ide/antigravity-ide/bin"
 
 export PATH
