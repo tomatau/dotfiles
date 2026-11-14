@@ -1,4 +1,6 @@
-{
+{{- /* chezmoi:modify-template */ -}}
+{{- $desired := `{
+  "global": { "show_in_menu_bar": false },
   "profiles": [
     {
       "complex_modifications": {
@@ -85,3 +87,10 @@
     }
   ]
 }
+` -}}
+{{- /* Keep Karabiner's formatting when the setting values already match. */ -}}
+{{- if and (trim .chezmoi.stdin) (deepEqual (fromJsonc .chezmoi.stdin) (fromJsonc $desired)) -}}
+{{- .chezmoi.stdin -}}
+{{- else -}}
+{{- $desired -}}
+{{- end -}}
