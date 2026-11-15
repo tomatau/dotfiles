@@ -1,0 +1,15 @@
+# Apps installed by hand because nothing installs them automatically.
+# `profile` says which machines want the app: common, personal, or work.
+manual_apps:
+  - name: "LastPass for Desktop"
+    bundle_id: "com.lastpass.lastpass-electron"
+    profile: "common"
+    url: "https://lastpass.com/misc_download2.php"
+  - name: "Qwen"
+    bundle_id: "com.qwen.chat"
+    profile: "common"
+    url: "https://qwen.ai/download"
+  - name: "Smart Q"
+    bundle_id: "com.app.smartq"
+    profile: "personal"
+    url: "https://drive.google.com/file/d/1NAgs3q3nSl2GJMqElmIt2zDWNruD_Yhq/view"
