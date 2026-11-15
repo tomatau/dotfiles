@@ -38,6 +38,7 @@ brew "fzf" # fuzzy find
 brew "gh"
 brew "git-delta"
 brew "git"
+brew "gnutls"
 brew "highlight"
 brew "imagemagick"
 brew "iredis"
