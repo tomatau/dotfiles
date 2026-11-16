@@ -1,5 +1,3 @@
-# Tools installed with `uv tool install`, by profile. Each entry is the
-# arguments to that command, so a tool can carry its `--with` extras.
 uv_tools:
   common:
     - hindsight-api

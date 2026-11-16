@@ -85,7 +85,6 @@ editors:
       - wmaurer.change-case
       - yoavbls.pretty-ts-errors
       - yzhang.markdown-all-in-one
-  # Zed installs these itself, through `auto_install_extensions`.
   zed_extensions:
     - andromeda
     - catppuccin
