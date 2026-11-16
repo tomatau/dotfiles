@@ -1,0 +1,16 @@
+[accounts.tomatao]
+email = "{{ .mail.address }}"
+display-name = "Tomatao"
+default = false
+
+imap.server = "imaps://imappro.zoho.eu:993"
+imap.sasl.plain.username = "{{ .mail.address }}"
+imap.sasl.plain.password.command = "security find-generic-password -a '{{ .mail.address }}' -s 'tomatao-zoho-imap' -w"
+
+smtp.server = "smtps://smtppro.zoho.eu:465"
+smtp.sasl.plain.username = "{{ .mail.address }}"
+smtp.sasl.plain.password.command = "security find-generic-password -a '{{ .mail.address }}' -s 'tomatao-zoho-imap' -w"
+
+mailbox.alias.inbox = "Inbox"
+mailbox.alias.trash = "Trash"
+mailbox.alias.archive = "Archive"

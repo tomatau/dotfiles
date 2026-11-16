@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+source "{{ .chezmoi.sourceDir }}/dot_local/lib/shell/utils.sh"
+
+set-strict-mode
+
+{{ $tools := concat .uv_tools.common (index .uv_tools .profile) -}}
+
+# uv tools: {{ $tools | join ", " }}
+
+p-header white "Installing uv tools..."
+
+if ! command -v uv &>/dev/null; then
+  p-header red "uv not found; skipping uv tools..."
+  exit 0
+fi
+{{ range $tools }}
+uv tool install {{ . }}
+{{- end }}
+
+p-header green "uv tools installed..."

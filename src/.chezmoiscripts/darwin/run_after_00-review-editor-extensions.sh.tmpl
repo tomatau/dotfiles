@@ -92,4 +92,29 @@ review_extensions {{ $editor | quote }} \
   {{ concat $.editors.extensions.common $config.extensions.additional | uniq | join " " | quote }}
 {{ end }}
 
+# Zed installs what the config lists by itself, and has no command to remove
+# an extension. So only report what was installed by hand.
+review_zed_extensions() {
+  local desired=" $1 " installed="$HOME/Library/Application Support/Zed/extensions/installed"
+  local extension unlisted=()
+
+  [[ -d "$installed" ]] || return 0
+
+  for extension in "$installed"/*/; do
+    extension="$(basename "$extension")"
+    [[ "$desired" == *" $extension "* ]] || unlisted+=("$extension")
+  done
+
+  if (( ${#unlisted[@]} == 0 )); then
+    p-header green "zed extensions match the config."
+    return 0
+  fi
+
+  p-header purple "zed extensions installed but not in editors.yaml:"
+  printf '  %s\n' "${unlisted[@]}"
+  p-header blue "Add each to editors.zed_extensions, or remove it in Zed."
+}
+
+review_zed_extensions {{ .editors.zed_extensions | join " " | quote }}
+
 p-header green "Editor extension review complete."

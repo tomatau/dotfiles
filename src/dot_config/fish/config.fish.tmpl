@@ -9,7 +9,7 @@ set -Ux LSCOLORS "fxefcxdxbxexexabagacad"
 set -Ux MANPAGER "most"
 set -gx NPM_TOKEN ""
 if command -q envchain
-    set -gx NPM_TOKEN (envchain tomatao printenv NPM_TOKEN 2>/dev/null)
+    set -gx NPM_TOKEN (envchain {{ .envchain.namespace }} printenv NPM_TOKEN 2>/dev/null)
 end
 set -gx PAGER "moor"
 set -gx PGUSER "postgres"

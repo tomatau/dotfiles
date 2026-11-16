@@ -7,7 +7,7 @@ export LANG="en_GB.UTF-8"
 export MANPAGER="most"
 NPM_TOKEN=""
 if command -v envchain >/dev/null 2>&1; then
-  NPM_TOKEN="$(envchain tomatao printenv NPM_TOKEN 2>/dev/null)"
+  NPM_TOKEN="$(envchain {{ .envchain.namespace }} printenv NPM_TOKEN 2>/dev/null)"
 fi
 export NPM_TOKEN
 export PAGER="moor"
