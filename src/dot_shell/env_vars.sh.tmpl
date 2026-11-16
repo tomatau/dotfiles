@@ -5,13 +5,11 @@ export CODE_PATH_TOM={{ .code_path_tom | quote }}
 export GOPATH="$CODE_PATH/go"
 export LANG="en_GB.UTF-8"
 export MANPAGER="most"
-{{ $token_name := printf "npm token for %s" .chezmoi.hostname -}}
-{{ $token := (index (lastpassRaw $token_name) 0).note -}}
-{{- if $token -}}
-export NPM_TOKEN={{ $token | quote }}
-{{- else -}}
-export NPM_TOKEN="hostname-specific-token-not-found"
-{{- end }}
+NPM_TOKEN=""
+if command -v envchain >/dev/null 2>&1; then
+  NPM_TOKEN="$(envchain tomatao printenv NPM_TOKEN 2>/dev/null)"
+fi
+export NPM_TOKEN
 export PAGER="moor"
 export PGUSER="postgres"
 export PNPM_HOME="$HOME/Library/pnpm"

@@ -7,13 +7,10 @@ set -gx GOPATH "$CODE_PATH/go"
 set -gx LANG "$en_GB.UTF-8"
 set -Ux LSCOLORS "fxefcxdxbxexexabagacad"
 set -Ux MANPAGER "most"
-{{ $token_name := printf "npm token for %s" .chezmoi.hostname -}}
-{{ $token := (index (lastpassRaw $token_name) 0).note -}}
-{{- if $token -}}
-set -gx NPM_TOKEN {{ $token | quote }}
-{{- else -}}
-set -gx NPM_TOKEN "hostname-specific-token-not-found"
-{{- end }}
+set -gx NPM_TOKEN ""
+if command -q envchain
+    set -gx NPM_TOKEN (envchain tomatao printenv NPM_TOKEN 2>/dev/null)
+end
 set -gx PAGER "moor"
 set -gx PGUSER "postgres"
 set -gx DFT_TAB_WIDTH 2
