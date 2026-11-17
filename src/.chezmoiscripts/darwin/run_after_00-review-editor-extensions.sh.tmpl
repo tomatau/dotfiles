@@ -65,7 +65,11 @@ review_extensions() {
     [[ -n "$extension" ]] || continue
     answer="$(choose_action "$editor: $extension" '[i]nstall / [s]kip / [q]uit (default: skip)?' isq s)"
     case "$answer" in
-      i) "$editor" --install-extension "$extension" ;;
+      i)
+        # Not every extension is published to every editor's marketplace.
+        "$editor" --install-extension "$extension" ||
+          p-header amber "Could not install $extension in $editor; continuing."
+        ;;
       s) printf 'Skipped installing %s.\n' "$extension" ;;
       q) exit 130 ;;
     esac
@@ -78,7 +82,10 @@ review_extensions() {
     [[ -n "$extension" ]] || continue
     answer="$(choose_action "$editor: $extension" '[k]eep / [r]emove / [q]uit (default: keep)?' krq k)"
     case "$answer" in
-      r) "$editor" --uninstall-extension "$extension" ;;
+      r)
+        "$editor" --uninstall-extension "$extension" ||
+          p-header amber "Could not remove $extension from $editor; continuing."
+        ;;
       k) printf 'Kept %s.\n' "$extension" ;;
       q) exit 130 ;;
     esac
