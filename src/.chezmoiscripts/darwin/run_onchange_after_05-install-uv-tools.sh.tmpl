@@ -10,20 +10,22 @@ set-strict-mode
 
 p-header white "Installing uv tools..."
 
-# Run uv rather than `command -v`: the proto shim exists on PATH even when the
-# pinned version isn't installed.
-if ! uv --version &>/dev/null; then
+uv_shim="${PROTO_HOME:-$HOME/.proto}/shims/uv"
+uv_bin="$(command -v uv || printf '%s' "$uv_shim")"
+
+# A shim can exist even when its pinned version isn't installed.
+if ! "$uv_bin" --version &>/dev/null; then
   p-header amber "uv not usable; installing with proto..."
   proto-install uv
-fi
+  uv_bin="$uv_shim"
 
-# Fail rather than skip, so chezmoi retries this script on the next apply.
-if ! uv --version &>/dev/null; then
-  p-header red "uv still not usable after proto install; is ~/.proto/shims on PATH?"
-  exit 1
+  if ! "$uv_bin" --version &>/dev/null; then
+    p-header red "uv still not usable after proto install."
+    exit 1
+  fi
 fi
 {{ range $tools }}
-uv tool install {{ . }}
+"$uv_bin" tool install {{ . }}
 {{- end }}
 
 p-header green "uv tools installed..."
