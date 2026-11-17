@@ -1,9 +1,6 @@
 editors:
   extensions:
     common:
-      - arsen.darcula-theme-for-elixir
-      - asvetliakov.snapshot-tools
-      - azemoh.one-monokai
       - bierner.markdown-mermaid
       - bpruitt-goddard.mermaid-markdown-syntax-highlighting
       - bradlc.vscode-tailwindcss
@@ -12,7 +9,6 @@ editors:
       - christian-kohler.npm-intellisense
       - christian-kohler.path-intellisense
       - cweijan.dbclient-jdbc
-      - cweijan.vscode-postgresql-client2
       - dbaeumer.vscode-eslint
       - denoland.vscode-deno
       - docker.docker
@@ -21,7 +17,6 @@ editors:
       - editorconfig.editorconfig
       - elijah-potter.harper
       - exodiusstudios.comment-anchors
-      - geeebe.duplicate
       - github.github-vscode-theme
       - github.vscode-github-actions
       - gleam.gleam
@@ -29,18 +24,13 @@ editors:
       - hashicorp.terraform
       - idleberg.applescript
       - idleberg.jxa
-      - jaimeolivares.yuml
-      - jakebecker.elixir-ls
-      - jonasgruenwald.code-livebook
       - kumar-harsh.graphql-for-vscode
-      - lunaryorn.fish-ide
       # Syntax highlighting for Moon's Tera templates (.twig).
       - mblode.twig-language-2
       - mechatroner.rainbow-csv
       - mermaidchart.vscode-mermaid-chart
       - mgmcdermott.vscode-language-babel
       - mikestead.dotenv
-      - mingteo.sort-selection-concentrically
       - mkhl.direnv
       - moonrepo.moon-console
       - ms-azuretools.vscode-containers
@@ -50,7 +40,6 @@ editors:
       - ms-playwright.playwright
       - ms-python.debugpy
       - ms-python.python
-      - ms-toolsai.datawrangler
       - ms-toolsai.jupyter
       - ms-toolsai.jupyter-keymap
       - ms-toolsai.jupyter-renderers
@@ -67,17 +56,12 @@ editors:
       - redhat.vscode-yaml
       - ritwickdey.liveserver
       - rust-lang.rust-analyzer
-      - sidneys1.gitconfig
-      - simonsiefke.svg-preview
-      - skyapps.fish-vscode
       - sleistner.vscode-fileutils
       - srshah.cosmic-gleam
       - streetsidesoftware.code-spell-checker
       - styled-components.vscode-styled-components
       - tamasfe.even-better-toml
-      - tanvir.ollama-modelfile
       - tomoki1207.pdf
-      - travisthetechie.write-good-linter
       - tyriar.sort-lines
       - unifiedjs.vscode-mdx
       - vadimcn.vscode-lldb
@@ -109,6 +93,23 @@ editors:
         # Cursor uses Anysphere's Pyright replacement for Pylance.
         - ms-python.vscode-pylance
         - ms-python.vscode-python-envs
+        # Not published to Open VSX, so Cursor cannot install these.
+        - arsen.darcula-theme-for-elixir
+        - asvetliakov.snapshot-tools
+        - azemoh.one-monokai
+        - cweijan.vscode-postgresql-client2
+        - geeebe.duplicate
+        - jaimeolivares.yuml
+        - jakebecker.elixir-ls
+        - jonasgruenwald.code-livebook
+        - lunaryorn.fish-ide
+        - mingteo.sort-selection-concentrically
+        - ms-toolsai.datawrangler
+        - sidneys1.gitconfig
+        - simonsiefke.svg-preview
+        - skyapps.fish-vscode
+        - tanvir.ollama-modelfile
+        - travisthetechie.write-good-linter
   cursor:
     # VS Code is the settings baseline; these are Cursor's exceptions.
     unset_settings:
