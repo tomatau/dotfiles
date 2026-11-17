@@ -8,4 +8,10 @@
 {{- end -}}
 {{- $colors := index $settings "editor.tokenColorCustomizations" -}}
 {{- $_ := set $colors "textMateRules" (concat $colors.textMateRules .editors.cursor.extra_textmate_rules) -}}
+{{- $current := .chezmoi.stdin | trim | default "{}" | fromJsonc -}}
+{{- range .editors.cursor.machine_settings -}}
+{{- if hasKey $current . -}}
+{{- $_ := set $settings . (get $current .) -}}
+{{- end -}}
+{{- end -}}
 {{- $settings | toPrettyJson "\t" -}}

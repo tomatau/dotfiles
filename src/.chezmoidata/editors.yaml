@@ -118,21 +118,65 @@ editors:
       - claudeCode.hideOnboarding
       - python.analysis.typeCheckingMode
       - workbench.activityBar.location
+    # Kept as this machine has them; never written by the dotfiles.
+    machine_settings:
+      - direnv.path.executable
+      - extensions.gallery.serviceUrl
+      - extensions.installCooldownHours
+      - python.defaultInterpreterPath
+      - typescript.tsserver.nodePath
     settings:
+      '[go]':
+        editor.defaultFormatter: golang.go
+        editor.insertSpaces: true
+      biome.enabled: false
+      biome.suggestInstallingGlobally: false
+      commentAnchors.tags.list:
+        - tag: TODO
+          iconColor: blue
+          highlightColor: '#3ea8ff'
+          scope: workspace
+        - tag: FIXME
+          iconColor: red
+          highlightColor: '#F44336'
+          scope: workspace
+        - tag: STUB
+          iconColor: purple
+          highlightColor: '#BA68C8'
+          scope: file
+        - tag: NOTE
+          iconColor: orange
+          highlightColor: '#FFB300'
+          scope: file
+        - tag: REVIEW
+          iconColor: green
+          highlightColor: '#64DD17'
+          scope: workspace
       cursor.composer.codeBlockWordWrap: true
-      cursor.composer.queueMessageDefaultBehavior: stop-and-send
+      cursor.composer.queueMessageDefaultBehavior: steer
       cursorpyright.analysis.typeCheckingMode: standard
+      editor.codeActions.triggerOnFocusChange: true
+      editor.detectIndentation: false
+      editor.indentSize: tabSize
       explorer.confirmDelete: false
       extensions.ignoreRecommendations: true
+      files.associations:
+        '**/.github/**/*.yml': github-actions-workflow
+        '*.mdx': mdx
+        '*.{pipe,datasource,incl}': sql
+        Modelfile: modelfile
       go.diagnostic.vulncheck: Imports
+      go.toolsManagement.autoUpdate: true
+      jest.runMode: on-demand
+      js/ts.experimental.useTsgo: false
+      makefile.configureOnOpen: true
+      oxc.enable.oxfmt: false
+      oxc.enable.oxlint: false
       window.autoDetectColorScheme: false
-      window.titleBarStyle: native
-      workbench.colorTheme: GitHub Dark
-      workbench.editor.editorActionsLocation: titleBar
+      window.title: '${rootPath}${separator}${profileName}${separator}${activeRepositoryBranchName}'
+      workbench.colorTheme: Default Dark Modern
       workbench.editor.showTabs: multiple
       workbench.iconTheme: vscode-icons
-      workbench.secondarySideBar.showLabels: false
-      workbench.sideBar.location: right
     extra_textmate_rules:
       - scope: markup.bold
         settings:
