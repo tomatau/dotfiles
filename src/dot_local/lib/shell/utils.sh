@@ -16,8 +16,22 @@ set-strict-mode() {
 # resolving to a pinned version that was never installed.
 proto-install() {
   local tool="$1"
-  local pinned
-  pinned=$(sed -n "s/^${tool} = \"\(.*\)\"$/\1/p" "$HOME/.proto/.prototools" 2>/dev/null || true)
+  local config="${PROTO_HOME:-$HOME/.proto}/.prototools"
+  local pinned=""
+  if [[ -e "$config" ]]; then
+    pinned="$(python3.12 - "$config" "$tool" <<'PY'
+import sys
+import tomllib
+
+config_path, tool = sys.argv[1:]
+with open(config_path, "rb") as config:
+    pin = tomllib.load(config).get(tool, "")
+if not isinstance(pin, str):
+    sys.exit(f"{config_path}: expected a version string for {tool}")
+print(pin)
+PY
+    )" || return
+  fi
   proto install "$tool" ${pinned:+"$pinned"}
 }
 
