@@ -11,6 +11,16 @@ set-strict-mode() {
   # set -x
 }
 
+# Install a proto tool at its globally pinned version, or latest if unpinned.
+# A bare `proto install <tool>` always installs latest, which leaves the shim
+# resolving to a pinned version that was never installed.
+proto-install() {
+  local tool="$1"
+  local pinned
+  pinned=$(sed -n "s/^${tool} = \"\(.*\)\"$/\1/p" "$HOME/.proto/.prototools" 2>/dev/null || true)
+  proto install "$tool" ${pinned:+"$pinned"}
+}
+
 p-header() {
   local color="$1"
   local message="$2"

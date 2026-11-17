@@ -11,9 +11,10 @@ if ! command -v proto &> /dev/null; then
   brew install proto
 fi
 
-proto install bun
-proto install deno
-proto install go
-proto install uv
+proto-install bun
+proto-install deno
+proto-install go
+# uv tracks latest: install it and move the global pin to match.
+proto install uv --pin global
 
 p-header green "Proto tools installed..."
