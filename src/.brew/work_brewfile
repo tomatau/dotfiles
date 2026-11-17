@@ -12,7 +12,7 @@ brew "kubernetes-cli"
 brew "lazygit"
 brew "minikube"
 brew "mkcert" # local tls certs
-brew "snyk"
+brew "snyk/tap/snyk", trusted: true
 brew "stripe-cli"
 
 # Use `proto install` with terraform plugin

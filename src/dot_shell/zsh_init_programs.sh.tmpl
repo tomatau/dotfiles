@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Brewfile management
 if [ -f $(brew --prefix)/etc/brew-wrap ];then
@@ -6,11 +6,11 @@ if [ -f $(brew --prefix)/etc/brew-wrap ];then
 fi
 
 if [ -x "$(command -v direnv)" ]; then
-  eval "$(direnv hook bash)"
+  eval "$(direnv hook zsh)"
 fi
 
 if [ -x "$(command -v zoxide)" ]; then
-  eval "$(zoxide init bash)"
+  eval "$(zoxide init zsh)"
 fi
 
 if [ -x "$(command -v fnm)" ]; then
@@ -18,22 +18,31 @@ if [ -x "$(command -v fnm)" ]; then
 fi
 
 if [ -x "$(command -v starship)" ]; then
-  eval "$(starship init bash)"
+  eval "$(starship init zsh)"
 fi
 
 if [ -x "$(command -v fzf)" ]; then
-  eval "$(fzf --bash)"
+  source <(fzf --zsh)
 fi
 
 if [ -f "$(brew --prefix)/opt/asdf/libexec/asdf.sh" ]; then
   . "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
-  . "$(brew --prefix)/opt/asdf/etc/bash_completion.d/asdf"
 fi
+
+if [ -f "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+{{- if eq .profile "work" }}
+
+if [ -x "$(command -v mise)" ]; then
+  eval "$(mise activate zsh)"
+fi
+{{- end }}
 
 ssh-add --apple-load-keychain 2> /dev/null
 
 __conda_path="$(brew --prefix)/anaconda3";
-__conda_setup="$($__conda_path/bin/conda 'shell.bash' 'hook' 2> /dev/null)";
+__conda_setup="$($__conda_path/bin/conda 'shell.zsh' 'hook' 2> /dev/null)";
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
@@ -46,4 +55,4 @@ fi
 unset __conda_path
 unset __conda_setup
 
-[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path bash)"
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"

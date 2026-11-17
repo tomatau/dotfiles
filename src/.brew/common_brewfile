@@ -110,7 +110,7 @@ cask "ollama-app"
 cask "openinterminal"
 cask "opera"
 cask "pdfcraft"
-cask "pi-gui"
+cask "minghinmatthewlam/tap/pi-gui", trusted: true
 cask "qlmarkdown"
 cask "quicklook-video"
 cask "raycast"

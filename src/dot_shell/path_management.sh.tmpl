@@ -49,5 +49,10 @@ prepend_path "$HOME/.docker/bin"
 
 # Antigravity IDE
 prepend_path "$HOME/.antigravity-ide/antigravity-ide/bin"
+{{- if eq .profile "work" }}
+
+# Windsurf / Devin
+prepend_path "$HOME/.codeium/windsurf/bin"
+{{- end }}
 
 export PATH
