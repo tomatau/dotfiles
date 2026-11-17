@@ -8,7 +8,7 @@
 // To see all of Zed's default settings without changing your
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
-{{- $extensions := .editors.zed_extensions -}}
+{{- $extensions := .editors.zed.extensions -}}
 {{- $last := sub (len $extensions) 1 }}
 {
   "auto_install_extensions": {

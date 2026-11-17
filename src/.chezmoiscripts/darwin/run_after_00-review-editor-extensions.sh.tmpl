@@ -93,10 +93,10 @@ review_extensions() {
   exec 3<&-
 }
 
+{{ $config := .editors.vscode_compatible -}}
 {{ range $editor := list "code" "cursor" }}
-{{ $config := index $.editors $editor -}}
 review_extensions {{ $editor | quote }} \
-  {{ concat $.editors.extensions.common $config.extensions.additional | uniq | join " " | quote }}
+  {{ concat $config.shared.extensions (index $config $editor).extensions | uniq | join " " | quote }}
 {{ end }}
 
 review_zed_extensions() {
@@ -117,9 +117,9 @@ review_zed_extensions() {
 
   p-header purple "zed extensions installed but not in editors.yaml:"
   printf '  %s\n' "${unlisted[@]}"
-  p-header blue "Add each to editors.zed_extensions, or remove it in Zed."
+  p-header blue "Add each to editors.zed.extensions, or remove it in Zed."
 }
 
-review_zed_extensions {{ .editors.zed_extensions | join " " | quote }}
+review_zed_extensions {{ .editors.zed.extensions | join " " | quote }}
 
 p-header green "Editor extension review complete."

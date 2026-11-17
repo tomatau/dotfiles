@@ -1,7 +1,7 @@
 [
   {
     "key": "shift+cmd+d",
-    "command": "geeebe.duplicateText",
+    "command": "editor.action.duplicateSelection",
     "when": "editorTextFocus"
   },
   {
@@ -40,19 +40,13 @@
     "command": "workbench.files.action.collapseExplorerFolders"
   },
   {
-    "key": "shift+cmd+f",
-    "command": "-markdown-table.convert.split",
-    "when": "editorTextFocus"
-  },
-  {
     "key": "left",
     "command": "-settings.action.focusTOC",
     "when": "inSettingsEditor && settingRowFocus"
   },
   {
     "key": "ctrl+shift+enter",
-    "command": "-jupyter.runAndDebugCell",
-    "when": "isWorkspaceTrusted && jupyter.ispythonnotebook && !notebookKernel && notebookCellType == 'code' || isWorkspaceTrusted && jupyter.ispythonnotebook && notebookCellType == 'code' && notebookKernel =~ /^ms-toolsai.jupyter\\// && resource not in 'jupyter.notebookeditor.debugDocuments'"
+    "command": "-jupyter.runAndDebugCell"
   },
   {
     "key": "ctrl+shift+enter",
@@ -108,8 +102,7 @@
     "when": "terminalFocus"
   },
   {
-    "key": "cmd+/",
-    "command": "editor.action.commentLine",
-    "when": "editorTextFocus && !editorReadonly"
+    "key": "cmd+b",
+    "command": "-workbench.action.showAllEditors"
   }
 ]

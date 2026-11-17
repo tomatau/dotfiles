@@ -1,0 +1,18 @@
+{{- $settings := mergeOverwrite (deepCopy .shared) .editor.settings -}}
+{{- $current := .stdin | trim | default "{}" | fromJsonc -}}
+{{- range get .editor "machine_settings" | default list -}}
+  {{- if hasKey $current . -}}
+    {{- $_ := set $settings . (get $current .) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* The Kubernetes extension maintains machine-specific tool paths. */ -}}
+{{- $kubernetes := get $current "vs-kubernetes" | default dict -}}
+{{- $_ := set $kubernetes "vs-kubernetes.suppress-helm-not-found-alerts" true -}}
+{{- $_ := set $settings "vs-kubernetes" $kubernetes -}}
+
+{{- with get .editor "extra_textmate_rules" -}}
+  {{- $colors := index $settings "editor.tokenColorCustomizations" -}}
+  {{- $_ := set $colors "textMateRules" (concat $colors.textMateRules .) -}}
+{{- end -}}
+{{- $settings | toPrettyJson "\t" -}}

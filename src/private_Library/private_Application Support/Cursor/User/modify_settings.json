@@ -1,17 +1,6 @@
 {{- /* chezmoi:modify-template */ -}}
-{{- $settings := includeTemplate "private_Library/private_Application Support/Code/User/modify_settings.json" . | fromJsonc -}}
-{{- range .editors.cursor.unset_settings -}}
-{{- $_ := unset $settings . -}}
-{{- end -}}
-{{- range $key, $value := .editors.cursor.settings -}}
-{{- $_ := set $settings $key $value -}}
-{{- end -}}
-{{- $colors := index $settings "editor.tokenColorCustomizations" -}}
-{{- $_ := set $colors "textMateRules" (concat $colors.textMateRules .editors.cursor.extra_textmate_rules) -}}
-{{- $current := .chezmoi.stdin | trim | default "{}" | fromJsonc -}}
-{{- range .editors.cursor.machine_settings -}}
-{{- if hasKey $current . -}}
-{{- $_ := set $settings . (get $current .) -}}
-{{- end -}}
-{{- end -}}
-{{- $settings | toPrettyJson "\t" -}}
+{{- $config := .editors.vscode_compatible -}}
+{{- includeTemplate "vscode-compatible-settings.tmpl" (dict
+  "shared" $config.shared.settings
+  "editor" $config.cursor
+  "stdin" .chezmoi.stdin) -}}
