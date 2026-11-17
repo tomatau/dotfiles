@@ -1,6 +1,8 @@
 uv_tools:
   common:
-    - hindsight-api
-    - leann-core --with leann
+    # Pinned to 3.14: uv defaults to Homebrew's python3 (3.15), which these
+    # tools' native dependencies don't publish wheels for yet.
+    - hindsight-api --python 3.14
+    - leann-core --with leann --python 3.14
   personal: []
   work: []
