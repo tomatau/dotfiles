@@ -341,27 +341,10 @@ editors:
           editor.insertSpaces: true
         "[sql]":
           editor.defaultFormatter: cweijan.vscode-database-client2
-        commentAnchors.tags.list:
-          - highlightColor: "#3ea8ff"
-            iconColor: blue
+        commentAnchors.tags.anchors:
+          WARNING:
+            highlightColor: "#FF8F00"
             scope: workspace
-            tag: TODO
-          - highlightColor: "#F44336"
-            iconColor: red
-            scope: workspace
-            tag: FIXME
-          - highlightColor: "#BA68C8"
-            iconColor: purple
-            scope: file
-            tag: STUB
-          - highlightColor: "#FFB300"
-            iconColor: orange
-            scope: file
-            tag: NOTE
-          - highlightColor: "#64DD17"
-            iconColor: green
-            scope: workspace
-            tag: REVIEW
         cursor.composer.codeBlockWordWrap: true
         cursor.composer.queueMessageDefaultBehavior: steer
         cursorpyright.analysis.typeCheckingMode: standard
