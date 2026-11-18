@@ -40,6 +40,9 @@ editors:
         - ms-playwright.playwright
         - ms-python.debugpy
         - ms-python.python
+        # Inert in Cursor, which reinstalls it with the Python extension pack
+        # and runs Anysphere's Pyright replacement instead.
+        - ms-python.vscode-pylance
         - ms-python.vscode-python-envs
         - ms-toolsai.jupyter
         - ms-toolsai.jupyter-keymap
@@ -284,8 +287,6 @@ editors:
       extensions:
         - anthropic.claude-code
         - openai.chatgpt
-        # Cursor uses Anysphere's Pyright replacement for Pylance.
-        - ms-python.vscode-pylance
         # Not published to Open VSX, so Cursor cannot install these.
         - arsen.darcula-theme-for-elixir
         - asvetliakov.snapshot-tools
