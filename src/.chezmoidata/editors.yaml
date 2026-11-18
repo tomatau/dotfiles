@@ -388,6 +388,7 @@ editors:
       - andromeda
       - catppuccin
       - catppuccin-icons
+      - dockerfile
       - dracula
       - elixir
       - fish
@@ -396,6 +397,7 @@ editors:
       - just
       - latex
       - log
+      - make
       - oxc
       - sql
       - toml
