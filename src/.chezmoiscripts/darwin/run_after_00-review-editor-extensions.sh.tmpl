@@ -94,9 +94,10 @@ review_extensions() {
 }
 
 {{ $config := .editors.vscode_compatible -}}
+{{ $profile := index $config.profiles .profile -}}
 {{ range $editor := list "code" "cursor" }}
 review_extensions {{ $editor | quote }} \
-  {{ concat $config.shared.extensions (index $config $editor).extensions | uniq | join " " | quote }}
+  {{ concat $config.shared.extensions $profile.extensions (index $config $editor).extensions | uniq | join " " | quote }}
 {{ end }}
 
 review_zed_extensions() {

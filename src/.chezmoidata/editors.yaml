@@ -40,12 +40,14 @@ editors:
         - ms-playwright.playwright
         - ms-python.debugpy
         - ms-python.python
+        - ms-python.vscode-python-envs
         - ms-toolsai.jupyter
         - ms-toolsai.jupyter-keymap
         - ms-toolsai.jupyter-renderers
         - ms-toolsai.vscode-jupyter-cell-tags
         - ms-toolsai.vscode-jupyter-slideshow
         - ms-vscode.atom-keybindings
+        - ms-vscode.makefile-tools
         - nefrob.vscode-just-syntax
         - orta.vscode-jest
         - oven.bun-vscode
@@ -61,6 +63,7 @@ editors:
         - streetsidesoftware.code-spell-checker
         - styled-components.vscode-styled-components
         - tamasfe.even-better-toml
+        - tobermory.es6-string-html
         - tomoki1207.pdf
         - tyriar.sort-lines
         - unifiedjs.vscode-mdx
@@ -228,34 +231,11 @@ editors:
           - jsdelivr.com
           - unpkg.com
         liveServer.settings.donotShowInfoMsg: true
+        makefile.configureOnOpen: true
         notebook.stickyScroll.enabled: true
         npm.enableRunFromFolder: true
         # Projects can enable Oxc through their editor settings.
         oxc.enable: false
-        pgsql.connections:
-          - applicationName: vscode-pgsql
-            authenticationType: SqlLogin
-            clientEncoding: utf8
-            connectTimeout: 15
-            database: local_agent_db
-            displayName: "local_agent_db, local_agent_db (admin)"
-            expiresOn: 0
-            groupId: EF8D0DF6-278B-48B9-9731-1CCF60D87F0C
-            hostaddr: ""
-            id: "42BB6A38-CD36-4F48-ABA6-44925DCC8890"
-            password: ""
-            port: ""
-            profileName: "local_agent_db, local_agent_db (admin)"
-            profileSource: 0
-            savePassword: true
-            server: localhost
-            sslmode: prefer
-            user: admin
-        pgsql.enableQueryHistoryCapture: false
-        pgsql.serverGroups:
-          - id: EF8D0DF6-278B-48B9-9731-1CCF60D87F0C
-            isDefault: true
-            name: Servers
         redhat.telemetry.enabled: false
         security.promptForLocalFileProtocolHandling: false
         security.workspace.trust.untrustedFiles: open
@@ -292,19 +272,25 @@ editors:
         zenMode.centerLayout: false
         zenMode.fullScreen: false
         zenMode.hideLineNumbers: false
+    profiles:
+      personal:
+        extensions: []
+      work:
+        extensions:
+          - stylelint.vscode-stylelint
+          # Not published to Open VSX; Cursor needs the Microsoft gallery URL.
+          - typescriptteam.native-preview
     code:
       extensions:
         - anthropic.claude-code
         - openai.chatgpt
         # Cursor uses Anysphere's Pyright replacement for Pylance.
         - ms-python.vscode-pylance
-        - ms-python.vscode-python-envs
         # Not published to Open VSX, so Cursor cannot install these.
         - arsen.darcula-theme-for-elixir
         - asvetliakov.snapshot-tools
         - azemoh.one-monokai
         - cweijan.vscode-postgresql-client2
-        - geeebe.duplicate
         - jaimeolivares.yuml
         - jakebecker.elixir-ls
         - lunaryorn.fish-ide
@@ -347,8 +333,8 @@ editors:
         "[go]":
           editor.defaultFormatter: golang.go
           editor.insertSpaces: true
-        biome.enabled: false
-        biome.suggestInstallingGlobally: false
+        "[sql]":
+          editor.defaultFormatter: cweijan.vscode-database-client2
         commentAnchors.tags.list:
           - highlightColor: "#3ea8ff"
             iconColor: blue
@@ -384,7 +370,6 @@ editors:
         go.toolsManagement.autoUpdate: true
         jest.runMode: on-demand
         js/ts.experimental.useTsgo: false
-        makefile.configureOnOpen: true
         # Projects can opt in by enabling the formatter and linter individually.
         oxc.enable.oxfmt: false
         oxc.enable.oxlint: false
