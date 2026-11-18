@@ -3,6 +3,7 @@ editors:
     shared:
       extensions:
         - bierner.markdown-mermaid
+        - biomejs.biome
         - bpruitt-goddard.mermaid-markdown-syntax-highlighting
         - bradlc.vscode-tailwindcss
         - cardinal90.multi-cursor-case-preserve
@@ -11,6 +12,7 @@ editors:
         - christian-kohler.path-intellisense
         - dbaeumer.vscode-eslint
         - denoland.vscode-deno
+        - dnut.rewrap-revived
         - docker.docker
         - dunstontc.viml
         - eamodio.gitlens
@@ -117,6 +119,9 @@ editors:
         "[yaml]":
           editor.autoIndent: advanced
           editor.defaultFormatter: oxc.oxc-vscode
+        # Projects can enable Biome through their editor settings.
+        biome.enabled: false
+        biome.suggestInstallingGlobally: false
         breadcrumbs.enabled: true
         cSpell.enabled: false
         cSpell.userWords:
