@@ -3,7 +3,6 @@ uv_tools:
     # Pinned to 3.14: uv defaults to Homebrew's python3 (3.15), which these
     # tools' native dependencies don't publish wheels for yet.
     - hindsight-api --python 3.14
-    - leann-core --with leann --python 3.14
     # fidx: local search behind ~/.agents' sync-search.
     - fmdidx==0.2.1 --managed-python --python 3.14.7
   personal: []
